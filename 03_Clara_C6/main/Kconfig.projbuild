@@ -1,0 +1,39 @@
+menu "Clara C6 Configuration"
+
+    config CLARA_WIFI_SSID
+        string "Wi-Fi SSID"
+        default ""
+        help
+            Supplied locally in sdkconfig.local; never commit credentials.
+
+    config CLARA_WIFI_PASSWORD
+        string "Wi-Fi password"
+        default ""
+
+    config CLARA_API_BASE_URL
+        string "Clara Voice API base URL"
+        default ""
+        help
+            HTTPS base URL including the API prefix, for example
+            https://host.example/voice-api.
+
+    config CLARA_TOPIC
+        string "Default meeting topic"
+        default ""
+
+    config CLARA_VAD_THRESHOLD
+        int "VAD RMS threshold"
+        default 500
+        range 100 5000
+
+    config CLARA_VAD_MIN_MS
+        int "Minimum speech duration (ms)"
+        default 600
+        range 100 3000
+
+    config CLARA_VAD_SILENCE_MS
+        int "Silence duration for end of speech (ms)"
+        default 1200
+        range 200 5000
+
+endmenu

@@ -1,0 +1,28 @@
+idf_component_register(
+    SRCS
+        "main.cpp"
+        "clara_audio.cpp"
+        "clara_net.cpp"
+        "clara_ui.cpp"
+    INCLUDE_DIRS "."
+    PRIV_REQUIRES
+        app_bsp
+        port_bsp
+        pmicpower
+        ui_bsp
+        nvs_flash
+        esp_wifi
+        esp_netif
+        esp_event
+        esp_http_client
+        esp_websocket_client
+        json
+        mbedtls
+        esp-tls
+        esp_timer
+        esp_codec_dev
+        esp_driver_i2s
+        esp_driver_i2c
+        lvgl
+        spiffs
+)

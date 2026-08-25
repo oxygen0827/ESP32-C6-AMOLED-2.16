@@ -1,0 +1,26 @@
+# macOS and editor metadata
+.DS_Store
+.vscode/
+.idea/
+
+# ESP-IDF and other generated build output
+build-c6-idf/
+**/build/
+**/build-*/
+**/managed_components/
+
+# Local ESP-IDF configuration and dependency resolution
+**/sdkconfig
+**/sdkconfig.old
+**/sdkconfig.local
+**/sdkconfig.private
+**/dependencies.lock
+*.local
+*.local.*
+!**/sdkconfig.local.example
+
+# Python and temporary files
+__pycache__/
+*.py[cod]
+*.tmp
+*.swp
