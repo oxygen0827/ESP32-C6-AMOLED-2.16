@@ -24,3 +24,12 @@ __pycache__/
 *.py[cod]
 *.tmp
 *.swp
+
+# Local API probe virtual environment
+.venv_api_test/
+
+# Generated CA PEM extracted from clara_ca_chain.h by backend_api_probe.py
+scripts/clara_ca_chain.pem
+
+# macOS resource forks
+._*
