@@ -16,7 +16,7 @@ CONFIG_MBEDTLS_GCM_SUPPORT_NON_AES_CIPHER=n
 CONFIG_MBEDTLS_ECP_FIXED_POINT_OPTIM=y
 CONFIG_LV_COLOR_16_SWAP=y
 CONFIG_LV_COLOR_SCREEN_TRANSP=y
-CONFIG_LV_MEM_SIZE_KILOBYTES=64
+CONFIG_LV_MEM_SIZE_KILOBYTES=48
 CONFIG_LV_ATTRIBUTE_FAST_MEM_USE_IRAM=y
 CONFIG_LV_FONT_MONTSERRAT_12=y
 CONFIG_LV_FONT_MONTSERRAT_16=y
@@ -41,3 +41,12 @@ CONFIG_CLARA_VAD_SILENCE_MS=1200
 # Chinese font support
 CONFIG_LV_FONT_SOURCE_HAN_SANS_SC_16_CJK=y
 CONFIG_LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_16_CJK=y
+
+# Memory tuning reconstructed from the proven-good 2026-08-26 runtime config
+# (logs/clara_meeting_test_20260826_2158.log).  These lines previously lived
+# only in the git-ignored sdkconfig and were lost on workspace rebuilds.
+CONFIG_LWIP_TCP_MSS=1240
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=16
+# Confirmed by logs/serial_70s_noipv6.log experiment; nothing on the meeting
+# path needs v6 (backend is public v4 via Cloudflare).
+CONFIG_LWIP_IPV6=n
