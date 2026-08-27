@@ -42,6 +42,7 @@ enum class Action : uint8_t {
     StartMeeting,
     StopMeeting,
     HandleMeetingDisconnect,
+    HandleHostRejected,
     ToggleHost,
     RefreshSummary,
     FinishHost,
@@ -94,6 +95,17 @@ static void net_event(const clara_net_event_t *event, void *)
             else clara_ui_append_answer(event->text, event->is_final);
         }
         break;
+    case CLARA_NET_EVENT_HOST_TTS_START: (void)clara_audio_mp3_start(); break;
+    case CLARA_NET_EVENT_HOST_ANSWER_AUDIO:
+        if (event->binary && event->binary_len) {
+            (void)clara_audio_mp3_write(event->binary, event->binary_len, false);
+        }
+        break;
+    case CLARA_NET_EVENT_HOST_TTS_END: (void)clara_audio_mp3_end(); break;
+    case CLARA_NET_EVENT_HOST_SESSION_REJECTED:
+        ui_status("Session expired - recreating");
+        enqueue_action(Action::HandleHostRejected);
+        break;
     case CLARA_NET_EVENT_HOST_DONE: enqueue_action(Action::FinishHost); break;
     case CLARA_NET_EVENT_ERROR: ui_status("Network error - check Wi-Fi/API"); break;
     default: break;
@@ -105,6 +117,7 @@ static void audio_task(void *)
     bool read_error_logged = false;
     bool send_ok_logged = false;
     bool send_error_logged = false;
+    uint32_t send_fail_streak = 0;
     while (s_audio_task_run) {
         if ((!s_meeting_active && !s_host_recording) || !s_codec) { vTaskDelay(pdMS_TO_TICKS(50)); continue; }
         esp_codec_dev_handle_t mic = s_codec->Get_audio_codec_microphone();
@@ -131,12 +144,22 @@ static void audio_task(void *)
         if (err == ESP_OK && !send_ok_logged) {
             ESP_LOGI(TAG, "Audio stream started");
             send_ok_logged = true;
+            send_fail_streak = 0;
         } else if (err != ESP_OK) {
             if (!send_error_logged) {
                 ESP_LOGW(TAG, "Audio stream send failed err=%d", static_cast<int>(err));
                 send_error_logged = true;
             }
+            // Watchdog: a silently stalled transport must not keep the meeting
+            // in a fake "listening" state. After ~6 s of continuous failures,
+            // trigger the same recovery path as a disconnect event.
+            if (++send_fail_streak >= 300) {
+                send_fail_streak = 0;
+                if (s_meeting_active) enqueue_action(Action::HandleMeetingDisconnect);
+            }
             vTaskDelay(pdMS_TO_TICKS(20));
+        } else {
+            send_fail_streak = 0;
         }
     }
     s_audio_task = nullptr;
@@ -205,6 +228,7 @@ static void stop_meeting_impl(void *)
     if (!s_meeting_active) return;
     stop_audio_task();
     s_meeting_active = false;
+    (void)clara_audio_mp3_end();
     clara_ui_set_meeting_active(false);
     clara_net_transcribe_send_end(); clara_net_transcribe_disconnect();
     if (s_host_recording) {
@@ -225,6 +249,37 @@ static void handle_meeting_disconnect_impl(void *)
     ui_status("Connection lost - tap Start to retry");
 }
 
+/*
+ * The server rejected the host channel (403): the session id is no longer
+ * valid. Recreate the session transparently and re-enter host mode so the
+ * user's question round-trips instead of dying on an expired id.
+ */
+static void handle_host_rejected_impl(void *)
+{
+    (void)clara_audio_mp3_end();
+    s_host_recording = false;
+    s_host_connected = false;
+    (void)clara_net_host_disconnect();
+    clara_ui_set_host_active(false);
+    if (s_session_id[0]) {
+        (void)clara_net_end_session(s_session_id);
+        s_session_id[0] = 0;
+    }
+    ui_status("Reconnecting...");
+    if (clara_net_create_session(CONFIG_CLARA_TOPIC, s_session_id, sizeof(s_session_id)) != ESP_OK) {
+        ui_status("Recreate failed - check network");
+        return;
+    }
+    if (clara_net_host_connect(s_session_id) != ESP_OK) {
+        ui_status("Reconnect failed - tap Ask Clara to retry");
+        return;
+    }
+    s_host_recording = true;
+    start_audio_task();
+    clara_ui_set_host_active(true);
+    ui_status("Ask Clara a question");
+}
+
 static void toggle_host_impl(void *)
 {
     if (!s_session_id[0]) { ui_status("Start a meeting first"); return; }
@@ -242,6 +297,8 @@ static void toggle_host_impl(void *)
 
 static void finish_host_impl(void *)
 {
+    // Let the last sentence finish decoding before tearing the stream down.
+    (void)clara_audio_mp3_end();
     s_host_recording = false;
     if (!s_meeting_active) stop_audio_task();
     if (s_host_connected) (void)clara_net_host_disconnect();
@@ -320,6 +377,7 @@ static void action_task(void *)
         case Action::StartMeeting: start_meeting_impl(nullptr); break;
         case Action::StopMeeting: stop_meeting_impl(nullptr); break;
         case Action::HandleMeetingDisconnect: handle_meeting_disconnect_impl(nullptr); break;
+        case Action::HandleHostRejected: handle_host_rejected_impl(nullptr); break;
         case Action::ToggleHost: toggle_host_impl(nullptr); break;
         case Action::RefreshSummary: refresh_summary_impl(nullptr); break;
         case Action::FinishHost: finish_host_impl(nullptr); break;

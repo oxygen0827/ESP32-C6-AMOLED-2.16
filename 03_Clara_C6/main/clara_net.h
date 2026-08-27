@@ -32,6 +32,13 @@ typedef enum {
     CLARA_NET_EVENT_HOST_ANSWER_TEXT,
     CLARA_NET_EVENT_HOST_ANSWER_AUDIO,
     CLARA_NET_EVENT_HOST_DONE,
+    // Streaming TTS demarcation for answer_audio sentences. binary payloads on
+    // HOST_ANSWER_AUDIO are decoded MP3 bytes between START and END.
+    CLARA_NET_EVENT_HOST_TTS_START,
+    CLARA_NET_EVENT_HOST_TTS_END,
+    // The server rejected the host channel (HTTP 403): the session is invalid
+    // and the application must recreate it.
+    CLARA_NET_EVENT_HOST_SESSION_REJECTED,
     CLARA_NET_EVENT_ERROR,
 } clara_net_event_type_t;
 

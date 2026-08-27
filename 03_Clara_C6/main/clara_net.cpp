@@ -81,6 +81,15 @@ struct WsContext {
     size_t rx_expected;
     size_t rx_cap;
     volatile bool connected;
+    // Streaming answer_audio handling (host channel only). The C6 cannot
+    // buffer a whole sentence, so we decode Base64 incrementally instead of
+    // reassembling the JSON message.
+    bool tts_probe_done;
+    bool tts_mode;
+    uint8_t probe[48];
+    size_t probe_len;
+    uint8_t b64_quad[4];
+    size_t b64_quad_len;
 };
 
 struct HttpResponse {
@@ -102,8 +111,9 @@ static int s_wifi_retries = 0;
 static clara_net_event_cb_t s_event_cb = nullptr;
 static void *s_event_ctx = nullptr;
 static char s_session_id[SESSION_ID_MAX] = {};
-static WsContext s_transcribe = {WsKind::Transcribe, nullptr, nullptr, nullptr, 0, 0, 0, false};
-static WsContext s_host = {WsKind::Host, nullptr, nullptr, nullptr, 0, 0, 0, false};
+static WsContext s_transcribe = {WsKind::Transcribe, nullptr, nullptr, nullptr, 0, 0, 0, false, false, false, {}, 0, {}, 0};
+static WsContext s_host = {WsKind::Host, nullptr, nullptr, nullptr, 0, 0, 0, false, false, false, {}, 0, {}, 0};
+
 static uint8_t s_transcribe_audio_batch[TRANSCRIBE_AUDIO_BATCH_MAX] = {};
 static size_t s_transcribe_audio_batch_len = 0;
 static uint8_t s_host_audio_batch[HOST_AUDIO_BATCH_MAX] = {};
@@ -156,6 +166,52 @@ static void emit_event(clara_net_event_type_t type,
     };
     cb(&event, ctx);
 }
+
+// --- Streaming answer_audio (host channel) ---------------------------------
+
+static constexpr char kTtsPrefix[] = "{\"type\":\"answer_audio\",\"data\":\"";
+constexpr size_t kTtsPrefixLen = sizeof(kTtsPrefix) - 1;
+
+// Incremental Base64 decoder: consumes any number of bytes, emits decoded
+// MP3 through the application callback in bounded chunks.
+static void tts_b64_reset(WsContext *ctx)
+{
+    ctx->b64_quad_len = 0;
+}
+
+static void tts_emit_chunk(const uint8_t *mp3, size_t len)
+{
+    if (len > 0) {
+        emit_event(CLARA_NET_EVENT_HOST_ANSWER_AUDIO, nullptr, mp3, len);
+    }
+}
+
+static void tts_b64_feed(WsContext *ctx, const uint8_t *in, size_t len, bool final_fragment)
+{
+    static uint8_t out[768];
+    while (len > 0) {
+        while (ctx->b64_quad_len < 4 && len > 0) {
+            uint8_t c = *in++;
+            --len;
+            if (c == '"') {
+                // Closing quote of the data field: ignore trailing JSON.
+                ctx->b64_quad_len = 0;
+                continue;
+            }
+            if (c == ',' || c == '}') continue;   // tolerate trailing fields
+            ctx->b64_quad[ctx->b64_quad_len++] = c;
+        }
+        if (ctx->b64_quad_len < 4) break;
+        size_t olen = 0;
+        if (mbedtls_base64_decode(out, sizeof(out), &olen,
+                                  ctx->b64_quad, 4) == 0 && olen > 0) {
+            tts_emit_chunk(out, olen);
+        }
+        ctx->b64_quad_len = 0;
+    }
+    (void)final_fragment;
+}
+
 
 static bool valid_session_id(const char *id)
 {
@@ -662,7 +718,14 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
         }
         ESP_LOGW(TAG, "WebSocket error kind=%d err=%d status=%d",
                  static_cast<int>(ctx->kind), static_cast<int>(err), status);
-        report_error(err, status);
+        if (status == 403) {
+            // Server-side session rejection: the session id is no longer
+            // valid. The application must recreate the session.
+            emit_event(CLARA_NET_EVENT_HOST_SESSION_REJECTED, nullptr, nullptr, 0,
+                       false, status, err);
+        } else {
+            report_error(err, status);
+        }
         return;
     }
     if (event_id != WEBSOCKET_EVENT_DATA || !event_data) {
@@ -675,6 +738,62 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
     size_t offset = data->payload_offset > 0 ? static_cast<size_t>(data->payload_offset) : 0;
     size_t frame_len = static_cast<size_t>(data->data_len);
     size_t expected = data->payload_len > 0 ? static_cast<size_t>(data->payload_len) : frame_len;
+    const uint8_t *bytes = reinterpret_cast<const uint8_t *>(data->data_ptr);
+    bool msg_complete = data->fin && (offset + frame_len >= expected);
+
+    if (ctx->kind == WsKind::Host) {
+        // Decide once per message whether this is a streamable answer_audio.
+        if (offset == 0) {
+            ctx->tts_mode = false;
+            ctx->tts_probe_done = false;
+            ctx->probe_len = 0;
+            tts_b64_reset(ctx);
+        }
+        if (!ctx->tts_probe_done) {
+            size_t need = frame_len < (kTtsPrefixLen - ctx->probe_len)
+                              ? frame_len
+                              : (kTtsPrefixLen - ctx->probe_len);
+            memcpy(ctx->probe + ctx->probe_len, bytes, need);
+            ctx->probe_len += need;
+            bytes += need;
+            frame_len -= need;
+            if (memcmp(ctx->probe, kTtsPrefix, ctx->probe_len) != 0) {
+                ctx->tts_probe_done = true;   // mismatch: plain JSON message
+            } else if (ctx->probe_len >= kTtsPrefixLen) {
+                ctx->tts_probe_done = true;
+                ctx->tts_mode = true;
+                emit_event(CLARA_NET_EVENT_HOST_TTS_START);
+            } else {
+                return;   // prefix still split across fragments; wait for more
+            }
+            // Seed the normal reassembly buffer with the probe bytes so the
+            // non-audio path sees the complete message.
+            if (!ctx->tts_mode) {
+                ctx->rx_len = 0;
+                ctx->rx_expected = expected;
+                size_t required_cap = expected + 1U;
+                if (!ctx->rx_buf || ctx->rx_cap < required_cap) {
+                    char *expanded = static_cast<char *>(realloc(ctx->rx_buf, required_cap));
+                    if (!expanded) { report_error(ESP_ERR_NO_MEM); return; }
+                    ctx->rx_buf = expanded;
+                    ctx->rx_cap = required_cap;
+                }
+                memcpy(ctx->rx_buf, ctx->probe, ctx->probe_len);
+                ctx->rx_len = ctx->probe_len;
+                offset = ctx->probe_len;
+            } else {
+                offset = kTtsPrefixLen;
+            }
+        }
+        if (ctx->tts_mode) {
+            tts_b64_feed(ctx, bytes, frame_len, msg_complete);
+            if (msg_complete) {
+                emit_event(CLARA_NET_EVENT_HOST_TTS_END);
+            }
+            return;
+        }
+    }
+
     if (offset == 0) {
         ctx->rx_len = 0;
         ctx->rx_expected = expected;
