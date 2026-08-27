@@ -10,6 +10,12 @@
 #include "nvs_flash.h"
 #include "esp_codec_dev.h"
 
+#include <errno.h>
+#include <netdb.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include "esp_tls.h"
+
 #include "lvgl_bsp.h"
 #include "power_bsp.h"
 #include "display_bsp.h"
@@ -329,6 +335,42 @@ static void boot_network_self_test(void)
     if (clara_net_wifi_connect(15000) != ESP_OK) {
         ESP_LOGW(TAG, "Boot network self-test Wi-Fi unavailable");
         return;
+    }
+    // Socket-path probe: isolate DNS vs socket() vs connect() failures.
+    {
+        struct addrinfo hints = {};
+        hints.ai_family = AF_INET;
+        hints.ai_socktype = SOCK_STREAM;
+        struct addrinfo *res = nullptr;
+        int rc = getaddrinfo("clare.vinex.top", "443", &hints, &res);
+        ESP_LOGI(TAG, "probe dns rc=%d", rc);
+        if (rc == 0 && res) {
+            int fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+            ESP_LOGI(TAG, "probe socket fd=%d errno=%d", fd, errno);
+            if (fd >= 0) {
+                int cr = connect(fd, res->ai_addr, res->ai_addrlen);
+                ESP_LOGI(TAG, "probe connect rc=%d errno=%d", cr, errno);
+                close(fd);
+            }
+            freeaddrinfo(res);
+        }
+        // Full HTTPS attempt through esp-tls to surface the real TLS error.
+        {
+            esp_tls_t *tls = esp_tls_init();
+            if (tls) {
+                esp_tls_cfg_t cfg = {};
+                cfg.timeout_ms = 10000;
+                int rc = esp_tls_conn_http_new_sync("https://clare.vinex.top/voice-api/health", &cfg, tls);
+                esp_tls_error_handle_t h = nullptr;
+                int last = 0, flags = 0;
+                if (esp_tls_get_error_handle(tls, &h) == ESP_OK && h) {
+                    esp_tls_get_and_clear_last_error(h, &last, &flags);
+                }
+                ESP_LOGI(TAG, "probe esp-tls rc=%d last=0x%x flags=0x%x",
+                         rc, last, flags);
+                esp_tls_conn_destroy(tls);
+            }
+        }
     }
 
     const int max_attempts = CONFIG_CLARA_BOOT_SELF_TEST_RETRIES + 1;
