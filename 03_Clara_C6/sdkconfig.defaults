@@ -16,7 +16,7 @@ CONFIG_MBEDTLS_GCM_SUPPORT_NON_AES_CIPHER=n
 CONFIG_MBEDTLS_ECP_FIXED_POINT_OPTIM=y
 CONFIG_LV_COLOR_16_SWAP=y
 CONFIG_LV_COLOR_SCREEN_TRANSP=y
-CONFIG_LV_MEM_SIZE_KILOBYTES=48
+CONFIG_LV_MEM_SIZE_KILOBYTES=32
 CONFIG_LV_ATTRIBUTE_FAST_MEM_USE_IRAM=y
 CONFIG_LV_FONT_MONTSERRAT_12=y
 CONFIG_LV_FONT_MONTSERRAT_16=y
@@ -50,3 +50,8 @@ CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=16
 # Confirmed by logs/serial_70s_noipv6.log experiment; nothing on the meeting
 # path needs v6 (backend is public v4 via Cloudflare).
 CONFIG_LWIP_IPV6=n
+# Run the four-step network self-test automatically on every boot.
+CONFIG_CLARA_BOOT_SELF_TEST=y
+# Handshake buffer trim: IN record buffer dominates the largest-block
+# requirement during the TLS handshake on this RAM-constrained target.
+CONFIG_MBEDTLS_SSL_IN_CONTENT_LEN=8192
