@@ -76,6 +76,23 @@ int clara_audio_get_volume(void);
 esp_err_t clara_audio_set_input_gain(float gain_db);
 
 /*
+ * Automatic Level Control (ALC) for the 16 kHz mono network path, provided by
+ * Espressif's esp_audio_effects component.  The handle is independent of the
+ * codec handles above: call clara_audio_alc_init() once at startup, then feed
+ * mono PCM16 frames through clara_audio_alc_process() before handing them to
+ * the network layer.  ALC applies a fixed digital gain with built-in clipping
+ * protection and smooth gain transitions.
+ *
+ * clara_audio_alc_process() is a no-op until clara_audio_alc_init() succeeds,
+ * so the capture path keeps working (ungained) if ALC allocation fails.
+ * clara_audio_alc_process() must only be called from a single task.
+ */
+esp_err_t clara_audio_alc_init(uint32_t sample_rate, int8_t gain_db);
+esp_err_t clara_audio_alc_set_gain(int8_t gain_db);
+esp_err_t clara_audio_alc_process(int16_t *pcm, size_t frames);
+void clara_audio_alc_deinit(void);
+
+/*
  * Optional streaming MP3 support. These functions are implemented when the
  * project links Espressif's `esp_audio_codec` component; otherwise they return
  * ESP_ERR_NOT_SUPPORTED without touching the codec. Chunks may split MP3

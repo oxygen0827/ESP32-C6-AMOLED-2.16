@@ -1,0 +1,8 @@
+I (91984) clara_c6: Creating meeting session...
+I (91998) clara_net: Create session URL ready=1
+I (91998) clara_net: HTTP before init free8=46908 largest8=27136 free_internal=46908 largest_internal=27136
+I (96429) clara_net: HTTP response status=200 bytes=82 truncated=0
+I (96433) websocket_client: Started
+I (101723) clara_net: WebSocket connected kind=0
+I (101727) clara_c6: Listening  •  live notes on
+I (101758) clara_c6: Audio stream started

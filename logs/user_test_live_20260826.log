@@ -1,0 +1,65 @@
+I (2221944) clara_c6: Creating meeting session...
+I (2221945) clara_net: Create session URL ready=1
+I (2221945) clara_net: HTTP before init free8=38932 largest8=14592 free_internal=38932 largest_internal=14592
+I (2224993) clara_net: HTTP response status=200 bytes=82 truncated=0
+I (2225009) clara_c6: Connecting transcription...
+I (2225012) websocket_client: Started
+W (2240012) clara_net: WebSocket connect timeout kind=0 bits=0x0
+E (2243039) esp-tls: [sock=54] delayed connect error: Software caused connection abort
+E (2243040) esp-tls: Failed to open new connection
+E (2243042) transport_base: Failed to open a new connection
+E (2243049) transport_ws: Error connecting to host clare.vinex.top:443
+E (2243056) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_ESP_TLS_FAILED_CONNECT_TO_HOST, tls_error_code=0, tls_flags=0, esp_ws_handshake_status_code=0, errno=119
+W (2243074) clara_net: WebSocket error kind=0 err=1082462808 status=0
+I (2243082) clara_c6: Network error  •  check Wi-Fi/API
+I (2243087) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=113
+I (2243109) clara_c6: Transcription connection failed
+I (2243110) clara_net: HTTP before init free8=38772 largest8=14592 free_internal=38772 largest_internal=14592
+I (2246015) clara_net: HTTP response status=200 bytes=255 truncated=1
+I (2265493) clara_c6: Creating meeting session...
+I (2265507) clara_net: Create session URL ready=1
+I (2265507) clara_net: HTTP before init free8=38544 largest8=14592 free_internal=38544 largest_internal=14592
+I (2269041) clara_net: HTTP response status=200 bytes=82 truncated=0
+I (2269046) clara_c6: Connecting transcription...
+I (2269047) websocket_client: Started
+I (2274287) clara_net: WebSocket connected kind=0
+I (2274288) clara_c6: Listening  •  live notes on
+I (2274289) clara_c6: Listening  •  live notes on
+I (2274298) clara_c6: Audio stream started
+I (2280863) wifi:bcn_timeout,ap_probe_send_start
+I (2283364) wifi:ap_probe_send over, reset wifi status to disassoc
+I (2283364) wifi:state: run -> init (0xc800)
+I (2283366) wifi:teardown, set twt_inactive_time_secs:6, sp_count:0
+I (2283369) wifi:pm stop, total sleep time: 0 us / 1536699650 us
+W (2283377) clara_net: Wi-Fi disconnected reason=200 retry=1
+E (2283386) esp-tls-mbedtls: write error :-0x004E
+E (2283387) transport_base: esp_tls_conn_write error, errno=Software caused connection abort
+E (2283396) transport_ws: Error write header
+E (2283401) websocket_client: esp_transport_write() returned -1, transport_error=ESP_ERR_MBEDTLS_SSL_WRITE_FAILED, tls_error_code=78, tls_flags=0, errno=113
+W (2283415) clara_net: WebSocket error kind=0 err=1082461208 status=0
+I (2283423) clara_c6: Network error  •  check Wi-Fi/API
+I (2283434) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0
+W (2283437) clara_c6: Audio stream send failed err=-1
+I (2283466) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (2283467) wifi:state: init -> auth (0xb0)
+W (2283467) websocket_client: Client was not started
+I (2283475) clara_c6: Connection lost • tap Start to retry
+I (2283476) wifi:state: auth -> assoc (0x0)
+I (2283491) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (2283491) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (2283502) wifi:Extended Capabilities length:11, operating_mode_notification:1
+I (2283509) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+I (2283516) wifi:state: assoc -> run (0x10)
+I (2283520) wifi:(trc)phytype:CBW20-SGI, snr:63, maxRate:144, highestRateIdx:0
+W (2283526) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (2283535) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:63, ampduState:wait operational
+I (2283547) wifi:ifidx:0, rssi:-23, nf:-86, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (2283558) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+I (2283577) wifi:connected with LDKJ, aid = 2, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (2283577) wifi:security: WPA2-PSK, phy: bgn, rssi: -23, cipher(pairwise:0x3, group:0x3), pmf:0
+I (2283584) wifi:pm start, type: 0, twt_start:0
+I (2283586) wifi:pm start, type:0, aid:0x2, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (2283598) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (2283669) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (2284635) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+I (2284635) clara_net: DHCP DNS main=192.168.31.1

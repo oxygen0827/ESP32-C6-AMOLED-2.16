@@ -7,6 +7,7 @@
 #include <cstring>
 
 #include "codec_bsp.h"
+#include "esp_ae_alc.h"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
@@ -59,6 +60,21 @@ struct AudioState {
 };
 
 AudioState s_audio;
+
+struct AlcState {
+    esp_ae_alc_handle_t handle = nullptr;
+    int8_t gain_db = 0;
+};
+AlcState s_alc;
+
+static esp_err_t alc_result(esp_ae_err_t err, const char *operation)
+{
+    if (err == ESP_AE_ERR_OK) return ESP_OK;
+    ESP_LOGE(TAG, "%s failed: audio effects error %d", operation, static_cast<int>(err));
+    if (err == ESP_AE_ERR_MEM_LACK) return ESP_ERR_NO_MEM;
+    if (err == ESP_AE_ERR_INVALID_PARAMETER) return ESP_ERR_INVALID_ARG;
+    return ESP_FAIL;
+}
 
 static size_t bytes_per_sample()
 {
@@ -561,6 +577,59 @@ extern "C" esp_err_t clara_audio_set_input_gain(float gain_db)
     esp_err_t err = codec_result(esp_codec_dev_set_in_gain(s_audio.capture, gain_db), "input gain");
     unlock(s_audio.capture_lock);
     return err;
+}
+
+extern "C" esp_err_t clara_audio_alc_init(uint32_t sample_rate, int8_t gain_db)
+{
+    if (s_alc.handle) return ESP_OK;
+    const int8_t clamped_gain = static_cast<int8_t>(
+        std::min<int>(63, std::max<int>(-64, static_cast<int>(gain_db))));
+    esp_ae_alc_cfg_t cfg = {};
+    cfg.sample_rate = sample_rate ? sample_rate : CLARA_AUDIO_SAMPLE_RATE;
+    cfg.channel = CLARA_AUDIO_PCM_CHANNELS;
+    cfg.bits_per_sample = CLARA_AUDIO_BITS_PER_SAMPLE;
+    esp_err_t err = alc_result(esp_ae_alc_open(&cfg, &s_alc.handle), "alc open");
+    if (err != ESP_OK) return err;
+    /* Smooth gain changes so runtime adjustments do not produce zipper noise. */
+    (void)esp_ae_alc_set_transit_time(s_alc.handle, 100);
+    s_alc.gain_db = clamped_gain;
+    if (clamped_gain != 0) {
+        err = alc_result(esp_ae_alc_set_gain(s_alc.handle, 0, clamped_gain), "alc set gain");
+        if (err != ESP_OK) {
+            esp_ae_alc_close(s_alc.handle);
+            s_alc.handle = nullptr;
+            return err;
+        }
+    }
+    ESP_LOGI(TAG, "ALC ready: %lu Hz mono PCM16, gain %d dB",
+             static_cast<unsigned long>(cfg.sample_rate), static_cast<int>(clamped_gain));
+    return ESP_OK;
+}
+
+extern "C" esp_err_t clara_audio_alc_set_gain(int8_t gain_db)
+{
+    if (!s_alc.handle) return ESP_ERR_INVALID_STATE;
+    const int8_t clamped_gain = static_cast<int8_t>(
+        std::min<int>(63, std::max<int>(-64, static_cast<int>(gain_db))));
+    s_alc.gain_db = clamped_gain;
+    return alc_result(esp_ae_alc_set_gain(s_alc.handle, 0, clamped_gain), "alc set gain");
+}
+
+extern "C" esp_err_t clara_audio_alc_process(int16_t *pcm, size_t frames)
+{
+    if (!s_alc.handle) return ESP_OK;  /* No-op until ALC init succeeds. */
+    if (!pcm || frames == 0) return ESP_ERR_INVALID_ARG;
+    return alc_result(esp_ae_alc_process(s_alc.handle, static_cast<uint32_t>(frames),
+                                         (esp_ae_sample_t)pcm, (esp_ae_sample_t)pcm),
+                      "alc process");
+}
+
+extern "C" void clara_audio_alc_deinit(void)
+{
+    if (s_alc.handle) {
+        esp_ae_alc_close(s_alc.handle);
+        s_alc.handle = nullptr;
+    }
 }
 
 extern "C" esp_err_t clara_audio_mp3_start(void)

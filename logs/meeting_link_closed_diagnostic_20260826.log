@@ -1,0 +1,17 @@
+I (45721) clara_c6: Creating meeting session...
+I (45735) clara_net: Create session URL ready=1
+I (45735) clara_net: HTTP before init free8=46916 largest8=27136 free_internal=46916 largest_internal=27136
+I (49687) clara_net: HTTP response status=200 bytes=82 truncated=0
+I (49690) websocket_client: Started
+I (52927) clara_net: WebSocket connected kind=0
+I (52931) clara_c6: Listening  •  live notes on
+I (52937) clara_c6: [DEBUG-meeting-link] first microphone frame ready
+I (52937) clara_c6: [DEBUG-meeting-link] audio task create result=1 free=12968 largest=8448
+I (52967) clara_c6: [DEBUG-meeting-link] first audio frame sent
+E (60241) transport_ws: Error transport_poll_write(0)
+E (60241) websocket_client: esp_transport_write() returned 0, transport_error=ESP_OK, tls_error_code=0, tls_flags=0, errno=0
+W (60247) clara_net: WebSocket error kind=0 err=1082610720 status=0
+I (60255) clara_c6: Network error  •  check Wi-Fi/API
+W (60263) clara_net: [DEBUG-meeting-link] websocket closed kind=0 event=2 close=0 type=1 errno=0 free=23800 largest=8704
+I (60281) clara_c6: Meeting link closed
+W (60281) clara_c6: [DEBUG-meeting-link] audio send failed err=-1

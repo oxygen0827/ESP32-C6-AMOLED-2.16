@@ -21,6 +21,7 @@ idf_component_register(
         esp-tls
         esp_timer
         esp_codec_dev
+        esp_audio_effects
         esp_driver_i2s
         esp_driver_i2c
         lvgl

@@ -1,0 +1,4 @@
+I (395) esp_image: segment 3: paddr=00194cd0 vaddr=4080c4e4 size=2d098h (184472) load
+I (436) esp_image: segment 4: paddr=001c1d70 vaddr=40839580 size=03e28h ( 15912) load
+I (453) boot: Loaded app from partition at offset 0x10000
+I (453) boot: Disabling RNG early entropy source...

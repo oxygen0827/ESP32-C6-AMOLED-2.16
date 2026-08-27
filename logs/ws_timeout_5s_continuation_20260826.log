@@ -1,0 +1,6 @@
+E (191352) transport_ws: Error transport_poll_write(0)
+E (191352) websocket_client: esp_transport_write() returned 0, transport_error=ESP_OK, tls_error_code=0, tls_flags=0, errno=0
+W (191358) clara_net: WebSocket error kind=0 err=1082614368 status=0
+I (191366) clara_c6: Network error  •  check Wi-Fi/API
+I (191373) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0
+W (191386) clara_c6: Audio stream send failed err=-1

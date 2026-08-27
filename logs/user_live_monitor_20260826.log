@@ -1,0 +1,63 @@
+[0;32mI (764957) clara_net: HTTP before init free8=38032 largest8=14592 free_internal=38032 largest_internal=14592[0m
+[0;32mI (767912) clara_net: HTTP response status=200 bytes=255 truncated=1[0m
+[0;32mI (767915) clara_c6: Creating meeting session...[0m
+[0;32mI (767915) clara_net: Create session URL ready=1[0m
+[0;32mI (767925) clara_net: HTTP before init free8=37744 largest8=14592 free_internal=37744 largest_internal=14592[0m
+[0;32mI (771584) clara_net: HTTP response status=200 bytes=82 truncated=0[0m
+[0;32mI (771600) clara_c6: Connecting transcription...[0m
+[0;32mI (771602) websocket_client: Started[0m
+[0;31mE (773854) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700[0m
+[0;31mE (773854) esp-tls: Failed to open new connection[0m
+[0;31mE (773855) transport_base: Failed to open a new connection[0m
+[0;31mE (773863) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (773869) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_MBEDTLS_SSL_HANDSHAKE_FAILED, tls_error_code=9984, tls_flags=0, esp_ws_handshake_status_code=0, errno=119[0m
+[0;33mW (773887) clara_net: WebSocket error kind=0 err=1082617788 status=0[0m
+[0;33mW (773887) clara_net: WebSocket connect timeout kind=0 bits=0x2[0m
+[0;32mI (773895) clara_c6: Network error  •  check Wi-Fi/API[0m
+[0;32mI (773907) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0[0m
+[0;32mI (773923) clara_c6: Transcription connection failed[0m
+[0;32mI (773923) clara_net: HTTP before init free8=37692 largest8=14592 free_internal=37692 largest_internal=14592[0m
+W (774585) wifi:mem fail
+[0;32mI (777023) clara_net: HTTP response status=200 bytes=255 truncated=1[0m
+[0;32mI (777026) clara_c6: Creating meeting session...[0m
+[0;32mI (777026) clara_net: Create session URL ready=1[0m
+[0;32mI (777030) clara_net: HTTP before init free8=37400 largest8=14592 free_internal=37400 largest_internal=14592[0m
+W (778895) wifi:mem fail
+[0;32mI (782650) clara_net: HTTP response status=200 bytes=82 truncated=0[0m
+[0;32mI (782655) clara_c6: Connecting transcription...[0m
+[0;32mI (782656) websocket_client: Started[0m
+W (783342) wifi:mem fail
+W (783644) wifi:mem fail
+[0;31mE (784639) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700[0m
+[0;31mE (784639) esp-tls: Failed to open new connection[0m
+[0;31mE (784640) transport_base: Failed to open a new connection[0m
+[0;31mE (784647) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (784654) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_MBEDTLS_SSL_HANDSHAKE_FAILED, tls_error_code=9984, tls_flags=0, esp_ws_handshake_status_code=0, errno=119[0m
+[0;33mW (784672) clara_net: WebSocket error kind=0 err=1082617788 status=0[0m
+[0;33mW (784672) clara_net: WebSocket connect timeout kind=0 bits=0x2[0m
+[0;32mI (784680) clara_c6: Network error  •  check Wi-Fi/API[0m
+[0;32mI (784693) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0[0m
+[0;32mI (784703) clara_c6: Transcription connection failed[0m
+[0;32mI (784705) clara_net: HTTP before init free8=28676 largest8=14592 free_internal=28676 largest_internal=14592[0m
+[0;32mI (787712) clara_net: HTTP response status=200 bytes=255 truncated=1[0m
+[0;32mI (787715) clara_c6: No meeting to summarize[0m
+[0;32mI (787715) clara_c6: Creating meeting session...[0m
+[0;32mI (787719) clara_net: Create session URL ready=1[0m
+[0;32mI (787733) clara_net: HTTP before init free8=37048 largest8=14592 free_internal=37048 largest_internal=14592[0m
+[0;32mI (791121) clara_net: HTTP response status=200 bytes=82 truncated=0[0m
+[0;32mI (791126) clara_c6: Connecting transcription...[0m
+[0;32mI (791127) websocket_client: Started[0m
+[0;31mE (792385) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700[0m
+[0;31mE (792386) esp-tls: Failed to open new connection[0m
+[0;31mE (792386) transport_base: Failed to open a new connection[0m
+[0;31mE (792394) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (792400) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_MBEDTLS_SSL_HANDSHAKE_FAILED, tls_error_code=9984, tls_flags=0, esp_ws_handshake_status_code=0, errno=119[0m
+[0;33mW (792418) clara_net: WebSocket error kind=0 err=1082617788 status=0[0m
+[0;33mW (792418) clara_net: WebSocket connect timeout kind=0 bits=0x2[0m
+[0;32mI (792426) clara_c6: Network error  •  check Wi-Fi/API[0m
+[0;32mI (792438) clara_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0[0m
+[0;32mI (792449) clara_c6: Transcription connection failed[0m
+[0;32mI (792452) clara_net: HTTP before init free8=28332 largest8=14592 free_internal=28332 largest_internal=14592[0m
+W (793809) wifi:mem fail
+W (795194) wifi:mem fail
+[0;32mI (796690) clara_net: HTTP response status=200 bytes=255 truncated=1[0m

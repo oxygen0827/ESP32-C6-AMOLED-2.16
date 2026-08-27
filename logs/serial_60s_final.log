@@ -1,0 +1,228 @@
+I (403) esp_image: segment 3: paddr=0019e6f8 vaddr=4080fbac size=299d0h (170448) load
+I (441) esp_image: segment 4: paddr=001c80d0 vaddr=40839580 size=03e20h ( 15904) load
+I (458) boot: Loaded app from partition at offset 0x10000
+I (458) boot: Disabling RNG early entropy source...
+I (468) cpu_start: Unicore app
+I (476) cpu_start: GPIO 17 and 16 are used as console UART I/O pins
+I (477) cpu_start: Pro cpu start user code
+I (477) cpu_start: cpu freq: 160000000 Hz
+I (482) app_init: Application information:
+I (486) app_init: Project name:     Clara_C6
+I (491) app_init: App version:      4b9bf00-dirty
+I (497) app_init: Compile time:     Aug 25 2026 21:27:02
+I (503) app_init: ELF file SHA256:  01ba347c3eb36391...
+I (509) app_init: ESP-IDF:          1a1a5aa6-dirty
+I (514) efuse_init: Min chip rev:     v0.0
+I (519) efuse_init: Max chip rev:     v0.99 
+I (524) efuse_init: Chip rev:         v0.2
+I (529) heap_init: Initializing. RAM available for dynamic allocation:
+I (536) heap_init: At 4084F620 len 0002CFF0 (179 KiB): RAM
+I (542) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM
+I (548) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM
+I (555) spi_flash: detected chip: generic
+I (559) spi_flash: flash io: dio
+I (564) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (570) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (588) main_task: Started on CPU0
+I (591) main_task: Calling app_main()
+I (596) clara_c6: Clara C6 starting
+I (611) axp2101: Init PMU SUCCESS!
+I (617) DisplayPort: SPI BUS init
+I (617) DisplayPort: Install panel IO
+I (618) sh8601: LCD panel create success, version: 1.0.0
+W (1521) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence
+W (1521) sh8601: The 36h command has been used and will be overwritten by external initialization sequence
+I (1705) CST9217: Checkcode: 0x204ECACA
+I (1707) CST9217: Resolution X: 480, Y: 480
+I (1709) CST9217: Chip Type: 0x9220, ProjectID: 0x542F
+I (1709) esp_lvgl:adapter: LVGL adapter initialized successfully
+I (1719) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)
+I (1727) esp_lvgl:adapter: LVGL task started successfully
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+I (1749) CODEC_INIT: in:1 out:1 port: 1
+I (1753) CODEC_INIT: Success to int i2c: 0
+I (1758) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23
+I (1766) CODEC_INIT: tx:0x4087e71c rx:0x4087e8d8
+W (1771) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+I (1780) CODEC_INIT: output init tdm ret 0
+W (1784) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+W (1794) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+W (1803) i2s_tdm: the mclk/bclk ratio 3 is too small for the full-duplex rx slave (min 4), data might be sampled incorrectly, please increase mclk_multiple
+I (1818) CODEC_INIT: Input init tdm ret 0
+I (1822) CODEC_INIT: Init i2s 0 ok
+I (1826) CODEC_INIT: Success to init i2s: 0
+I (1831) CODEC_INIT: Success to int i2c: 0
+I (1836) CODEC_INIT: Success to init i2s: 0
+I (1841) CODEC_INIT: Get out handle 0x4087e71c port 0
+I (1852) ES8311: Work in Slave mode
+I (1857) ES7210: Work in Slave mode
+I (1864) ES7210: Enable ES7210_INPUT_MIC1
+I (1866) ES7210: Enable ES7210_INPUT_MIC2
+I (1869) ES7210: Enable ES7210_INPUT_MIC3
+I (1872) ES7210: Enable ES7210_INPUT_MIC4
+I (1876) ES7210: Enable TDM mode
+I (1885) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1885) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1906) Adev_Codec: Open codec device OK
+I (1906) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1906) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1914) ES7210: Bits 8
+I (1923) ES7210: Enable ES7210_INPUT_MIC1
+I (1926) ES7210: Enable ES7210_INPUT_MIC2
+I (1928) ES7210: Enable ES7210_INPUT_MIC3
+I (1933) ES7210: Enable ES7210_INPUT_MIC4
+I (1938) ES7210: Enable TDM mode
+I (1944) ES7210: Unmuted
+I (1944) Adev_Codec: Open codec device OK
+I (1947) Adev_Codec: Input already open
+I (1951) Adev_Codec: Input already open
+I (2135) pp: pp rom version: 5b8dcfa
+I (2136) net80211: net80211 rom version: 5b8dcfa
+I (2137) wifi:wifi driver task: 4086a5f4, prio:23, stack:6656, core=0
+I (2146) wifi:wifi firmware version: b9f67df
+I (2146) wifi:wifi certification version: v7.0
+I (2148) wifi:config NVS flash: enabled
+I (2152) wifi:config nano formatting: disabled
+I (2156) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2163) wifi:Init data frame dynamic rx buffer num: 16
+I (2167) wifi:Init static rx mgmt buffer num: 5
+I (2171) wifi:Init management short buffer num: 32
+I (2176) wifi:Init static tx buffer num: 16
+I (2180) wifi:Init static tx FG buffer num: 2
+I (2184) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2190) wifi:Init static rx buffer num: 10
+I (2194) wifi:Init dynamic rx buffer num: 16
+I (2199) wifi_init: rx ba win: 6
+I (2202) wifi_init: accept mbox: 6
+I (2206) wifi_init: tcpip mbox: 32
+I (2210) wifi_init: udp mbox: 6
+I (2214) wifi_init: tcp mbox: 6
+I (2217) wifi_init: tcp tx win: 5760
+I (2222) wifi_init: tcp rx win: 5760
+I (2226) wifi_init: tcp mss: 1240
+I (2230) wifi_init: WiFi IRAM OP enabled
+I (2235) wifi_init: WiFi RX IRAM OP enabled
+I (2239) wifi_init: WiFi SLP IRAM OP enabled
+W (2245) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (2253) phy_init: phy_version 345,552b044,Jul 14 2026,10:37:00
+I (2321) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+I (2322) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2323) wifi:enable tsf
+I (2341) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0
+I (2342) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (2345) wifi:state: init -> auth (0xb0)
+I (2352) clara_net: Wi-Fi protocols limited to 11b/g/n mask=0x07
+I (2355) wifi:Set ps type: 0, coexist: 0
+I (2359) clara_c6: Clara UI ready; touch the Clara tile
+I (2365) main_task: Returned from app_main()
+I (2380) wifi:state: auth -> assoc (0x0)
+I (2398) wifi:(assoc)RESP, Extended Capabilities length:8, operating_mode_notification:0
+I (2398) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (2405) wifi:Extended Capabilities length:8, operating_mode_notification:1
+I (2413) wifi:state: assoc -> run (0x10)
+I (2416) wifi:(trc)phytype:CBW20-SGI, snr:40, maxRate:144, highestRateIdx:0
+W (2422) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (2431) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:40, ampduState:wait operational
+I (2442) wifi:ifidx:0, rssi:-46, nf:-86, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (2453) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:6(8 us)
+I (2482) wifi:connected with oxygen‘s iPhone, aid = 16, channel 6, BW20, bssid = 5a:ab:6e:47:58:b4
+I (2483) wifi:security: WPA2-PSK, phy: bgn, rssi: -46, cipher(pairwise:0x3, group:0x3), pmf:0
+I (2490) wifi:pm start, type: 0, twt_start:0
+I (2492) wifi:pm start, type:0, aid:0x10, trans-BSSID:5a:ab:6e:47:58:b4, BSSID[5]:0xb4, mbssid(max-indicator:0, index:0), he:0
+I (2504) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (2512) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (2520) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:1, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (2531) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:2, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (2542) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:3, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+W (2553) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x100b458, TALO:0x476eab5a, (ssn:3239, win:64, cur_ssn:3239), CONF:0xc0000005
+W (2564) wifi:<ba-add>idx:1, ifx:0, tid:2, TAHI:0x100b458, TALO:0x476eab5a, (ssn:1364, win:64, cur_ssn:1364), CONF:0xc0002005
+W (2575) wifi:<ba-add>idx:2, ifx:0, tid:4, TAHI:0x100b458, TALO:0x476eab5a, (ssn:3325, win:64, cur_ssn:3325), CONF:0xc0004005
+W (2586) wifi:<ba-add>idx:3, ifx:0, tid:6, TAHI:0x100b458, TALO:0x476eab5a, (ssn:3572, win:64, cur_ssn:3572), CONF:0xc0006005
+I (2597) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2606) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (2621) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2622) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (3645) esp_netif_handlers: sta ip: 172.20.10.10, mask: 255.255.255.240, gw: 172.20.10.1
+I (3645) clara_net: DHCP DNS main=172.20.10.1
+I (10359) clara_c6: Boot network self-test begin
+I (13659) clara_net: Wi-Fi scan found 16 AP(s)
+I (13659) clara_net: scan[0] ssid="LDKJ" rssi=-31 ch=6 auth=3
+I (13660) clara_net: scan[1] ssid="" rssi=-31 ch=6 auth=3
+I (13666) clara_net: scan[2] ssid="" rssi=-46 ch=6 auth=3
+I (13672) clara_net: scan[3] ssid="USYDer" rssi=-49 ch=1 auth=4
+I (13678) clara_net: scan[4] ssid="Be_my_guest" rssi=-49 ch=1 auth=4
+I (13685) clara_net: scan[5] ssid="" rssi=-54 ch=11 auth=4
+I (13691) clara_net: scan[6] ssid="TP-LINK_84D2" rssi=-56 ch=11 auth=4
+I (13699) clara_net: scan[7] ssid="HLSEMI_Wi-Fi5" rssi=-65 ch=11 auth=3
+I (13706) clara_net: scan[8] ssid="CU_g8jn" rssi=-67 ch=11 auth=4
+I (13713) clara_net: scan[9] ssid="henlyn-ai" rssi=-68 ch=6 auth=3
+I (13720) clara_net: scan[10] ssid="I-CUBE" rssi=-70 ch=1 auth=0
+I (13726) clara_net: scan[11] ssid="ChinaNet-6xVX" rssi=-70 ch=1 auth=4
+I (13734) clara_net: scan[12] ssid="HLSEMI" rssi=-74 ch=11 auth=3
+I (13740) clara_net: scan[13] ssid="I-CUBE" rssi=-75 ch=11 auth=0
+I (13747) clara_net: scan[14] ssid="SHQJZY" rssi=-80 ch=6 auth=4
+I (13754) clara_net: scan[15] ssid="ChinaNet-baxA" rssi=-81 ch=6 auth=7
+I (13773) clara_net: diag dns clare.vinex.top -> 172.67.178.147
+I (15075) clara_net: diag tcp clare.vinex.top:443 CONNECTED
+I (20077) clara_net: diag tcp 1.1.1.1:443 TIMEOUT/ERR ret=0
+I (20077) clara_net: Create session URL ready=1
+I (20078) clara_net: HTTP before init free8=32324 largest8=14592 free_internal=32324 largest_internal=14592
+E (25168) esp-x509-crt-bundle: PK verify failed with error 0x4290
+E (25169) esp-x509-crt-bundle: Certificate matched but signature verification failed
+E (25173) esp-x509-crt-bundle: Failed to verify certificate
+E (25180) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000
+E (25186) esp-tls: Failed to open new connection
+E (25191) transport_base: Failed to open a new connection
+E (25198) HTTP_CLIENT: Connection failed, sock < 0
+I (25203) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (25209) clara_net: HTTP request failed err=28674 status=0 tls=12288 flags=0x0
+I (25218) clara_c6: Network error  •  check Wi-Fi/API
+I (25223) clara_c6: Boot network self-test session err=28674 (attempt 1/4)
+W (25231) clara_c6: Boot network self-test attempt 1 failed, retrying in 5000 ms
+I (30239) clara_net: Create session URL ready=1
+I (30239) clara_net: HTTP before init free8=31812 largest8=13568 free_internal=31812 largest_internal=13568
+E (35108) esp-x509-crt-bundle: PK verify failed with error 0x4290
+E (35108) esp-x509-crt-bundle: Certificate matched but signature verification failed
+E (35112) esp-x509-crt-bundle: Failed to verify certificate
+E (35120) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000
+E (35125) esp-tls: Failed to open new connection
+E (35130) transport_base: Failed to open a new connection
+E (35137) HTTP_CLIENT: Connection failed, sock < 0
+I (35142) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (35149) clara_net: HTTP request failed err=28674 status=0 tls=12288 flags=0x0
+I (35157) clara_c6: Network error  •  check Wi-Fi/API
+I (35163) clara_c6: Boot network self-test session err=28674 (attempt 2/4)
+W (35170) clara_c6: Boot network self-test attempt 2 failed, retrying in 5000 ms
+I (40178) clara_net: Create session URL ready=1
+I (40178) clara_net: HTTP before init free8=31812 largest8=13568 free_internal=31812 largest_internal=13568
+E (41975) esp-x509-crt-bundle: PK verify failed with error 0x4290
+E (41976) esp-x509-crt-bundle: Certificate matched but signature verification failed
+E (41980) esp-x509-crt-bundle: Failed to verify certificate
+E (41987) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000
+E (41993) esp-tls: Failed to open new connection
+E (41998) transport_base: Failed to open a new connection
+E (42005) HTTP_CLIENT: Connection failed, sock < 0
+I (42009) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (42016) clara_net: HTTP request failed err=28674 status=0 tls=12288 flags=0x0
+I (42025) clara_c6: Network error  •  check Wi-Fi/API
+I (42030) clara_c6: Boot network self-test session err=28674 (attempt 3/4)
+W (42037) clara_c6: Boot network self-test attempt 3 failed, retrying in 5000 ms
+I (47046) clara_net: Create session URL ready=1
+I (47046) clara_net: HTTP before init free8=31812 largest8=13568 free_internal=31812 largest_internal=13568
+E (48871) esp-x509-crt-bundle: PK verify failed with error 0x4290
+E (48871) esp-x509-crt-bundle: Certificate matched but signature verification failed
+E (48875) esp-x509-crt-bundle: Failed to verify certificate
+E (48882) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000
+E (48888) esp-tls: Failed to open new connection
+E (48893) transport_base: Failed to open a new connection
+E (48900) HTTP_CLIENT: Connection failed, sock < 0
+I (48905) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (48911) clara_net: HTTP request failed err=28674 status=0 tls=12288 flags=0x0
+I (48920) clara_c6: Network error  •  check Wi-Fi/API
+I (48925) clara_c6: Boot network self-test session err=28674 (attempt 4/4)
+W (48933) clara_c6: Boot network self-test failed after 4 attempts

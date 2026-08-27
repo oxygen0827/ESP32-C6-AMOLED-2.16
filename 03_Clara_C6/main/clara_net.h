@@ -48,6 +48,9 @@ typedef struct {
     // HTTP status or WebSocket close status when applicable; zero otherwise.
     int status_code;
     esp_err_t error;
+    // True when text is a stream delta that must be appended rather than a
+    // cumulative partial value that replaces the previous partial value.
+    bool is_delta;
 } clara_net_event_t;
 
 typedef void (*clara_net_event_cb_t)(const clara_net_event_t *event, void *ctx);
@@ -80,9 +83,15 @@ esp_err_t clara_net_end_session(const char *session_id);
 esp_err_t clara_net_get_understanding(const char *session_id,
                                       char *out_json,
                                       size_t out_json_len);
+// Convert the understanding JSON into compact human-readable text. The
+// output never contains the raw JSON envelope when known fields are present.
+esp_err_t clara_net_format_understanding(const char *json,
+                                         char *out_text,
+                                         size_t out_text_len);
 
-// Transcription WebSocket.  Audio is 16 kHz, signed little-endian, mono PCM.
-// The server accepts binary frames, avoiding a 33% Base64 expansion.
+// Transcription WebSocket. Audio is 16 kHz, signed little-endian, mono PCM.
+// The transport batches codec frames and sends the server's JSON/Base64 audio
+// envelope so the backend is not flooded with 20 ms binary messages.
 esp_err_t clara_net_transcribe_connect(const char *session_id);
 esp_err_t clara_net_transcribe_send_audio(const void *pcm, size_t pcm_len);
 esp_err_t clara_net_transcribe_send_end(void);

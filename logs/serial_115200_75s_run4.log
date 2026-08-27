@@ -1,0 +1,298 @@
+I (395) esp_image: segment 3: paddr=00194d68 vaddr=4080c3ec size=2d190h (184720) load
+I (436) esp_image: segment 4: paddr=001c1f00 vaddr=40839580 size=03e28h ( 15912) load
+I (453) boot: Loaded app from partition at offset 0x10000
+I (453) boot: Disabling RNG early entropy source...
+I (463) cpu_start: Unicore app
+I (472) cpu_start: GPIO 17 and 16 are used as console UART I/O pins
+I (472) cpu_start: Pro cpu start user code
+I (472) cpu_start: cpu freq: 160000000 Hz
+I (477) app_init: Application information:
+I (481) app_init: Project name:     Clara_C6
+I (486) app_init: App version:      4b9bf00-dirty
+I (492) app_init: Compile time:     Aug 25 2026 15:14:01
+I (498) app_init: ELF file SHA256:  eba4124df9e0d41c...
+I (504) app_init: ESP-IDF:          1a1a5aa6-dirty
+I (509) efuse_init: Min chip rev:     v0.0
+I (514) efuse_init: Max chip rev:     v0.99 
+I (519) efuse_init: Chip rev:         v0.2
+I (524) heap_init: Initializing. RAM available for dynamic allocation:
+I (531) heap_init: At 40853C60 len 000289B0 (162 KiB): RAM
+I (537) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM
+I (543) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM
+I (550) spi_flash: detected chip: generic
+I (554) spi_flash: flash io: dio
+I (559) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (565) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (583) main_task: Started on CPU0
+I (586) main_task: Calling app_main()
+I (591) clara_c6: Clara C6 starting
+I (605) axp2101: Init PMU SUCCESS!
+I (611) DisplayPort: SPI BUS init
+I (611) DisplayPort: Install panel IO
+I (612) sh8601: LCD panel create success, version: 1.0.0
+W (1515) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence
+W (1515) sh8601: The 36h command has been used and will be overwritten by external initialization sequence
+I (1699) CST9217: Checkcode: 0x204ECACA
+I (1701) CST9217: Resolution X: 480, Y: 480
+I (1703) CST9217: Chip Type: 0x9220, ProjectID: 0x542F
+I (1703) esp_lvgl:adapter: LVGL adapter initialized successfully
+I (1713) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)
+I (1721) esp_lvgl:adapter: LVGL task started successfully
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+I (1743) CODEC_INIT: in:1 out:1 port: 1
+I (1747) CODEC_INIT: Success to int i2c: 0
+I (1752) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23
+I (1760) CODEC_INIT: tx:0x4087e71c rx:0x4087e8d8
+W (1765) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+I (1774) CODEC_INIT: output init tdm ret 0
+W (1778) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+W (1788) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+W (1797) i2s_tdm: the mclk/bclk ratio 3 is too small for the full-duplex rx slave (min 4), data might be sampled incorrectly, please increase mclk_multiple
+I (1812) CODEC_INIT: Input init tdm ret 0
+I (1816) CODEC_INIT: Init i2s 0 ok
+I (1820) CODEC_INIT: Success to init i2s: 0
+I (1825) CODEC_INIT: Success to int i2c: 0
+I (1830) CODEC_INIT: Success to init i2s: 0
+I (1835) CODEC_INIT: Get out handle 0x4087e71c port 0
+I (1845) ES8311: Work in Slave mode
+I (1851) ES7210: Work in Slave mode
+I (1858) ES7210: Enable ES7210_INPUT_MIC1
+I (1860) ES7210: Enable ES7210_INPUT_MIC2
+I (1863) ES7210: Enable ES7210_INPUT_MIC3
+I (1866) ES7210: Enable ES7210_INPUT_MIC4
+I (1870) ES7210: Enable TDM mode
+I (1879) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1879) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1900) Adev_Codec: Open codec device OK
+I (1900) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1900) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1908) ES7210: Bits 8
+I (1917) ES7210: Enable ES7210_INPUT_MIC1
+I (1919) ES7210: Enable ES7210_INPUT_MIC2
+I (1922) ES7210: Enable ES7210_INPUT_MIC3
+I (1927) ES7210: Enable ES7210_INPUT_MIC4
+I (1932) ES7210: Enable TDM mode
+I (1938) ES7210: Unmuted
+I (1938) Adev_Codec: Open codec device OK
+I (1941) Adev_Codec: Input already open
+I (1945) Adev_Codec: Input already open
+I (2128) pp: pp rom version: 5b8dcfa
+I (2129) net80211: net80211 rom version: 5b8dcfa
+I (2130) wifi:wifi driver task: 4086ecfc, prio:23, stack:6656, core=0
+I (2139) wifi:wifi firmware version: b9f67df
+I (2139) wifi:wifi certification version: v7.0
+I (2141) wifi:config NVS flash: enabled
+I (2145) wifi:config nano formatting: disabled
+I (2149) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2156) wifi:Init data frame dynamic rx buffer num: 32
+I (2160) wifi:Init static rx mgmt buffer num: 5
+I (2165) wifi:Init management short buffer num: 32
+I (2169) wifi:Init static tx buffer num: 16
+I (2173) wifi:Init static tx FG buffer num: 2
+I (2177) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2183) wifi:Init static rx buffer num: 10
+I (2187) wifi:Init dynamic rx buffer num: 32
+I (2192) wifi_init: rx ba win: 6
+I (2195) wifi_init: accept mbox: 6
+I (2199) wifi_init: tcpip mbox: 32
+I (2203) wifi_init: udp mbox: 6
+I (2207) wifi_init: tcp mbox: 6
+I (2211) wifi_init: tcp tx win: 5760
+I (2215) wifi_init: tcp rx win: 5760
+I (2219) wifi_init: tcp mss: 1440
+I (2223) wifi_init: WiFi IRAM OP enabled
+I (2228) wifi_init: WiFi RX IRAM OP enabled
+I (2233) wifi_init: WiFi SLP IRAM OP enabled
+W (2238) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (2247) phy_init: phy_version 345,552b044,Jul 14 2026,10:37:00
+I (2319) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+I (2320) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2320) wifi:enable tsf
+W (2324) wifi:m f probe req l=0
+I (2337) clara_net: Wi-Fi protocols limited to 11b/g/n mask=0x07
+I (2338) wifi:Set ps type: 0, coexist: 0
+I (2339) clara_c6: Clara UI ready; touch the Clara tile
+I (2343) main_task: Returned from app_main()
+I (2420) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0
+I (2421) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (2424) wifi:state: init -> auth (0xb0)
+I (2434) wifi:state: auth -> assoc (0x0)
+I (2442) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (2443) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (2450) wifi:Extended Capabilities length:11, operating_mode_notification:1
+I (2457) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+I (2464) wifi:state: assoc -> run (0x10)
+I (2467) wifi:(trc)phytype:CBW20-SGI, snr:52, maxRate:144, highestRateIdx:0
+W (2474) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (2482) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:52, ampduState:wait operational
+I (2494) wifi:ifidx:0, rssi:-34, nf:-86, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (2504) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+I (2527) wifi:connected with LDKJ, aid = 2, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (2528) wifi:security: WPA2-PSK, phy: bgn, rssi: -34, cipher(pairwise:0x3, group:0x3), pmf:0
+I (2534) wifi:pm start, type: 0, twt_start:0
+I (2536) wifi:pm start, type:0, aid:0x2, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (2548) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (2555) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (2564) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:1, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (2575) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:2, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (2586) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:3, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (2600) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2606) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2615) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+W (2624) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x1009247, TALO:0xe639fe50, (ssn:0, win:64, cur_ssn:0), CONF:0xc0000005
+I (2634) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (3695) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+I (3695) clara_net: DHCP DNS main=192.168.31.1
+W (7732) wifi:<ba-add>idx:1, ifx:0, tid:6, TAHI:0x1009247, TALO:0xe639fe50, (ssn:2, win:64, cur_ssn:2), CONF:0xc0006005
+I (10339) clara_c6: Boot network self-test begin
+I (10339) clara_net: Create session URL ready=1
+I (10339) clara_net: HTTP before init free8=14688 largest8=10496 free_internal=14688 largest_internal=10496
+I (26709) wifi:bcn_timeout,ap_probe_send_start
+W (26709) wifi:m f probe req l=0
+W (27210) wifi:m f probe req l=0
+W (27710) wifi:m f probe req l=0
+W (28210) wifi:m f probe req l=0
+W (28710) wifi:m f probe req l=0
+I (29211) wifi:ap_probe_send over, reset wifi status to disassoc
+I (29211) wifi:state: run -> init (0xc800)
+W (29212) wifi:m f disassoc
+I (29212) wifi:teardown, set twt_inactive_time_secs:6, sp_count:0
+I (29218) wifi:pm stop, total sleep time: 0 us / 26670243 us
+I (29223) wifi:<ba-del>idx:0, tid:0
+I (29226) wifi:<ba-del>idx:1, tid:6
+W (29233) clara_net: Wi-Fi disconnected reason=200 retry=1
+E (29241) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x004C
+I (29244) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (29250) wifi:state: init -> auth (0xb0)
+E (29254) esp-tls: Failed to open new connection
+E (29259) transport_base: Failed to open a new connection
+I (29260) wifi:state: auth -> assoc (0x0)
+E (29270) HTTP_CLIENT: Connection failed, sock < 0
+I (29274) clara_net: HTTP response status=0 bytes=0 truncated=0
+I (29278) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (29289) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (29300) wifi:Extended Capabilities length:11, operating_mode_notification:1
+I (29307) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+I (29313) wifi:state: assoc -> run (0x10)
+I (29317) wifi:(trc)phytype:CBW20-SGI, snr:52, maxRate:144, highestRateIdx:0
+W (29324) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (29332) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:52, ampduState:wait operational
+I (29343) wifi:ifidx:0, rssi:-33, nf:-85, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (29354) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+W (29364) clara_net: HTTP request failed err=28674 status=0 tls=76 flags=0x0
+I (29370) clara_c6: Network error  •  check Wi-Fi/API
+I (29372) wifi:connected with LDKJ, aid = 2, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (29383) wifi:security: WPA2-PSK, phy: bgn, rssi: -33, cipher(pairwise:0x3, group:0x3), pmf:0
+I (29392) wifi:pm start, type: 0, twt_start:0
+I (29395) wifi:pm start, type:0, aid:0x2, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (29406) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (29415) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:4, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (29426) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:5, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (29437) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:6, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (29452) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (29456) clara_c6: Boot network self-test session err=28674 (attempt 1/4)
+I (29458) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (29470) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (29479) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+W (29489) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x1009247, TALO:0xe639fe50, (ssn:0, win:64, cur_ssn:0), CONF:0xc0000005
+W (29499) clara_c6: Boot network self-test attempt 1 failed, retrying in 5000 ms
+W (29507) clara_c6: Wi-Fi down after self-test failure, reconnecting...
+W (29514) wifi:sta is connected, disconnect before connecting to new ap
+I (30524) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+I (30524) clara_net: DHCP DNS main=192.168.31.1
+W (34531) wifi:<ba-add>idx:1, ifx:0, tid:6, TAHI:0x1009247, TALO:0xe639fe50, (ssn:2, win:64, cur_ssn:2), CONF:0xc0006005
+I (35528) clara_net: Create session URL ready=1
+I (35528) clara_net: HTTP before init free8=14252 largest8=8064 free_internal=14252 largest_internal=8064
+I (51784) wifi:bcn_timeout,ap_probe_send_start
+W (51784) wifi:m f probe req l=0
+W (52285) wifi:m f probe req l=0
+W (52785) wifi:m f probe req l=0
+W (53285) wifi:m f probe req l=0
+W (53785) wifi:m f probe req l=0
+I (54286) wifi:ap_probe_send over, reset wifi status to disassoc
+I (54286) wifi:state: run -> init (0xc800)
+W (54287) wifi:m f disassoc
+I (54287) wifi:teardown, set twt_inactive_time_secs:6, sp_count:0
+I (54293) wifi:pm stop, total sleep time: 0 us / 24886407 us
+I (54298) wifi:<ba-del>idx:0, tid:0
+I (54301) wifi:<ba-del>idx:1, tid:6
+W (54307) clara_net: Wi-Fi disconnected reason=200 retry=1
+E (54316) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x004C
+E (54318) esp-tls: Failed to open new connection
+E (54323) transport_base: Failed to open a new connection
+E (54330) HTTP_CLIENT: Connection failed, sock < 0
+I (54334) clara_net: HTTP response status=0 bytes=0 truncated=0
+I (54337) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (54348) wifi:state: init -> auth (0xb0)
+W (54354) clara_net: HTTP request failed err=28674 status=0 tls=76 flags=0x0
+I (54360) clara_c6: Network error  •  check Wi-Fi/API
+I (54362) wifi:state: auth -> assoc (0x0)
+I (54371) clara_c6: Boot network self-test session err=28674 (attempt 2/4)
+W (54377) clara_c6: Boot network self-test attempt 2 failed, retrying in 5000 ms
+I (54377) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (54393) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (54404) wifi:Extended Capabilities length:11, operating_mode_notification:1
+I (54411) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+I (54417) wifi:state: assoc -> run (0x10)
+I (54421) wifi:(trc)phytype:CBW20-SGI, snr:50, maxRate:144, highestRateIdx:0
+W (54428) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (54436) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:50, ampduState:wait operational
+I (54448) wifi:ifidx:0, rssi:-35, nf:-85, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (54458) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+W (54468) clara_c6: Wi-Fi down after self-test failure, reconnecting...
+E (54473) wifi:sta is connecting, return error
+I (54479) wifi:connected with LDKJ, aid = 2, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (54485) wifi:security: WPA2-PSK, phy: bgn, rssi: -35, cipher(pairwise:0x3, group:0x3), pmf:0
+I (54494) wifi:pm start, type: 0, twt_start:0
+I (54497) wifi:pm start, type:0, aid:0x2, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (54508) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (54517) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:7, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (54528) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:8, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (54539) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:9, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (54550) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (54559) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (54565) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (54574) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+W (54583) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x1009247, TALO:0xe639fe50, (ssn:0, win:64, cur_ssn:0), CONF:0xc0000005
+I (55614) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+I (55614) clara_net: DHCP DNS main=192.168.31.1
+W (59654) wifi:<ba-add>idx:1, ifx:0, tid:6, TAHI:0x1009247, TALO:0xe639fe50, (ssn:2, win:64, cur_ssn:2), CONF:0xc0006005
+I (60618) clara_net: Create session URL ready=1
+I (60618) clara_net: HTTP before init free8=14264 largest8=8064 free_internal=14264 largest_internal=8064
+I (70874) wifi:bcn_timeout,ap_probe_send_start
+W (70874) wifi:m f probe req l=0
+W (70875) wifi:m f null
+W (71375) wifi:m f probe req l=0
+W (71875) wifi:m f probe req l=0
+W (72375) wifi:m f probe req l=0
+W (72876) wifi:m f probe req l=0
+I (73376) wifi:ap_probe_send over, reset wifi status to disassoc
+I (73376) wifi:state: run -> init (0xc800)
+W (73378) wifi:m f disassoc
+I (73378) wifi:teardown, set twt_inactive_time_secs:6, sp_count:0
+I (73383) wifi:pm stop, total sleep time: 0 us / 18874611 us
+I (73388) wifi:<ba-del>idx:0, tid:0
+I (73392) wifi:<ba-del>idx:1, tid:6
+W (73398) clara_net: Wi-Fi disconnected reason=200 retry=1
+I (73407) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (73408) wifi:state: init -> auth (0xb0)
+E (73415) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x004C
+I (73418) wifi:state: auth -> assoc (0x0)
+W (73423) wifi:m f assoc req l=252
+E (73426) esp-tls: Failed to open new connection
+E (73431) transport_base: Failed to open a new connection
+E (73438) HTTP_CLIENT: Connection failed, sock < 0
+I (73443) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (73449) clara_net: HTTP request failed err=28674 status=0 tls=76 flags=0x0
+I (73458) clara_c6: Network error  •  check Wi-Fi/API
+I (73463) clara_c6: Boot network self-test session err=28674 (attempt 3/4)
+W (73470) clara_c6: Boot network self-test attempt 3 failed, retrying in 5000 ms
+W (73479) clara_c6: Wi-Fi down after self-test failure, reconnecting...
+E (73486) wifi:sta is connecting, return error
+I (74426) wifi:state: assoc -> init (0x400)
+W (74430) clara_net: Wi-Fi disconnected reason=4 retry=1

@@ -35,11 +35,44 @@ lv_obj_t *s_host_btn = nullptr;
 lv_obj_t *s_start_label = nullptr;
 lv_obj_t *s_stop_label = nullptr;
 lv_obj_t *s_host_label = nullptr;
+char s_transcript_text[1536] = {};
+char s_transcript_partial[256] = {};
+char s_answer_text[768] = {};
+char s_answer_partial[384] = {};
 bool s_ui_initialized = false;
 bool s_meeting_active = false;
 bool s_host_active = false;
 
 static void set_page_locked(clara_ui_page_t page);
+
+static void refresh_transcript_locked(void)
+{
+    if (!s_transcript) return;
+    lv_label_set_text_fmt(s_transcript, "%s%s%s", s_transcript_text,
+                          s_transcript_text[0] && s_transcript_partial[0] ? "\n" : "",
+                          s_transcript_partial);
+    lv_obj_scroll_to_view(s_transcript, LV_ANIM_OFF);
+}
+
+static void refresh_answer_locked(void)
+{
+    if (!s_answer) return;
+    lv_label_set_text_fmt(s_answer, "%s%s%s", s_answer_text,
+                          s_answer_text[0] && s_answer_partial[0] ? "\n" : "",
+                          s_answer_partial);
+    lv_obj_scroll_to_view(s_answer, LV_ANIM_OFF);
+}
+
+static void append_bounded(char *dst, size_t dst_len, const char *text)
+{
+    if (!dst || dst_len == 0 || !text || !text[0]) return;
+    size_t used = strlen(dst);
+    if (used >= dst_len - 1) return;
+    size_t copy = strlen(text);
+    if (copy > dst_len - used - 1) copy = dst_len - used - 1;
+    memcpy(dst + used, text, copy);
+    dst[used + copy] = '\0';
+}
 
 static lv_color_t color(uint32_t value) { return lv_color_hex(value); }
 
@@ -75,6 +108,9 @@ static lv_obj_t *make_button(lv_obj_t *parent, const char *title, Action action,
     lv_obj_set_style_bg_color(button, color(0x334867), LV_STATE_PRESSED);
     lv_obj_set_style_pad_hor(button, 18, 0);
     lv_obj_set_style_pad_ver(button, 8, 0);
+    lv_obj_set_flex_flow(button, LV_FLEX_FLOW_ROW);
+    lv_obj_set_flex_align(button, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER,
+                          LV_FLEX_ALIGN_CENTER);
     lv_obj_add_event_cb(button, [](lv_event_t *event) {
         if (lv_event_get_code(event) != LV_EVENT_CLICKED) return;
         Action action = static_cast<Action>(reinterpret_cast<uintptr_t>(lv_event_get_user_data(event)));
@@ -104,7 +140,8 @@ static lv_obj_t *make_button(lv_obj_t *parent, const char *title, Action action,
             break;
         }
     }, LV_EVENT_CLICKED, reinterpret_cast<void *>(static_cast<uintptr_t>(action)));
-    make_label(button, title, fg, LV_TEXT_ALIGN_CENTER);
+    lv_obj_t *label = make_label(button, title, fg, LV_TEXT_ALIGN_CENTER);
+    lv_obj_set_style_text_font(label, &lv_font_montserrat_16, 0);
     return button;
 }
 
@@ -282,31 +319,37 @@ static void create_clara(void)
     lv_label_set_long_mode(s_transcript, LV_LABEL_LONG_WRAP);
     lv_obj_set_width(s_transcript, LV_PCT(100));
     lv_obj_set_style_pad_top(s_transcript, 8, 0);
+    lv_obj_set_style_text_font(s_transcript, &lv_font_source_han_sans_sc_16_cjk, 0);
     make_label(notes, "CLARA", 0xD9AA6A);
-    s_answer = make_label(notes, "Ask Clara about the meeting after you start.", 0xD5E2EE);
+    s_answer = make_label(notes, "Ask Clara during or after the meeting.", 0xD5E2EE);
     lv_label_set_long_mode(s_answer, LV_LABEL_LONG_WRAP);
     lv_obj_set_width(s_answer, LV_PCT(100));
     lv_obj_set_style_pad_top(s_answer, 8, 0);
+    lv_obj_set_style_text_font(s_answer, &lv_font_source_han_sans_sc_16_cjk, 0);
 
     lv_obj_t *controls = lv_obj_create(s_clara);
     lv_obj_set_width(controls, LV_PCT(100));
-    lv_obj_set_height(controls, 60);
+    lv_obj_set_height(controls, 64);
     lv_obj_set_style_bg_opa(controls, LV_OPA_TRANSP, 0);
     lv_obj_set_style_border_width(controls, 0, 0);
     lv_obj_set_style_pad_all(controls, 0, 0);
     lv_obj_set_flex_flow(controls, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(controls, LV_FLEX_ALIGN_SPACE_BETWEEN, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
     s_start_btn = make_button(controls, "Start", Action::StartMeeting, 0x247C68);
-    lv_obj_set_style_min_width(s_start_btn, 96, 0);
+    lv_obj_set_size(s_start_btn, 86, 56);
+    lv_obj_set_style_min_width(s_start_btn, 86, 0);
     s_start_label = lv_obj_get_child(s_start_btn, 0);
     s_stop_btn = make_button(controls, "Stop", Action::StopMeeting, 0x7C3B4A);
-    lv_obj_set_style_min_width(s_stop_btn, 96, 0);
+    lv_obj_set_size(s_stop_btn, 86, 56);
+    lv_obj_set_style_min_width(s_stop_btn, 86, 0);
     s_stop_label = lv_obj_get_child(s_stop_btn, 0);
     s_host_btn = make_button(controls, "Ask Clara", Action::ToggleHost, 0x38517A);
-    lv_obj_set_style_min_width(s_host_btn, 106, 0);
+    lv_obj_set_size(s_host_btn, 136, 56);
+    lv_obj_set_style_min_width(s_host_btn, 136, 0);
     s_host_label = lv_obj_get_child(s_host_btn, 0);
     lv_obj_t *refresh_btn = make_button(controls, LV_SYMBOL_REFRESH, Action::Refresh, 0x26354A);
-    lv_obj_set_style_min_width(refresh_btn, 96, 0);
+    lv_obj_set_size(refresh_btn, 56, 56);
+    lv_obj_set_style_min_width(refresh_btn, 56, 0);
 }
 
 static void create_demo(void)
@@ -393,7 +436,32 @@ extern "C" void clara_ui_set_transcript(const char *text)
 {
     if (!s_transcript) return;
     if (Lvgl_lock(-1) != ESP_OK) return;
-    lv_label_set_text(s_transcript, text ? text : "");
+    strlcpy(s_transcript_text, text ? text : "", sizeof(s_transcript_text));
+    s_transcript_partial[0] = '\0';
+    refresh_transcript_locked();
+    Lvgl_unlock();
+}
+
+extern "C" void clara_ui_reset_transcript(void)
+{
+    if (Lvgl_lock(-1) != ESP_OK) return;
+    s_transcript_text[0] = '\0';
+    s_transcript_partial[0] = '\0';
+    refresh_transcript_locked();
+    Lvgl_unlock();
+}
+
+extern "C" void clara_ui_append_transcript(const char *text, bool is_final)
+{
+    if (!text || !text[0] || Lvgl_lock(-1) != ESP_OK) return;
+    if (is_final) {
+        append_bounded(s_transcript_text, sizeof(s_transcript_text), text);
+        append_bounded(s_transcript_text, sizeof(s_transcript_text), "\n");
+        s_transcript_partial[0] = '\0';
+    } else {
+        strlcpy(s_transcript_partial, text, sizeof(s_transcript_partial));
+    }
+    refresh_transcript_locked();
     Lvgl_unlock();
 }
 
@@ -401,7 +469,43 @@ extern "C" void clara_ui_set_answer(const char *text)
 {
     if (!s_answer) return;
     if (Lvgl_lock(-1) != ESP_OK) return;
-    lv_label_set_text(s_answer, text ? text : "");
+    strlcpy(s_answer_text, text ? text : "", sizeof(s_answer_text));
+    s_answer_partial[0] = '\0';
+    refresh_answer_locked();
+    Lvgl_unlock();
+}
+
+extern "C" void clara_ui_reset_answer(void)
+{
+    if (Lvgl_lock(-1) != ESP_OK) return;
+    s_answer_text[0] = '\0';
+    s_answer_partial[0] = '\0';
+    refresh_answer_locked();
+    Lvgl_unlock();
+}
+
+extern "C" void clara_ui_append_answer(const char *text, bool is_final)
+{
+    if (!text || !text[0] || Lvgl_lock(-1) != ESP_OK) return;
+    if (is_final) {
+        append_bounded(s_answer_text, sizeof(s_answer_text), text);
+        s_answer_partial[0] = '\0';
+    } else {
+        strlcpy(s_answer_partial, text, sizeof(s_answer_partial));
+    }
+    refresh_answer_locked();
+    Lvgl_unlock();
+}
+
+extern "C" void clara_ui_append_answer_delta(const char *text, bool is_final)
+{
+    if (!text || !text[0] || Lvgl_lock(-1) != ESP_OK) return;
+    append_bounded(s_answer_partial, sizeof(s_answer_partial), text);
+    if (is_final) {
+        append_bounded(s_answer_text, sizeof(s_answer_text), s_answer_partial);
+        s_answer_partial[0] = '\0';
+    }
+    refresh_answer_locked();
     Lvgl_unlock();
 }
 
@@ -435,6 +539,6 @@ extern "C" void clara_ui_set_host_active(bool active)
 {
     if (Lvgl_lock(-1) != ESP_OK) return;
     s_host_active = active;
-    if (s_host_label) lv_label_set_text(s_host_label, active ? "End host" : "Ask Clara");
+    if (s_host_label) lv_label_set_text(s_host_label, active ? "Send question" : "Ask Clara");
     Lvgl_unlock();
 }

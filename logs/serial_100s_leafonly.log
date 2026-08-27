@@ -1,0 +1,185 @@
+I (427) esp_image: segment 4: paddr=001b53a0 vaddr=40839580 size=03e20h ( 15904) load
+I (444) boot: Loaded app from partition at offset 0x10000
+I (445) boot: Disabling RNG early entropy source...
+I (455) cpu_start: Unicore app
+I (463) cpu_start: GPIO 17 and 16 are used as console UART I/O pins
+I (463) cpu_start: Pro cpu start user code
+I (464) cpu_start: cpu freq: 160000000 Hz
+I (468) app_init: Application information:
+I (473) app_init: Project name:     Clara_C6
+I (478) app_init: App version:      4b9bf00-dirty
+I (483) app_init: Compile time:     Aug 25 2026 22:10:02
+I (489) app_init: ELF file SHA256:  607f19b52fb4a924...
+I (495) app_init: ESP-IDF:          1a1a5aa6-dirty
+I (501) efuse_init: Min chip rev:     v0.0
+I (505) efuse_init: Max chip rev:     v0.99 
+I (510) efuse_init: Chip rev:         v0.2
+I (515) heap_init: Initializing. RAM available for dynamic allocation:
+I (522) heap_init: At 4084B620 len 00030FF0 (195 KiB): RAM
+I (528) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM
+I (535) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM
+I (542) spi_flash: detected chip: generic
+I (546) spi_flash: flash io: dio
+I (550) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (557) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (575) main_task: Started on CPU0
+I (578) main_task: Calling app_main()
+I (583) clara_c6: Clara C6 starting
+I (598) axp2101: Init PMU SUCCESS!
+I (604) DisplayPort: SPI BUS init
+I (604) DisplayPort: Install panel IO
+I (605) sh8601: LCD panel create success, version: 1.0.0
+W (1508) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence
+W (1508) sh8601: The 36h command has been used and will be overwritten by external initialization sequence
+I (1692) CST9217: Checkcode: 0x204ECACA
+I (1694) CST9217: Resolution X: 480, Y: 480
+I (1696) CST9217: Chip Type: 0x9220, ProjectID: 0x542F
+I (1696) esp_lvgl:adapter: LVGL adapter initialized successfully
+I (1706) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)
+I (1714) esp_lvgl:adapter: LVGL task started successfully
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+I (1736) CODEC_INIT: in:1 out:1 port: 1
+I (1740) CODEC_INIT: Success to int i2c: 0
+I (1747) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23
+I (1753) CODEC_INIT: tx:0x4087e71c rx:0x4087e8d8
+W (1758) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+I (1767) CODEC_INIT: output init tdm ret 0
+W (1771) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+W (1781) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+W (1790) i2s_tdm: the mclk/bclk ratio 3 is too small for the full-duplex rx slave (min 4), data might be sampled incorrectly, please increase mclk_multiple
+I (1805) CODEC_INIT: Input init tdm ret 0
+I (1809) CODEC_INIT: Init i2s 0 ok
+I (1813) CODEC_INIT: Success to init i2s: 0
+I (1818) CODEC_INIT: Success to int i2c: 0
+I (1823) CODEC_INIT: Success to init i2s: 0
+I (1828) CODEC_INIT: Get out handle 0x4087e71c port 0
+I (1839) ES8311: Work in Slave mode
+I (1844) ES7210: Work in Slave mode
+I (1851) ES7210: Enable ES7210_INPUT_MIC1
+I (1853) ES7210: Enable ES7210_INPUT_MIC2
+I (1856) ES7210: Enable ES7210_INPUT_MIC3
+I (1859) ES7210: Enable ES7210_INPUT_MIC4
+I (1863) ES7210: Enable TDM mode
+I (1872) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1872) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1893) Adev_Codec: Open codec device OK
+I (1893) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+I (1893) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3
+I (1901) ES7210: Bits 8
+I (1910) ES7210: Enable ES7210_INPUT_MIC1
+I (1913) ES7210: Enable ES7210_INPUT_MIC2
+I (1915) ES7210: Enable ES7210_INPUT_MIC3
+I (1920) ES7210: Enable ES7210_INPUT_MIC4
+I (1925) ES7210: Enable TDM mode
+I (1931) ES7210: Unmuted
+I (1931) Adev_Codec: Open codec device OK
+I (1934) Adev_Codec: Input already open
+I (1938) Adev_Codec: Input already open
+I (2122) pp: pp rom version: 5b8dcfa
+I (2123) net80211: net80211 rom version: 5b8dcfa
+I (2124) wifi:wifi driver task: 408665f4, prio:23, stack:6656, core=0
+I (2133) wifi:wifi firmware version: b9f67df
+I (2134) wifi:wifi certification version: v7.0
+I (2135) wifi:config NVS flash: enabled
+I (2139) wifi:config nano formatting: disabled
+I (2143) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2150) wifi:Init data frame dynamic rx buffer num: 16
+I (2155) wifi:Init static rx mgmt buffer num: 5
+I (2159) wifi:Init management short buffer num: 32
+I (2164) wifi:Init static tx buffer num: 16
+I (2167) wifi:Init static tx FG buffer num: 2
+I (2171) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2177) wifi:Init static rx buffer num: 10
+I (2181) wifi:Init dynamic rx buffer num: 16
+I (2186) wifi_init: accept mbox: 6
+I (2189) wifi_init: tcpip mbox: 32
+I (2193) wifi_init: udp mbox: 6
+I (2197) wifi_init: tcp mbox: 6
+I (2201) wifi_init: tcp tx win: 5760
+I (2205) wifi_init: tcp rx win: 5760
+I (2209) wifi_init: tcp mss: 1240
+I (2213) wifi_init: WiFi IRAM OP enabled
+I (2218) wifi_init: WiFi RX IRAM OP enabled
+I (2223) wifi_init: WiFi SLP IRAM OP enabled
+W (2228) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (2237) phy_init: phy_version 345,552b044,Jul 14 2026,10:37:00
+I (2307) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+I (2308) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2308) wifi:enable tsf
+I (2328) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0
+I (2329) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+I (2331) wifi:state: init -> auth (0xb0)
+I (2337) clara_net: Wi-Fi protocols limited to 11b/g/n mask=0x07
+I (2342) wifi:Set ps type: 0, coexist: 0
+I (2345) wifi:state: auth -> assoc (0x0)
+I (2350) clara_c6: Clara UI ready; touch the Clara tile
+I (2355) main_task: Returned from app_main()
+I (2357) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (2368) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (2379) wifi:Extended Capabilities length:11, operating_mode_notification:1
+I (2386) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+I (2392) wifi:state: assoc -> run (0x10)
+I (2396) wifi:(trc)phytype:CBW20-SGI, snr:47, maxRate:144, highestRateIdx:0
+W (2402) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (2411) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:47, ampduState:wait operational
+I (2422) wifi:ifidx:0, rssi:-39, nf:-86, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (2433) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+I (2453) wifi:connected with LDKJ, aid = 2, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (2453) wifi:security: WPA2-PSK, phy: bgn, rssi: -39, cipher(pairwise:0x3, group:0x3), pmf:0
+I (2459) wifi:pm start, type: 0, twt_start:0
+I (2462) wifi:pm start, type:0, aid:0x2, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (2473) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (2481) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (2519) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (3534) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+I (3534) clara_net: DHCP DNS main=192.168.31.1
+I (10350) clara_c6: Boot network self-test begin
+I (10350) clara_net: Create session URL ready=1
+I (10350) clara_net: HTTP before init free8=49892 largest8=30208 free_internal=49892 largest_internal=30208
+E (12845) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700
+E (12845) esp-tls: Failed to open new connection
+E (12846) transport_base: Failed to open a new connection
+E (12853) HTTP_CLIENT: Connection failed, sock < 0
+I (12858) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (12864) clara_net: HTTP request failed err=28674 status=0 tls=9984 flags=0x0
+I (12873) clara_c6: Network error  •  check Wi-Fi/API
+I (12879) clara_c6: Boot network self-test session err=28674 (attempt 1/4)
+W (12886) clara_c6: Boot network self-test attempt 1 failed, retrying in 5000 ms
+I (17894) clara_net: Create session URL ready=1
+I (17894) clara_net: HTTP before init free8=49220 largest8=15872 free_internal=49220 largest_internal=15872
+E (19355) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700
+E (19356) esp-tls: Failed to open new connection
+E (19357) transport_base: Failed to open a new connection
+E (19364) HTTP_CLIENT: Connection failed, sock < 0
+I (19368) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (19375) clara_net: HTTP request failed err=28674 status=0 tls=9984 flags=0x0
+I (19383) clara_c6: Network error  •  check Wi-Fi/API
+I (19389) clara_c6: Boot network self-test session err=28674 (attempt 2/4)
+W (19396) clara_c6: Boot network self-test attempt 2 failed, retrying in 5000 ms
+I (24404) clara_net: Create session URL ready=1
+I (24404) clara_net: HTTP before init free8=49220 largest8=15872 free_internal=49220 largest_internal=15872
+E (25803) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700
+E (25803) esp-tls: Failed to open new connection
+E (25804) transport_base: Failed to open a new connection
+E (25811) HTTP_CLIENT: Connection failed, sock < 0
+I (25816) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (25822) clara_net: HTTP request failed err=28674 status=0 tls=9984 flags=0x0
+I (25831) clara_c6: Network error  •  check Wi-Fi/API
+I (25836) clara_c6: Boot network self-test session err=28674 (attempt 3/4)
+W (25843) clara_c6: Boot network self-test attempt 3 failed, retrying in 5000 ms
+I (30852) clara_net: Create session URL ready=1
+I (30852) clara_net: HTTP before init free8=49220 largest8=15872 free_internal=49220 largest_internal=15872
+E (32259) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x2700
+E (32259) esp-tls: Failed to open new connection
+E (32260) transport_base: Failed to open a new connection
+E (32267) HTTP_CLIENT: Connection failed, sock < 0
+I (32272) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (32278) clara_net: HTTP request failed err=28674 status=0 tls=9984 flags=0x0
+I (32287) clara_c6: Network error  •  check Wi-Fi/API
+I (32292) clara_c6: Boot network self-test session err=28674 (attempt 4/4)
+W (32300) clara_c6: Boot network self-test failed after 4 attempts

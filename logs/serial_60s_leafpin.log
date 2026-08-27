@@ -1,0 +1,2410 @@
+I (400) esp_image: segment 3: paddr=0019aaac vaddr=408019dc size=37de0h (228832) load
+I (449) esp_image: segment 4: paddr=001d2894 vaddr=408397c0 size=04018h ( 16408) load
+I (467) boot: Loaded app from partition at offset 0x10000
+I (467) boot: Disabling RNG early entropy source...
+I (477) cpu_start: Unicore app
+D (477) cpu_start: Pro cpu up
+D (486) clk: RTC_SLOW_CLK calibration value: 3795878
+I (491) cpu_start: GPIO 17 and 16 are used as console UART I/O pins
+D (491) cpu_start: calling init function: 0x420001f0 on core: 0
+D (492) cpu_start: calling init function: 0x42000868 on core: 0
+I (498) cpu_start: Pro cpu start user code
+I (503) cpu_start: cpu freq: 160000000 Hz
+D (508) cpu_start: calling init function: 0x42000076 on core: 0
+I (514) app_init: Application information:
+I (519) app_init: Project name:     Clara_C6
+I (524) app_init: App version:      4b9bf00-dirty
+I (529) app_init: Compile time:     Aug 25 2026 21:54:41
+I (535) app_init: ELF file SHA256:  5053c9a14e60b927...
+I (541) app_init: ESP-IDF:          1a1a5aa6-dirty
+D (546) cpu_start: calling init function: 0x42000200 on core: 0
+I (552) efuse_init: Min chip rev:     v0.0
+I (557) efuse_init: Max chip rev:     v0.99 
+I (562) efuse_init: Chip rev:         v0.2
+D (567) cpu_start: calling init function: 0x4200250c on core: 0
+D (573) memory_layout: Checking 5 reserved memory ranges:
+D (578) memory_layout: Reserved memory range 0x40800000 - 0x408397c0
+D (585) memory_layout: Reserved memory range 0x408397c0 - 0x4084fae0
+D (591) memory_layout: Reserved memory range 0x4087f564 - 0x40880000
+D (598) memory_layout: Reserved memory range 0x50000000 - 0x50000000
+D (604) memory_layout: Reserved memory range 0x50003fe8 - 0x50004000
+D (610) memory_layout: Building list of available memory regions:
+D (617) memory_layout: Available memory region 0x4084fae0 - 0x40860000
+D (623) memory_layout: Available memory region 0x40860000 - 0x4087c610
+D (630) memory_layout: Available memory region 0x4087c610 - 0x4087f564
+D (636) memory_layout: Available memory region 0x50000000 - 0x50003fe8
+I (643) heap_init: Initializing. RAM available for dynamic allocation:
+D (650) heap_init: New heap initialised at 0x4084fae0
+I (655) heap_init: At 4084FAE0 len 0002CB30 (178 KiB): RAM
+I (661) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM
+D (668) heap_init: New heap initialised at 0x50000000
+I (673) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM
+D (679) cpu_start: calling init function: 0x420071f2 on core: 0
+D (685) cpu_start: calling init function: 0x420067ce on core: 0
+D (691) cpu_start: calling init function: 0x420008fa on core: 0
+D (697) intr_alloc: Connected src 15 to int 2 (cpu 0)
+D (702) cpu_start: calling init function: 0x4200091c on core: 0
+D (708) cpu_start: calling init function: 0x42008132 on core: 0
+D (714) cpu_start: calling init function: 0x4200983c on core: 0
+D (720) cpu_start: calling init function: 0x4200bcfc on core: 0
+D (726) cpu_start: calling init function: 0x42009f98 on core: 0
+D (732) cpu_start: calling init function: 0x420067dc on core: 0
+D (738) cpu_start: calling init function: 0x4200097a on core: 0
+D (744) spi_flash: trying chip: gd
+D (747) spi_flash: trying chip: generic
+I (751) spi_flash: detected chip: generic
+I (756) spi_flash: flash io: dio
+D (760) cpu_start: calling init function: 0x420001ec on core: 0
+D (801) intr_alloc: Connected src 50 to int 5 (cpu 0)
+D (816) cpu_start: calling init function: 0x4206c834 on core: 0
+D (822) intr_alloc: Connected src 59 to int 8 (cpu 0)
+D (827) cpu_start: calling init function: 0x420019c8 on core: 0
+D (833) cpu_start: calling init function: 0x4206ba08 on core: 0
+D (839) cpu_start: calling init function: 0x420028fa on core: 0
+D (845) cpu_start: calling init function: 0x420034ae on core: 0
+I (851) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (859) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+D (866) cpu_start: calling init function: 0x421287d8 on core: 0
+D (872) cpu_start: calling init function: 0x4200092c on core: 0
+D (888) cpu_start: calling init function: 0x42009464 on core: 0
+D (894) cpu_start: calling init function: 0x42000944 on core: 0
+D (900) intr_alloc: Connected src 22 to int 9 (cpu 0)
+D (905) app_start: Starting scheduler on CPU0
+D (910) intr_alloc: Connected src 57 to int 10 (cpu 0)
+I (910) main_task: Started on CPU0
+D (914) heap_init: New heap initialised at 0x4087c610
+D (919) intr_alloc: Connected src 53 to int 11 (cpu 0)
+I (924) main_task: Calling app_main()
+I (928) clara_c6: Clara C6 starting
+I (944) axp2101: Init PMU SUCCESS!
+I (950) DisplayPort: SPI BUS init
+D (950) spi: SPI2 use gpio matrix.
+I (950) DisplayPort: Install panel IO
+D (951) intr_alloc: Connected src 72 to int 12 (cpu 0)
+D (956) spi_hal: eff: 40000, limit: 80000k(/0), 0 dummy, -1 delay
+D (962) spi_master: SPI2: New device added to CS0, effective clock: 40000000 Hz
+D (969) lcd_panel.io.spi: new spi lcd panel io @0x4087d930, max_trans_bytes: 32768
+D (977) sh8601: new sh8601 panel @0x4087dc44
+I (981) sh8601: LCD panel create success, version: 1.0.0
+D (1288) spi_master: device0 locked the bus
+D (1288) spi_master: device0 release bus
+D (1288) spi_master: device0 locked the bus
+D (1289) spi_master: device0 release bus
+D (1293) spi_master: device0 locked the bus
+D (1297) spi_master: device0 release bus
+D (1901) spi_master: device0 locked the bus
+D (1901) spi_master: device0 release bus
+D (1901) spi_master: device0 locked the bus
+D (1902) spi_master: device0 release bus
+D (1906) spi_master: device0 locked the bus
+D (1910) spi_master: device0 release bus
+D (1914) spi_master: device0 locked the bus
+D (1918) spi_master: device0 release bus
+D (1922) spi_master: device0 locked the bus
+D (1927) spi_master: device0 release bus
+W (1931) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence
+D (1941) spi_master: device0 locked the bus
+D (1945) spi_master: device0 release bus
+D (1949) spi_master: device0 locked the bus
+D (1954) spi_master: device0 release bus
+W (1958) sh8601: The 36h command has been used and will be overwritten by external initialization sequence
+D (1968) spi_master: device0 locked the bus
+D (1972) spi_master: device0 release bus
+D (1976) spi_master: device0 locked the bus
+D (1980) spi_master: device0 release bus
+D (1984) spi_master: device0 locked the bus
+D (1989) spi_master: device0 release bus
+D (1993) spi_master: device0 locked the bus
+D (1997) spi_master: device0 release bus
+D (2001) spi_master: device0 locked the bus
+D (2005) spi_master: device0 release bus
+D (2009) spi_master: device0 locked the bus
+D (2013) spi_master: device0 release bus
+D (2017) spi_master: device0 locked the bus
+D (2022) spi_master: device0 release bus
+D (2126) sh8601: send init commands success
+D (2126) lcd_panel.io.i2c: new i2c lcd panel io @0x4087dc98
+D (2126) gpio: GPIO[5]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 
+D (2133) gpio: GPIO[11]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (2216) CST9217: Checkcode: 0x204ECACA
+I (2218) CST9217: Resolution X: 480, Y: 480
+I (2220) CST9217: Chip Type: 0x9220, ProjectID: 0x542F
+I (2220) esp_lvgl:adapter: LVGL adapter initialized successfully
+D (2230) esp_lvgl:bridge: Calculated frame_buffer_size: 460800 bytes (230400x16 pixels, 18 bpp)
+D (2236) intr_alloc: Connected src 30 to int 13 (cpu 0)
+D (2241) esp_lvgl:touch: Touch interrupt mode enabled on GPIO 5
+D (2247) esp_lvgl:adapter: Input device registered (type=0)
+I (2252) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)
+D (2263) spi_master: device0 locked the bus
+D (2265) spi_master: device0 release bus
+D (2269) spi_master: device0 locked the bus
+D (2273) spi_master: device0 release bus
+D (2277) spi_master: device0 locked the bus
+I (2282) esp_lvgl:adapter: LVGL task started successfully
+D (2283) spi_master: device0 release bus
+D (2293) spi_master: device0 locked the bus
+D (2296) spi_master: device0 release bus
+D (2300) spi_master: device0 locked the bus
+D (2304) spi_master: device0 release bus
+D (2308) spi_master: device0 locked the bus
+i2c: {sda: 8, scl: 7}
+D (2314) spi_master: device0 release bus
+D (2320) spi_master: device0 locked the bus
+D (2323) spi_master: device0 release bus
+D (2327) spi_master: device0 locked the bus
+D (2331) spi_master: device0 release bus
+D (2335) spi_master: device0 locked the bus
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+D (2341) spi_master: device0 release bus
+D (2349) spi_master: device0 locked the bus
+D (2352) spi_master: device0 release bus
+D (2356) spi_master: device0 locked the bus
+D (2360) spi_master: device0 release bus
+D (2364) spi_master: device0 locked the bus
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+D (2370) spi_master: device0 release bus
+D (2380) spi_master: device0 locked the bus
+D (2383) spi_master: device0 release bus
+D (2387) spi_master: device0 locked the bus
+D (2391) spi_master: device0 release bus
+D (2395) spi_master: device0 locked the bus
+Codec 0 dir 2 type:1
+D (2401) spi_master: device0 release bus
+D (2406) spi_master: device0 locked the bus
+D (2409) spi_master: device0 release bus
+D (2413) spi_master: device0 locked the bus
+D (2418) spi_master: device0 release bus
+D (2422) spi_master: device0 locked the bus
+in: {codec: ES7210}
+D (2428) spi_master: device0 release bus
+D (2433) spi_master: device0 locked the bus
+D (2436) spi_master: device0 release bus
+D (2440) spi_master: device0 locked the bus
+D (2444) spi_master: device0 release bus
+D (2448) spi_master: device0 locked the bus
+Codec 1 dir 1 type:2
+D (2454) spi_master: device0 release bus
+D (2459) spi_master: device0 locked the bus
+D (2463) spi_master: device0 release bus
+D (2467) spi_master: device0 locked the bus
+D (2471) spi_master: device0 release bus
+D (2475) spi_master: device0 locked the bus
+I (2479) CODEC_INIT: in:1 out:1 port: 1
+D (2481) spi_master: device0 release bus
+D (2489) spi_master: device0 locked the bus
+D (2492) spi_master: device0 release bus
+D (2496) spi_master: device0 locked the bus
+D (2500) spi_master: device0 release bus
+D (2504) spi_master: device0 locked the bus
+I (2508) CODEC_INIT: Success to int i2c: 0
+D (2510) spi_master: device0 release bus
+D (2518) spi_master: device0 locked the bus
+D (2521) spi_master: device0 release bus
+D (2525) spi_master: device0 locked the bus
+D (2530) spi_master: device0 release bus
+D (2534) spi_master: device0 locked the bus
+D (2538) spi_master: device0 release bus
+I (2542) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23
+D (2550) i2s_common: tx channel is registered on I2S0 successfully
+D (2556) i2s_common: rx channel is registered on I2S0 successfully
+I (2562) CODEC_INIT: tx:0x4087e71c rx:0x4087e8d8
+D (2568) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 3840
+W (2579) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+D (2588) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 26 1/24 [mclk] 6144000 Hz [bdiv] 3 [bclk] 2048000 Hz
+D (2599) i2s_common: MCLK is pinned to GPIO19 on I2S0
+D (2604) intr_alloc: Connected src 70 to int 14 (cpu 0)
+D (2609) i2s_tdm: The tx channel on I2S0 has been initialized to TDM mode successfully
+I (2617) CODEC_INIT: output init tdm ret 0
+W (2621) i2s_common: the rx channel on I2S0 is switched from master to slave for full-duplex mode
+D (2631) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 3840
+W (2642) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384
+W (2651) i2s_tdm: the mclk/bclk ratio 3 is too small for the full-duplex rx slave (min 4), data might be sampled incorrectly, please increase mclk_multiple
+D (2666) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 26 1/24 [mclk] 6144000 Hz [bdiv] 3 [bclk] 2048000 Hz
+D (2677) i2s_common: MCLK is pinned to GPIO19 on I2S0
+D (2682) intr_alloc: Connected src 67 to int 15 (cpu 0)
+D (2687) i2s_tdm: The rx channel on I2S0 has been initialized to TDM mode successfully
+I (2695) CODEC_INIT: Input init tdm ret 0
+D (2700) i2s_common: i2s tx channel enabled
+D (2704) i2s_common: i2s rx channel enabled
+I (2708) CODEC_INIT: Init i2s 0 ok
+I (2712) CODEC_INIT: Success to init i2s: 0
+I (2717) CODEC_INIT: Success to int i2c: 0
+I (2722) CODEC_INIT: Success to init i2s: 0
+I (2727) CODEC_INIT: Get out handle 0x4087e71c port 0
+I (2737) ES8311: Work in Slave mode
+I (2743) ES7210: Work in Slave mode
+I (2750) ES7210: Enable ES7210_INPUT_MIC1
+I (2752) ES7210: Enable ES7210_INPUT_MIC2
+I (2755) ES7210: Enable ES7210_INPUT_MIC3
+I (2758) ES7210: Enable ES7210_INPUT_MIC4
+I (2762) ES7210: Enable TDM mode
+D (2767) ES8311: Set volume reg:92 db:-22
+D (2771) i2s_common: i2s tx channel disabled
+I (2772) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+D (2778) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 960
+D (2790) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz
+D (2800) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz
+I (2811) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3
+D (2818) i2s_common: i2s tx channel enabled
+D (2825) ES8311: ES8311 in I2S Format
+D (2837) ES8311: Codec is enabled
+D (2837) ES8311: Set volume reg:92 db:-22
+I (2838) Adev_Codec: Open codec device OK
+D (2838) i2s_common: i2s rx channel disabled
+I (2843) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3
+D (2849) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 960
+D (2860) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz
+D (2871) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz
+I (2881) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3
+D (2889) i2s_common: i2s rx channel enabled
+I (2894) ES7210: Bits 8
+D (2897) ES7210: ES7210 in I2S Format
+I (2906) ES7210: Enable ES7210_INPUT_MIC1
+I (2909) ES7210: Enable ES7210_INPUT_MIC2
+I (2912) ES7210: Enable ES7210_INPUT_MIC3
+I (2917) ES7210: Enable ES7210_INPUT_MIC4
+I (2922) ES7210: Enable TDM mode
+D (2923) ES7210: Codec is enabled
+I (2930) ES7210: Unmuted
+I (2931) Adev_Codec: Open codec device OK
+I (2934) Adev_Codec: Input already open
+I (2938) Adev_Codec: Input already open
+D (2943) ES8311: Set volume reg:9c db:-17
+D (3050) spi_master: device0 locked the bus
+D (3051) spi_master: device0 release bus
+D (3051) spi_master: device0 locked the bus
+D (3052) spi_master: device0 release bus
+D (3056) spi_master: device0 locked the bus
+D (3062) spi_master: device0 release bus
+D (3069) spi_master: device0 locked the bus
+D (3069) spi_master: device0 release bus
+D (3072) spi_master: device0 locked the bus
+D (3077) spi_master: device0 release bus
+D (3081) spi_master: device0 locked the bus
+D (3087) spi_master: device0 release bus
+D (3094) spi_master: device0 locked the bus
+D (3094) spi_master: device0 release bus
+D (3097) spi_master: device0 locked the bus
+D (3101) spi_master: device0 release bus
+D (3105) spi_master: device0 locked the bus
+D (3111) spi_master: device0 release bus
+D (3118) spi_master: device0 locked the bus
+D (3118) spi_master: device0 release bus
+D (3122) spi_master: device0 locked the bus
+D (3126) spi_master: device0 release bus
+D (3130) spi_master: device0 locked the bus
+D (3136) spi_master: device0 release bus
+D (3144) spi_master: device0 locked the bus
+D (3144) spi_master: device0 release bus
+D (3147) spi_master: device0 locked the bus
+D (3151) spi_master: device0 release bus
+D (3155) spi_master: device0 locked the bus
+D (3161) spi_master: device0 release bus
+D (3169) spi_master: device0 locked the bus
+D (3169) spi_master: device0 release bus
+D (3171) spi_master: device0 locked the bus
+D (3176) spi_master: device0 release bus
+D (3180) spi_master: device0 locked the bus
+D (3186) spi_master: device0 release bus
+D (3192) spi_master: device0 locked the bus
+D (3192) spi_master: device0 release bus
+D (3196) spi_master: device0 locked the bus
+D (3200) spi_master: device0 release bus
+D (3204) spi_master: device0 locked the bus
+D (3210) spi_master: device0 release bus
+D (3218) spi_master: device0 locked the bus
+D (3219) spi_master: device0 release bus
+D (3221) spi_master: device0 locked the bus
+D (3225) spi_master: device0 release bus
+D (3229) spi_master: device0 locked the bus
+D (3235) spi_master: device0 release bus
+D (3243) spi_master: device0 locked the bus
+D (3243) spi_master: device0 release bus
+D (3246) spi_master: device0 locked the bus
+D (3250) spi_master: device0 release bus
+D (3254) spi_master: device0 locked the bus
+D (3260) spi_master: device0 release bus
+D (3264) spi_master: device0 locked the bus
+D (3266) spi_master: device0 release bus
+D (3270) spi_master: device0 locked the bus
+D (3275) spi_master: device0 release bus
+D (3279) spi_master: device0 locked the bus
+D (3283) spi_master: device0 release bus
+D (3295) spi_master: device0 locked the bus
+D (3295) spi_master: device0 release bus
+D (3295) spi_master: device0 locked the bus
+D (3299) spi_master: device0 release bus
+D (3303) spi_master: device0 locked the bus
+D (3308) spi_master: device0 release bus
+D (3314) spi_master: device0 locked the bus
+D (3316) spi_master: device0 release bus
+D (3320) spi_master: device0 locked the bus
+D (3324) spi_master: device0 release bus
+D (3328) spi_master: device0 locked the bus
+D (3332) spi_master: device0 release bus
+D (3337) esp_netif_lwip: LwIP stack has been initialized
+D (3342) esp_netif_lwip: esp-netif has been successfully initialized
+D (3348) event: running task for loop 0x408670e8
+D (3353) event: created task for loop 0x408670e8
+D (3357) event: created event loop 0x408670e8
+D (3362) esp_netif_lwip: check: remote, if=0x40852e58 fn=0x42084598
+D (3368) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (3374) esp_netif_lwip: check: remote, if=0x40852e38 fn=0x42085154
+D (3380) esp_netif_objects: esp_netif_add_to_list_unsafe netif added successfully (total netifs: 1)
+D (3390) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+I (3396) pp: pp rom version: 5b8dcfa
+I (3400) net80211: net80211 rom version: 5b8dcfa
+D (3405) nvs: nvs_open_from_partition misc 1
+I (3410) wifi:wifi driver task: 4086aab8, prio:23, stack:6656, core=0
+D (3415) efuse: BLK1 REG1 [8-15], len=8 bits
+D (3419) efuse: BLK1 REG1 [0-7], len=8 bits
+D (3424) efuse: BLK1 REG0 [24-31], len=8 bits
+D (3428) efuse: BLK1 REG0 [16-23], len=8 bits
+D (3432) efuse: BLK1 REG0 [8-15], len=8 bits
+D (3437) efuse: BLK1 REG0 [0-7], len=8 bits
+D (3441) nvs: nvs_open_from_partition nvs.net80211 1
+D (3446) nvs: nvs_get opmode 1
+D (3450) nvs: nvs_get_str_or_blob sta.ssid
+D (3454) nvs: nvs_get sta.authmode 1
+D (3457) nvs: nvs_get_str_or_blob sta.pswd
+D (3462) nvs: nvs_get_str_or_blob sta.pmk
+D (3465) nvs: nvs_get sta.chan 1
+D (3469) nvs: nvs_get auto.conn 1
+D (3472) nvs: nvs_get bssid.set 1
+D (3476) nvs: nvs_get_str_or_blob sta.bssid
+D (3480) nvs: nvs_get sta.lis_intval 2
+D (3484) nvs: nvs_get sta.phym 1
+D (3487) nvs: nvs_get sta.phybw 1
+D (3490) nvs: nvs_get_str_or_blob sta.apsw
+D (3495) nvs: nvs_get_str_or_blob sta.apinfo
+D (3499) nvs: nvs_get sta.scan_method 1
+D (3503) nvs: nvs_get sta.sort_method 1
+D (3507) nvs: nvs_get sta.minrssi 1
+D (3510) nvs: nvs_get sta.minauth 1
+D (3514) nvs: nvs_get sta.pmf_e 1
+D (3517) nvs: nvs_get sta.pmf_r 1
+D (3520) nvs: nvs_get sta.btm_e 1
+D (3524) nvs: nvs_get sta.rrm_e 1
+D (3527) nvs: nvs_get sta.mbo_e 1
+D (3531) nvs: nvs_get_str_or_blob ap.ssid
+D (3535) nvs: nvs_get_str_or_blob ap.passwd
+D (3539) nvs: nvs_get_str_or_blob ap.pmk
+D (3543) nvs: nvs_get ap.chan 1
+D (3546) nvs: nvs_get ap.authmode 1
+D (3550) nvs: nvs_get ap.hidden 1
+D (3553) nvs: nvs_get ap.max.conn 1
+D (3557) nvs: nvs_get bcn.interval 2
+D (3560) nvs: nvs_get ap.phym 1
+D (3563) nvs: nvs_get ap.phybw 1
+D (3567) nvs: nvs_get ap.sndchan 1
+D (3570) nvs: nvs_get ap.pmf_e 1
+D (3574) nvs: nvs_get ap.pmf_r 1
+D (3577) nvs: nvs_get ap.p_cipher 1
+D (3580) nvs: nvs_get lorate 1
+D (3584) nvs: nvs_get_str_or_blob country
+D (3588) nvs: nvs_get ap.ftm_r 1
+D (3591) nvs: nvs_get sta.ft 1
+D (3594) nvs: nvs_get sta.owe 1
+D (3597) nvs: nvs_get sta.trans_d 1
+D (3601) nvs: nvs_get sta.sae_h2e 1
+D (3604) nvs: nvs_get sta.sae_pk_mode 1
+D (3608) nvs: nvs_get sta.bss_retry 1
+D (3612) nvs: nvs_get_str_or_blob sta.owe_data
+D (3617) nvs: nvs_get sta.he_dcm 1
+D (3620) nvs: nvs_get sta.he_dcm_c_tx 1
+D (3624) nvs: nvs_get sta.he_dcm_c_rx 1
+D (3628) nvs: nvs_get sta.he_mcs9_d 1
+D (3632) nvs: nvs_get sta.he_su_b_d 1
+D (3635) nvs: nvs_get sta.he_su_b_f_d 1
+D (3639) nvs: nvs_get sta.he_mu_b_f_d 1
+D (3643) nvs: nvs_get sta.he_cqi_f_d 1
+D (3647) nvs: nvs_get_str_or_blob sta.sae_h2e_id
+D (3652) nvs: nvs_get ap.sae_h2e 1
+D (3655) nvs: nvs_get_str_or_blob ap.pmk_info
+D (3660) nvs: nvs_get nan.phym 1
+D (3663) nvs: nvs_get sta.pwr_reset 1
+D (3667) nvs: nvs_get band_mode 1
+D (3670) nvs: nvs_get sta.phym5g 1
+D (3673) nvs: nvs_get ap.phym5g 1
+D (3677) nvs: nvs_get sta.phybw5g 1
+D (3680) nvs: nvs_get ap.phybw5g 1
+D (3684) nvs: nvs_get ap.sndchan5g 1
+D (3687) nvs: nvs_get ap.chan5g 1
+D (3691) nvs: nvs_get ap.chanisset 1
+D (3694) nvs: nvs_get ap.chan5gisset 1
+D (3698) nvs: nvs_get sta.lowrate 1
+D (3702) nvs: nvs_get ap.lowrate 1
+D (3705) nvs: nvs_get sta.rssi_5g_adj 1
+D (3709) nvs: nvs_get ap.csa_count 1
+D (3713) nvs: nvs_get ap.dtim_period 1
+D (3717) nvs: nvs_get ap.trans_d 1
+D (3720) nvs: nvs_get ap.sae_ext 1
+D (3724) nvs: nvs_get ap.bssmaxidle 2
+D (3727) nvs: nvs_get ap.pro_keep_a 1
+D (3731) nvs: nvs_get ap.gtk_rekey 2
+D (3735) nvs: nvs_get sta.vht_su_b_d 1
+D (3739) nvs: nvs_get sta.vht_mu_b_d 1
+D (3742) nvs: nvs_get sta.vht_mcs8_e 1
+D (3746) nvs: nvs_get sta.ina_time 2
+D (3750) nvs: nvs_get ap.ina_time 2
+D (3754) nvs: nvs_set ap.sndchan 1 1
+I (3757) wifi:wifi firmware version: b9f67df
+I (3761) wifi:wifi certification version: v7.0
+I (3765) wifi:config NVS flash: enabled
+I (3769) wifi:config nano formatting: disabled
+I (3773) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (3780) wifi:Init data frame dynamic rx buffer num: 16
+I (3784) wifi:Init static rx mgmt buffer num: 5
+I (3789) wifi:Init management short buffer num: 32
+I (3793) wifi:Init static tx buffer num: 16
+I (3797) wifi:Init static tx FG buffer num: 2
+I (3801) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (3807) wifi:Init static rx buffer num: 10
+I (3811) wifi:Init dynamic rx buffer num: 16
+D (3815) wifi:mms: 3->2
+D (3817) wifi:Reset scan defaults in ms : min,max,passive,chan_dwell :(0,120,360,30)
+I (3826) wifi_init: accept mbox: 6
+I (3829) wifi_init: tcpip mbox: 32
+I (3833) wifi_init: udp mbox: 6
+I (3837) wifi_init: tcp mbox: 6
+I (3840) wifi_init: tcp tx win: 5760
+I (3845) wifi_init: tcp rx win: 5760
+I (3849) wifi_init: tcp mss: 1240
+I (3853) wifi_init: WiFi IRAM OP enabled
+I (3858) wifi_init: WiFi RX IRAM OP enabled
+I (3862) wifi_init: WiFi SLP IRAM OP enabled
+D (3868) nvs: nvs_get opmode 1
+D (3871) wifi:clear blacklist
+W (3873) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (3882) phy_init: phy_version 345,552b044,Jul 14 2026,10:37:00
+D (3889) phy_init: loading PHY init data from application binary
+D (3895) nvs: nvs_open_from_partition phy 0
+D (3899) nvs: nvs_get cal_version 4
+D (3902) nvs: nvs_get_str_or_blob cal_mac
+D (3907) efuse: BLK1 REG1 [8-15], len=8 bits
+D (3911) efuse: BLK1 REG1 [0-7], len=8 bits
+D (3915) efuse: BLK1 REG0 [24-31], len=8 bits
+D (3919) efuse: BLK1 REG0 [16-23], len=8 bits
+D (3924) efuse: BLK1 REG0 [8-15], len=8 bits
+D (3928) efuse: BLK1 REG0 [0-7], len=8 bits
+D (3932) efuse: BLK1 REG1 [24-31], len=8 bits
+D (3937) efuse: BLK1 REG1 [16-23], len=8 bits
+D (3941) nvs: nvs_get_str_or_blob cal_data
+D (3947) nvs: nvs_close 3
+D (3948) efuse: BLK1 REG1 [8-15], len=8 bits
+D (3952) efuse: BLK1 REG1 [0-7], len=8 bits
+D (3957) efuse: BLK1 REG0 [24-31], len=8 bits
+D (3961) efuse: BLK1 REG0 [16-23], len=8 bits
+D (3965) efuse: BLK1 REG0 [8-15], len=8 bits
+D (3970) efuse: BLK1 REG0 [0-7], len=8 bits
+D (3974) efuse: BLK1 REG1 [24-31], len=8 bits
+D (3978) efuse: BLK1 REG1 [16-23], len=8 bits
+D (3988) temperature_sensor: range changed, change to index 2
+D (4043) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+D (4044) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+I (4050) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+D (4056) wifi:filter: set rx policy=0
+I (4059) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (4063) wifi:enable tsf
+D (4065) wifi:filter: set rx policy=1
+D (4069) wifi:connect status 0 -> 0
+D (4073) event: running post WIFI_EVENT:43 with handler 0x4200d158 and context 0x408785e0 on loop 0x408670e8
+D (4082) event: running post WIFI_EVENT:2 with handler 0x42088b40 and context 0x4086816c on loop 0x408670e8
+D (4092) wifi_init_default: wifi_start esp-netif:0x4086800c event-id2
+D (4098) wifi_init_default: WIFI mac address: 20 6e f1 16 e0 a4
+D (4105) esp_netif_lwip: check: remote, if=0x4086800c fn=0x420845b4
+D (4111) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (4116) esp_netif_handlers: esp_netif action has started with netif0x4086800c from event_id=2
+D (4125) esp_netif_lwip: check: remote, if=0x4086800c fn=0x42085cc0
+D (4131) esp_netif_lwip: esp_netif_start_api 0x4086800c
+D (4137) esp_netif_lwip: esp_netif_get_hostname esp_netif:0x4086800c
+D (4143) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (4149) event: running post WIFI_EVENT:2 with handler 0x4200d158 and context 0x408785e0 on loop 0x408670e8
+D (4159) wifi:Start wifi connect
+D (4161) wifi:connect status 0 -> 0
+D (4165) wifi:connect chan=0
+D (4167) wifi:first chan=6
+D (4170) wifi:connect status 0 -> 1
+D (4173) wifi:filter: set rx policy=3
+D (4176) wifi:clear scan ap list
+D (4179) wifi:start scan: type=0x50f, priority=2, cb=0x420e10f2, arg=0x0, ss_state=0x1, time=364046, index=0
+D (4189) wifi:perform scan: ss_state=0x9, chan<6,0>, dur<0,120>
+D (4204) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=50:fe:39:e6:47:92
+D (4205) wifi:profile match: ss_state=0x7
+D (4205) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x7
+D (4210) wifi:find first mathched ssid, scan done
+D (4215) wifi:filter: set rx policy=4
+D (4218) wifi:first chan=1
+D (4220) wifi:handoff_cb: status=0
+D (4224) wifi:ap found, mac=50:fe:39:e6:47:92
+D (4228) wifi:going for connection with bssid=50:fe:39:e6:47:92
+D (4233) wifi:new_bss=0x4084c4a0, cur_bss=0x0, new_chan=<6,0>, cur_chan=1
+D (4240) wifi:filter: set rx policy=5
+I (4243) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0
+D (4251) wifi:connect_op: status=0, auth=5, cipher=3 
+I (4255) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x3
+D (4262) wifi:auth mode is not none
+D (4266) wifi:connect_bss: auth=1, reconnect=0
+I (4270) wifi:state: init -> auth (0xb0)
+D (4273) nvs: nvs_get sta.pwr_reset 1
+D (4278) wifi:start 1000ms AUTH timer
+D (4281) wifi:clear scan ap list
+D (4284) event: running post WIFI_EVENT:43 with handler 0x4200d158 and context 0x408785e0 on loop 0x408670e8
+D (4289) wifi:recv auth: seq=2, status=0, algo=0
+I (4298) wifi:state: auth -> assoc (0x0)
+D (4301) nvs: nvs_get sta.pwr_reset 1
+D (4306) wifi:restart connect 1000ms timer for assoc
+D (4311) spi_master: device0 locked the bus
+D (4314) spi_master: device0 release bus
+D (4318) spi_master: device0 locked the bus
+D (4322) spi_master: device0 release bus
+D (4326) spi_master: device0 locked the bus
+D (4331) spi_master: device0 release bus
+D (4320) wifi:recv assoc: type=0x10
+I (4338) wifi:(assoc)RESP, Extended Capabilities length:11, operating_mode_notification:0
+I (4346) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (4357) wifi:Extended Capabilities length:11, operating_mode_notification:1
+D (4338) spi_master: device0 locked the bus
+D (4367) spi_master: device0 release bus
+D (4371) spi_master: device0 locked the bus
+D (4376) spi_master: device0 release bus
+D (4380) spi_master: device0 locked the bus
+D (4384) spi_master: device0 release bus
+I (4365) wifi:BSS max idle period:291(1000TU), protected keep alive:FALSE
+D (4395) wifi:filter: set rx policy=6
+I (4398) wifi:state: assoc -> run (0x10)
+D (4401) nvs: nvs_get sta.pwr_reset 1
+D (4394) spi_master: device0 locked the bus
+D (4409) spi_master: device0 release bus
+D (4413) spi_master: device0 locked the bus
+D (4418) spi_master: device0 release bus
+D (4422) spi_master: device0 locked the bus
+D (4426) spi_master: device0 release bus
+I (4405) wifi:(trc)phytype:CBW20-SGI, snr:57, maxRate:144, highestRateIdx:0
+W (4437) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (4445) wifi:(trc)band:2G, rate(S-MCS7, rateIdx:0), ampdu(rate:S-MCS7, schedIdx(0, stop:8)), snr:57, ampduState:wait operational
+I (4456) wifi:ifidx:0, rssi:-29, nf:-86, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (4467) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:0(no restriction)
+D (4474) wifi:start 10s connect timer for 4 way handshake
+D (4482) nvs: nvs_get sta.phym 1
+D (4482) nvs: nvs_get sta.lowrate 1
+I (4486) clara_net: Wi-Fi protocols limited to 11b/g/n mask=0x07
+I (4491) wifi:connected with LDKJ, aid = 5, channel 6, BW20, bssid = 50:fe:39:e6:47:92
+I (4500) wifi:security: WPA2-PSK, phy: bgn, rssi: -29, cipher(pairwise:0x3, group:0x3), pmf:0
+D (4509) wifi:remove all except 50:fe:39:e6:47:92 from rc list
+D (4514) wifi:clear blacklist
+D (4517) nvs: nvs_set sta.chan 1 6
+D (4520) nvs: nvs_set_blob sta.apinfo 700
+D (4525) wifi:filter: set rx policy=7
+I (4528) wifi:pm start, type: 1, twt_start:0
+I (4532) wifi:pm start, type:1, aid:0x5, trans-BSSID:50:fe:39:e6:47:92, BSSID[5]:0x92, mbssid(max-indicator:0, index:0), he:0
+I (4543) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (4551) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+D (4559) wifi:Send sta connected event
+D (4563) wifi:connect status 1 -> 5
+D (4566) wifi:obss scan is disabled
+D (4569) wifi:start obss scan: obss scan is stopped
+D (4574) event: running post WIFI_EVENT:4 with handler 0x42088b60 and context 0x408681cc on loop 0x408670e8
+D (4578) wifi:bcnd: 0 -> 3752
+I (4586) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+D (4593) esp_netif_handlers: esp_netif action connected with netif0x4086800c from event_id=4
+D (4600) esp_netif_lwip: check: remote, if=0x4086800c fn=0x420858a4
+D (4607) esp_netif_lwip: esp_netif_up_api esp_netif:0x4086800c
+D (4613) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (4618) esp_netif_lwip: check: remote, if=0x4086800c fn=0x42084bb6
+D (4625) esp_netif_lwip: esp_netif_dhcpc_start_api esp_netif:0x4086800c
+D (4631) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x4086800c
+D (4638) esp_netif_lwip: if0x4086800c start ip lost tmr: interval=120
+D (4645) esp_netif_lwip: starting dhcp client
+D (4650) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (4655) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (4660) event: running post WIFI_EVENT:4 with handler 0x4200d158 and context 0x408785e0 on loop 0x408670e8
+D (4670) wifi:eb is dhcp or dns sport = 68, dport = 67
+I (4675) wifi:Set ps type: 0, coexist: 0
+I (4679) clara_c6: Clara UI ready; touch the Clara tile
+I (4684) main_task: Returned from app_main()
+D (4695) spi_master: device0 locked the bus
+D (4695) spi_master: device0 release bus
+D (4697) spi_master: device0 locked the bus
+D (4702) spi_master: device0 release bus
+D (4706) spi_master: device0 locked the bus
+D (4710) spi_master: device0 release bus
+D (5721) esp_netif_lwip: esp_netif_internal_dhcpc_cb lwip-netif:0x4086809c
+D (5721) esp_netif_lwip: check: local, if=0x4086800c fn=0x420843a4
+D (5723) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x4086800c
+D (5730) esp_netif_lwip: if0x4086800c ip changed=1
+D (5734) event: running post IP_EVENT:0 with handler 0x42088c58 and context 0x408682a0 on loop 0x408670e8
+D (5744) wifi_init_default: Got IP wifi default handler entered
+D (5750) esp_netif_handlers: esp_netif action got_ip with netif0x4086800c from event_id=0
+I (5758) esp_netif_handlers: sta ip: 192.168.31.147, mask: 255.255.255.0, gw: 192.168.31.1
+D (5767) event: running post IP_EVENT:0 with handler 0x4200d158 and context 0x40878600 on loop 0x408670e8
+D (5777) esp_netif_lwip: check: remote, if=0x4086800c fn=0x420849c2
+D (5783) esp_netif_lwip: esp_netif_get_dns_info: esp_netif=0x4086800c type=0
+D (5790) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+I (5796) clara_net: DHCP DNS main=192.168.31.1
+D (5801) esp_netif_lwip: check: remote, if=0x4086800c fn=0x420848f2
+D (5808) esp_netif_lwip: esp_netif_set_dns_info: if=0x4086800c type=1 dns=50505df
+D (5815) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (5821) esp_netif_lwip: check: remote, if=0x4086800c fn=0x420848f2
+D (5827) esp_netif_lwip: esp_netif_set_dns_info: if=0x4086800c type=2 dns=1010101
+D (5835) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (5848) spi_master: device0 locked the bus
+D (5849) spi_master: device0 release bus
+D (5849) spi_master: device0 locked the bus
+D (5853) spi_master: device0 release bus
+D (5857) spi_master: device0 locked the bus
+D (5861) spi_master: device0 release bus
+D (5868) spi_master: device0 locked the bus
+D (5869) spi_master: device0 release bus
+D (5873) spi_master: device0 locked the bus
+D (5878) spi_master: device0 release bus
+D (5882) spi_master: device0 locked the bus
+D (5886) spi_master: device0 release bus
+I (12679) clara_c6: Boot network self-test begin
+D (12679) wifi:Start wifi scan
+D (12679) wifi:ssid=, channel=0, hidden=1, type=active, active=<100,300>, passive=0
+D (12683) wifi:home_channel_dwell_time=0
+D (12687) wifi:first chan=6
+D (12690) wifi:Executing offchan operation 0x420efc60
+D (12694) wifi:filter: set rx policy=3
+D (12697) wifi:clear scan ap list
+D (12700) wifi:start scan: type=0x10f, priority=3, cb=0x0, arg=0x4084df4c, ss_state=0x1, time=8885248, index=0
+D (12710) wifi:perform scan: ss_state=0x9, chan<6,0>, dur<100,300>
+D (13016) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13047) wifi:Executing offchan operation 0x420ef984
+D (13047) wifi:perform scan: ss_state=0x9, chan<1,0>, dur<100,300>
+D (13349) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13380) wifi:Executing offchan operation 0x420ef984
+D (13380) wifi:perform scan: ss_state=0x9, chan<2,0>, dur<100,300>
+D (13481) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13512) wifi:Executing offchan operation 0x420ef984
+D (13512) wifi:perform scan: ss_state=0x9, chan<3,0>, dur<100,300>
+D (13613) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13644) wifi:Executing offchan operation 0x420ef984
+D (13644) wifi:perform scan: ss_state=0x9, chan<4,0>, dur<100,300>
+D (13745) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13777) wifi:Executing offchan operation 0x420ef984
+D (13777) wifi:perform scan: ss_state=0x9, chan<5,0>, dur<100,300>
+D (13878) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (13909) wifi:Executing offchan operation 0x420ef984
+D (13909) wifi:perform scan: ss_state=0x9, chan<7,0>, dur<100,300>
+D (14010) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (14041) wifi:Executing offchan operation 0x420ef984
+D (14041) wifi:perform scan: ss_state=0x9, chan<8,0>, dur<100,300>
+D (14142) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (14173) wifi:Executing offchan operation 0x420ef984
+D (14174) wifi:perform scan: ss_state=0x9, chan<9,0>, dur<100,300>
+D (14474) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (14511) wifi:Executing offchan operation 0x420ef984
+D (14511) wifi:perform scan: ss_state=0x9, chan<10,0>, dur<100,300>
+D (14612) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (14645) wifi:Executing offchan operation 0x420ef984
+D (14645) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<100,300>
+D (14946) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (14978) wifi:Executing offchan operation 0x420ef984
+D (14978) wifi:perform scan: ss_state=0x9, chan<12,0>, dur<360,360>
+D (15338) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (15369) wifi:Executing offchan operation 0x420ef984
+D (15370) wifi:perform scan: ss_state=0x9, chan<13,0>, dur<360,360>
+D (15730) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (15762) wifi:Executing offchan operation 0x420ef984
+D (15762) wifi:perform scan: ss_state=0x9, chan<14,0>, dur<360,360>
+D (16123) wifi:scan end: arg=0x4084e358, status=0, ss_state=0x3
+D (16155) wifi:Executing offchan operation 0x420ef984
+D (16156) wifi:filter: set rx policy=4
+D (16156) wifi:first chan=1
+D (16156) wifi:Send scan done event: status=0, apnum=19
+D (16160) event: running post WIFI_EVENT:1 with handler 0x4200d158 and context 0x408785e0 on loop 0x408670e8
+I (16217) clara_net: Wi-Fi scan found 19 AP(s)
+I (16217) clara_net: scan[0] ssid="" rssi=-29 ch=6 auth=3
+I (16217) clara_net: scan[1] ssid="LDKJ" rssi=-30 ch=6 auth=3
+I (16224) clara_net: scan[2] ssid="USYDer" rssi=-50 ch=1 auth=4
+I (16230) clara_net: scan[3] ssid="Be_my_guest" rssi=-52 ch=1 auth=4
+I (16237) clara_net: scan[4] ssid="henlyn-ai" rssi=-56 ch=6 auth=3
+I (16244) clara_net: scan[5] ssid="" rssi=-57 ch=11 auth=4
+I (16250) clara_net: scan[6] ssid="TP-LINK_84D2" rssi=-61 ch=11 auth=4
+I (16257) clara_net: scan[7] ssid="CU_g8jn" rssi=-61 ch=11 auth=4
+I (16264) clara_net: scan[8] ssid="AMICRO" rssi=-63 ch=13 auth=4
+I (16271) clara_net: scan[9] ssid="HLSEMI_Wi-Fi5" rssi=-65 ch=11 auth=3
+I (16278) clara_net: scan[10] ssid="I-CUBE" rssi=-71 ch=1 auth=0
+I (16285) clara_net: scan[11] ssid="DIRECT-B2-HP DeskJet 2800 series" rssi=-72 ch=9 auth=3
+I (16294) clara_net: scan[12] ssid="ChinaNet-6xVX" rssi=-75 ch=1 auth=4
+I (16301) clara_net: scan[13] ssid="I-CUBE" rssi=-75 ch=11 auth=0
+I (16308) clara_net: scan[14] ssid="SHQJZY" rssi=-77 ch=6 auth=4
+I (16315) clara_net: scan[15] ssid="Phasecom" rssi=-78 ch=9 auth=3
+I (16321) clara_net: scan[16] ssid="HLSEMI" rssi=-78 ch=11 auth=3
+I (16328) clara_net: scan[17] ssid="" rssi=-80 ch=13 auth=4
+I (16334) clara_net: scan[18] ssid="" rssi=-80 ch=13 auth=0
+D (16341) wifi:stop scan
+D (16343) wifi:eb is dhcp or dns sport = 36098, dport = 53
+I (16364) clara_net: diag dns clare.vinex.top -> 104.21.35.182
+I (16561) clara_net: diag tcp clare.vinex.top:443 CONNECTED
+I (21563) clara_net: diag tcp 1.1.1.1:443 TIMEOUT/ERR ret=0
+I (21563) clara_net: Create session URL ready=1
+I (21564) clara_net: HTTP before init free8=31824 largest8=14592 free_internal=31824 largest_internal=14592
+D (21574) HTTP_CLIENT: set post file length = 19
+D (21578) HTTP_CLIENT: Begin connect to: https://clare.vinex.top:443
+D (21585) esp-tls: host:clare.vinex.top: strlen 15
+D (21590) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182
+D (21596) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443
+D (21849) esp-tls: handshake in progress...
+I (21849) mbedtls: ssl_tls.c:4702 => handshake
+
+I (21849) mbedtls: ssl_msg.c:2356 => flush output
+
+I (21853) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (21858) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_HELLO_REQUEST
+
+D (21866) mbedtls: ssl_misc.h:1446 handshake state: 0 (MBEDTLS_SSL_HELLO_REQUEST) -> 1 (MBEDTLS_SSL_CLIENT_HELLO)
+
+I (21876) mbedtls: ssl_msg.c:2356 => flush output
+
+I (21882) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (21888) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_CLIENT_HELLO
+
+I (21895) mbedtls: ssl_client.c:925 => write client hello
+
+D (21901) mbedtls: ssl_client.c:728 client hello, current time: 35853
+
+D (21909) mbedtls: ssl_client.c:491 dumping 'client hello, random bytes' (32 bytes)
+
+D (21916) mbedtls: ssl_client.c:491 0000:  00 00 8c 0d bd f9 0b 58 2c 24 02 29 f7 c2 84 22  .......X,$.)..."
+
+D (21926) mbedtls: ssl_client.c:491 0010:  66 e6 fe 10 d8 12 4d 47 60 de 23 ad a9 cb 05 8b  f.....MG`.#.....
+
+D (21936) mbedtls: ssl_client.c:516 dumping 'session id' (0 bytes)
+
+D (21943) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02c, TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (21953) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c030, TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384
+
+D (21963) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ad, TLS-ECDHE-ECDSA-WITH-AES-256-CCM
+
+D (21973) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c024, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (21983) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c028, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384
+
+D (21994) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00a, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA
+
+D (22004) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c014, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA
+
+D (22014) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0af, TLS-ECDHE-ECDSA-WITH-AES-256-CCM-8
+
+D (22024) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05d, TLS-ECDHE-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (22034) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c061, TLS-ECDHE-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (22045) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c049, TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (22055) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04d, TLS-ECDHE-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (22065) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02b, TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (22076) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02f, TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
+
+D (22086) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ac, TLS-ECDHE-ECDSA-WITH-AES-128-CCM
+
+D (22096) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c023, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (22106) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c027, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256
+
+D (22117) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c009, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA
+
+D (22127) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c013, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA
+
+D (22137) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ae, TLS-ECDHE-ECDSA-WITH-AES-128-CCM-8
+
+D (22147) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05c, TLS-ECDHE-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (22157) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c060, TLS-ECDHE-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (22168) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c048, TLS-ECDHE-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (22178) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04c, TLS-ECDHE-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (22188) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009d, TLS-RSA-WITH-AES-256-GCM-SHA384
+
+D (22198) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09d, TLS-RSA-WITH-AES-256-CCM
+
+D (22207) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003d, TLS-RSA-WITH-AES-256-CBC-SHA256
+
+D (22217) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 0035, TLS-RSA-WITH-AES-256-CBC-SHA
+
+D (22226) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c032, TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384
+
+D (22237) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02a, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA384
+
+D (22247) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00f, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA
+
+D (22257) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02e, TLS-ECDH-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (22267) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c026, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (22277) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c005, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA
+
+D (22287) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a1, TLS-RSA-WITH-AES-256-CCM-8
+
+D (22297) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05f, TLS-ECDH-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (22307) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c063, TLS-ECDH-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (22317) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c051, TLS-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (22327) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04b, TLS-ECDH-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (22337) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04f, TLS-ECDH-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (22348) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03d, TLS-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (22358) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009c, TLS-RSA-WITH-AES-128-GCM-SHA256
+
+D (22367) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09c, TLS-RSA-WITH-AES-128-CCM
+
+D (22376) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003c, TLS-RSA-WITH-AES-128-CBC-SHA256
+
+D (22386) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 002f, TLS-RSA-WITH-AES-128-CBC-SHA
+
+D (22396) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c031, TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256
+
+D (22406) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c029, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA256
+
+D (22416) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00e, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA
+
+D (22426) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02d, TLS-ECDH-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (22436) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c025, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (22446) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c004, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA
+
+D (22456) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a0, TLS-RSA-WITH-AES-128-CCM-8
+
+D (22466) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05e, TLS-ECDH-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (22476) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c062, TLS-ECDH-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (22486) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c050, TLS-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (22496) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04a, TLS-ECDH-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (22507) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04e, TLS-ECDH-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (22517) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03c, TLS-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (22527) mbedtls: ssl_client.c:392 adding EMPTY_RENEGOTIATION_INFO_SCSV
+
+D (22534) mbedtls: ssl_client.c:401 client hello, got 59 cipher suites
+
+D (22540) mbedtls: ssl_client.c:41 client hello, adding server name extension: clare.vinex.top
+
+D (22549) mbedtls: ssl_client.c:235 client hello, adding supported_groups extension
+
+D (22557) mbedtls: ssl_client.c:254 got supported group(001d)
+
+D (22563) mbedtls: ssl_client.c:286 NamedGroup: x25519 ( 1d )
+
+D (22569) mbedtls: ssl_client.c:254 got supported group(0017)
+
+D (22575) mbedtls: ssl_client.c:286 NamedGroup: secp256r1 ( 17 )
+
+D (22581) mbedtls: ssl_client.c:254 got supported group(0018)
+
+D (22587) mbedtls: ssl_client.c:286 NamedGroup: secp384r1 ( 18 )
+
+D (22594) mbedtls: ssl_client.c:254 got supported group(0019)
+
+D (22600) mbedtls: ssl_client.c:286 NamedGroup: secp521r1 ( 19 )
+
+D (22606) mbedtls: ssl_client.c:254 got supported group(001a)
+
+D (22612) mbedtls: ssl_client.c:286 NamedGroup: bp256r1 ( 1a )
+
+D (22618) mbedtls: ssl_client.c:254 got supported group(001b)
+
+D (22624) mbedtls: ssl_client.c:286 NamedGroup: bp384r1 ( 1b )
+
+D (22630) mbedtls: ssl_client.c:254 got supported group(001c)
+
+D (22636) mbedtls: ssl_client.c:286 NamedGroup: bp512r1 ( 1c )
+
+D (22642) mbedtls: ssl_client.c:306 dumping 'Supported groups extension' (16 bytes)
+
+D (22650) mbedtls: ssl_client.c:306 0000:  00 0e 00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c  ................
+
+D (22660) mbedtls: ssl_tls.c:9483 adding signature_algorithms extension
+
+D (22667) mbedtls: ssl_tls.c:9503 got signature scheme [603] ecdsa_secp521r1_sha512
+
+D (22675) mbedtls: ssl_tls.c:9512 sent signature scheme [603] ecdsa_secp521r1_sha512
+
+D (22683) mbedtls: ssl_tls.c:9503 got signature scheme [806] rsa_pss_rsae_sha512
+
+D (22690) mbedtls: ssl_tls.c:9503 got signature scheme [601] rsa_pkcs1_sha512
+
+D (22698) mbedtls: ssl_tls.c:9512 sent signature scheme [601] rsa_pkcs1_sha512
+
+D (22705) mbedtls: ssl_tls.c:9503 got signature scheme [503] ecdsa_secp384r1_sha384
+
+D (22713) mbedtls: ssl_tls.c:9512 sent signature scheme [503] ecdsa_secp384r1_sha384
+
+D (22721) mbedtls: ssl_tls.c:9503 got signature scheme [805] rsa_pss_rsae_sha384
+
+D (22729) mbedtls: ssl_tls.c:9503 got signature scheme [501] rsa_pkcs1_sha384
+
+D (22736) mbedtls: ssl_tls.c:9512 sent signature scheme [501] rsa_pkcs1_sha384
+
+D (22744) mbedtls: ssl_tls.c:9503 got signature scheme [403] ecdsa_secp256r1_sha256
+
+D (22751) mbedtls: ssl_tls.c:9512 sent signature scheme [403] ecdsa_secp256r1_sha256
+
+D (22759) mbedtls: ssl_tls.c:9503 got signature scheme [804] rsa_pss_rsae_sha256
+
+D (22767) mbedtls: ssl_tls.c:9503 got signature scheme [401] rsa_pkcs1_sha256
+
+D (22774) mbedtls: ssl_tls.c:9512 sent signature scheme [401] rsa_pkcs1_sha256
+
+D (22782) mbedtls: ssl_tls12_client.c:106 client hello, adding supported_point_formats extension
+
+D (22791) mbedtls: ssl_tls12_client.c:307 client hello, adding encrypt_then_mac extension
+
+D (22799) mbedtls: ssl_tls12_client.c:339 client hello, adding extended_master_secret extension
+
+D (22808) mbedtls: ssl_tls12_client.c:373 client hello, adding session ticket extension
+
+D (22817) mbedtls: ssl_client.c:693 client hello, total extension length: 80
+
+D (22824) mbedtls: ssl_client.c:695 dumping 'client hello extensions' (80 bytes)
+
+D (22832) mbedtls: ssl_client.c:695 0000:  00 50 00 00 00 14 00 12 00 00 0f 63 6c 61 72 65  .P.........clare
+
+D (22842) mbedtls: ssl_client.c:695 0010:  2e 76 69 6e 65 78 2e 74 6f 70 00 0a 00 10 00 0e  .vinex.top......
+
+D (22852) mbedtls: ssl_client.c:695 0020:  00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c 00 0d  ................
+
+D (22862) mbedtls: ssl_client.c:695 0030:  00 0e 00 0c 06 03 06 01 05 03 05 01 04 03 04 01  ................
+
+D (22872) mbedtls: ssl_client.c:695 0040:  00 0b 00 02 01 00 00 16 00 00 00 17 00 00 00 23  ...............#
+
+I (22882) mbedtls: ssl_msg.c:2787 => write handshake message
+
+I (22888) mbedtls: ssl_msg.c:2947 => write record
+
+D (22894) mbedtls: ssl_msg.c:3031 output record: msgtype = 22, version = [3:3], msglen = 243
+
+I (22903) mbedtls: ssl_msg.c:3084 <= write record
+
+I (22908) mbedtls: ssl_msg.c:2908 <= write handshake message
+
+D (22915) mbedtls: ssl_misc.h:1446 handshake state: 1 (MBEDTLS_SSL_CLIENT_HELLO) -> 2 (MBEDTLS_SSL_SERVER_HELLO)
+
+I (22925) mbedtls: ssl_client.c:1018 <= write client hello
+
+I (22931) mbedtls: ssl_msg.c:2356 => flush output
+
+I (22937) mbedtls: ssl_msg.c:2370 message length: 248, out_left: 248
+
+I (22945) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 248 (-0xffffff08)
+
+I (22952) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (22957) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_HELLO
+
+I (22965) mbedtls: ssl_tls12_client.c:1196 => parse server hello
+
+I (22972) mbedtls: ssl_msg.c:4338 => read record
+
+I (22977) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (22983) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (23186) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (23186) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (23189) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (23195) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 67
+
+I (23203) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (23209) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 72
+
+I (23215) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 72
+
+I (23221) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+
+I (23230) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (23235) mbedtls: ssl_msg.c:3245 handshake message: msglen = 67, type = 2, hslen = 67
+
+D (23244) mbedtls: ssl_msg.c:3383 sole handshake fragment: 67, 0..67 of 67
+
+I (23251) mbedtls: ssl_msg.c:4410 <= read record
+
+D (23256) mbedtls: ssl_tls12_client.c:1270 dumping 'server hello, version' (2 bytes)
+
+D (23264) mbedtls: ssl_tls12_client.c:1270 0000:  03 03                                            ..
+
+D (23274) mbedtls: ssl_tls12_client.c:1291 server hello, current time: 1787666450
+
+D (23281) mbedtls: ssl_tls12_client.c:1301 dumping 'server hello, random bytes' (32 bytes)
+
+D (23290) mbedtls: ssl_tls12_client.c:1301 0000:  6a 8d a0 12 b6 88 48 f9 61 e5 d6 a7 24 dd e0 cd  j.....H.a...$...
+
+D (23300) mbedtls: ssl_tls12_client.c:1301 0010:  48 bb de cd a4 59 1d 71 44 4f 57 4e 47 52 44 01  H....Y.qDOWNGRD.
+
+D (23311) mbedtls: ssl_tls12_client.c:1363 server hello, session id len.: 0
+
+D (23318) mbedtls: ssl_tls12_client.c:1364 dumping 'server hello, session id' (0 bytes)
+
+D (23327) mbedtls: ssl_misc.h:1446 handshake state: 2 (MBEDTLS_SSL_SERVER_HELLO) -> 3 (MBEDTLS_SSL_SERVER_CERTIFICATE)
+
+D (23338) mbedtls: ssl_tls12_client.c:1388 no session has been resumed
+
+D (23344) mbedtls: ssl_tls12_client.c:1391 server hello, chosen ciphersuite: c02b
+
+D (23352) mbedtls: ssl_tls12_client.c:1392 server hello, compress alg.: 0
+
+D (23359) mbedtls: ssl_tls12_client.c:1427 server hello, chosen ciphersuite: TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+I (23370) mbedtls: ssl_tls12_client.c:1448 server hello, total extension length: 23
+
+D (23378) mbedtls: ssl_tls12_client.c:1593 unknown extension found: 0 (ignoring)
+
+D (23386) mbedtls: ssl_tls12_client.c:1518 found extended_master_secret extension
+
+D (23394) mbedtls: ssl_tls12_client.c:1466 found renegotiation extension
+
+D (23401) mbedtls: ssl_tls12_client.c:1545 found supported_point_formats extension
+
+D (23408) mbedtls: ssl_tls12_client.c:1531 found session_ticket extension
+
+I (23415) mbedtls: ssl_tls12_client.c:1662 <= parse server hello
+
+I (23422) mbedtls: ssl_msg.c:2356 => flush output
+
+I (23428) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (23433) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_CERTIFICATE
+
+I (23441) mbedtls: ssl_tls.c:8073 => parse certificate
+
+I (23447) mbedtls: ssl_msg.c:4338 => read record
+
+I (23453) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (23458) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (23465) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (23471) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (23479) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (23485) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 3409
+
+I (23493) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (23499) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 3414
+
+I (23506) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 3414
+
+I (23512) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 3409 (-0xfffff2af)
+
+I (23520) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (23526) mbedtls: ssl_msg.c:3245 handshake message: msglen = 3409, type = 11, hslen = 3409
+
+D (23535) mbedtls: ssl_msg.c:3383 sole handshake fragment: 3409, 0..3409 of 3409
+
+I (23542) mbedtls: ssl_msg.c:4410 <= read record
+
+I (23550) mbedtls: ssl_msg.c:5358 => send alert message
+
+D (23554) mbedtls: ssl_msg.c:5359 send alert level=2 message=42
+
+I (23560) mbedtls: ssl_msg.c:2947 => write record
+
+D (23565) mbedtls: ssl_msg.c:3031 output record: msgtype = 21, version = [3:3], msglen = 2
+
+I (23574) mbedtls: ssl_msg.c:2356 => flush output
+
+I (23579) mbedtls: ssl_msg.c:2370 message length: 7, out_left: 7
+
+I (23587) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 7 (-0xfffffff9)
+
+I (23594) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (23599) mbedtls: ssl_msg.c:3084 <= write record
+
+I (23605) mbedtls: ssl_msg.c:5370 <= send alert message
+
+W (23611) mbedtls: ssl_tls.c:7937  mbedtls_x509_crt_parse_der() returned -16256 (-0x3f80)
+
+I (23620) mbedtls: ssl_tls.c:4713 <= handshake
+
+E (23625) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3F80
+I (23632) esp-tls-mbedtls: (FFFFC080): PK - Memory allocation failed
+D (23639) esp-tls-mbedtls: Skipping certificate verification - no peer certificate received
+E (23648) esp-tls: Failed to open new connection
+E (23653) transport_base: Failed to open a new connection
+E (23660) HTTP_CLIENT: Connection failed, sock < 0
+D (23665) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:0 posted to loop 0x408670e8
+I (23675) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (23681) clara_net: HTTP request failed err=28674 status=0 tls=16256 flags=0x0
+I (23690) clara_c6: Network error  •  check Wi-Fi/API
+I (23697) clara_c6: Boot network self-test session err=28674 (attempt 1/4)
+W (23703) clara_c6: Boot network self-test attempt 1 failed, retrying in 5000 ms
+I (28711) clara_net: Create session URL ready=1
+I (28711) clara_net: HTTP before init free8=31440 largest8=14592 free_internal=31440 largest_internal=14592
+D (28716) HTTP_CLIENT: set post file length = 19
+D (28720) HTTP_CLIENT: Begin connect to: https://clare.vinex.top:443
+D (28727) esp-tls: host:clare.vinex.top: strlen 15
+D (28732) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182
+D (28738) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443
+D (28997) esp-tls: handshake in progress...
+I (28997) mbedtls: ssl_tls.c:4702 => handshake
+
+I (28997) mbedtls: ssl_msg.c:2356 => flush output
+
+I (29001) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (29006) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_HELLO_REQUEST
+
+D (29014) mbedtls: ssl_misc.h:1446 handshake state: 0 (MBEDTLS_SSL_HELLO_REQUEST) -> 1 (MBEDTLS_SSL_CLIENT_HELLO)
+
+I (29024) mbedtls: ssl_msg.c:2356 => flush output
+
+I (29030) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (29036) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_CLIENT_HELLO
+
+I (29043) mbedtls: ssl_client.c:925 => write client hello
+
+D (29049) mbedtls: ssl_client.c:728 client hello, current time: 35860
+
+D (29057) mbedtls: ssl_client.c:491 dumping 'client hello, random bytes' (32 bytes)
+
+D (29064) mbedtls: ssl_client.c:491 0000:  00 00 8c 14 2c 0f 9e f4 8a 64 fd 81 84 be 19 f3  ....,....d......
+
+D (29074) mbedtls: ssl_client.c:491 0010:  9a 42 5b c9 d5 6b d3 e8 b9 76 9d b5 95 e3 95 45  .B[..k...v.....E
+
+D (29084) mbedtls: ssl_client.c:516 dumping 'session id' (0 bytes)
+
+D (29091) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02c, TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (29101) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c030, TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384
+
+D (29111) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ad, TLS-ECDHE-ECDSA-WITH-AES-256-CCM
+
+D (29121) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c024, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (29131) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c028, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384
+
+D (29142) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00a, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA
+
+D (29152) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c014, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA
+
+D (29162) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0af, TLS-ECDHE-ECDSA-WITH-AES-256-CCM-8
+
+D (29172) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05d, TLS-ECDHE-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (29182) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c061, TLS-ECDHE-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (29193) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c049, TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (29203) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04d, TLS-ECDHE-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (29213) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02b, TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (29224) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02f, TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
+
+D (29234) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ac, TLS-ECDHE-ECDSA-WITH-AES-128-CCM
+
+D (29244) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c023, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (29254) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c027, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256
+
+D (29265) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c009, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA
+
+D (29275) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c013, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA
+
+D (29285) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ae, TLS-ECDHE-ECDSA-WITH-AES-128-CCM-8
+
+D (29295) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05c, TLS-ECDHE-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (29305) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c060, TLS-ECDHE-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (29316) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c048, TLS-ECDHE-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (29326) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04c, TLS-ECDHE-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (29336) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009d, TLS-RSA-WITH-AES-256-GCM-SHA384
+
+D (29346) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09d, TLS-RSA-WITH-AES-256-CCM
+
+D (29355) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003d, TLS-RSA-WITH-AES-256-CBC-SHA256
+
+D (29365) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 0035, TLS-RSA-WITH-AES-256-CBC-SHA
+
+D (29374) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c032, TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384
+
+D (29385) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02a, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA384
+
+D (29395) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00f, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA
+
+D (29405) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02e, TLS-ECDH-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (29415) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c026, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (29425) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c005, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA
+
+D (29435) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a1, TLS-RSA-WITH-AES-256-CCM-8
+
+D (29445) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05f, TLS-ECDH-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (29455) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c063, TLS-ECDH-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (29465) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c051, TLS-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (29475) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04b, TLS-ECDH-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (29485) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04f, TLS-ECDH-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (29496) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03d, TLS-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (29506) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009c, TLS-RSA-WITH-AES-128-GCM-SHA256
+
+D (29515) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09c, TLS-RSA-WITH-AES-128-CCM
+
+D (29524) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003c, TLS-RSA-WITH-AES-128-CBC-SHA256
+
+D (29534) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 002f, TLS-RSA-WITH-AES-128-CBC-SHA
+
+D (29544) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c031, TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256
+
+D (29554) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c029, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA256
+
+D (29564) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00e, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA
+
+D (29574) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02d, TLS-ECDH-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (29584) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c025, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (29594) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c004, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA
+
+D (29604) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a0, TLS-RSA-WITH-AES-128-CCM-8
+
+D (29614) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05e, TLS-ECDH-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (29624) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c062, TLS-ECDH-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (29634) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c050, TLS-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (29644) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04a, TLS-ECDH-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (29655) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04e, TLS-ECDH-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (29665) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03c, TLS-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (29675) mbedtls: ssl_client.c:392 adding EMPTY_RENEGOTIATION_INFO_SCSV
+
+D (29682) mbedtls: ssl_client.c:401 client hello, got 59 cipher suites
+
+D (29688) mbedtls: ssl_client.c:41 client hello, adding server name extension: clare.vinex.top
+
+D (29697) mbedtls: ssl_client.c:235 client hello, adding supported_groups extension
+
+D (29705) mbedtls: ssl_client.c:254 got supported group(001d)
+
+D (29711) mbedtls: ssl_client.c:286 NamedGroup: x25519 ( 1d )
+
+D (29717) mbedtls: ssl_client.c:254 got supported group(0017)
+
+D (29723) mbedtls: ssl_client.c:286 NamedGroup: secp256r1 ( 17 )
+
+D (29729) mbedtls: ssl_client.c:254 got supported group(0018)
+
+D (29735) mbedtls: ssl_client.c:286 NamedGroup: secp384r1 ( 18 )
+
+D (29742) mbedtls: ssl_client.c:254 got supported group(0019)
+
+D (29748) mbedtls: ssl_client.c:286 NamedGroup: secp521r1 ( 19 )
+
+D (29754) mbedtls: ssl_client.c:254 got supported group(001a)
+
+D (29760) mbedtls: ssl_client.c:286 NamedGroup: bp256r1 ( 1a )
+
+D (29766) mbedtls: ssl_client.c:254 got supported group(001b)
+
+D (29772) mbedtls: ssl_client.c:286 NamedGroup: bp384r1 ( 1b )
+
+D (29778) mbedtls: ssl_client.c:254 got supported group(001c)
+
+D (29784) mbedtls: ssl_client.c:286 NamedGroup: bp512r1 ( 1c )
+
+D (29790) mbedtls: ssl_client.c:306 dumping 'Supported groups extension' (16 bytes)
+
+D (29798) mbedtls: ssl_client.c:306 0000:  00 0e 00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c  ................
+
+D (29808) mbedtls: ssl_tls.c:9483 adding signature_algorithms extension
+
+D (29815) mbedtls: ssl_tls.c:9503 got signature scheme [603] ecdsa_secp521r1_sha512
+
+D (29823) mbedtls: ssl_tls.c:9512 sent signature scheme [603] ecdsa_secp521r1_sha512
+
+D (29831) mbedtls: ssl_tls.c:9503 got signature scheme [806] rsa_pss_rsae_sha512
+
+D (29838) mbedtls: ssl_tls.c:9503 got signature scheme [601] rsa_pkcs1_sha512
+
+D (29846) mbedtls: ssl_tls.c:9512 sent signature scheme [601] rsa_pkcs1_sha512
+
+D (29853) mbedtls: ssl_tls.c:9503 got signature scheme [503] ecdsa_secp384r1_sha384
+
+D (29861) mbedtls: ssl_tls.c:9512 sent signature scheme [503] ecdsa_secp384r1_sha384
+
+D (29869) mbedtls: ssl_tls.c:9503 got signature scheme [805] rsa_pss_rsae_sha384
+
+D (29877) mbedtls: ssl_tls.c:9503 got signature scheme [501] rsa_pkcs1_sha384
+
+D (29884) mbedtls: ssl_tls.c:9512 sent signature scheme [501] rsa_pkcs1_sha384
+
+D (29892) mbedtls: ssl_tls.c:9503 got signature scheme [403] ecdsa_secp256r1_sha256
+
+D (29899) mbedtls: ssl_tls.c:9512 sent signature scheme [403] ecdsa_secp256r1_sha256
+
+D (29907) mbedtls: ssl_tls.c:9503 got signature scheme [804] rsa_pss_rsae_sha256
+
+D (29915) mbedtls: ssl_tls.c:9503 got signature scheme [401] rsa_pkcs1_sha256
+
+D (29922) mbedtls: ssl_tls.c:9512 sent signature scheme [401] rsa_pkcs1_sha256
+
+D (29930) mbedtls: ssl_tls12_client.c:106 client hello, adding supported_point_formats extension
+
+D (29939) mbedtls: ssl_tls12_client.c:307 client hello, adding encrypt_then_mac extension
+
+D (29947) mbedtls: ssl_tls12_client.c:339 client hello, adding extended_master_secret extension
+
+D (29956) mbedtls: ssl_tls12_client.c:373 client hello, adding session ticket extension
+
+D (29965) mbedtls: ssl_client.c:693 client hello, total extension length: 80
+
+D (29972) mbedtls: ssl_client.c:695 dumping 'client hello extensions' (80 bytes)
+
+D (29980) mbedtls: ssl_client.c:695 0000:  00 50 00 00 00 14 00 12 00 00 0f 63 6c 61 72 65  .P.........clare
+
+D (29990) mbedtls: ssl_client.c:695 0010:  2e 76 69 6e 65 78 2e 74 6f 70 00 0a 00 10 00 0e  .vinex.top......
+
+D (30000) mbedtls: ssl_client.c:695 0020:  00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c 00 0d  ................
+
+D (30010) mbedtls: ssl_client.c:695 0030:  00 0e 00 0c 06 03 06 01 05 03 05 01 04 03 04 01  ................
+
+D (30020) mbedtls: ssl_client.c:695 0040:  00 0b 00 02 01 00 00 16 00 00 00 17 00 00 00 23  ...............#
+
+I (30030) mbedtls: ssl_msg.c:2787 => write handshake message
+
+I (30036) mbedtls: ssl_msg.c:2947 => write record
+
+D (30042) mbedtls: ssl_msg.c:3031 output record: msgtype = 22, version = [3:3], msglen = 243
+
+I (30051) mbedtls: ssl_msg.c:3084 <= write record
+
+I (30056) mbedtls: ssl_msg.c:2908 <= write handshake message
+
+D (30063) mbedtls: ssl_misc.h:1446 handshake state: 1 (MBEDTLS_SSL_CLIENT_HELLO) -> 2 (MBEDTLS_SSL_SERVER_HELLO)
+
+I (30073) mbedtls: ssl_client.c:1018 <= write client hello
+
+I (30079) mbedtls: ssl_msg.c:2356 => flush output
+
+I (30085) mbedtls: ssl_msg.c:2370 message length: 248, out_left: 248
+
+I (30093) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 248 (-0xffffff08)
+
+I (30100) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (30105) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_HELLO
+
+I (30113) mbedtls: ssl_tls12_client.c:1196 => parse server hello
+
+I (30120) mbedtls: ssl_msg.c:4338 => read record
+
+I (30125) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (30131) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (30316) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (30316) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (30319) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (30325) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 67
+
+I (30334) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (30339) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 72
+
+I (30345) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 72
+
+I (30352) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+
+I (30360) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (30366) mbedtls: ssl_msg.c:3245 handshake message: msglen = 67, type = 2, hslen = 67
+
+D (30374) mbedtls: ssl_msg.c:3383 sole handshake fragment: 67, 0..67 of 67
+
+I (30381) mbedtls: ssl_msg.c:4410 <= read record
+
+D (30386) mbedtls: ssl_tls12_client.c:1270 dumping 'server hello, version' (2 bytes)
+
+D (30394) mbedtls: ssl_tls12_client.c:1270 0000:  03 03                                            ..
+
+D (30404) mbedtls: ssl_tls12_client.c:1291 server hello, current time: 1787666457
+
+D (30411) mbedtls: ssl_tls12_client.c:1301 dumping 'server hello, random bytes' (32 bytes)
+
+D (30420) mbedtls: ssl_tls12_client.c:1301 0000:  6a 8d a0 19 6e 0f ec f4 c8 73 44 ee c4 14 5f 89  j...n....sD..._.
+
+D (30431) mbedtls: ssl_tls12_client.c:1301 0010:  53 9a 93 97 9f 20 fc 57 44 4f 57 4e 47 52 44 01  S.... .WDOWNGRD.
+
+D (30441) mbedtls: ssl_tls12_client.c:1363 server hello, session id len.: 0
+
+D (30449) mbedtls: ssl_tls12_client.c:1364 dumping 'server hello, session id' (0 bytes)
+
+D (30457) mbedtls: ssl_misc.h:1446 handshake state: 2 (MBEDTLS_SSL_SERVER_HELLO) -> 3 (MBEDTLS_SSL_SERVER_CERTIFICATE)
+
+D (30468) mbedtls: ssl_tls12_client.c:1388 no session has been resumed
+
+D (30474) mbedtls: ssl_tls12_client.c:1391 server hello, chosen ciphersuite: c02b
+
+D (30482) mbedtls: ssl_tls12_client.c:1392 server hello, compress alg.: 0
+
+D (30489) mbedtls: ssl_tls12_client.c:1427 server hello, chosen ciphersuite: TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+I (30500) mbedtls: ssl_tls12_client.c:1448 server hello, total extension length: 23
+
+D (30508) mbedtls: ssl_tls12_client.c:1593 unknown extension found: 0 (ignoring)
+
+D (30516) mbedtls: ssl_tls12_client.c:1518 found extended_master_secret extension
+
+D (30524) mbedtls: ssl_tls12_client.c:1466 found renegotiation extension
+
+D (30531) mbedtls: ssl_tls12_client.c:1545 found supported_point_formats extension
+
+D (30539) mbedtls: ssl_tls12_client.c:1531 found session_ticket extension
+
+I (30546) mbedtls: ssl_tls12_client.c:1662 <= parse server hello
+
+I (30553) mbedtls: ssl_msg.c:2356 => flush output
+
+I (30558) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (30564) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_CERTIFICATE
+
+I (30572) mbedtls: ssl_tls.c:8073 => parse certificate
+
+I (30578) mbedtls: ssl_msg.c:4338 => read record
+
+I (30583) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (30589) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (30595) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (30601) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (30609) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (30615) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 3409
+
+I (30624) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (30629) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 3414
+
+I (30636) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 3414
+
+I (30642) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 3409 (-0xfffff2af)
+
+I (30651) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (30656) mbedtls: ssl_msg.c:3245 handshake message: msglen = 3409, type = 11, hslen = 3409
+
+D (30665) mbedtls: ssl_msg.c:3383 sole handshake fragment: 3409, 0..3409 of 3409
+
+I (30673) mbedtls: ssl_msg.c:4410 <= read record
+
+I (30680) mbedtls: ssl_msg.c:5358 => send alert message
+
+D (30684) mbedtls: ssl_msg.c:5359 send alert level=2 message=42
+
+I (30690) mbedtls: ssl_msg.c:2947 => write record
+
+D (30696) mbedtls: ssl_msg.c:3031 output record: msgtype = 21, version = [3:3], msglen = 2
+
+I (30704) mbedtls: ssl_msg.c:2356 => flush output
+
+I (30710) mbedtls: ssl_msg.c:2370 message length: 7, out_left: 7
+
+I (30717) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 7 (-0xfffffff9)
+
+I (30724) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (30730) mbedtls: ssl_msg.c:3084 <= write record
+
+I (30735) mbedtls: ssl_msg.c:5370 <= send alert message
+
+W (30741) mbedtls: ssl_tls.c:7937  mbedtls_x509_crt_parse_der() returned -16256 (-0x3f80)
+
+I (30750) mbedtls: ssl_tls.c:4713 <= handshake
+
+E (30756) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3F80
+I (30763) esp-tls-mbedtls: (FFFFC080): PK - Memory allocation failed
+D (30770) esp-tls-mbedtls: Skipping certificate verification - no peer certificate received
+E (30778) esp-tls: Failed to open new connection
+E (30783) transport_base: Failed to open a new connection
+E (30790) HTTP_CLIENT: Connection failed, sock < 0
+D (30795) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:0 posted to loop 0x408670e8
+I (30805) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (30811) clara_net: HTTP request failed err=28674 status=0 tls=16256 flags=0x0
+I (30820) clara_c6: Network error  •  check Wi-Fi/API
+I (30825) clara_c6: Boot network self-test session err=28674 (attempt 2/4)
+W (30833) clara_c6: Boot network self-test attempt 2 failed, retrying in 5000 ms
+I (35841) clara_net: Create session URL ready=1
+I (35841) clara_net: HTTP before init free8=31440 largest8=14592 free_internal=31440 largest_internal=14592
+D (35846) HTTP_CLIENT: set post file length = 19
+D (35850) HTTP_CLIENT: Begin connect to: https://clare.vinex.top:443
+D (35857) esp-tls: host:clare.vinex.top: strlen 15
+D (35862) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182
+D (35868) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443
+D (36112) esp-tls: handshake in progress...
+I (36112) mbedtls: ssl_tls.c:4702 => handshake
+
+I (36112) mbedtls: ssl_msg.c:2356 => flush output
+
+I (36116) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (36122) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_HELLO_REQUEST
+
+D (36129) mbedtls: ssl_misc.h:1446 handshake state: 0 (MBEDTLS_SSL_HELLO_REQUEST) -> 1 (MBEDTLS_SSL_CLIENT_HELLO)
+
+I (36140) mbedtls: ssl_msg.c:2356 => flush output
+
+I (36145) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (36151) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_CLIENT_HELLO
+
+I (36158) mbedtls: ssl_client.c:925 => write client hello
+
+D (36165) mbedtls: ssl_client.c:728 client hello, current time: 35867
+
+D (36172) mbedtls: ssl_client.c:491 dumping 'client hello, random bytes' (32 bytes)
+
+D (36179) mbedtls: ssl_client.c:491 0000:  00 00 8c 1b 55 79 c3 d3 bd e3 f0 f5 ce a0 3d 82  ....Uy........=.
+
+D (36189) mbedtls: ssl_client.c:491 0010:  bc 01 e6 a0 9b 4f 49 c9 bf b4 e9 05 e3 55 73 f7  .....OI......Us.
+
+D (36199) mbedtls: ssl_client.c:516 dumping 'session id' (0 bytes)
+
+D (36206) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02c, TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (36216) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c030, TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384
+
+D (36226) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ad, TLS-ECDHE-ECDSA-WITH-AES-256-CCM
+
+D (36236) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c024, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (36247) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c028, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384
+
+D (36257) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00a, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA
+
+D (36267) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c014, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA
+
+D (36277) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0af, TLS-ECDHE-ECDSA-WITH-AES-256-CCM-8
+
+D (36287) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05d, TLS-ECDHE-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (36298) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c061, TLS-ECDHE-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (36308) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c049, TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (36318) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04d, TLS-ECDHE-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (36329) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02b, TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (36339) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02f, TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
+
+D (36349) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ac, TLS-ECDHE-ECDSA-WITH-AES-128-CCM
+
+D (36359) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c023, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (36370) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c027, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256
+
+D (36380) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c009, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA
+
+D (36390) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c013, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA
+
+D (36400) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ae, TLS-ECDHE-ECDSA-WITH-AES-128-CCM-8
+
+D (36410) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05c, TLS-ECDHE-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (36420) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c060, TLS-ECDHE-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (36431) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c048, TLS-ECDHE-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (36441) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04c, TLS-ECDHE-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (36452) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009d, TLS-RSA-WITH-AES-256-GCM-SHA384
+
+D (36461) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09d, TLS-RSA-WITH-AES-256-CCM
+
+D (36470) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003d, TLS-RSA-WITH-AES-256-CBC-SHA256
+
+D (36480) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 0035, TLS-RSA-WITH-AES-256-CBC-SHA
+
+D (36490) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c032, TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384
+
+D (36500) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02a, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA384
+
+D (36510) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00f, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA
+
+D (36520) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02e, TLS-ECDH-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (36530) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c026, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (36540) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c005, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA
+
+D (36551) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a1, TLS-RSA-WITH-AES-256-CCM-8
+
+D (36560) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05f, TLS-ECDH-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (36570) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c063, TLS-ECDH-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (36580) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c051, TLS-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (36590) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04b, TLS-ECDH-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (36601) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04f, TLS-ECDH-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (36611) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03d, TLS-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (36621) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009c, TLS-RSA-WITH-AES-128-GCM-SHA256
+
+D (36630) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09c, TLS-RSA-WITH-AES-128-CCM
+
+D (36640) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003c, TLS-RSA-WITH-AES-128-CBC-SHA256
+
+D (36649) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 002f, TLS-RSA-WITH-AES-128-CBC-SHA
+
+D (36659) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c031, TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256
+
+D (36669) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c029, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA256
+
+D (36679) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00e, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA
+
+D (36689) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02d, TLS-ECDH-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (36699) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c025, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (36710) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c004, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA
+
+D (36720) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a0, TLS-RSA-WITH-AES-128-CCM-8
+
+D (36729) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05e, TLS-ECDH-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (36739) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c062, TLS-ECDH-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (36750) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c050, TLS-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (36759) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04a, TLS-ECDH-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (36770) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04e, TLS-ECDH-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (36780) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03c, TLS-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (36790) mbedtls: ssl_client.c:392 adding EMPTY_RENEGOTIATION_INFO_SCSV
+
+D (36797) mbedtls: ssl_client.c:401 client hello, got 59 cipher suites
+
+D (36804) mbedtls: ssl_client.c:41 client hello, adding server name extension: clare.vinex.top
+
+D (36813) mbedtls: ssl_client.c:235 client hello, adding supported_groups extension
+
+D (36820) mbedtls: ssl_client.c:254 got supported group(001d)
+
+D (36826) mbedtls: ssl_client.c:286 NamedGroup: x25519 ( 1d )
+
+D (36832) mbedtls: ssl_client.c:254 got supported group(0017)
+
+D (36838) mbedtls: ssl_client.c:286 NamedGroup: secp256r1 ( 17 )
+
+D (36845) mbedtls: ssl_client.c:254 got supported group(0018)
+
+D (36851) mbedtls: ssl_client.c:286 NamedGroup: secp384r1 ( 18 )
+
+D (36857) mbedtls: ssl_client.c:254 got supported group(0019)
+
+D (36863) mbedtls: ssl_client.c:286 NamedGroup: secp521r1 ( 19 )
+
+D (36869) mbedtls: ssl_client.c:254 got supported group(001a)
+
+D (36875) mbedtls: ssl_client.c:286 NamedGroup: bp256r1 ( 1a )
+
+D (36881) mbedtls: ssl_client.c:254 got supported group(001b)
+
+D (36887) mbedtls: ssl_client.c:286 NamedGroup: bp384r1 ( 1b )
+
+D (36893) mbedtls: ssl_client.c:254 got supported group(001c)
+
+D (36899) mbedtls: ssl_client.c:286 NamedGroup: bp512r1 ( 1c )
+
+D (36905) mbedtls: ssl_client.c:306 dumping 'Supported groups extension' (16 bytes)
+
+D (36913) mbedtls: ssl_client.c:306 0000:  00 0e 00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c  ................
+
+D (36923) mbedtls: ssl_tls.c:9483 adding signature_algorithms extension
+
+D (36930) mbedtls: ssl_tls.c:9503 got signature scheme [603] ecdsa_secp521r1_sha512
+
+D (36938) mbedtls: ssl_tls.c:9512 sent signature scheme [603] ecdsa_secp521r1_sha512
+
+D (36946) mbedtls: ssl_tls.c:9503 got signature scheme [806] rsa_pss_rsae_sha512
+
+D (36954) mbedtls: ssl_tls.c:9503 got signature scheme [601] rsa_pkcs1_sha512
+
+D (36961) mbedtls: ssl_tls.c:9512 sent signature scheme [601] rsa_pkcs1_sha512
+
+D (36968) mbedtls: ssl_tls.c:9503 got signature scheme [503] ecdsa_secp384r1_sha384
+
+D (36976) mbedtls: ssl_tls.c:9512 sent signature scheme [503] ecdsa_secp384r1_sha384
+
+D (36984) mbedtls: ssl_tls.c:9503 got signature scheme [805] rsa_pss_rsae_sha384
+
+D (36992) mbedtls: ssl_tls.c:9503 got signature scheme [501] rsa_pkcs1_sha384
+
+D (36999) mbedtls: ssl_tls.c:9512 sent signature scheme [501] rsa_pkcs1_sha384
+
+D (37007) mbedtls: ssl_tls.c:9503 got signature scheme [403] ecdsa_secp256r1_sha256
+
+D (37015) mbedtls: ssl_tls.c:9512 sent signature scheme [403] ecdsa_secp256r1_sha256
+
+D (37023) mbedtls: ssl_tls.c:9503 got signature scheme [804] rsa_pss_rsae_sha256
+
+D (37030) mbedtls: ssl_tls.c:9503 got signature scheme [401] rsa_pkcs1_sha256
+
+D (37038) mbedtls: ssl_tls.c:9512 sent signature scheme [401] rsa_pkcs1_sha256
+
+D (37045) mbedtls: ssl_tls12_client.c:106 client hello, adding supported_point_formats extension
+
+D (37054) mbedtls: ssl_tls12_client.c:307 client hello, adding encrypt_then_mac extension
+
+D (37063) mbedtls: ssl_tls12_client.c:339 client hello, adding extended_master_secret extension
+
+D (37072) mbedtls: ssl_tls12_client.c:373 client hello, adding session ticket extension
+
+D (37080) mbedtls: ssl_client.c:693 client hello, total extension length: 80
+
+D (37087) mbedtls: ssl_client.c:695 dumping 'client hello extensions' (80 bytes)
+
+D (37095) mbedtls: ssl_client.c:695 0000:  00 50 00 00 00 14 00 12 00 00 0f 63 6c 61 72 65  .P.........clare
+
+D (37105) mbedtls: ssl_client.c:695 0010:  2e 76 69 6e 65 78 2e 74 6f 70 00 0a 00 10 00 0e  .vinex.top......
+
+D (37115) mbedtls: ssl_client.c:695 0020:  00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c 00 0d  ................
+
+D (37125) mbedtls: ssl_client.c:695 0030:  00 0e 00 0c 06 03 06 01 05 03 05 01 04 03 04 01  ................
+
+D (37135) mbedtls: ssl_client.c:695 0040:  00 0b 00 02 01 00 00 16 00 00 00 17 00 00 00 23  ...............#
+
+I (37146) mbedtls: ssl_msg.c:2787 => write handshake message
+
+I (37152) mbedtls: ssl_msg.c:2947 => write record
+
+D (37157) mbedtls: ssl_msg.c:3031 output record: msgtype = 22, version = [3:3], msglen = 243
+
+I (37166) mbedtls: ssl_msg.c:3084 <= write record
+
+I (37171) mbedtls: ssl_msg.c:2908 <= write handshake message
+
+D (37178) mbedtls: ssl_misc.h:1446 handshake state: 1 (MBEDTLS_SSL_CLIENT_HELLO) -> 2 (MBEDTLS_SSL_SERVER_HELLO)
+
+I (37188) mbedtls: ssl_client.c:1018 <= write client hello
+
+I (37195) mbedtls: ssl_msg.c:2356 => flush output
+
+I (37200) mbedtls: ssl_msg.c:2370 message length: 248, out_left: 248
+
+I (37208) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 248 (-0xffffff08)
+
+I (37215) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (37221) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_HELLO
+
+I (37228) mbedtls: ssl_tls12_client.c:1196 => parse server hello
+
+I (37235) mbedtls: ssl_msg.c:4338 => read record
+
+I (37241) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (37246) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (38117) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (38118) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (38121) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (38126) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 67
+
+I (38135) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (38140) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 72
+
+I (38147) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 72
+
+I (38153) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+
+I (38161) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (38167) mbedtls: ssl_msg.c:3245 handshake message: msglen = 67, type = 2, hslen = 67
+
+D (38175) mbedtls: ssl_msg.c:3383 sole handshake fragment: 67, 0..67 of 67
+
+I (38183) mbedtls: ssl_msg.c:4410 <= read record
+
+D (38188) mbedtls: ssl_tls12_client.c:1270 dumping 'server hello, version' (2 bytes)
+
+D (38196) mbedtls: ssl_tls12_client.c:1270 0000:  03 03                                            ..
+
+D (38205) mbedtls: ssl_tls12_client.c:1291 server hello, current time: 1787666464
+
+D (38213) mbedtls: ssl_tls12_client.c:1301 dumping 'server hello, random bytes' (32 bytes)
+
+D (38221) mbedtls: ssl_tls12_client.c:1301 0000:  6a 8d a0 20 f5 e1 73 27 64 76 43 c4 b3 53 94 f4  j.. ..s'dvC..S..
+
+D (38232) mbedtls: ssl_tls12_client.c:1301 0010:  f4 a9 60 f5 5a 67 24 5f 44 4f 57 4e 47 52 44 01  ..`.Zg$_DOWNGRD.
+
+D (38243) mbedtls: ssl_tls12_client.c:1363 server hello, session id len.: 0
+
+D (38250) mbedtls: ssl_tls12_client.c:1364 dumping 'server hello, session id' (0 bytes)
+
+D (38258) mbedtls: ssl_misc.h:1446 handshake state: 2 (MBEDTLS_SSL_SERVER_HELLO) -> 3 (MBEDTLS_SSL_SERVER_CERTIFICATE)
+
+D (38269) mbedtls: ssl_tls12_client.c:1388 no session has been resumed
+
+D (38276) mbedtls: ssl_tls12_client.c:1391 server hello, chosen ciphersuite: c02b
+
+D (38284) mbedtls: ssl_tls12_client.c:1392 server hello, compress alg.: 0
+
+D (38291) mbedtls: ssl_tls12_client.c:1427 server hello, chosen ciphersuite: TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+I (38301) mbedtls: ssl_tls12_client.c:1448 server hello, total extension length: 23
+
+D (38310) mbedtls: ssl_tls12_client.c:1593 unknown extension found: 0 (ignoring)
+
+D (38318) mbedtls: ssl_tls12_client.c:1518 found extended_master_secret extension
+
+D (38325) mbedtls: ssl_tls12_client.c:1466 found renegotiation extension
+
+D (38332) mbedtls: ssl_tls12_client.c:1545 found supported_point_formats extension
+
+D (38340) mbedtls: ssl_tls12_client.c:1531 found session_ticket extension
+
+I (38347) mbedtls: ssl_tls12_client.c:1662 <= parse server hello
+
+I (38354) mbedtls: ssl_msg.c:2356 => flush output
+
+I (38359) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (38365) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_CERTIFICATE
+
+I (38373) mbedtls: ssl_tls.c:8073 => parse certificate
+
+I (38379) mbedtls: ssl_msg.c:4338 => read record
+
+I (38385) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (38390) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (38396) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (38402) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (38411) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (38416) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 3409
+
+I (38425) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (38431) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 3414
+
+I (38437) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 3414
+
+I (38443) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 1163 (-0xfffffb75)
+
+I (38584) mbedtls: ssl_msg.c:2318 in_left: 1168, nb_want: 3414
+
+I (38585) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 2246 (-0xfffff73a)
+
+I (38589) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (38594) mbedtls: ssl_msg.c:3245 handshake message: msglen = 3409, type = 11, hslen = 3409
+
+D (38603) mbedtls: ssl_msg.c:3383 sole handshake fragment: 3409, 0..3409 of 3409
+
+I (38611) mbedtls: ssl_msg.c:4410 <= read record
+
+I (38618) mbedtls: ssl_msg.c:5358 => send alert message
+
+D (38622) mbedtls: ssl_msg.c:5359 send alert level=2 message=42
+
+I (38628) mbedtls: ssl_msg.c:2947 => write record
+
+D (38634) mbedtls: ssl_msg.c:3031 output record: msgtype = 21, version = [3:3], msglen = 2
+
+I (38642) mbedtls: ssl_msg.c:2356 => flush output
+
+I (38648) mbedtls: ssl_msg.c:2370 message length: 7, out_left: 7
+
+I (38655) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 7 (-0xfffffff9)
+
+I (38662) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (38668) mbedtls: ssl_msg.c:3084 <= write record
+
+I (38673) mbedtls: ssl_msg.c:5370 <= send alert message
+
+W (38679) mbedtls: ssl_tls.c:7937  mbedtls_x509_crt_parse_der() returned -16256 (-0x3f80)
+
+I (38689) mbedtls: ssl_tls.c:4713 <= handshake
+
+E (38694) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3F80
+I (38701) esp-tls-mbedtls: (FFFFC080): PK - Memory allocation failed
+D (38708) esp-tls-mbedtls: Skipping certificate verification - no peer certificate received
+E (38716) esp-tls: Failed to open new connection
+E (38721) transport_base: Failed to open a new connection
+E (38729) HTTP_CLIENT: Connection failed, sock < 0
+D (38733) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:0 posted to loop 0x408670e8
+I (38743) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (38749) clara_net: HTTP request failed err=28674 status=0 tls=16256 flags=0x0
+I (38758) clara_c6: Network error  •  check Wi-Fi/API
+I (38763) clara_c6: Boot network self-test session err=28674 (attempt 3/4)
+W (38771) clara_c6: Boot network self-test attempt 3 failed, retrying in 5000 ms
+I (43779) clara_net: Create session URL ready=1
+I (43779) clara_net: HTTP before init free8=31440 largest8=14592 free_internal=31440 largest_internal=14592
+D (43784) HTTP_CLIENT: set post file length = 19
+D (43788) HTTP_CLIENT: Begin connect to: https://clare.vinex.top:443
+D (43795) esp-tls: host:clare.vinex.top: strlen 15
+D (43800) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182
+D (43806) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443
+D (44045) esp-tls: handshake in progress...
+I (44045) mbedtls: ssl_tls.c:4702 => handshake
+
+I (44045) mbedtls: ssl_msg.c:2356 => flush output
+
+I (44049) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (44054) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_HELLO_REQUEST
+
+D (44062) mbedtls: ssl_misc.h:1446 handshake state: 0 (MBEDTLS_SSL_HELLO_REQUEST) -> 1 (MBEDTLS_SSL_CLIENT_HELLO)
+
+I (44072) mbedtls: ssl_msg.c:2356 => flush output
+
+I (44078) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (44083) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_CLIENT_HELLO
+
+I (44091) mbedtls: ssl_client.c:925 => write client hello
+
+D (44097) mbedtls: ssl_client.c:728 client hello, current time: 35875
+
+D (44105) mbedtls: ssl_client.c:491 dumping 'client hello, random bytes' (32 bytes)
+
+D (44112) mbedtls: ssl_client.c:491 0000:  00 00 8c 23 0a 12 23 ea 6e 6a 0a e4 f9 97 41 cb  ...#..#.nj....A.
+
+D (44122) mbedtls: ssl_client.c:491 0010:  df e0 3e d6 72 3f 47 71 e2 47 f7 68 b1 cb 2d c3  ..>.r?Gq.G.h..-.
+
+D (44132) mbedtls: ssl_client.c:516 dumping 'session id' (0 bytes)
+
+D (44138) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02c, TLS-ECDHE-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (44149) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c030, TLS-ECDHE-RSA-WITH-AES-256-GCM-SHA384
+
+D (44159) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ad, TLS-ECDHE-ECDSA-WITH-AES-256-CCM
+
+D (44169) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c024, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (44179) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c028, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA384
+
+D (44190) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00a, TLS-ECDHE-ECDSA-WITH-AES-256-CBC-SHA
+
+D (44200) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c014, TLS-ECDHE-RSA-WITH-AES-256-CBC-SHA
+
+D (44210) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0af, TLS-ECDHE-ECDSA-WITH-AES-256-CCM-8
+
+D (44220) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05d, TLS-ECDHE-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (44230) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c061, TLS-ECDHE-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (44240) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c049, TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (44251) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04d, TLS-ECDHE-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (44261) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02b, TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (44272) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02f, TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
+
+D (44282) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ac, TLS-ECDHE-ECDSA-WITH-AES-128-CCM
+
+D (44292) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c023, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (44302) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c027, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA256
+
+D (44312) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c009, TLS-ECDHE-ECDSA-WITH-AES-128-CBC-SHA
+
+D (44323) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c013, TLS-ECDHE-RSA-WITH-AES-128-CBC-SHA
+
+D (44333) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0ae, TLS-ECDHE-ECDSA-WITH-AES-128-CCM-8
+
+D (44343) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05c, TLS-ECDHE-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (44353) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c060, TLS-ECDHE-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (44363) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c048, TLS-ECDHE-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (44374) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04c, TLS-ECDHE-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (44384) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009d, TLS-RSA-WITH-AES-256-GCM-SHA384
+
+D (44394) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09d, TLS-RSA-WITH-AES-256-CCM
+
+D (44403) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003d, TLS-RSA-WITH-AES-256-CBC-SHA256
+
+D (44413) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 0035, TLS-RSA-WITH-AES-256-CBC-SHA
+
+D (44422) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c032, TLS-ECDH-RSA-WITH-AES-256-GCM-SHA384
+
+D (44432) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02a, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA384
+
+D (44443) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00f, TLS-ECDH-RSA-WITH-AES-256-CBC-SHA
+
+D (44452) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02e, TLS-ECDH-ECDSA-WITH-AES-256-GCM-SHA384
+
+D (44463) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c026, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA384
+
+D (44473) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c005, TLS-ECDH-ECDSA-WITH-AES-256-CBC-SHA
+
+D (44483) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a1, TLS-RSA-WITH-AES-256-CCM-8
+
+D (44492) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05f, TLS-ECDH-ECDSA-WITH-ARIA-256-GCM-SHA384
+
+D (44503) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c063, TLS-ECDH-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (44513) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c051, TLS-RSA-WITH-ARIA-256-GCM-SHA384
+
+D (44523) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04b, TLS-ECDH-ECDSA-WITH-ARIA-256-CBC-SHA384
+
+D (44533) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04f, TLS-ECDH-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (44544) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03d, TLS-RSA-WITH-ARIA-256-CBC-SHA384
+
+D (44553) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 009c, TLS-RSA-WITH-AES-128-GCM-SHA256
+
+D (44563) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c09c, TLS-RSA-WITH-AES-128-CCM
+
+D (44572) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 003c, TLS-RSA-WITH-AES-128-CBC-SHA256
+
+D (44582) mbedtls: ssl_client.c:374 client hello, add ciphersuite: 002f, TLS-RSA-WITH-AES-128-CBC-SHA
+
+D (44591) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c031, TLS-ECDH-RSA-WITH-AES-128-GCM-SHA256
+
+D (44602) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c029, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA256
+
+D (44612) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c00e, TLS-ECDH-RSA-WITH-AES-128-CBC-SHA
+
+D (44622) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c02d, TLS-ECDH-ECDSA-WITH-AES-128-GCM-SHA256
+
+D (44632) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c025, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA256
+
+D (44642) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c004, TLS-ECDH-ECDSA-WITH-AES-128-CBC-SHA
+
+D (44652) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c0a0, TLS-RSA-WITH-AES-128-CCM-8
+
+D (44662) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c05e, TLS-ECDH-ECDSA-WITH-ARIA-128-GCM-SHA256
+
+D (44672) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c062, TLS-ECDH-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (44682) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c050, TLS-RSA-WITH-ARIA-128-GCM-SHA256
+
+D (44692) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04a, TLS-ECDH-ECDSA-WITH-ARIA-128-CBC-SHA256
+
+D (44702) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c04e, TLS-ECDH-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (44713) mbedtls: ssl_client.c:374 client hello, add ciphersuite: c03c, TLS-RSA-WITH-ARIA-128-CBC-SHA256
+
+D (44723) mbedtls: ssl_client.c:392 adding EMPTY_RENEGOTIATION_INFO_SCSV
+
+D (44729) mbedtls: ssl_client.c:401 client hello, got 59 cipher suites
+
+D (44736) mbedtls: ssl_client.c:41 client hello, adding server name extension: clare.vinex.top
+
+D (44745) mbedtls: ssl_client.c:235 client hello, adding supported_groups extension
+
+D (44753) mbedtls: ssl_client.c:254 got supported group(001d)
+
+D (44759) mbedtls: ssl_client.c:286 NamedGroup: x25519 ( 1d )
+
+D (44765) mbedtls: ssl_client.c:254 got supported group(0017)
+
+D (44771) mbedtls: ssl_client.c:286 NamedGroup: secp256r1 ( 17 )
+
+D (44777) mbedtls: ssl_client.c:254 got supported group(0018)
+
+D (44783) mbedtls: ssl_client.c:286 NamedGroup: secp384r1 ( 18 )
+
+D (44789) mbedtls: ssl_client.c:254 got supported group(0019)
+
+D (44795) mbedtls: ssl_client.c:286 NamedGroup: secp521r1 ( 19 )
+
+D (44802) mbedtls: ssl_client.c:254 got supported group(001a)
+
+D (44808) mbedtls: ssl_client.c:286 NamedGroup: bp256r1 ( 1a )
+
+D (44814) mbedtls: ssl_client.c:254 got supported group(001b)
+
+D (44820) mbedtls: ssl_client.c:286 NamedGroup: bp384r1 ( 1b )
+
+D (44826) mbedtls: ssl_client.c:254 got supported group(001c)
+
+D (44832) mbedtls: ssl_client.c:286 NamedGroup: bp512r1 ( 1c )
+
+D (44838) mbedtls: ssl_client.c:306 dumping 'Supported groups extension' (16 bytes)
+
+D (44846) mbedtls: ssl_client.c:306 0000:  00 0e 00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c  ................
+
+D (44856) mbedtls: ssl_tls.c:9483 adding signature_algorithms extension
+
+D (44863) mbedtls: ssl_tls.c:9503 got signature scheme [603] ecdsa_secp521r1_sha512
+
+D (44871) mbedtls: ssl_tls.c:9512 sent signature scheme [603] ecdsa_secp521r1_sha512
+
+D (44879) mbedtls: ssl_tls.c:9503 got signature scheme [806] rsa_pss_rsae_sha512
+
+D (44886) mbedtls: ssl_tls.c:9503 got signature scheme [601] rsa_pkcs1_sha512
+
+D (44894) mbedtls: ssl_tls.c:9512 sent signature scheme [601] rsa_pkcs1_sha512
+
+D (44901) mbedtls: ssl_tls.c:9503 got signature scheme [503] ecdsa_secp384r1_sha384
+
+D (44909) mbedtls: ssl_tls.c:9512 sent signature scheme [503] ecdsa_secp384r1_sha384
+
+D (44917) mbedtls: ssl_tls.c:9503 got signature scheme [805] rsa_pss_rsae_sha384
+
+D (44925) mbedtls: ssl_tls.c:9503 got signature scheme [501] rsa_pkcs1_sha384
+
+D (44932) mbedtls: ssl_tls.c:9512 sent signature scheme [501] rsa_pkcs1_sha384
+
+D (44939) mbedtls: ssl_tls.c:9503 got signature scheme [403] ecdsa_secp256r1_sha256
+
+D (44947) mbedtls: ssl_tls.c:9512 sent signature scheme [403] ecdsa_secp256r1_sha256
+
+D (44955) mbedtls: ssl_tls.c:9503 got signature scheme [804] rsa_pss_rsae_sha256
+
+D (44963) mbedtls: ssl_tls.c:9503 got signature scheme [401] rsa_pkcs1_sha256
+
+D (44970) mbedtls: ssl_tls.c:9512 sent signature scheme [401] rsa_pkcs1_sha256
+
+D (44978) mbedtls: ssl_tls12_client.c:106 client hello, adding supported_point_formats extension
+
+D (44987) mbedtls: ssl_tls12_client.c:307 client hello, adding encrypt_then_mac extension
+
+D (44995) mbedtls: ssl_tls12_client.c:339 client hello, adding extended_master_secret extension
+
+D (45004) mbedtls: ssl_tls12_client.c:373 client hello, adding session ticket extension
+
+D (45012) mbedtls: ssl_client.c:693 client hello, total extension length: 80
+
+D (45020) mbedtls: ssl_client.c:695 dumping 'client hello extensions' (80 bytes)
+
+D (45027) mbedtls: ssl_client.c:695 0000:  00 50 00 00 00 14 00 12 00 00 0f 63 6c 61 72 65  .P.........clare
+
+D (45038) mbedtls: ssl_client.c:695 0010:  2e 76 69 6e 65 78 2e 74 6f 70 00 0a 00 10 00 0e  .vinex.top......
+
+D (45048) mbedtls: ssl_client.c:695 0020:  00 1d 00 17 00 18 00 19 00 1a 00 1b 00 1c 00 0d  ................
+
+D (45058) mbedtls: ssl_client.c:695 0030:  00 0e 00 0c 06 03 06 01 05 03 05 01 04 03 04 01  ................
+
+D (45068) mbedtls: ssl_client.c:695 0040:  00 0b 00 02 01 00 00 16 00 00 00 17 00 00 00 23  ...............#
+
+I (45078) mbedtls: ssl_msg.c:2787 => write handshake message
+
+I (45084) mbedtls: ssl_msg.c:2947 => write record
+
+D (45090) mbedtls: ssl_msg.c:3031 output record: msgtype = 22, version = [3:3], msglen = 243
+
+I (45098) mbedtls: ssl_msg.c:3084 <= write record
+
+I (45104) mbedtls: ssl_msg.c:2908 <= write handshake message
+
+D (45111) mbedtls: ssl_misc.h:1446 handshake state: 1 (MBEDTLS_SSL_CLIENT_HELLO) -> 2 (MBEDTLS_SSL_SERVER_HELLO)
+
+I (45121) mbedtls: ssl_client.c:1018 <= write client hello
+
+I (45127) mbedtls: ssl_msg.c:2356 => flush output
+
+I (45133) mbedtls: ssl_msg.c:2370 message length: 248, out_left: 248
+
+I (45141) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 248 (-0xffffff08)
+
+I (45148) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (45153) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_HELLO
+
+I (45161) mbedtls: ssl_tls12_client.c:1196 => parse server hello
+
+I (45168) mbedtls: ssl_msg.c:4338 => read record
+
+I (45173) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (45179) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (45346) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (45347) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (45350) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (45355) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 67
+
+I (45364) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (45369) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 72
+
+I (45376) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 72
+
+I (45382) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+
+I (45390) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (45396) mbedtls: ssl_msg.c:3245 handshake message: msglen = 67, type = 2, hslen = 67
+
+D (45404) mbedtls: ssl_msg.c:3383 sole handshake fragment: 67, 0..67 of 67
+
+I (45412) mbedtls: ssl_msg.c:4410 <= read record
+
+D (45417) mbedtls: ssl_tls12_client.c:1270 dumping 'server hello, version' (2 bytes)
+
+D (45425) mbedtls: ssl_tls12_client.c:1270 0000:  03 03                                            ..
+
+D (45434) mbedtls: ssl_tls12_client.c:1291 server hello, current time: 1787666472
+
+D (45442) mbedtls: ssl_tls12_client.c:1301 dumping 'server hello, random bytes' (32 bytes)
+
+D (45450) mbedtls: ssl_tls12_client.c:1301 0000:  6a 8d a0 28 8a f0 27 54 cd bb 63 66 f2 a8 3b fc  j..(..'T..cf..;.
+
+D (45461) mbedtls: ssl_tls12_client.c:1301 0010:  b5 4f e0 bf 91 c6 d1 fa 44 4f 57 4e 47 52 44 01  .O......DOWNGRD.
+
+D (45472) mbedtls: ssl_tls12_client.c:1363 server hello, session id len.: 0
+
+D (45479) mbedtls: ssl_tls12_client.c:1364 dumping 'server hello, session id' (0 bytes)
+
+D (45487) mbedtls: ssl_misc.h:1446 handshake state: 2 (MBEDTLS_SSL_SERVER_HELLO) -> 3 (MBEDTLS_SSL_SERVER_CERTIFICATE)
+
+D (45498) mbedtls: ssl_tls12_client.c:1388 no session has been resumed
+
+D (45505) mbedtls: ssl_tls12_client.c:1391 server hello, chosen ciphersuite: c02b
+
+D (45513) mbedtls: ssl_tls12_client.c:1392 server hello, compress alg.: 0
+
+D (45520) mbedtls: ssl_tls12_client.c:1427 server hello, chosen ciphersuite: TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+
+I (45530) mbedtls: ssl_tls12_client.c:1448 server hello, total extension length: 23
+
+D (45539) mbedtls: ssl_tls12_client.c:1593 unknown extension found: 0 (ignoring)
+
+D (45547) mbedtls: ssl_tls12_client.c:1518 found extended_master_secret extension
+
+D (45554) mbedtls: ssl_tls12_client.c:1466 found renegotiation extension
+
+D (45561) mbedtls: ssl_tls12_client.c:1545 found supported_point_formats extension
+
+D (45569) mbedtls: ssl_tls12_client.c:1531 found session_ticket extension
+
+I (45576) mbedtls: ssl_tls12_client.c:1662 <= parse server hello
+
+I (45583) mbedtls: ssl_msg.c:2356 => flush output
+
+I (45588) mbedtls: ssl_msg.c:2365 <= flush output
+
+I (45594) mbedtls: ssl_tls.c:4621 client state: MBEDTLS_SSL_SERVER_CERTIFICATE
+
+I (45602) mbedtls: ssl_tls.c:8073 => parse certificate
+
+I (45608) mbedtls: ssl_msg.c:4338 => read record
+
+I (45614) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (45619) mbedtls: ssl_msg.c:2298 in_left: 0, nb_want: 5
+
+I (45625) mbedtls: ssl_msg.c:2318 in_left: 0, nb_want: 5
+
+I (45631) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+
+I (45640) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (45645) mbedtls: ssl_msg.c:4005 input record: msgtype = 22, version = [0x303], msglen = 3409
+
+I (45654) mbedtls: ssl_msg.c:2158 => fetch input
+
+I (45660) mbedtls: ssl_msg.c:2298 in_left: 5, nb_want: 3414
+
+I (45667) mbedtls: ssl_msg.c:2318 in_left: 5, nb_want: 3414
+
+I (45672) mbedtls: ssl_msg.c:2321 ssl->f_recv(_timeout)() returned 3409 (-0xfffff2af)
+
+I (45681) mbedtls: ssl_msg.c:2343 <= fetch input
+
+D (45687) mbedtls: ssl_msg.c:3245 handshake message: msglen = 3409, type = 11, hslen = 3409
+
+D (45695) mbedtls: ssl_msg.c:3383 sole handshake fragment: 3409, 0..3409 of 3409
+
+I (45703) mbedtls: ssl_msg.c:4410 <= read record
+
+I (45710) mbedtls: ssl_msg.c:5358 => send alert message
+
+D (45714) mbedtls: ssl_msg.c:5359 send alert level=2 message=42
+
+I (45720) mbedtls: ssl_msg.c:2947 => write record
+
+D (45726) mbedtls: ssl_msg.c:3031 output record: msgtype = 21, version = [3:3], msglen = 2
+
+I (45735) mbedtls: ssl_msg.c:2356 => flush output
+
+I (45740) mbedtls: ssl_msg.c:2370 message length: 7, out_left: 7
+
+I (45748) mbedtls: ssl_msg.c:2377 ssl->f_send() returned 7 (-0xfffffff9)
+
+I (45755) mbedtls: ssl_msg.c:2404 <= flush output
+
+I (45760) mbedtls: ssl_msg.c:3084 <= write record
+
+I (45766) mbedtls: ssl_msg.c:5370 <= send alert message
+
+W (45772) mbedtls: ssl_tls.c:7937  mbedtls_x509_crt_parse_der() returned -16256 (-0x3f80)
+
+I (45781) mbedtls: ssl_tls.c:4713 <= handshake
+
+E (45786) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3F80
+I (45793) esp-tls-mbedtls: (FFFFC080): PK - Memory allocation failed
+D (45800) esp-tls-mbedtls: Skipping certificate verification - no peer certificate received
+E (45808) esp-tls: Failed to open new connection
+E (45814) transport_base: Failed to open a new connection
+E (45821) HTTP_CLIENT: Connection failed, sock < 0
+D (45825) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:0 posted to loop 0x408670e8
+I (45835) clara_net: HTTP response status=0 bytes=0 truncated=0
+W (45842) clara_net: HTTP request failed err=28674 status=0 tls=16256 flags=0x0
+I (45850) clara_c6: Network error  •  check Wi-Fi/API
+I (45856) clara_c6: Boot network self-test session err=28674 (attempt 4/4)
+W (45863) clara_c6: Boot network self-test failed after 4 attempts

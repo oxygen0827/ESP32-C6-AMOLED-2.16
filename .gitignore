@@ -31,5 +31,11 @@ __pycache__/
 # Generated CA PEM extracted from clara_ca_chain.h by backend_api_probe.py
 scripts/clara_ca_chain.pem
 
+# Local skill profile (contains absolute paths + serial port; keep private)
+.em_skill.json
+
+# Local AI tool cache (LLM rules / boundary docs; keep private)
+.ai/
+
 # macOS resource forks
 ._*

@@ -1,11 +1,11 @@
 // Clara network transport for ESP32-C6.
 //
 // The implementation intentionally keeps all credentials and meeting data out
-// of logs. HTTP uses the ESP-IDF client with the certificate bundle; the
-// transcription channel sends binary PCM and the host channel uses the
-// documented Base64 JSON messages.
+// of logs. HTTP uses the ESP-IDF client with the certificate bundle; both
+// WebSocket audio channels use the documented Base64 JSON messages.
 
 #include "clara_net.h"
+#include "clara_ca_chain.h"
 
 #include <ctype.h>
 #include <limits.h>
@@ -17,6 +17,7 @@
 #include "esp_crt_bundle.h"
 #include "esp_event.h"
 #include "esp_http_client.h"
+#include "esp_heap_caps.h"
 #include "esp_log.h"
 #include "esp_netif.h"
 #include "esp_websocket_client.h"
@@ -50,9 +51,21 @@ constexpr EventBits_t WIFI_FAILED_BIT = BIT1;
 constexpr int WIFI_MAX_RETRIES = 8;
 constexpr size_t SESSION_ID_MAX = 96;
 constexpr size_t URL_MAX = 384;
-constexpr size_t HTTP_RESPONSE_MAX = 16384;
+constexpr size_t SESSION_RESPONSE_MAX = 512;
+constexpr size_t END_RESPONSE_MAX = 256;
 constexpr size_t WS_RX_MAX = 16384;
 constexpr size_t HOST_AUDIO_MAX = 12000;
+// Send one 20 ms codec frame (640 bytes) at a time.  This keeps the
+// in-flight Base64/JSON payload under ~1 KiB and avoids the ~4.3 KiB
+// contiguous allocation that caused TLS/Wi-Fi memory exhaustion.
+constexpr size_t TRANSCRIBE_AUDIO_BATCH_MAX = 640;  // 320 samples, 16 kHz mono PCM16
+constexpr size_t HOST_AUDIO_BATCH_MAX = 640;        // short questions, same bound
+constexpr size_t AUDIO_B64_CHUNK_RAW = 576;         // divisible by 3
+constexpr size_t AUDIO_B64_CHUNK_ENCODED = 768;
+constexpr uint32_t WS_AUDIO_SEND_TIMEOUT_MS = 5000;
+// Largest contiguous heap block we are willing to require for an audio send.
+// Set well below the observed failure point to give Wi-Fi/TLS headroom.
+constexpr size_t AUDIO_SEND_MIN_HEAP_BLOCK = 2048;
 
 enum class WsKind : uint8_t {
     Transcribe,
@@ -66,6 +79,7 @@ struct WsContext {
     char *rx_buf;
     size_t rx_len;
     size_t rx_expected;
+    size_t rx_cap;
     volatile bool connected;
 };
 
@@ -88,8 +102,16 @@ static int s_wifi_retries = 0;
 static clara_net_event_cb_t s_event_cb = nullptr;
 static void *s_event_ctx = nullptr;
 static char s_session_id[SESSION_ID_MAX] = {};
-static WsContext s_transcribe = {WsKind::Transcribe, nullptr, nullptr, nullptr, 0, 0, false};
-static WsContext s_host = {WsKind::Host, nullptr, nullptr, nullptr, 0, 0, false};
+static WsContext s_transcribe = {WsKind::Transcribe, nullptr, nullptr, nullptr, 0, 0, 0, false};
+static WsContext s_host = {WsKind::Host, nullptr, nullptr, nullptr, 0, 0, 0, false};
+static uint8_t s_transcribe_audio_batch[TRANSCRIBE_AUDIO_BATCH_MAX] = {};
+static size_t s_transcribe_audio_batch_len = 0;
+static uint8_t s_host_audio_batch[HOST_AUDIO_BATCH_MAX] = {};
+static size_t s_host_audio_batch_len = 0;
+static SemaphoreHandle_t s_audio_send_lock = nullptr;
+// Keep Base64 assembly bounded; each frame is now encoded and sent
+// independently, so the per-message allocation stays well under 1 KiB.
+static char s_audio_b64_chunk[AUDIO_B64_CHUNK_ENCODED + 32] = {};
 
 static bool take_lock(TickType_t timeout = pdMS_TO_TICKS(1000))
 {
@@ -109,7 +131,8 @@ static void emit_event(clara_net_event_type_t type,
                        size_t binary_len = 0,
                        bool is_final = false,
                        int status_code = 0,
-                       esp_err_t error = ESP_OK)
+                       esp_err_t error = ESP_OK,
+                       bool is_delta = false)
 {
     clara_net_event_cb_t cb = nullptr;
     void *ctx = nullptr;
@@ -129,6 +152,7 @@ static void emit_event(clara_net_event_type_t type,
         .is_final = is_final,
         .status_code = status_code,
         .error = error,
+        .is_delta = is_delta,
     };
     cb(&event, ctx);
 }
@@ -242,14 +266,13 @@ static void fill_http_config(esp_http_client_config_t *config,
     config->url = url;
     config->method = method;
     config->timeout_ms = 30000;
-    config->buffer_size = 4096;
-    config->buffer_size_tx = 2048;
+    config->buffer_size = 2048;
+    config->buffer_size_tx = 1024;
     config->event_handler = http_event_handler;
     config->user_data = response;
     config->skip_cert_common_name_check = false;
-#if CONFIG_MBEDTLS_CERTIFICATE_BUNDLE
-    config->crt_bundle_attach = esp_crt_bundle_attach;
-#endif
+    config->cert_pem = kClaraCaChainPem;
+    config->cert_len = sizeof(kClaraCaChainPem);  // includes NUL terminator
 }
 
 static esp_err_t http_perform(const char *url,
@@ -273,8 +296,16 @@ static esp_err_t http_perform(const char *url,
     response_buf[0] = '\0';
     esp_http_client_config_t config;
     fill_http_config(&config, url, method, &response);
+    ESP_LOGI(TAG, "HTTP before init free8=%u largest8=%u free_internal=%u largest_internal=%u",
+             static_cast<unsigned>(heap_caps_get_free_size(MALLOC_CAP_8BIT)),
+             static_cast<unsigned>(heap_caps_get_largest_free_block(MALLOC_CAP_8BIT)),
+             static_cast<unsigned>(heap_caps_get_free_size(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT)),
+             static_cast<unsigned>(heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT)));
     esp_http_client_handle_t client = esp_http_client_init(&config);
     if (!client) {
+        ESP_LOGE(TAG, "HTTP client allocation failed free=%u largest=%u",
+                 static_cast<unsigned>(heap_caps_get_free_size(MALLOC_CAP_8BIT)),
+                 static_cast<unsigned>(heap_caps_get_largest_free_block(MALLOC_CAP_8BIT)));
         return ESP_ERR_NO_MEM;
     }
     esp_err_t err = ESP_OK;
@@ -288,6 +319,8 @@ static esp_err_t http_perform(const char *url,
         err = esp_http_client_perform(client);
     }
     *status_code = esp_http_client_get_status_code(client);
+    ESP_LOGI(TAG, "HTTP response status=%d bytes=%u truncated=%d",
+             *status_code, static_cast<unsigned>(response.len), response.truncated ? 1 : 0);
     int tls_error = 0;
     int tls_flags = 0;
     if (err != ESP_OK) {
@@ -345,6 +378,34 @@ static void wifi_event_handler(void *, esp_event_base_t event_base,
         if (s_wifi_events) {
             xEventGroupSetBits(s_wifi_events, WIFI_CONNECTED_BIT);
         }
+        if (s_sta_netif) {
+            esp_netif_dns_info_t dhcp_dns = {};
+            bool have_dhcp_dns =
+                esp_netif_get_dns_info(s_sta_netif, ESP_NETIF_DNS_MAIN, &dhcp_dns) == ESP_OK &&
+                dhcp_dns.ip.type == ESP_IPADDR_TYPE_V4;
+            if (have_dhcp_dns) {
+                ESP_LOGI(TAG, "DHCP DNS main=" IPSTR,
+                         IP2STR(&dhcp_dns.ip.u_addr.ip4));
+            }
+            // Keep the DHCP-provided resolver as the primary DNS. Public
+            // resolvers are only backups: some hotspots (e.g. iOS Personal
+            // Hotspot) do not route direct queries to public DNS servers.
+            const esp_netif_dns_info_t public_dns[] = {
+                {.ip = ESP_IP4ADDR_INIT(223, 5, 5, 5)},
+                {.ip = ESP_IP4ADDR_INIT(1, 1, 1, 1)},
+            };
+            const esp_netif_dns_type_t dns_types[] = {
+                ESP_NETIF_DNS_BACKUP, ESP_NETIF_DNS_FALLBACK,
+            };
+            for (size_t i = 0; i < sizeof(dns_types) / sizeof(dns_types[0]); ++i) {
+                esp_netif_dns_info_t dns = public_dns[i];
+                esp_err_t dns_err = esp_netif_set_dns_info(s_sta_netif, dns_types[i], &dns);
+                if (dns_err != ESP_OK) {
+                    ESP_LOGW(TAG, "DNS override type=%u err=%d",
+                             static_cast<unsigned>(dns_types[i]), static_cast<int>(dns_err));
+                }
+            }
+        }
         emit_event(CLARA_NET_EVENT_WIFI_CONNECTED);
     }
 }
@@ -377,6 +438,39 @@ static void reset_ws_rx(WsContext *ctx)
     ctx->rx_buf = nullptr;
     ctx->rx_len = 0;
     ctx->rx_expected = 0;
+    ctx->rx_cap = 0;
+}
+
+static void reset_transcribe_audio_batch()
+{
+    s_transcribe_audio_batch_len = 0;
+}
+
+static void reset_host_audio_batch()
+{
+    s_host_audio_batch_len = 0;
+}
+
+static void reset_audio_batch_for(WsContext *ctx)
+{
+    if (ctx == &s_transcribe) {
+        reset_transcribe_audio_batch();
+    } else if (ctx == &s_host) {
+        reset_host_audio_batch();
+    }
+}
+
+static bool take_audio_send_lock()
+{
+    return s_audio_send_lock != nullptr &&
+           xSemaphoreTake(s_audio_send_lock, portMAX_DELAY) == pdTRUE;
+}
+
+static void give_audio_send_lock()
+{
+    if (s_audio_send_lock) {
+        xSemaphoreGive(s_audio_send_lock);
+    }
 }
 
 static void emit_ws_state(WsContext *ctx, clara_net_event_type_t type)
@@ -391,6 +485,25 @@ static void emit_ws_state(WsContext *ctx, clara_net_event_type_t type)
             xEventGroupSetBits(ctx->events, BIT1);
         }
     }
+}
+
+static const char *json_text_field(const cJSON *root)
+{
+    static const char *const names[] = {"text", "content", "transcript", "delta", "answer"};
+    for (const char *name : names) {
+        const cJSON *item = cJSON_GetObjectItemCaseSensitive(root, name);
+        if (cJSON_IsString(item) && item->valuestring) return item->valuestring;
+    }
+    return "";
+}
+
+static bool json_bool_field(const cJSON *root, const char *const *names, size_t count)
+{
+    for (size_t i = 0; i < count; ++i) {
+        const cJSON *item = cJSON_GetObjectItemCaseSensitive(root, names[i]);
+        if (cJSON_IsTrue(item)) return true;
+    }
+    return false;
 }
 
 static void dispatch_ws_json(WsContext *ctx, const char *payload, size_t payload_len)
@@ -409,24 +522,32 @@ static void dispatch_ws_json(WsContext *ctx, const char *payload, size_t payload
         cJSON_Delete(root);
         return;
     }
-    if (ctx->kind == WsKind::Transcribe &&
-        (strcmp(type, "transcript") == 0 || strcmp(type, "transcription") == 0)) {
-        cJSON *text_item = cJSON_GetObjectItemCaseSensitive(root, "text");
-        cJSON *final_item = cJSON_GetObjectItemCaseSensitive(root, "is_final");
-        const char *text = cJSON_IsString(text_item) ? text_item->valuestring : "";
+    if (strcmp(type, "error") == 0) {
+        // The server message is passed to the UI callback but never logged.
+        cJSON *message_item = cJSON_GetObjectItemCaseSensitive(root, "message");
+        const char *message = cJSON_IsString(message_item) ? message_item->valuestring : "";
+        emit_event(CLARA_NET_EVENT_ERROR, message, nullptr, 0, false, 0, ESP_FAIL);
+    } else if (ctx->kind == WsKind::Transcribe &&
+        (strcmp(type, "transcript") == 0 || strcmp(type, "transcription") == 0 ||
+         strcmp(type, "transcript_update") == 0 || strcmp(type, "partial_transcript") == 0 ||
+         strcmp(type, "final_transcript") == 0)) {
+        const char *text = json_text_field(root);
+        static const char *const final_names[] = {"is_final", "final", "done"};
         emit_event(CLARA_NET_EVENT_TRANSCRIPT, text, nullptr, 0,
-                   cJSON_IsTrue(final_item));
+                   json_bool_field(root, final_names, sizeof(final_names) / sizeof(final_names[0])) ||
+                   strcmp(type, "final_transcript") == 0);
     } else if (ctx->kind == WsKind::Host) {
-        if (strcmp(type, "transcription") == 0) {
-            cJSON *text_item = cJSON_GetObjectItemCaseSensitive(root, "text");
-            const char *text = cJSON_IsString(text_item) ? text_item->valuestring : "";
-            emit_event(CLARA_NET_EVENT_HOST_TRANSCRIPTION, text);
-        } else if (strcmp(type, "answer_text") == 0) {
-            cJSON *text_item = cJSON_GetObjectItemCaseSensitive(root, "text");
-            cJSON *done_item = cJSON_GetObjectItemCaseSensitive(root, "done");
-            const char *text = cJSON_IsString(text_item) ? text_item->valuestring : "";
-            emit_event(CLARA_NET_EVENT_HOST_ANSWER_TEXT, text, nullptr, 0,
-                       cJSON_IsTrue(done_item));
+        if (strcmp(type, "transcription") == 0 || strcmp(type, "transcript") == 0) {
+            static const char *const host_final_names[] = {"is_final", "final"};
+            emit_event(CLARA_NET_EVENT_HOST_TRANSCRIPTION, json_text_field(root), nullptr, 0,
+                       json_bool_field(root, host_final_names,
+                                       sizeof(host_final_names) / sizeof(host_final_names[0])));
+        } else if (strcmp(type, "answer_text") == 0 || strcmp(type, "answer_delta") == 0 ||
+                   strcmp(type, "text_delta") == 0) {
+            static const char *const done_names[] = {"done", "is_final", "final"};
+            emit_event(CLARA_NET_EVENT_HOST_ANSWER_TEXT, json_text_field(root), nullptr, 0,
+                       json_bool_field(root, done_names, sizeof(done_names) / sizeof(done_names[0])),
+                       0, ESP_OK, strcmp(type, "answer_delta") == 0 || strcmp(type, "text_delta") == 0);
         } else if (strcmp(type, "answer_audio") == 0) {
             cJSON *data_item = cJSON_GetObjectItemCaseSensitive(root, "data");
             if (cJSON_IsString(data_item) && data_item->valuestring) {
@@ -453,13 +574,35 @@ static void dispatch_ws_json(WsContext *ctx, const char *payload, size_t payload
         } else if (strcmp(type, "done") == 0) {
             emit_event(CLARA_NET_EVENT_HOST_DONE);
         }
-    } else if (strcmp(type, "error") == 0) {
-        // The server message is passed to the UI callback but never logged.
-        cJSON *message_item = cJSON_GetObjectItemCaseSensitive(root, "message");
-        const char *message = cJSON_IsString(message_item) ? message_item->valuestring : "";
-        emit_event(CLARA_NET_EVENT_ERROR, message, nullptr, 0, false, 0, ESP_FAIL);
     }
     cJSON_Delete(root);
+}
+
+static void append_json_text(char *out, size_t out_len, const char *label, const char *value)
+{
+    if (!value || !value[0] || strlen(out) >= out_len - 1) return;
+    size_t used = strlen(out);
+    snprintf(out + used, out_len - used, "%s%s\n", label ? label : "", value);
+}
+
+static void append_json_array(char *out, size_t out_len, const char *label, const cJSON *array)
+{
+    if (!cJSON_IsArray(array)) return;
+    for (const cJSON *item = array->child; item; item = item->next) {
+        if (cJSON_IsString(item)) append_json_text(out, out_len, label, item->valuestring);
+        else if (cJSON_IsObject(item)) {
+            static const char *const names[] = {
+                "text", "content", "headline", "title", "name", "summary",
+                "description", "decision", "meetingGoal",
+            };
+            const cJSON *text = nullptr;
+            for (const char *name : names) {
+                text = cJSON_GetObjectItemCaseSensitive(item, name);
+                if (cJSON_IsString(text)) break;
+            }
+            if (cJSON_IsString(text)) append_json_text(out, out_len, label, text->valuestring);
+        }
+    }
 }
 
 static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void *event_data)
@@ -473,6 +616,7 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
         if (ctx->events) {
             xEventGroupClearBits(ctx->events, BIT1);
         }
+        ESP_LOGI(TAG, "WebSocket connected kind=%d", static_cast<int>(ctx->kind));
         emit_ws_state(ctx, ctx->kind == WsKind::Transcribe
                               ? CLARA_NET_EVENT_TRANSCRIBE_CONNECTED
                               : CLARA_NET_EVENT_HOST_CONNECTED);
@@ -480,6 +624,20 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
     }
     if (event_id == WEBSOCKET_EVENT_DISCONNECTED || event_id == WEBSOCKET_EVENT_CLOSED) {
         ctx->connected = false;
+        int close_status = 0;
+        int error_type = 0;
+        int socket_errno = 0;
+        if (event_data) {
+            const esp_websocket_event_data_t *data =
+                static_cast<const esp_websocket_event_data_t *>(event_data);
+            close_status = data->close_status_code;
+            error_type = static_cast<int>(data->error_handle.error_type);
+            socket_errno = data->error_handle.esp_transport_sock_errno;
+        }
+        ESP_LOGI(TAG,
+                 "WebSocket disconnected kind=%d event=%ld close=%d type=%d errno=%d",
+                 static_cast<int>(ctx->kind), static_cast<long>(event_id), close_status,
+                 error_type, socket_errno);
         if (ctx->events) {
             xEventGroupSetBits(ctx->events, BIT1);
         }
@@ -502,6 +660,8 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
         if (ctx->events) {
             xEventGroupSetBits(ctx->events, BIT1);
         }
+        ESP_LOGW(TAG, "WebSocket error kind=%d err=%d status=%d",
+                 static_cast<int>(ctx->kind), static_cast<int>(err), status);
         report_error(err, status);
         return;
     }
@@ -524,12 +684,15 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
         report_error(ESP_ERR_NO_MEM);
         return;
     }
-    if (!ctx->rx_buf) {
-        ctx->rx_buf = static_cast<char *>(malloc(WS_RX_MAX + 1));
-        if (!ctx->rx_buf) {
+    size_t required_cap = expected + 1U;
+    if (!ctx->rx_buf || ctx->rx_cap < required_cap) {
+        char *expanded = static_cast<char *>(realloc(ctx->rx_buf, required_cap));
+        if (!expanded) {
             report_error(ESP_ERR_NO_MEM);
             return;
         }
+        ctx->rx_buf = expanded;
+        ctx->rx_cap = required_cap;
     }
     memcpy(ctx->rx_buf + offset, data->data_ptr, frame_len);
     if (offset + frame_len > ctx->rx_len) {
@@ -544,7 +707,8 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
     }
 }
 
-static esp_err_t ws_send_text(WsContext *ctx, const char *text)
+static esp_err_t ws_send_text_with_timeout(WsContext *ctx, const char *text,
+                                            TickType_t timeout)
 {
     if (!ctx || !text) {
         return ESP_ERR_INVALID_ARG;
@@ -560,11 +724,17 @@ static esp_err_t ws_send_text(WsContext *ctx, const char *text)
         return ESP_ERR_INVALID_STATE;
     }
     int len = static_cast<int>(strlen(text));
-    int sent = esp_websocket_client_send_text(client, text, len, pdMS_TO_TICKS(1000));
+    int sent = esp_websocket_client_send_text(client, text, len, timeout);
     return sent == len ? ESP_OK : ESP_FAIL;
 }
 
-static esp_err_t ws_send_binary(WsContext *ctx, const void *data, size_t len)
+static esp_err_t ws_send_text(WsContext *ctx, const char *text)
+{
+    return ws_send_text_with_timeout(ctx, text, pdMS_TO_TICKS(1000));
+}
+
+static esp_err_t ws_send_fragment(WsContext *ctx, const char *data, size_t len,
+                                   bool first, TickType_t timeout)
 {
     if (!ctx || !data || len == 0 || len > INT_MAX) {
         return ESP_ERR_INVALID_ARG;
@@ -579,9 +749,113 @@ static esp_err_t ws_send_binary(WsContext *ctx, const void *data, size_t len)
     if (!client || !connected) {
         return ESP_ERR_INVALID_STATE;
     }
-    int sent = esp_websocket_client_send_bin(client, static_cast<const char *>(data),
-                                             static_cast<int>(len), pdMS_TO_TICKS(1000));
+    int sent = first
+                   ? esp_websocket_client_send_text_partial(client, data, static_cast<int>(len), timeout)
+                   : esp_websocket_client_send_cont_msg(client, data, static_cast<int>(len), timeout);
     return sent == static_cast<int>(len) ? ESP_OK : ESP_FAIL;
+}
+
+static esp_err_t ws_send_fragment_fin(WsContext *ctx, TickType_t timeout)
+{
+    if (!ctx) {
+        return ESP_ERR_INVALID_ARG;
+    }
+    esp_websocket_client_handle_t client = nullptr;
+    if (!take_lock()) {
+        return ESP_ERR_TIMEOUT;
+    }
+    client = ctx->client;
+    bool connected = ctx->connected;
+    give_lock();
+    if (!client || !connected) {
+        return ESP_ERR_INVALID_STATE;
+    }
+    return esp_websocket_client_send_fin(client, timeout) == 0 ? ESP_OK : ESP_FAIL;
+}
+
+static esp_err_t ws_send_audio_json(WsContext *ctx, const void *pcm, size_t pcm_len)
+{
+    if (!ctx || !pcm || pcm_len == 0 || pcm_len > HOST_AUDIO_MAX || (pcm_len & 1U) != 0) {
+        return ESP_ERR_INVALID_ARG;
+    }
+    // Do not attempt a send when internal RAM is so fragmented that the
+    // largest free block is below our threshold.  Pushing data into TLS/Wi-Fi
+    // in this state is what caused bcn_timeout disconnects.
+    const size_t largest_free = heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL);
+    if (largest_free < AUDIO_SEND_MIN_HEAP_BLOCK) {
+        ESP_LOGW(TAG, "audio send skipped: largest free block %u < %u",
+                 static_cast<unsigned>(largest_free),
+                 static_cast<unsigned>(AUDIO_SEND_MIN_HEAP_BLOCK));
+        return ESP_ERR_NO_MEM;
+    }
+    static constexpr char prefix[] = "{\"type\":\"audio\",\"data\":\"";
+    static constexpr char suffix[] = "\",\"speaker\":\"user\"}";
+    constexpr TickType_t timeout = pdMS_TO_TICKS(WS_AUDIO_SEND_TIMEOUT_MS);
+    esp_err_t err = ws_send_fragment(ctx, prefix, sizeof(prefix) - 1U, true, timeout);
+    if (err != ESP_OK) {
+        return err;
+    }
+
+    const uint8_t *input = static_cast<const uint8_t *>(pcm);
+    size_t offset = 0;
+    bool first_payload = false;
+    while (offset < pcm_len) {
+        size_t raw_len = pcm_len - offset;
+        if (raw_len > AUDIO_B64_CHUNK_RAW) {
+            raw_len = AUDIO_B64_CHUNK_RAW;
+        }
+        if (raw_len < pcm_len - offset) {
+            raw_len -= raw_len % 3U;
+        }
+        size_t encoded_len = 0;
+        int rc = mbedtls_base64_encode(reinterpret_cast<unsigned char *>(s_audio_b64_chunk),
+                                       AUDIO_B64_CHUNK_ENCODED + 1U, &encoded_len,
+                                       input + offset, raw_len);
+        if (rc != 0 || encoded_len > AUDIO_B64_CHUNK_ENCODED) {
+            return ESP_ERR_INVALID_ARG;
+        }
+        bool last = offset + raw_len == pcm_len;
+        if (last) {
+            constexpr size_t suffix_len = sizeof(suffix) - 1U;
+            if (encoded_len + suffix_len > sizeof(s_audio_b64_chunk) - 1U) {
+                return ESP_ERR_NO_MEM;
+            }
+            memcpy(s_audio_b64_chunk + encoded_len, suffix, suffix_len);
+            encoded_len += suffix_len;
+        }
+        err = ws_send_fragment(ctx, s_audio_b64_chunk, encoded_len, first_payload, timeout);
+        if (err != ESP_OK) {
+            return err;
+        }
+        first_payload = false;
+        offset += raw_len;
+    }
+    return ws_send_fragment_fin(ctx, timeout);
+}
+
+static esp_err_t flush_transcribe_audio_batch()
+{
+    if (s_transcribe_audio_batch_len == 0) {
+        return ESP_OK;
+    }
+    esp_err_t err = ws_send_audio_json(&s_transcribe, s_transcribe_audio_batch,
+                                       s_transcribe_audio_batch_len);
+    if (err == ESP_OK) {
+        reset_transcribe_audio_batch();
+    }
+    return err;
+}
+
+static esp_err_t flush_host_audio_batch()
+{
+    if (s_host_audio_batch_len == 0) {
+        return ESP_OK;
+    }
+    esp_err_t err = ws_send_audio_json(&s_host, s_host_audio_batch, s_host_audio_batch_len);
+    if (err == ESP_OK) {
+        reset_host_audio_batch();
+    }
+    return err;
 }
 
 static esp_err_t ws_cleanup(WsContext *ctx)
@@ -600,8 +874,21 @@ static esp_err_t ws_cleanup(WsContext *ctx)
         // stop/destroy are intentionally called outside the event callback.
         (void)esp_websocket_client_stop(client);
         (void)esp_websocket_client_destroy(client);
+        // The WebSocket task's stack is reclaimed by the FreeRTOS idle task
+        // after it self-deletes. Yield briefly before a rapid retry so that
+        // failed handshakes do not accumulate detached task stacks.
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
     reset_ws_rx(ctx);
+    // Do not clear a batch while the audio task is copying or sending it.
+    // Cleanup normally follows stop_audio_task(), but the lock also covers
+    // transport-error races where the final send is still unwinding.
+    if (take_audio_send_lock()) {
+        reset_audio_batch_for(ctx);
+        give_audio_send_lock();
+    } else {
+        reset_audio_batch_for(ctx);
+    }
     if (ctx->events) {
         xEventGroupClearBits(ctx->events, BIT0 | BIT1);
     }
@@ -615,6 +902,12 @@ static esp_err_t ws_connect(WsContext *ctx, const char *session_id)
     }
     if (!s_initialized || !s_wifi_connected) {
         return ESP_ERR_INVALID_STATE;
+    }
+    if (take_audio_send_lock()) {
+        reset_audio_batch_for(ctx);
+        give_audio_send_lock();
+    } else {
+        reset_audio_batch_for(ctx);
     }
     char path[160];
     int path_len = snprintf(path, sizeof(path), "%s/%s",
@@ -646,16 +939,20 @@ static esp_err_t ws_connect(WsContext *ctx, const char *session_id)
 
     esp_websocket_client_config_t config = {};
     config.uri = uri;
-    config.buffer_size = 16384;
-    config.task_stack = 12288;
+    // Audio frames are 640 bytes and the client already supports fragmented
+    // text frames. Keep the transport buffer small so TLS setup has a large
+    // contiguous internal heap block available on the C6.
+    config.buffer_size = 1024;
+    config.task_stack = 8192;
     config.task_prio = 5;
     config.network_timeout_ms = 30000;
     config.reconnect_timeout_ms = 10000;
     config.disable_auto_reconnect = true;
     config.skip_cert_common_name_check = false;
-#if CONFIG_MBEDTLS_CERTIFICATE_BUNDLE
-    config.crt_bundle_attach = esp_crt_bundle_attach;
-#endif
+    config.cert_pem = kClaraCaChainPem;
+    // esp_websocket_client treats non-zero cert_len as DER. A PEM chain must
+    // be NUL terminated and use zero length so the PEM transport API is used.
+    config.cert_len = 0;
     esp_websocket_client_handle_t client = esp_websocket_client_init(&config);
     if (!client) {
         return ESP_ERR_NO_MEM;
@@ -695,11 +992,71 @@ static esp_err_t ws_connect(WsContext *ctx, const char *session_id)
 
 } // namespace
 
+extern "C" esp_err_t clara_net_format_understanding(const char *json,
+                                                      char *out_text,
+                                                      size_t out_text_len)
+{
+    if (!json || !out_text || out_text_len == 0) return ESP_ERR_INVALID_ARG;
+    out_text[0] = '\0';
+    cJSON *root = cJSON_Parse(json);
+    if (!root) return ESP_ERR_INVALID_RESPONSE;
+    const cJSON *overview = cJSON_GetObjectItemCaseSensitive(root, "overview");
+    const cJSON *understanding = cJSON_GetObjectItemCaseSensitive(root, "understanding");
+    const cJSON *decision_state = cJSON_GetObjectItemCaseSensitive(root, "decisionState");
+    const cJSON *summary = cJSON_GetObjectItemCaseSensitive(root, "summary");
+    const cJSON *title = cJSON_GetObjectItemCaseSensitive(root, "title");
+    const cJSON *headline = cJSON_IsObject(overview)
+                                ? cJSON_GetObjectItemCaseSensitive(overview, "headline")
+                                : nullptr;
+    const cJSON *meeting_goal = cJSON_IsObject(understanding)
+                                    ? cJSON_GetObjectItemCaseSensitive(understanding, "meetingGoal")
+                                    : nullptr;
+    const cJSON *topics = cJSON_IsObject(understanding)
+                              ? cJSON_GetObjectItemCaseSensitive(understanding, "topics")
+                              : nullptr;
+    const cJSON *threads = cJSON_IsObject(decision_state)
+                               ? cJSON_GetObjectItemCaseSensitive(decision_state, "threads")
+                               : nullptr;
+    const cJSON *highlights = cJSON_GetObjectItemCaseSensitive(root, "highlights");
+    if (!highlights) highlights = cJSON_GetObjectItemCaseSensitive(root, "key_points");
+    const cJSON *actions = cJSON_GetObjectItemCaseSensitive(root, "action_items");
+    if (!actions) actions = cJSON_GetObjectItemCaseSensitive(root, "next_steps");
+    const cJSON *decisions = cJSON_GetObjectItemCaseSensitive(root, "decisions");
+    append_json_text(out_text, out_text_len, "", cJSON_IsString(title) ? title->valuestring : nullptr);
+    append_json_text(out_text, out_text_len, "", cJSON_IsString(headline) ? headline->valuestring : nullptr);
+    append_json_text(out_text, out_text_len, "Goal: ", cJSON_IsString(meeting_goal) ? meeting_goal->valuestring : nullptr);
+    append_json_text(out_text, out_text_len, "Summary: ", cJSON_IsString(summary) ? summary->valuestring : nullptr);
+    append_json_array(out_text, out_text_len, "• ", highlights);
+    append_json_array(out_text, out_text_len, "• ", topics);
+    append_json_array(out_text, out_text_len, "• ", decisions);
+    append_json_array(out_text, out_text_len, "• ", actions);
+    append_json_array(out_text, out_text_len, "• ", threads);
+    if (!out_text[0]) {
+        const cJSON *ready = cJSON_GetObjectItemCaseSensitive(root, "ready");
+        const cJSON *count = cJSON_GetObjectItemCaseSensitive(root, "transcriptCount");
+        append_json_text(out_text, out_text_len, "", cJSON_IsTrue(ready)
+                                                    ? "Meeting analysis is ready."
+                                                    : "Meeting analysis is still in progress.");
+        if (cJSON_IsNumber(count)) {
+            size_t used = strlen(out_text);
+            snprintf(out_text + used, out_text_len - used, "Transcript entries: %d\n", count->valueint);
+        }
+    }
+    cJSON_Delete(root);
+    return out_text[0] ? ESP_OK : ESP_ERR_NOT_FOUND;
+}
+
 extern "C" esp_err_t clara_net_init(const clara_net_config_t *config)
 {
     if (!s_lock) {
         s_lock = xSemaphoreCreateMutex();
         if (!s_lock) {
+            return ESP_ERR_NO_MEM;
+        }
+    }
+    if (!s_audio_send_lock) {
+        s_audio_send_lock = xSemaphoreCreateMutex();
+        if (!s_audio_send_lock) {
             return ESP_ERR_NO_MEM;
         }
     }
@@ -797,6 +1154,19 @@ extern "C" esp_err_t clara_net_wifi_start(void)
     if (err != ESP_OK && err != ESP_ERR_WIFI_STATE) {
         return err;
     }
+    constexpr uint8_t kStaProtocols = WIFI_PROTOCOL_11B |
+                                      WIFI_PROTOCOL_11G |
+                                      WIFI_PROTOCOL_11N;
+    err = esp_wifi_set_protocol(WIFI_IF_STA, kStaProtocols);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set Wi-Fi protocols err=%d", static_cast<int>(err));
+        return err;
+    }
+    ESP_LOGI(TAG, "Wi-Fi protocols limited to 11b/g/n mask=0x%02x", kStaProtocols);
+    err = esp_wifi_set_ps(WIFI_PS_NONE);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to disable Wi-Fi power save err=%d", static_cast<int>(err));
+    }
     s_wifi_started = true;
     s_wifi_retries = 0;
     s_wifi_connected = false;
@@ -832,6 +1202,7 @@ extern "C" esp_err_t clara_net_wifi_connect(uint32_t timeout_ms)
     return ESP_ERR_TIMEOUT;
 }
 
+
 extern "C" bool clara_net_wifi_is_connected(void)
 {
     return s_wifi_connected;
@@ -860,46 +1231,42 @@ extern "C" esp_err_t clara_net_create_session(const char *topic,
         return ESP_ERR_NO_MEM;
     }
     char url[URL_MAX];
-    char *response = static_cast<char *>(malloc(HTTP_RESPONSE_MAX));
-    if (!response) {
-        cJSON_free(body);
-        return ESP_ERR_NO_MEM;
-    }
+    char response[SESSION_RESPONSE_MAX] = {};
     int status = 0;
     bool truncated = false;
-    esp_err_t err = make_http_url(url, sizeof(url), "api/session")
+    bool url_ok = make_http_url(url, sizeof(url), "api/session");
+    ESP_LOGI(TAG, "Create session URL ready=%d", url_ok ? 1 : 0);
+    esp_err_t err = url_ok
                         ? http_perform(url, HTTP_METHOD_POST, "application/json", body,
-                                       response, HTTP_RESPONSE_MAX, &status, &truncated)
+                                       response, sizeof(response), &status, &truncated)
                         : ESP_ERR_INVALID_ARG;
     cJSON_free(body);
     if (err != ESP_OK) {
-        free(response);
         report_error(err, status);
         return err;
     }
     if (truncated) {
-        free(response);
         report_error(ESP_ERR_NO_MEM, status);
         return ESP_ERR_NO_MEM;
     }
     cJSON *reply = cJSON_ParseWithLength(response, strlen(response));
     if (!reply) {
-        free(response);
+        ESP_LOGW(TAG, "Session response JSON parse failed bytes=%u",
+                 static_cast<unsigned>(strlen(response)));
         report_error(ESP_ERR_INVALID_RESPONSE, status);
         return ESP_ERR_INVALID_RESPONSE;
     }
     cJSON *id_item = cJSON_GetObjectItemCaseSensitive(reply, "session_id");
     const char *id = cJSON_IsString(id_item) ? id_item->valuestring : nullptr;
     if (!valid_session_id(id)) {
+        ESP_LOGW(TAG, "Session response missing valid session_id");
         cJSON_Delete(reply);
-        free(response);
         report_error(ESP_ERR_INVALID_RESPONSE, status);
         return ESP_ERR_INVALID_RESPONSE;
     }
     size_t id_len = strlen(id);
     if (id_len >= out_session_id_len || id_len >= sizeof(s_session_id)) {
         cJSON_Delete(reply);
-        free(response);
         report_error(ESP_ERR_NO_MEM, status);
         return ESP_ERR_NO_MEM;
     }
@@ -909,7 +1276,6 @@ extern "C" esp_err_t clara_net_create_session(const char *topic,
         give_lock();
     }
     cJSON_Delete(reply);
-    free(response);
     emit_event(CLARA_NET_EVENT_SESSION_CREATED);
     return ESP_OK;
 }
@@ -932,19 +1298,14 @@ extern "C" esp_err_t clara_net_end_session(const char *session_id)
     if (!make_http_url(url, sizeof(url), path)) {
         return ESP_ERR_INVALID_ARG;
     }
-    char *response = static_cast<char *>(malloc(HTTP_RESPONSE_MAX));
-    if (!response) {
-        return ESP_ERR_NO_MEM;
-    }
+    char response[END_RESPONSE_MAX] = {};
     int status = 0;
     esp_err_t err = http_perform(url, HTTP_METHOD_POST, nullptr, nullptr,
-                                 response, HTTP_RESPONSE_MAX, &status, nullptr);
+                                 response, sizeof(response), &status, nullptr);
     if (err != ESP_OK) {
-        free(response);
         report_error(err, status);
         return err;
     }
-    free(response);
     emit_event(CLARA_NET_EVENT_SESSION_ENDED, nullptr, nullptr, 0, false, status);
     return ESP_OK;
 }
@@ -969,27 +1330,18 @@ extern "C" esp_err_t clara_net_get_understanding(const char *session_id,
     if (!make_http_url(url, sizeof(url), path)) {
         return ESP_ERR_INVALID_ARG;
     }
-    char *response = static_cast<char *>(malloc(HTTP_RESPONSE_MAX));
-    if (!response) {
-        return ESP_ERR_NO_MEM;
-    }
     int status = 0;
     bool truncated = false;
     esp_err_t err = http_perform(url, HTTP_METHOD_GET, nullptr, nullptr,
-                                 response, HTTP_RESPONSE_MAX, &status, &truncated);
+                                 out_json, out_json_len, &status, &truncated);
     if (err != ESP_OK) {
-        free(response);
         report_error(err, status);
         return err;
     }
-    size_t n = strlen(response);
-    if (truncated || n + 1 > out_json_len) {
-        free(response);
+    if (truncated) {
         report_error(ESP_ERR_NO_MEM, status);
         return ESP_ERR_NO_MEM;
     }
-    memcpy(out_json, response, n + 1);
-    free(response);
     return ESP_OK;
 }
 
@@ -1000,12 +1352,49 @@ extern "C" esp_err_t clara_net_transcribe_connect(const char *session_id)
 
 extern "C" esp_err_t clara_net_transcribe_send_audio(const void *pcm, size_t pcm_len)
 {
-    return ws_send_binary(&s_transcribe, pcm, pcm_len);
+    if (!pcm || pcm_len == 0 || pcm_len > INT_MAX || (pcm_len & 1U) != 0) {
+        return ESP_ERR_INVALID_ARG;
+    }
+    if (!take_audio_send_lock()) {
+        return ESP_ERR_TIMEOUT;
+    }
+    const uint8_t *input = static_cast<const uint8_t *>(pcm);
+    esp_err_t result = ESP_OK;
+    size_t remaining = pcm_len;
+    while (remaining > 0) {
+        size_t room = TRANSCRIBE_AUDIO_BATCH_MAX - s_transcribe_audio_batch_len;
+        size_t copy_len = remaining < room ? remaining : room;
+        memcpy(s_transcribe_audio_batch + s_transcribe_audio_batch_len, input, copy_len);
+        s_transcribe_audio_batch_len += copy_len;
+        input += copy_len;
+        remaining -= copy_len;
+        if (s_transcribe_audio_batch_len == TRANSCRIBE_AUDIO_BATCH_MAX) {
+            esp_err_t err = flush_transcribe_audio_batch();
+            if (err != ESP_OK) {
+                reset_transcribe_audio_batch();
+                result = err;
+                break;
+            }
+        }
+    }
+    give_audio_send_lock();
+    return result;
 }
 
 extern "C" esp_err_t clara_net_transcribe_send_end(void)
 {
-    return ws_send_text(&s_transcribe, "{\"type\":\"end\"}");
+    if (!take_audio_send_lock()) {
+        return ESP_ERR_TIMEOUT;
+    }
+    esp_err_t err = flush_transcribe_audio_batch();
+    if (err != ESP_OK) {
+        reset_transcribe_audio_batch();
+        give_audio_send_lock();
+        return err;
+    }
+    err = ws_send_text(&s_transcribe, "{\"type\":\"end\"}");
+    give_audio_send_lock();
+    return err;
 }
 
 extern "C" esp_err_t clara_net_transcribe_disconnect(void)
@@ -1020,51 +1409,57 @@ extern "C" esp_err_t clara_net_host_connect(const char *session_id)
 
 extern "C" esp_err_t clara_net_host_send_audio(const void *pcm, size_t pcm_len)
 {
-    if (!pcm || pcm_len == 0 || pcm_len > HOST_AUDIO_MAX) {
+    if (!pcm || pcm_len == 0 || pcm_len > INT_MAX || (pcm_len & 1U) != 0) {
         return ESP_ERR_INVALID_ARG;
     }
-    size_t encoded_cap = ((pcm_len + 2U) / 3U) * 4U + 1U;
-    size_t message_cap = encoded_cap + 64U;
-    char *message = static_cast<char *>(malloc(message_cap));
-    if (!message) {
-        return ESP_ERR_NO_MEM;
+    if (!take_audio_send_lock()) {
+        return ESP_ERR_TIMEOUT;
     }
-    // Encode at the beginning and insert the fixed JSON prefix with memmove;
-    // this avoids a second large temporary buffer and keeps -Wrestrict happy.
-    size_t encoded_len = 0;
-    int rc = mbedtls_base64_encode(reinterpret_cast<unsigned char *>(message),
-                                    encoded_cap, &encoded_len,
-                                    static_cast<const unsigned char *>(pcm), pcm_len);
-    esp_err_t err = ESP_OK;
-    if (rc != 0) {
-        err = ESP_ERR_INVALID_ARG;
-    } else {
-        static const char prefix[] = "{\"type\":\"audio\",\"data\":\"";
-        constexpr size_t suffix_len = 2; // closing quote and brace
-        const size_t prefix_len = sizeof(prefix) - 1;
-        if (prefix_len + encoded_len + suffix_len + 1 > message_cap) {
-            err = ESP_ERR_NO_MEM;
-        } else {
-            memmove(message + prefix_len, message, encoded_len);
-            memcpy(message, prefix, prefix_len);
-            message[prefix_len + encoded_len] = '\"';
-            message[prefix_len + encoded_len + 1] = '}';
-            message[prefix_len + encoded_len + suffix_len] = '\0';
-            err = ws_send_text(&s_host, message);
+    const uint8_t *input = static_cast<const uint8_t *>(pcm);
+    size_t remaining = pcm_len;
+    esp_err_t result = ESP_OK;
+    while (remaining > 0) {
+        size_t room = HOST_AUDIO_BATCH_MAX - s_host_audio_batch_len;
+        size_t copy_len = remaining < room ? remaining : room;
+        memcpy(s_host_audio_batch + s_host_audio_batch_len, input, copy_len);
+        s_host_audio_batch_len += copy_len;
+        input += copy_len;
+        remaining -= copy_len;
+        if (s_host_audio_batch_len == HOST_AUDIO_BATCH_MAX) {
+            esp_err_t err = flush_host_audio_batch();
+            if (err != ESP_OK) {
+                reset_host_audio_batch();
+                result = err;
+                break;
+            }
         }
     }
-    free(message);
-    return err;
+    give_audio_send_lock();
+    return result;
 }
 
 extern "C" esp_err_t clara_net_host_send_end_of_speech(void)
 {
-    return ws_send_text(&s_host, "{\"type\":\"end_of_speech\"}");
+    if (!take_audio_send_lock()) {
+        return ESP_ERR_TIMEOUT;
+    }
+    esp_err_t err = flush_host_audio_batch();
+    if (err == ESP_OK) {
+        err = ws_send_text(&s_host, "{\"type\":\"end_of_speech\"}");
+    }
+    give_audio_send_lock();
+    return err;
 }
 
 extern "C" esp_err_t clara_net_host_send_stop(void)
 {
-    return ws_send_text(&s_host, "{\"type\":\"stop\"}");
+    if (!take_audio_send_lock()) {
+        return ESP_ERR_TIMEOUT;
+    }
+    reset_host_audio_batch();
+    esp_err_t err = ws_send_text(&s_host, "{\"type\":\"stop\"}");
+    give_audio_send_lock();
+    return err;
 }
 
 extern "C" esp_err_t clara_net_host_disconnect(void)
