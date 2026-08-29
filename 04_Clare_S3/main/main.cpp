@@ -42,6 +42,7 @@ static DisplayPort *s_display = nullptr;
 static CodecPort *s_codec = nullptr;
 static char s_session_id[96] = {};
 static volatile bool s_meeting_active = false;
+static volatile bool s_transcribe_connected = false;
 static volatile bool s_host_connected = false;
 static volatile bool s_host_recording = false;
 static volatile bool s_audio_task_run = false;
@@ -107,9 +108,11 @@ static void net_event(const clare_net_event_t *event, void *)
     case CLARE_NET_EVENT_WIFI_DISCONNECTED: clare_ui_set_wifi("Wi-Fi: offline"); break;
     case CLARE_NET_EVENT_WIFI_FAILED: clare_ui_set_wifi("Wi-Fi: failed"); break;
     case CLARE_NET_EVENT_TRANSCRIBE_CONNECTED:
+        s_transcribe_connected = true;
         if (s_meeting_active) ui_status("Listening - recording only");
         break;
     case CLARE_NET_EVENT_TRANSCRIBE_DISCONNECTED:
+        s_transcribe_connected = false;
         if (s_meeting_active) enqueue_action(Action::HandleMeetingDisconnect);
         break;
     case CLARE_NET_EVENT_TRANSCRIPT: if (event->text) clare_ui_append_transcript(event->text, event->is_final); break;
@@ -193,6 +196,10 @@ static void audio_task(void *)
             if (!s_host_connected) { vTaskDelay(pdMS_TO_TICKS(50)); continue; }
             err = clare_net_host_send_audio(s_audio_mono, sizeof(s_audio_mono));
         } else if (s_meeting_active) {
+            // Transcribe channel down or reconnecting: idle (drop frames)
+            // instead of spamming failed sends into the watchdog — the
+            // supervisor owns recovery (vocat ws_session does the same).
+            if (!s_transcribe_connected) { vTaskDelay(pdMS_TO_TICKS(50)); continue; }
             err = clare_net_transcribe_send_audio(s_audio_mono, sizeof(s_audio_mono));
         }
         if (err == ESP_OK && !send_ok_logged) {
@@ -260,6 +267,7 @@ static void start_meeting_impl(void *)
     // the narrow race where a socket connects and drops before connect() has
     // returned; the disconnect handler can then reliably recover the UI.
     s_meeting_active = true;
+    s_transcribe_connected = false;
     clare_ui_set_meeting_active(true);
     ui_status("Connecting transcription...");
     if (clare_net_transcribe_connect(s_session_id) != ESP_OK) {
@@ -284,6 +292,7 @@ static void stop_meeting_impl(void *)
     if (!s_meeting_active) return;
     stop_audio_task();
     s_meeting_active = false;
+    s_transcribe_connected = false;
     (void)clare_audio_mp3_end();
     clare_ui_set_meeting_active(false);
     clare_net_transcribe_send_end(); clare_net_transcribe_disconnect();
@@ -298,9 +307,32 @@ static void stop_meeting_impl(void *)
 static void handle_meeting_disconnect_impl(void *)
 {
     if (!s_meeting_active) return;
+    if (s_transcribe_connected) return;  // already recovered by a queued duplicate
+    (void)clare_net_transcribe_disconnect();  // clean the dead handle
+    // Auto-reconnect supervisor (the missing piece vs the vocat reference):
+    // the backend/proxy kills long-lived WSS connections on its own schedule
+    // (observed at 20 s/83 s/144 s/343 s of healthy streaming, fatal TLS
+    // alert in logs/clare_s3_user_acceptance_20260829.log).  Reconnect with
+    // backoff; recreate the session once if the id itself was rejected; only
+    // give up after everything failed.
+    for (int attempt = 1; attempt <= 3 && s_meeting_active && !s_transcribe_connected; ++attempt) {
+        ui_status("Reconnecting transcription...");
+        vTaskDelay(pdMS_TO_TICKS(1000 * attempt));
+        if (clare_net_transcribe_connect(s_session_id) == ESP_OK) {
+            ui_status("Listening - recording only");
+            return;
+        }
+    }
+    if (!s_meeting_active || s_transcribe_connected) return;
+    ui_status("Recreating meeting session...");
+    if (clare_net_create_session(CONFIG_CLARE_TOPIC, s_session_id, sizeof(s_session_id)) == ESP_OK &&
+        clare_net_transcribe_connect(s_session_id) == ESP_OK) {
+        ui_status("Listening - recording only");
+        return;
+    }
+    if (!s_meeting_active) return;
     s_meeting_active = false;
     if (!s_host_recording) stop_audio_task();
-    (void)clare_net_transcribe_disconnect();
     clare_ui_set_meeting_active(false);
     ui_status("Connection lost - tap Start to retry");
 }

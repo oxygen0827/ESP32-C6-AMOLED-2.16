@@ -698,6 +698,19 @@ static size_t tts_ring_read(uint8_t *dst, size_t max_len)
     return slice;
 }
 
+static esp_err_t tts_decoder_reopen()
+{
+    if (s_audio.mp3_decoder) {
+        esp_audio_simple_dec_close(s_audio.mp3_decoder);
+        s_audio.mp3_decoder = nullptr;
+    }
+    esp_audio_simple_dec_cfg_t config = {};
+    config.dec_type = ESP_AUDIO_SIMPLE_DEC_TYPE_MP3;
+    config.use_frame_dec = false;
+    esp_audio_err_t err = esp_audio_simple_dec_open(&config, &s_audio.mp3_decoder);
+    return (err == ESP_AUDIO_ERR_OK) ? ESP_OK : ESP_FAIL;
+}
+
 static void tts_play_task(void *)
 {
     // Prebuffer: wait for enough compressed audio (or stream end) so the
@@ -718,17 +731,15 @@ static void tts_play_task(void *)
     }
     ESP_LOGI(TAG, "tts playback task started");
     bool stream_open = true;
+    size_t pending = 0;          // unconsumed tail carried to the next feed
+    int consecutive_errors = 0;  // decode resets without a successful frame
     while (stream_open) {
         lock(s_tts.lock);
-        const size_t avail = tts_avail();
         const bool eos = s_tts.eos;
-        size_t got = 0;
-        if (avail > 0) {
-            got = tts_ring_read(feed, 1024);
-        }
+        size_t got = tts_ring_read(feed + pending, 1024 - pending);
         unlock(s_tts.lock);
 
-        if (got == 0) {
+        if (pending + got == 0) {
             if (eos) {
                 // Flush the decoder with an empty eos frame, then stop.
                 esp_audio_simple_dec_raw_t raw = {};
@@ -754,8 +765,9 @@ static void tts_play_task(void *)
         }
         esp_audio_simple_dec_raw_t raw = {};
         raw.buffer = feed;
-        raw.len = static_cast<uint32_t>(got);
+        raw.len = static_cast<uint32_t>(pending + got);
         raw.eos = false;
+        pending = 0;
         while (raw.len > 0) {
             esp_audio_simple_dec_out_t frame = {};
             frame.buffer = s_audio.mp3_out;
@@ -770,11 +782,21 @@ static void tts_play_task(void *)
                 continue;
             }
             if (err != ESP_AUDIO_ERR_OK && err != ESP_AUDIO_ERR_CONTINUE) {
-                ESP_LOGW(TAG, "tts decode err=%d (stream reset)", static_cast<int>(err));
-                stream_open = false;
+                // A bad segment (e.g. one sentence's MP3 in a multi-message
+                // answer) must NOT kill the stream: reset the decoder in
+                // place and keep playing the rest of the buffer.  Only give
+                // up after 8 consecutive resets with no decoded frame —
+                // previously the task exited and the next TTS_START wiped
+                // the ring, which is why a whole sentence was skipped.
+                ESP_LOGW(TAG, "tts decode err=%d - decoder reset, stream kept", static_cast<int>(err));
+                if (++consecutive_errors >= 8 || tts_decoder_reopen() != ESP_OK) {
+                    ESP_LOGE(TAG, "tts decode unrecoverable, stopping stream");
+                    stream_open = false;
+                }
                 break;
             }
             if (frame.decoded_size > 0) {
+                consecutive_errors = 0;
                 esp_audio_simple_dec_info_t info = {};
                 if (esp_audio_simple_dec_get_info(s_audio.mp3_decoder, &info) == ESP_AUDIO_ERR_OK) {
                     lock(s_audio.playback_lock);
@@ -783,10 +805,19 @@ static void tts_play_task(void *)
                 }
             }
             if (raw.consumed > raw.len) { stream_open = false; break; }
-            if (raw.consumed == 0) break;  // partial frame retained by decoder
+            if (raw.consumed == 0) break;  // need more input; carry tail over
             raw.buffer += raw.consumed;
             raw.len -= raw.consumed;
             raw.consumed = 0;
+        }
+        if (raw.len > 0 && raw.len <= 1024 && stream_open) {
+            memmove(feed, raw.buffer, raw.len);
+            pending = raw.len;
+        } else if (raw.len > 1024) {
+            // Decoder made no progress on a full buffer: drop one byte to
+            // force re-sync instead of spinning forever.
+            memmove(feed, raw.buffer + 1, raw.len - 1);
+            pending = raw.len - 1;
         }
     }
     heap_caps_free(feed);
