@@ -349,6 +349,12 @@ static void handle_host_rejected_impl(void *)
     s_host_connected = false;
     (void)clare_net_host_disconnect();
     clare_ui_set_host_active(false);
+    if (s_meeting_active) {
+        // Never recreate the session from under a running meeting: the
+        // transcribe supervisor owns the meeting-channel lifecycle.
+        ui_status("Ask failed - tap again to retry");
+        return;
+    }
     if (s_session_id[0]) {
         (void)clare_net_end_session(s_session_id);
         s_session_id[0] = 0;
@@ -588,7 +594,12 @@ static void action_task(void *)
 
 static void enqueue_action(Action action)
 {
-    if (!s_action_queue || xQueueSend(s_action_queue, &action, 0) != pdTRUE) {
+    if (!s_action_queue) return;
+    if (xQueueSend(s_action_queue, &action, 0) != pdTRUE) {
+        // Recovery actions pile up while the supervisor is mid-reconnect on
+        // a flaky link; dropping duplicates is harmless (one recovery is
+        // already queued/running) and must not flash a bogus UI status.
+        if (action == Action::HandleMeetingDisconnect || action == Action::CleanupHost) return;
         ui_status("Clare is still working...");
     }
 }

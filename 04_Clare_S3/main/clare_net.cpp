@@ -68,7 +68,7 @@ constexpr size_t TRANSCRIBE_AUDIO_BATCH_MAX = 3200; // 1600 samples, 16 kHz mono
 constexpr size_t HOST_AUDIO_BATCH_MAX = 3200;       // short questions, same bound
 constexpr size_t AUDIO_B64_MAX = (TRANSCRIBE_AUDIO_BATCH_MAX * 4 / 3) + 8;
 constexpr size_t AUDIO_JSON_MAX = AUDIO_B64_MAX + 64;
-constexpr uint32_t WS_AUDIO_SEND_TIMEOUT_MS = 500; // match proven reference: drop the frame fast rather than stall the audio task
+constexpr uint32_t WS_AUDIO_SEND_TIMEOUT_MS = 1500; // 500 ms was too twitchy on cellular hotspots: a transient poll_write timeout killed healthy connections
 // Largest contiguous heap block we are willing to require for an audio send.
 // Set well below the observed failure point to give Wi-Fi/TLS headroom.
 constexpr size_t AUDIO_SEND_MIN_HEAP_BLOCK = 2048;
@@ -765,9 +765,13 @@ static void ws_event_handler(void *arg, esp_event_base_t, int32_t event_id, void
         }
         ESP_LOGW(TAG, "WebSocket error kind=%d err=%d status=%d",
                  static_cast<int>(ctx->kind), static_cast<int>(err), status);
-        if (status == 403) {
+        if (status == 403 && ctx->kind == WsKind::Host) {
             // Server-side session rejection: the session id is no longer
-            // valid. The application must recreate the session.
+            // valid. The application must recreate the session.  NOTE: only
+            // the host channel drives session recreation — a transcribe 403
+            // used to wrongly trigger the host recreate flow and hijack the
+            // meeting's session id (logs/clare_s3_acceptance2_20260829.log);
+            // the transcribe supervisor owns meeting-channel recovery.
             emit_event(CLARE_NET_EVENT_HOST_SESSION_REJECTED, nullptr, nullptr, 0,
                        false, status, err);
         } else {
