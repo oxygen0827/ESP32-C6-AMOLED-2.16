@@ -84,6 +84,8 @@ S3 有 8MB PSRAM + `MBEDTLS_EXTERNAL_MEM_ALLOC=y`，X509_ALLOC/MPI_ALLOC/esp-aes
 - stop/destroy 必须全程持音频发送锁（防发送途中释放）；
 - 断连事件里必须清理句柄（排队到主任务做，不能在 WS 任务里自毁），否则后续连接全部 INVALID_STATE；
 - 销毁路径不做任何可能阻塞 LVGL/音频任务超过秒级的等待。
+- **连接握手期间音频任务必须休眠**（`if (!s_host_connected) continue`）：向未连上的通道空发会触发断连看门狗误杀会议通道，还会抢 CPU 拖垮 TLS 握手。
+- TTS/音频解码播放必须走独立任务+抖动缓冲，**禁止**在 WS 客户端任务里同步解码播放（codec 写阻塞会反压 TCP，语音必断续）；流跨多条 answer_audio 消息保持，只在 done/停止时关闭。
 
 ## 问题记录
 

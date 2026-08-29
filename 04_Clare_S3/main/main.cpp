@@ -70,7 +70,33 @@ static int16_t s_audio_mono[kAudioFrameSamples] = {};
 
 static void enqueue_action(Action action);
 
+static char s_host_answer_text[2048] = {};
+
 static void ui_status(const char *text) { clare_ui_set_status(text); ESP_LOGI(TAG, "%s", text); }
+
+// Accumulate answer chunks the way the proven reference does
+// (vocat ws_session.c): a chunk that starts with everything we already have
+// is a full cumulative snapshot -> replace; anything else is a delta ->
+// append.  The old code overwrote the visible fragment with every chunk, so
+// only a few characters ever showed on screen.
+static void host_answer_feed(const char *chunk)
+{
+    if (!chunk) return;
+    const size_t cur = strlen(s_host_answer_text);
+    const size_t clen = strlen(chunk);
+    if (clen == 0) {
+        clare_ui_set_answer(s_host_answer_text);
+        return;
+    }
+    if (cur > 0 && clen >= cur && strncmp(chunk, s_host_answer_text, cur) == 0) {
+        strlcpy(s_host_answer_text, chunk, sizeof(s_host_answer_text));
+    } else if (cur + clen < sizeof(s_host_answer_text)) {
+        memcpy(s_host_answer_text + cur, chunk, clen + 1);
+    } else {
+        strlcpy(s_host_answer_text, chunk, sizeof(s_host_answer_text));
+    }
+    clare_ui_set_answer(s_host_answer_text);
+}
 
 static void net_event(const clare_net_event_t *event, void *)
 {
@@ -98,17 +124,13 @@ static void net_event(const clare_net_event_t *event, void *)
         break;
     case CLARE_NET_EVENT_HOST_TRANSCRIPTION:
         if (event->text) {
-            char question[640] = {};
-            snprintf(question, sizeof(question), "You: %s\nClare: ", event->text);
-            clare_ui_set_answer(question);
+            snprintf(s_host_answer_text, sizeof(s_host_answer_text), "You: %s\nClare: ", event->text);
+            clare_ui_set_answer(s_host_answer_text);
             ui_status("Question received");
         }
         break;
     case CLARE_NET_EVENT_HOST_ANSWER_TEXT:
-        if (event->text) {
-            if (event->is_delta) clare_ui_append_answer_delta(event->text, event->is_final);
-            else clare_ui_append_answer(event->text, event->is_final);
-        }
+        host_answer_feed(event->text);
         break;
     case CLARE_NET_EVENT_HOST_TTS_START: (void)clare_audio_mp3_start(); break;
     case CLARE_NET_EVENT_HOST_ANSWER_AUDIO:
@@ -116,7 +138,12 @@ static void net_event(const clare_net_event_t *event, void *)
             (void)clare_audio_mp3_write(event->binary, event->binary_len, false);
         }
         break;
-    case CLARE_NET_EVENT_HOST_TTS_END: (void)clare_audio_mp3_end(); break;
+    case CLARE_NET_EVENT_HOST_TTS_END:
+        // One answer arrives as SEVERAL answer_audio messages; the stream
+        // must stay open across them.  Ending here restarted the playback
+        // task (and its prebuffer) per message = audible gaps.  The stream
+        // is closed on HOST_DONE / stop paths instead.
+        break;
     case CLARE_NET_EVENT_HOST_SESSION_REJECTED:
         ui_status("Session expired - recreating");
         enqueue_action(Action::HandleHostRejected);
@@ -157,6 +184,13 @@ static void audio_task(void *)
         // the host WS handshake.  The meeting feed pauses while a question
         // is recorded and resumes when the answer flow ends.
         if (s_host_recording) {
+            // Host WS handshake still in progress: the channel cannot accept
+            // audio yet.  Drop mic data and idle instead of spinning on
+            // failed sends — the spin both starved the TLS handshake of CPU
+            // (connect timeout) and tripped the 300-streak disconnect
+            // watchdog, killing the meeting channel
+            // (logs/clare_s3_round2_regression_20260829.log).
+            if (!s_host_connected) { vTaskDelay(pdMS_TO_TICKS(50)); continue; }
             err = clare_net_host_send_audio(s_audio_mono, sizeof(s_audio_mono));
         } else if (s_meeting_active) {
             err = clare_net_transcribe_send_audio(s_audio_mono, sizeof(s_audio_mono));
@@ -316,6 +350,7 @@ static void toggle_host_impl(void *)
     }
     if (s_host_connected) { ui_status("Clare is still answering..."); return; }
     clare_ui_reset_answer();
+    s_host_answer_text[0] = '\0';
     // Pause the meeting feed BEFORE the host WS handshake, not after: the
     // backend rejects a second concurrent audio stream with a 403, and the
     // handshake takes seconds during which the audio task is still running.
@@ -416,43 +451,65 @@ static void boot_network_self_test(void)
 #endif
 
 #if CONFIG_CLARE_BOOT_SELF_TEST
+// One Ask round: pause meeting feed, host connect, record `record_ms` of mic
+// audio, end_of_speech, then wait `answer_ms` for the answer/TTS events.
+static void ask_round(const char *label, uint32_t record_ms, uint32_t answer_ms)
+{
+    ESP_LOGI(TAG, "Ask E2E[%s]: host connect (403 gate)", label);
+    s_host_recording = true;  // pause transcribe feed BEFORE handshake
+    if (clare_net_host_connect(s_session_id) != ESP_OK) {
+        s_host_recording = false;
+        ESP_LOGW(TAG, "Ask E2E[%s]: host connect failed", label);
+        return;
+    }
+    ESP_LOGI(TAG, "Ask E2E[%s]: recording %u ms - play the question NOW",
+             label, static_cast<unsigned>(record_ms));
+    start_audio_task();
+    vTaskDelay(pdMS_TO_TICKS(record_ms));
+    s_host_recording = false;
+    (void)clare_net_host_send_end_of_speech();
+    ESP_LOGI(TAG, "Ask E2E[%s]: end_of_speech sent, waiting %u ms", label,
+             static_cast<unsigned>(answer_ms));
+    vTaskDelay(pdMS_TO_TICKS(answer_ms));
+    (void)clare_net_host_disconnect();
+    ESP_LOGI(TAG, "Ask E2E[%s]: round done", label);
+}
+
 static void boot_ask_e2e_test(void)
 {
-    // Hands-free Ask E2E: host connect (403 regression gate) -> stream mic
-    // audio for 10 s -> end_of_speech -> collect answer/TTS events -> summary.
-    // Drive the mic by playing a spoken question near the board during the
-    // "E2E recording" window.
-    ESP_LOGI(TAG, "Ask E2E: create session");
-    char session_id[96] = {};
-    if (clare_net_create_session(CONFIG_CLARE_TOPIC, session_id, sizeof(session_id)) != ESP_OK) {
+    // Hands-free full user-flow E2E: meeting (transcribe) + TWO consecutive
+    // Ask rounds on one session.  Round 2 is the regression gate for the
+    // "second Ask -> Network error / Connection lost" report.
+    ESP_LOGI(TAG, "Ask E2E: create session + transcribe");
+    if (clare_net_create_session(CONFIG_CLARE_TOPIC, s_session_id, sizeof(s_session_id)) != ESP_OK) {
         ESP_LOGW(TAG, "Ask E2E: session failed");
         return;
     }
-    ESP_LOGI(TAG, "Ask E2E: host connect (403 gate)");
-    s_host_recording = true;  // pause transcribe feed before handshake (none here, mirrors toggle path)
-    if (clare_net_host_connect(session_id) != ESP_OK) {
-        s_host_recording = false;
-        ESP_LOGW(TAG, "Ask E2E: host connect failed");
-        (void)clare_net_end_session(session_id);
+    s_meeting_active = true;
+    if (clare_net_transcribe_connect(s_session_id) != ESP_OK) {
+        s_meeting_active = false;
+        ESP_LOGW(TAG, "Ask E2E: transcribe connect failed");
+        (void)clare_net_end_session(s_session_id);
+        s_session_id[0] = 0;
         return;
     }
-    ESP_LOGI(TAG, "Ask E2E: recording 10 s - play the question near the mic NOW");
     start_audio_task();
-    vTaskDelay(pdMS_TO_TICKS(10000));
-    s_host_recording = false;
-    (void)clare_net_host_send_end_of_speech();
-    ESP_LOGI(TAG, "Ask E2E: end_of_speech sent, waiting 20 s for answer");
-    vTaskDelay(pdMS_TO_TICKS(20000));
+    vTaskDelay(pdMS_TO_TICKS(5000));
+    ask_round("round1", 8000, 18000);
+    ESP_LOGI(TAG, "Ask E2E: meeting feed resumed between rounds");
+    vTaskDelay(pdMS_TO_TICKS(4000));
+    ask_round("round2", 8000, 18000);
     stop_audio_task();
+    s_meeting_active = false;
     (void)clare_audio_mp3_end();
-    (void)clare_net_host_disconnect();
+    (void)clare_net_transcribe_disconnect();
     // Summary fetch gate (4 KB PSRAM buffers).
     char *json = static_cast<char *>(heap_caps_malloc(4096, MALLOC_CAP_SPIRAM));
     char *summary = static_cast<char *>(heap_caps_malloc(4096, MALLOC_CAP_SPIRAM));
     if (json && summary) {
         json[0] = '\0';
         summary[0] = '\0';
-        esp_err_t uerr = clare_net_get_understanding(session_id, json, 4096);
+        esp_err_t uerr = clare_net_get_understanding(s_session_id, json, 4096);
         ESP_LOGI(TAG, "Ask E2E: understanding err=%d", static_cast<int>(uerr));
         if (uerr == ESP_OK &&
             clare_net_format_understanding(json, summary, 4096) == ESP_OK) {
@@ -461,7 +518,8 @@ static void boot_ask_e2e_test(void)
     }
     heap_caps_free(json);
     heap_caps_free(summary);
-    (void)clare_net_end_session(session_id);
+    (void)clare_net_end_session(s_session_id);
+    s_session_id[0] = 0;
     ESP_LOGI(TAG, "Ask E2E: complete");
 }
 #endif
@@ -483,6 +541,8 @@ static void action_task(void *)
         case Action::BootNetworkSelfTest:
             vTaskDelay(pdMS_TO_TICKS(8000));
             boot_network_self_test();
+            // To run the two-round Ask regression, re-enable boot_ask_e2e_test()
+            // here (last run all green: logs/clare_s3_round2_silent_20260829.log).
             // boot_ask_e2e_test() is a hands-free full Q&A pass used during
             // bring-up (logs/clare_s3_vol130_boot_20260829.log: all green).
             // Keep it out of routine boots: it spends a real server session

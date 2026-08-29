@@ -632,11 +632,206 @@ extern "C" void clare_audio_alc_deinit(void)
     }
 }
 
+#if CLARE_AUDIO_HAS_MP3
+// --- TTS jitter buffer + dedicated playback task -----------------------------
+// Decoding used to happen synchronously in the websocket client task: the
+// codec write blocked the WS read loop, TCP back-pressure made MP3 chunks
+// arrive in bursts, and the I2S DMA underran between them ("断断续续").
+// Now the WS task only enqueues compressed bytes; this task decodes and
+// plays at I2S pace, like the proven vocat reference (mp3_player.c queue).
+constexpr size_t kTtsRingBytes = 96 * 1024;   // PSRAM; a full spoken answer fits
+constexpr size_t kTtsPrebufferBytes = 8 * 1024; // ~0.5 s @128 kbps before play
+
+struct TtsStream {
+    uint8_t *ring = nullptr;
+    size_t cap = 0;
+    uint32_t rpos = 0;
+    uint32_t wpos = 0;
+    bool eos = false;
+    bool overflow_logged = false;
+    SemaphoreHandle_t lock = nullptr;
+    TaskHandle_t task = nullptr;
+};
+TtsStream s_tts;
+
+static size_t tts_avail() { return s_tts.wpos - s_tts.rpos; }
+
+static void tts_ring_reset_locked()
+{
+    s_tts.rpos = 0;
+    s_tts.wpos = 0;
+    s_tts.eos = false;
+    s_tts.overflow_logged = false;
+}
+
+static size_t tts_ring_write(const uint8_t *data, size_t len)
+{
+    const size_t avail = tts_avail();
+    const size_t free_bytes = s_tts.cap - avail;
+    if (len > free_bytes) {
+        if (!s_tts.overflow_logged) {
+            ESP_LOGW(TAG, "tts ring overflow: dropping %u of %u bytes",
+                     static_cast<unsigned>(len - free_bytes), static_cast<unsigned>(len));
+            s_tts.overflow_logged = true;
+        }
+        len = free_bytes;
+    }
+    size_t done = 0;
+    while (done < len) {
+        const size_t offset = s_tts.wpos % s_tts.cap;
+        const size_t slice = std::min(len - done, s_tts.cap - offset);
+        memcpy(s_tts.ring + offset, data + done, slice);
+        s_tts.wpos += slice;
+        done += slice;
+    }
+    return done;
+}
+
+static size_t tts_ring_read(uint8_t *dst, size_t max_len)
+{
+    const size_t avail = tts_avail();
+    if (avail == 0) return 0;
+    const size_t offset = s_tts.rpos % s_tts.cap;
+    const size_t slice = std::min(std::min(max_len, avail), s_tts.cap - offset);
+    memcpy(dst, s_tts.ring + offset, slice);
+    s_tts.rpos += slice;
+    return slice;
+}
+
+static void tts_play_task(void *)
+{
+    // Prebuffer: wait for enough compressed audio (or stream end) so the
+    // first playback starts with a cushion against network jitter.
+    for (int i = 0; i < 150; ++i) {
+        lock(s_tts.lock);
+        const bool ready = tts_avail() >= kTtsPrebufferBytes || s_tts.eos;
+        unlock(s_tts.lock);
+        if (ready) break;
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+    uint8_t *feed = static_cast<uint8_t *>(heap_caps_malloc(1024, MALLOC_CAP_SPIRAM));
+    if (!feed) {
+        ESP_LOGE(TAG, "tts feed buffer alloc failed");
+        s_tts.task = nullptr;
+        vTaskDelete(nullptr);
+        return;
+    }
+    ESP_LOGI(TAG, "tts playback task started");
+    bool stream_open = true;
+    while (stream_open) {
+        lock(s_tts.lock);
+        const size_t avail = tts_avail();
+        const bool eos = s_tts.eos;
+        size_t got = 0;
+        if (avail > 0) {
+            got = tts_ring_read(feed, 1024);
+        }
+        unlock(s_tts.lock);
+
+        if (got == 0) {
+            if (eos) {
+                // Flush the decoder with an empty eos frame, then stop.
+                esp_audio_simple_dec_raw_t raw = {};
+                raw.buffer = feed;
+                raw.len = 0;
+                raw.eos = true;
+                esp_audio_simple_dec_out_t frame = {};
+                frame.buffer = s_audio.mp3_out;
+                frame.len = static_cast<uint32_t>(s_audio.mp3_out_bytes);
+                (void)esp_audio_simple_dec_process(s_audio.mp3_decoder, &raw, &frame);
+                if (frame.decoded_size > 0) {
+                    esp_audio_simple_dec_info_t info = {};
+                    if (esp_audio_simple_dec_get_info(s_audio.mp3_decoder, &info) == ESP_AUDIO_ERR_OK) {
+                        lock(s_audio.playback_lock);
+                        (void)mp3_write_decoded_locked(frame.buffer, frame.decoded_size, info);
+                        unlock(s_audio.playback_lock);
+                    }
+                }
+                break;
+            }
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
+        esp_audio_simple_dec_raw_t raw = {};
+        raw.buffer = feed;
+        raw.len = static_cast<uint32_t>(got);
+        raw.eos = false;
+        while (raw.len > 0) {
+            esp_audio_simple_dec_out_t frame = {};
+            frame.buffer = s_audio.mp3_out;
+            frame.len = static_cast<uint32_t>(s_audio.mp3_out_bytes);
+            esp_audio_err_t err = esp_audio_simple_dec_process(s_audio.mp3_decoder, &raw, &frame);
+            if (err == ESP_AUDIO_ERR_BUFF_NOT_ENOUGH && frame.needed_size > frame.len) {
+                uint8_t *new_buf = static_cast<uint8_t *>(heap_caps_realloc(
+                    s_audio.mp3_out, frame.needed_size, MALLOC_CAP_8BIT));
+                if (!new_buf) { stream_open = false; break; }
+                s_audio.mp3_out = new_buf;
+                s_audio.mp3_out_bytes = frame.needed_size;
+                continue;
+            }
+            if (err != ESP_AUDIO_ERR_OK && err != ESP_AUDIO_ERR_CONTINUE) {
+                ESP_LOGW(TAG, "tts decode err=%d (stream reset)", static_cast<int>(err));
+                stream_open = false;
+                break;
+            }
+            if (frame.decoded_size > 0) {
+                esp_audio_simple_dec_info_t info = {};
+                if (esp_audio_simple_dec_get_info(s_audio.mp3_decoder, &info) == ESP_AUDIO_ERR_OK) {
+                    lock(s_audio.playback_lock);
+                    (void)mp3_write_decoded_locked(frame.buffer, frame.decoded_size, info);
+                    unlock(s_audio.playback_lock);
+                }
+            }
+            if (raw.consumed > raw.len) { stream_open = false; break; }
+            if (raw.consumed == 0) break;  // partial frame retained by decoder
+            raw.buffer += raw.consumed;
+            raw.len -= raw.consumed;
+            raw.consumed = 0;
+        }
+    }
+    heap_caps_free(feed);
+    if (s_audio.mp3_decoder) {
+        esp_audio_simple_dec_close(s_audio.mp3_decoder);
+        s_audio.mp3_decoder = nullptr;
+    }
+    s_audio.mp3_active = false;
+    ESP_LOGI(TAG, "tts playback task done");
+    s_tts.task = nullptr;
+    vTaskDelete(nullptr);
+}
+
+static esp_err_t tts_stream_init()
+{
+    if (!s_tts.lock) {
+        s_tts.lock = xSemaphoreCreateMutex();
+        if (!s_tts.lock) return ESP_ERR_NO_MEM;
+    }
+    if (!s_tts.ring) {
+        s_tts.ring = static_cast<uint8_t *>(heap_caps_malloc(kTtsRingBytes, MALLOC_CAP_SPIRAM));
+        if (!s_tts.ring) return ESP_ERR_NO_MEM;
+        s_tts.cap = kTtsRingBytes;
+    }
+    return ESP_OK;
+}
+#endif // CLARE_AUDIO_HAS_MP3
+
 extern "C" esp_err_t clare_audio_mp3_start(void)
 {
 #if CLARE_AUDIO_HAS_MP3
     if (!clare_audio_is_ready()) return ESP_ERR_INVALID_STATE;
-    if (s_audio.mp3_active) return ESP_OK;
+    if (s_audio.mp3_active) {
+        // Stream already open (another answer_audio message, or a new answer
+        // while the previous one still drains): keep buffered audio and
+        // clear a stale end-of-stream flag so playback continues.
+        lock(s_tts.lock);
+        s_tts.eos = false;
+        unlock(s_tts.lock);
+        return ESP_OK;
+    }
+    if (tts_stream_init() != ESP_OK) return ESP_ERR_NO_MEM;
+    lock(s_tts.lock);
+    tts_ring_reset_locked();
+    unlock(s_tts.lock);
     esp_audio_err_t register_err = esp_mp3_dec_register();
     if (register_err != ESP_AUDIO_ERR_OK && register_err != ESP_AUDIO_ERR_ALREADY_EXIST) {
         ESP_LOGE(TAG, "MP3 decoder registration failed: %d", static_cast<int>(register_err));
@@ -652,6 +847,15 @@ extern "C" esp_err_t clare_audio_mp3_start(void)
         return map_audio_error(err);
     }
     s_audio.mp3_active = true;
+    if (!s_tts.task) {
+        if (xTaskCreate(tts_play_task, "clare_tts", 5120, nullptr, 6, &s_tts.task) != pdPASS) {
+            ESP_LOGE(TAG, "tts task create failed");
+            esp_audio_simple_dec_close(s_audio.mp3_decoder);
+            s_audio.mp3_decoder = nullptr;
+            s_audio.mp3_active = false;
+            return ESP_ERR_NO_MEM;
+        }
+    }
     return ESP_OK;
 #else
     return ESP_ERR_NOT_SUPPORTED;
@@ -666,44 +870,17 @@ extern "C" esp_err_t clare_audio_mp3_write(const uint8_t *data, size_t len, bool
         esp_err_t start_err = clare_audio_mp3_start();
         if (start_err != ESP_OK) return start_err;
     }
-    if (len == 0 && !end_of_stream) return ESP_OK;
-
-    esp_audio_simple_dec_raw_t raw = {};
-    raw.buffer = const_cast<uint8_t *>(data);
-    raw.len = static_cast<uint32_t>(len);
-    raw.eos = end_of_stream;
-    while (raw.len > 0 || raw.eos) {
-        esp_audio_simple_dec_out_t frame = {};
-        frame.buffer = s_audio.mp3_out;
-        frame.len = static_cast<uint32_t>(s_audio.mp3_out_bytes);
-        esp_audio_err_t err = esp_audio_simple_dec_process(s_audio.mp3_decoder, &raw, &frame);
-        if (err == ESP_AUDIO_ERR_BUFF_NOT_ENOUGH && frame.needed_size > frame.len) {
-            uint8_t *new_buf = static_cast<uint8_t *>(heap_caps_realloc(
-                s_audio.mp3_out, frame.needed_size, MALLOC_CAP_8BIT));
-            if (!new_buf) return ESP_ERR_NO_MEM;
-            s_audio.mp3_out = new_buf;
-            s_audio.mp3_out_bytes = frame.needed_size;
-            continue;
-        }
-        if (err != ESP_AUDIO_ERR_OK && err != ESP_AUDIO_ERR_CONTINUE) return map_audio_error(err);
-        if (frame.decoded_size > 0) {
-            esp_audio_simple_dec_info_t info = {};
-            if (esp_audio_simple_dec_get_info(s_audio.mp3_decoder, &info) != ESP_AUDIO_ERR_OK) {
-                return ESP_ERR_INVALID_STATE;
-            }
-            if (!lock(s_audio.playback_lock)) return ESP_ERR_INVALID_STATE;
-            esp_err_t write_err = mp3_write_decoded_locked(frame.buffer, frame.decoded_size, info);
-            unlock(s_audio.playback_lock);
-            if (write_err != ESP_OK) return write_err;
-        }
-        if (raw.consumed > raw.len) return ESP_ERR_INVALID_SIZE;
-        if (raw.consumed == 0) break; /* partial frame retained for next chunk */
-        raw.buffer += raw.consumed;
-        raw.len -= raw.consumed;
-        raw.consumed = 0;
-        if (!raw.len) break;
+    // Fast path only: enqueue compressed bytes; decoding/playback happens in
+    // the dedicated task so the caller (websocket client task) never blocks
+    // on I2S.
+    lock(s_tts.lock);
+    if (data && len > 0) {
+        (void)tts_ring_write(data, len);
     }
-    if (end_of_stream) return clare_audio_mp3_end();
+    if (end_of_stream) {
+        s_tts.eos = true;
+    }
+    unlock(s_tts.lock);
     return ESP_OK;
 #else
     (void)data;
@@ -716,11 +893,22 @@ extern "C" esp_err_t clare_audio_mp3_write(const uint8_t *data, size_t len, bool
 extern "C" esp_err_t clare_audio_mp3_end(void)
 {
 #if CLARE_AUDIO_HAS_MP3
-    if (s_audio.mp3_decoder) {
+    // Signal end-of-stream; the playback task drains the ring and closes the
+    // decoder ITSELF (force-closing here would race an in-flight decode).
+    lock(s_tts.lock);
+    s_tts.eos = true;
+    unlock(s_tts.lock);
+    for (int i = 0; i < 200 && s_tts.task; ++i) {
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+    if (s_tts.task) {
+        ESP_LOGW(TAG, "tts drain still running after 4 s; leaving decoder to the task");
+    } else if (s_audio.mp3_decoder) {
+        // Safety net for task-creation-failure paths only.
         esp_audio_simple_dec_close(s_audio.mp3_decoder);
         s_audio.mp3_decoder = nullptr;
+        s_audio.mp3_active = false;
     }
-    s_audio.mp3_active = false;
     return ESP_OK;
 #else
     return ESP_ERR_NOT_SUPPORTED;
