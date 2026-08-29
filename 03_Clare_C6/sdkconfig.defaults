@@ -1,0 +1,90 @@
+# C6 Clare application defaults.  Device-specific Wi-Fi/API values live in
+# sdkconfig.local, which is intentionally kept outside source control.
+CONFIG_IDF_TARGET="esp32c6"
+CONFIG_APP_RETRIEVE_LEN_ELF_SHA=16
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=512
+CONFIG_ESP_WIFI_STATIC_TX_BUFFER=y
+CONFIG_ESP_WIFI_GMAC_SUPPORT=n
+CONFIG_FREERTOS_HZ=1000
+CONFIG_LOG_COLORS=y
+CONFIG_LWIP_HOOK_IP6_INPUT_NONE=y
+CONFIG_MBEDTLS_ECP_RESTARTABLE=y
+CONFIG_MBEDTLS_GCM_SUPPORT_NON_AES_CIPHER=n
+CONFIG_MBEDTLS_ECP_FIXED_POINT_OPTIM=y
+CONFIG_LV_COLOR_16_SWAP=y
+CONFIG_LV_COLOR_SCREEN_TRANSP=y
+CONFIG_LV_MEM_SIZE_KILOBYTES=32
+CONFIG_LV_ATTRIBUTE_FAST_MEM_USE_IRAM=y
+CONFIG_LV_FONT_MONTSERRAT_12=y
+CONFIG_LV_FONT_MONTSERRAT_16=y
+CONFIG_LV_FONT_MONTSERRAT_20=y
+CONFIG_LV_FONT_MONTSERRAT_24=y
+CONFIG_LV_USE_LOG=y
+CONFIG_LV_LOG_PRINTF=y
+
+# TLS certificate bundle for HTTPS/WSS production endpoints.
+CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=y
+CONFIG_MBEDTLS_CERTIFICATE_BUNDLE_DEFAULT_FULL=y
+# Parse the pinned CA chain once at boot (clare_net_init) instead of on every
+# TLS handshake.  Without this switch esp-tls silently ignores
+# use_global_ca_store and handshakes fail verification (-0x2700).
+CONFIG_ESP_TLS_USE_GLOBAL_CA_STORE=y
+
+# Private values are supplied by sdkconfig.local at build time.
+CONFIG_CLARE_WIFI_SSID=""
+CONFIG_CLARE_WIFI_PASSWORD=""
+CONFIG_CLARE_API_BASE_URL=""
+CONFIG_CLARE_TOPIC=""
+CONFIG_CLARE_VAD_THRESHOLD=500
+CONFIG_CLARE_VAD_MIN_MS=600
+CONFIG_CLARE_VAD_SILENCE_MS=1200
+
+# Chinese font support
+CONFIG_LV_FONT_SOURCE_HAN_SANS_SC_16_CJK=y
+CONFIG_LV_FONT_DEFAULT_SOURCE_HAN_SANS_SC_16_CJK=y
+
+# Memory tuning reconstructed from the proven-good 2026-08-26 runtime config
+# (logs/clare_meeting_test_20260826_2158.log).  These lines previously lived
+# only in the git-ignored sdkconfig and were lost on workspace rebuilds.
+CONFIG_LWIP_TCP_MSS=1240
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=16
+# Confirmed by logs/serial_70s_noipv6.log experiment; nothing on the meeting
+# path needs v6 (backend is public v4 via Cloudflare).
+CONFIG_LWIP_IPV6=n
+# Run the four-step network self-test automatically on every boot.
+CONFIG_CLARE_BOOT_SELF_TEST=y
+# Handshake buffer trim: IN record buffer dominates the largest-block
+# requirement during the TLS handshake on this RAM-constrained target.
+CONFIG_MBEDTLS_SSL_IN_CONTENT_LEN=8192
+# Client-side frames are small (JSON control + 640-byte audio binary); a 2 KiB
+# out buffer frees contiguous heap for the WSS certificate parse.
+CONFIG_MBEDTLS_SSL_OUT_CONTENT_LEN=2048
+# Nothing in the app inspects the peer certificate after the handshake; keeping
+# it holds ~3.4 KiB per live connection and starves the second WSS handshake.
+CONFIG_MBEDTLS_SSL_KEEP_PEER_CERTIFICATE=n
+# Hardware AES allocates DMA descriptors from the MALLOC_CAP_DMA pool at every
+# handshake step; when TLS buffers fragment that pool the handshake aborts with
+# "esp-aes: Failed to allocate memory" (logs/clare_clean_retest_20260828.log).
+# Software AES costs a few percent on this traffic volume and removes the
+# failure mode entirely.
+CONFIG_MBEDTLS_HARDWARE_AES=n
+# SHA: same class — the hardware peripheral lock taken by the first TLS
+# handshake leaked, silently freezing every later handshake (logs/clare_zky_test_20260828.log).
+CONFIG_MBEDTLS_HARDWARE_SHA=n
+# Same failure class as hardware AES: the MPI (bignum) accelerator also
+# allocates MALLOC_CAP_DMA buffers mid-handshake (mbedtls_ssl_handshake
+# returned -0x0010 = MBEDTLS_ERR_MPI_ALLOC_FAILED, logs/clare_ws_fix_20260828.log).
+# Software RSA-2048 verify adds well under a second per handshake.
+CONFIG_MBEDTLS_HARDWARE_MPI=n
+
+# TEMP EXPERIMENT (route A): skip server certificate verification, following
+# the S3 reference (vocat/ws_meeting_demo uses ESP_TLS_INSECURE +
+# SKIP_SERVER_CERT_VERIFY). The pinned chain in clare_ca_chain.h stays for
+# when verification is re-enabled. Goal: remove the cert-parse/verify heap
+# peak so the WSS handshake survives the fragmented post-HTTP heap.
+CONFIG_ESP_TLS_INSECURE=y
+CONFIG_ESP_TLS_SKIP_SERVER_CERT_VERIFY=y
+

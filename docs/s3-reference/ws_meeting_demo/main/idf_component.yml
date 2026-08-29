@@ -1,0 +1,10 @@
+## IDF Component Manager Manifest
+dependencies:
+  idf:
+    version: '>=5.5.0'
+  espressif/zlib:
+    version: '>=1.0.0'
+  espressif/esp_websocket_client: '1.5.0'
+  espressif/esp_codec_dev: '*'
+  # esp_vocat relies on the repository patch for this exact release.
+  espressif/esp_lvgl_port: '2.6.0'

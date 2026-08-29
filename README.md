@@ -1,6 +1,6 @@
 # ESP32-C6 Touch AMOLED 2.16
 
-ESP32-C6 Touch AMOLED 2.16 的 Arduino、ESP-IDF 和 Clara C6 示例工程及硬件资料。
+ESP32-C6 Touch AMOLED 2.16 的 Arduino、ESP-IDF 和 Clare C6 示例工程及硬件资料。
 
 官方资料：
 
@@ -11,7 +11,7 @@ ESP32-C6 Touch AMOLED 2.16 的 Arduino、ESP-IDF 和 Clara C6 示例工程及硬
 
 - `01_Arduino_Libraries/`：LVGL 与板级 Arduino 库
 - `02_Example/`：Arduino 和 ESP-IDF 示例
-- `03_Clara_C6/`：Clara C6 应用工程
+- `03_Clare_C6/`：Clare C6 应用工程
 - `03_Firmware/`：可直接烧录的固件
 - `resource/`：原理图、数据手册和尺寸资料
 

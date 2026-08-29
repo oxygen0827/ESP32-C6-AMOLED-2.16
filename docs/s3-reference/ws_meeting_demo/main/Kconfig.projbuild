@@ -1,0 +1,54 @@
+menu "WS Meeting Demo Configuration"
+
+    config MEETING_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            WiFi network to connect to on boot.
+
+    config MEETING_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+
+    config MEETING_WIFI_FALLBACK_SSID
+        string "Optional fallback WiFi SSID"
+        default ""
+        help
+            Optional second boot network. The most recently successful network
+            is also kept in NVS and tried first.
+
+    config MEETING_WIFI_FALLBACK_PASSWORD
+        string "Optional fallback WiFi Password"
+        default ""
+
+    config WS_MEETING_API_BASE_URL
+        string "ClarityX Voice API base URL"
+        default "https://clare.vinex.top/voice-api"
+
+    config WS_MEETING_TOPIC
+        string "Default meeting topic"
+        default "clare产品讨论"
+
+    config MEETING_SELF_TEST_AUTOSTART
+        bool "Automatically run one meeting integration self-test"
+        default n
+        help
+            Development-only: create a meeting, fetch understanding, exercise
+            Host and Listen transitions, then end the meeting.
+
+    config VAD_ENERGY_THRESHOLD
+        int "VAD energy threshold (RMS int16)"
+        default 500
+        range 200 5000
+
+    config VAD_SPEECH_MIN_MS
+        int "Minimum speech duration (ms) before silence counts"
+        default 300
+        range 100 2000
+
+    config VAD_SILENCE_MS
+        int "Silence duration (ms) to trigger end_of_speech"
+        default 700
+        range 200 5000
+
+endmenu

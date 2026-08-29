@@ -1,0 +1,1753 @@
+
+I (77) boot: End of partition table
+I (81) esp_image: segment 0: paddr=00010020 vaddr=42140020 size=9442ch (607276) map
+I (202) esp_image: segment 1: paddr=000a4454 vaddr=40800000 size=0bbc4h ( 48068) load
+I (213) esp_image: segment 2: paddr=000b0020 vaddr=42000020 size=13837ch (1278844) map
+I (454) esp_image: segment 3: paddr=001e83a4 vaddr=4080bbc4 size=314f4h (201972) load
+I (511) boot: Loaded app from partition at offset 0x10000
+I (511) boot: Disabling RNG early entropy source...
+[0;32mI (521) cpu_start: Unicore app[0m
+D (521) cpu_start: Pro cpu up[0m
+D (530) clk: RTC_SLOW_CLK calibration value: 3792013[0m
+[0;32mI (535) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+D (535) cpu_start: calling init function: 0x420001f0 on core: 0[0m
+D (536) cpu_start: calling init function: 0x42000868 on core: 0[0m
+[0;32mI (542) cpu_start: Pro cpu start user code[0m
+[0;32mI (547) cpu_start: cpu freq: 160000000 Hz[0m
+D (552) cpu_start: calling init function: 0x42000076 on core: 0[0m
+[0;32mI (558) app_init: Application information:[0m
+[0;32mI (563) app_init: Project name:     Clare_C6[0m
+[0;32mI (568) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (573) app_init: Compile time:     Aug 28 2026 21:48:25[0m
+[0;32mI (579) app_init: ELF file SHA256:  1b493394c557c24e...[0m
+[0;32mI (585) app_init: ESP-IDF:          v5.5.3[0m
+D (590) cpu_start: calling init function: 0x42000200 on core: 0[0m
+[0;32mI (596) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (600) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (605) efuse_init: Chip rev:         v0.2[0m
+D (610) cpu_start: calling init function: 0x42002508 on core: 0[0m
+D (616) memory_layout: Checking 5 reserved memory ranges:[0m
+D (622) memory_layout: Reserved memory range 0x40800000 - 0x408390e0[0m
+D (628) memory_layout: Reserved memory range 0x408390e0 - 0x4084ca10[0m
+D (634) memory_layout: Reserved memory range 0x4087f564 - 0x40880000[0m
+D (641) memory_layout: Reserved memory range 0x50000000 - 0x50000000[0m
+D (647) memory_layout: Reserved memory range 0x50003fe8 - 0x50004000[0m
+D (654) memory_layout: Building list of available memory regions:[0m
+D (660) memory_layout: Available memory region 0x4084ca10 - 0x40860000[0m
+D (666) memory_layout: Available memory region 0x40860000 - 0x4087c610[0m
+D (673) memory_layout: Available memory region 0x4087c610 - 0x4087f564[0m
+D (680) memory_layout: Available memory region 0x50000000 - 0x50003fe8[0m
+[0;32mI (686) heap_init: Initializing. RAM available for dynamic allocation:[0m
+D (693) heap_init: New heap initialised at 0x4084ca10[0m
+[0;32mI (699) heap_init: At 4084CA10 len 0002FC00 (191 KiB): RAM[0m
+[0;32mI (705) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+D (711) heap_init: New heap initialised at 0x50000000[0m
+[0;32mI (716) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+D (722) cpu_start: calling init function: 0x42007234 on core: 0[0m
+D (728) cpu_start: calling init function: 0x42006800 on core: 0[0m
+D (734) cpu_start: calling init function: 0x420008fa on core: 0[0m
+D (740) intr_alloc: Connected src 15 to int 2 (cpu 0)[0m
+D (745) cpu_start: calling init function: 0x4200091c on core: 0[0m
+D (751) cpu_start: calling init function: 0x42008174 on core: 0[0m
+D (757) cpu_start: calling init function: 0x420097f2 on core: 0[0m
+D (763) cpu_start: calling init function: 0x4200bd5e on core: 0[0m
+D (769) cpu_start: calling init function: 0x42009f4e on core: 0[0m
+D (775) cpu_start: calling init function: 0x4200680e on core: 0[0m
+D (782) cpu_start: calling init function: 0x4200097a on core: 0[0m
+D (787) spi_flash: trying chip: gd[0m
+D (791) spi_flash: trying chip: generic[0m
+[0;32mI (795) spi_flash: detected chip: generic[0m
+[0;32mI (799) spi_flash: flash io: dio[0m
+D (803) cpu_start: calling init function: 0x420001ec on core: 0[0m
+D (845) intr_alloc: Connected src 50 to int 5 (cpu 0)[0m
+D (860) cpu_start: calling init function: 0x4207b214 on core: 0[0m
+D (866) intr_alloc: Connected src 59 to int 8 (cpu 0)[0m
+D (871) cpu_start: calling init function: 0x420019c8 on core: 0[0m
+D (877) cpu_start: calling init function: 0x4207a3fa on core: 0[0m
+D (883) cpu_start: calling init function: 0x420028f6 on core: 0[0m
+D (889) cpu_start: calling init function: 0x420034aa on core: 0[0m
+[0;32mI (895) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (902) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+D (909) cpu_start: calling init function: 0x421360d2 on core: 0[0m
+D (915) cpu_start: calling init function: 0x4200092c on core: 0[0m
+D (932) cpu_start: calling init function: 0x4200941a on core: 0[0m
+D (937) cpu_start: calling init function: 0x42000944 on core: 0[0m
+D (943) intr_alloc: Connected src 22 to int 9 (cpu 0)[0m
+D (949) app_start: Starting scheduler on CPU0[0m
+D (953) intr_alloc: Connected src 57 to int 10 (cpu 0)[0m
+[0;32mI (953) main_task: Started on CPU0[0m
+D (957) heap_init: New heap initialised at 0x4087c610[0m
+D (962) intr_alloc: Connected src 53 to int 11 (cpu 0)[0m
+[0;32mI (967) main_task: Calling app_main()[0m
+[0;32mI (971) clare_c6: Clare C6 starting[0m
+[0;32mI (987) axp2101: Init PMU SUCCESS![0m
+[0;32mI (992) DisplayPort: SPI BUS init[0m
+D (993) spi: SPI2 use gpio matrix.[0m
+[0;32mI (993) DisplayPort: Install panel IO[0m
+D (993) intr_alloc: Connected src 72 to int 12 (cpu 0)[0m
+D (998) spi_hal: eff: 40000, limit: 80000k(/0), 0 dummy, -1 delay[0m
+D (1004) spi_master: SPI2: New device added to CS0, effective clock: 40000000 Hz[0m
+D (1012) lcd_panel.io.spi: new spi lcd panel io @0x4087d924, max_trans_bytes: 32768[0m
+D (1020) sh8601: new sh8601 panel @0x4087dc38[0m
+[0;32mI (1024) sh8601: LCD panel create success, version: 1.0.0[0m
+D (1331) spi_master: device0 locked the bus[0m
+D (1331) spi_master: device0 release bus[0m
+D (1331) spi_master: device0 locked the bus[0m
+D (1332) spi_master: device0 release bus[0m
+D (1336) spi_master: device0 locked the bus[0m
+D (1340) spi_master: device0 release bus[0m
+D (1944) spi_master: device0 locked the bus[0m
+D (1944) spi_master: device0 release bus[0m
+D (1944) spi_master: device0 locked the bus[0m
+D (1945) spi_master: device0 release bus[0m
+D (1949) spi_master: device0 locked the bus[0m
+D (1953) spi_master: device0 release bus[0m
+D (1957) spi_master: device0 locked the bus[0m
+D (1961) spi_master: device0 release bus[0m
+D (1965) spi_master: device0 locked the bus[0m
+D (1970) spi_master: device0 release bus[0m
+[0;33mW (1974) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+D (1984) spi_master: device0 locked the bus[0m
+D (1988) spi_master: device0 release bus[0m
+D (1992) spi_master: device0 locked the bus[0m
+D (1997) spi_master: device0 release bus[0m
+[0;33mW (2001) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+D (2011) spi_master: device0 locked the bus[0m
+D (2015) spi_master: device0 release bus[0m
+D (2019) spi_master: device0 locked the bus[0m
+D (2023) spi_master: device0 release bus[0m
+D (2027) spi_master: device0 locked the bus[0m
+D (2032) spi_master: device0 release bus[0m
+D (2036) spi_master: device0 locked the bus[0m
+D (2040) spi_master: device0 release bus[0m
+D (2044) spi_master: device0 locked the bus[0m
+D (2048) spi_master: device0 release bus[0m
+D (2052) spi_master: device0 locked the bus[0m
+D (2056) spi_master: device0 release bus[0m
+D (2060) spi_master: device0 locked the bus[0m
+D (2065) spi_master: device0 release bus[0m
+D (2169) sh8601: send init commands success[0m
+D (2169) lcd_panel.io.i2c: new i2c lcd panel io @0x4087dc88[0m
+D (2169) gpio: GPIO[5]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+D (2176) gpio: GPIO[11]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (2259) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2261) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2263) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2263) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+D (2273) esp_lvgl:bridge: Calculated frame_buffer_size: 460800 bytes (230400x16 pixels, 18 bpp)[0m
+D (2279) intr_alloc: Connected src 30 to int 13 (cpu 0)[0m
+D (2284) esp_lvgl:touch: Touch interrupt mode enabled on GPIO 5[0m
+D (2290) esp_lvgl:adapter: Input device registered (type=0)[0m
+[0;32mI (2295) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+D (2306) spi_master: device0 locked the bus[0m
+D (2308) spi_master: device0 release bus[0m
+D (2312) spi_master: device0 locked the bus[0m
+D (2316) spi_master: device0 release bus[0m
+D (2320) spi_master: device0 locked the bus[0m
+[0;32mI (2325) esp_lvgl:adapter: LVGL task started successfully[0m
+D (2326) spi_master: device0 release bus[0m
+D (2336) spi_master: device0 locked the bus[0m
+D (2339) spi_master: device0 release bus[0m
+D (2343) spi_master: device0 locked the bus[0m
+D (2347) spi_master: device0 release bus[0m
+D (2351) spi_master: device0 locked the bus[0m
+i2c: {sda: 8, scl: 7}
+D (2357) spi_master: device0 release bus[0m
+D (2363) spi_master: device0 locked the bus[0m
+D (2366) spi_master: device0 release bus[0m
+D (2370) spi_master: device0 locked the bus[0m
+D (2374) spi_master: device0 release bus[0m
+D (2378) spi_master: device0 locked the bus[0m
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+D (2384) spi_master: device0 release bus[0m
+D (2392) spi_master: device0 locked the bus[0m
+D (2395) spi_master: device0 release bus[0m
+D (2399) spi_master: device0 locked the bus[0m
+D (2403) spi_master: device0 release bus[0m
+D (2407) spi_master: device0 locked the bus[0m
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+D (2413) spi_master: device0 release bus[0m
+D (2423) spi_master: device0 locked the bus[0m
+D (2426) spi_master: device0 release bus[0m
+D (2430) spi_master: device0 locked the bus[0m
+D (2434) spi_master: device0 release bus[0m
+D (2438) spi_master: device0 locked the bus[0m
+Codec 0 dir 2 type:1
+D (2444) spi_master: device0 release bus[0m
+D (2449) spi_master: device0 locked the bus[0m
+D (2452) spi_master: device0 release bus[0m
+D (2456) spi_master: device0 locked the bus[0m
+D (2461) spi_master: device0 release bus[0m
+D (2465) spi_master: device0 locked the bus[0m
+in: {codec: ES7210}
+D (2471) spi_master: device0 release bus[0m
+D (2476) spi_master: device0 locked the bus[0m
+D (2479) spi_master: device0 release bus[0m
+D (2483) spi_master: device0 locked the bus[0m
+D (2487) spi_master: device0 release bus[0m
+D (2491) spi_master: device0 locked the bus[0m
+Codec 1 dir 1 type:2
+D (2497) spi_master: device0 release bus[0m
+D (2502) spi_master: device0 locked the bus[0m
+D (2506) spi_master: device0 release bus[0m
+D (2510) spi_master: device0 locked the bus[0m
+D (2514) spi_master: device0 release bus[0m
+D (2518) spi_master: device0 locked the bus[0m
+[0;32mI (2522) CODEC_INIT: in:1 out:1 port: 1[0m
+D (2524) spi_master: device0 release bus[0m
+D (2532) spi_master: device0 locked the bus[0m
+D (2535) spi_master: device0 release bus[0m
+D (2539) spi_master: device0 locked the bus[0m
+D (2543) spi_master: device0 release bus[0m
+D (2547) spi_master: device0 locked the bus[0m
+[0;32mI (2551) CODEC_INIT: Success to int i2c: 0[0m
+D (2553) spi_master: device0 release bus[0m
+D (2561) spi_master: device0 locked the bus[0m
+D (2564) spi_master: device0 release bus[0m
+D (2568) spi_master: device0 locked the bus[0m
+D (2573) spi_master: device0 release bus[0m
+D (2577) spi_master: device0 locked the bus[0m
+D (2581) spi_master: device0 release bus[0m
+[0;32mI (2585) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+D (2593) i2s_common: tx channel is registered on I2S0 successfully[0m
+D (2599) i2s_common: rx channel is registered on I2S0 successfully[0m
+[0;32mI (2605) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+D (2611) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 3840[0m
+[0;33mW (2622) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+D (2631) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 26 1/24 [mclk] 6144000 Hz [bdiv] 3 [bclk] 2048000 Hz[0m
+D (2642) i2s_common: MCLK is pinned to GPIO19 on I2S0[0m
+D (2647) intr_alloc: Connected src 70 to int 14 (cpu 0)[0m
+D (2652) i2s_tdm: The tx channel on I2S0 has been initialized to TDM mode successfully[0m
+[0;32mI (2660) CODEC_INIT: output init tdm ret 0[0m
+D (2665) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 3840[0m
+[0;33mW (2676) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+D (2685) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 26 1/24 [mclk] 6144000 Hz [bdiv] 3 [bclk] 2048000 Hz[0m
+D (2696) i2s_common: MCLK is pinned to GPIO19 on I2S0[0m
+D (2701) intr_alloc: Connected src 67 to int 15 (cpu 0)[0m
+D (2706) i2s_tdm: The rx channel on I2S0 has been initialized to TDM mode successfully[0m
+[0;32mI (2714) CODEC_INIT: Input init tdm ret 0[0m
+D (2718) i2s_common: i2s tx channel enabled[0m
+D (2723) i2s_common: i2s rx channel enabled[0m
+[0;32mI (2727) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2731) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2736) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2741) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2746) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2756) ES8311: Work in Slave mode[0m
+[0;32mI (2762) ES7210: Work in Slave mode[0m
+[0;32mI (2768) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2771) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2774) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2777) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2781) ES7210: Enable TDM mode[0m
+D (2786) ES8311: Set volume reg:92 db:-22[0m
+D (2790) i2s_common: i2s tx channel disabled[0m
+[0;32mI (2791) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+D (2797) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 960[0m
+D (2808) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz[0m
+[0;32mI (2819) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+D (2826) i2s_common: i2s tx channel enabled[0m
+D (2833) ES8311: ES8311 in I2S Format[0m
+D (2845) ES8311: Codec is enabled[0m
+D (2845) ES8311: Set volume reg:92 db:-22[0m
+[0;32mI (2846) Adev_Codec: Open codec device OK[0m
+D (2846) i2s_common: i2s rx channel disabled[0m
+[0;32mI (2851) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+D (2857) i2s_common: DMA malloc info: dma_desc_num = 6, dma_desc_buf_size = dma_frame_num * slot_num * data_bit_width = 960[0m
+D (2868) i2s_tdm: Clock division info: [sclk] 160000000 Hz [mdiv] 39 1/16 [mclk] 4096000 Hz [bdiv] 8 [bclk] 512000 Hz[0m
+[0;32mI (2879) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+D (2886) i2s_common: i2s rx channel enabled[0m
+[0;32mI (2891) ES7210: Bits 8[0m
+D (2894) ES7210: ES7210 in I2S Format[0m
+[0;32mI (2904) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2906) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2909) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2914) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2919) ES7210: Enable TDM mode[0m
+D (2921) ES7210: Codec is enabled[0m
+[0;32mI (2928) ES7210: Unmuted[0m
+[0;32mI (2928) Adev_Codec: Open codec device OK[0m
+[0;32mI (2931) Adev_Codec: Input already open[0m
+[0;32mI (2936) Adev_Codec: Input already open[0m
+D (2940) ES8311: Set volume reg:9c db:-17[0m
+[0;32mI (2960) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+D (3065) spi_master: device0 locked the bus[0m
+D (3065) spi_master: device0 release bus[0m
+D (3065) spi_master: device0 locked the bus[0m
+D (3066) spi_master: device0 release bus[0m
+D (3070) spi_master: device0 locked the bus[0m
+D (3076) spi_master: device0 release bus[0m
+D (3083) spi_master: device0 locked the bus[0m
+D (3084) spi_master: device0 release bus[0m
+D (3087) spi_master: device0 locked the bus[0m
+D (3091) spi_master: device0 release bus[0m
+D (3095) spi_master: device0 locked the bus[0m
+D (3101) spi_master: device0 release bus[0m
+D (3108) spi_master: device0 locked the bus[0m
+D (3109) spi_master: device0 release bus[0m
+D (3112) spi_master: device0 locked the bus[0m
+D (3116) spi_master: device0 release bus[0m
+D (3120) spi_master: device0 locked the bus[0m
+D (3126) spi_master: device0 release bus[0m
+D (3133) spi_master: device0 locked the bus[0m
+D (3133) spi_master: device0 release bus[0m
+D (3136) spi_master: device0 locked the bus[0m
+D (3141) spi_master: device0 release bus[0m
+D (3145) spi_master: device0 locked the bus[0m
+D (3151) spi_master: device0 release bus[0m
+D (3159) spi_master: device0 locked the bus[0m
+D (3159) spi_master: device0 release bus[0m
+D (3161) spi_master: device0 locked the bus[0m
+D (3165) spi_master: device0 release bus[0m
+D (3169) spi_master: device0 locked the bus[0m
+D (3175) spi_master: device0 release bus[0m
+D (3183) spi_master: device0 locked the bus[0m
+D (3184) spi_master: device0 release bus[0m
+D (3186) spi_master: device0 locked the bus[0m
+D (3190) spi_master: device0 release bus[0m
+D (3194) spi_master: device0 locked the bus[0m
+D (3200) spi_master: device0 release bus[0m
+D (3207) spi_master: device0 locked the bus[0m
+D (3207) spi_master: device0 release bus[0m
+D (3211) spi_master: device0 locked the bus[0m
+D (3215) spi_master: device0 release bus[0m
+D (3219) spi_master: device0 locked the bus[0m
+D (3225) spi_master: device0 release bus[0m
+D (3233) spi_master: device0 locked the bus[0m
+D (3234) spi_master: device0 release bus[0m
+D (3235) spi_master: device0 locked the bus[0m
+D (3240) spi_master: device0 release bus[0m
+D (3244) spi_master: device0 locked the bus[0m
+D (3249) spi_master: device0 release bus[0m
+D (3257) spi_master: device0 locked the bus[0m
+D (3258) spi_master: device0 release bus[0m
+D (3260) spi_master: device0 locked the bus[0m
+D (3264) spi_master: device0 release bus[0m
+D (3268) spi_master: device0 locked the bus[0m
+D (3274) spi_master: device0 release bus[0m
+D (3278) spi_master: device0 locked the bus[0m
+D (3281) spi_master: device0 release bus[0m
+D (3285) spi_master: device0 locked the bus[0m
+D (3289) spi_master: device0 release bus[0m
+D (3293) spi_master: device0 locked the bus[0m
+D (3297) spi_master: device0 release bus[0m
+D (3309) spi_master: device0 locked the bus[0m
+D (3309) spi_master: device0 release bus[0m
+D (3309) spi_master: device0 locked the bus[0m
+D (3314) spi_master: device0 release bus[0m
+D (3318) spi_master: device0 locked the bus[0m
+D (3322) spi_master: device0 release bus[0m
+D (3329) spi_master: device0 locked the bus[0m
+D (3330) spi_master: device0 release bus[0m
+D (3334) spi_master: device0 locked the bus[0m
+D (3339) spi_master: device0 release bus[0m
+D (3342) spi_master: device0 locked the bus[0m
+D (3347) spi_master: device0 release bus[0m
+D (3352) esp_netif_lwip: LwIP stack has been initialized[0m
+D (3356) esp_netif_lwip: esp-netif has been successfully initialized[0m
+D (3363) event: running task for loop 0x408646bc[0m
+D (3367) event: created task for loop 0x408646bc[0m
+D (3372) event: created event loop 0x408646bc[0m
+D (3376) esp_netif_lwip: check: remote, if=0x4084fd88 fn=0x42092fc0[0m
+D (3383) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (3388) esp_netif_lwip: check: remote, if=0x4084fd68 fn=0x42093b5a[0m
+D (3395) esp_netif_objects: esp_netif_add_to_list_unsafe netif added successfully (total netifs: 1)[0m
+D (3404) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+[0;32mI (3410) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (3414) net80211: net80211 rom version: 5b8dcfa[0m
+D (3419) nvs: nvs_open_from_partition misc 1[0m
+I (3425) wifi:wifi driver task: 4086807c, prio:23, stack:6656, core=0
+D (3430) efuse: BLK1 REG1 [8-15], len=8 bits[0m
+D (3434) efuse: BLK1 REG1 [0-7], len=8 bits[0m
+D (3438) efuse: BLK1 REG0 [24-31], len=8 bits[0m
+D (3442) efuse: BLK1 REG0 [16-23], len=8 bits[0m
+D (3447) efuse: BLK1 REG0 [8-15], len=8 bits[0m
+D (3451) efuse: BLK1 REG0 [0-7], len=8 bits[0m
+D (3456) nvs: nvs_open_from_partition nvs.net80211 1[0m
+D (3461) nvs: nvs_get opmode 1[0m
+D (3464) nvs: nvs_get_str_or_blob sta.ssid[0m
+D (3468) nvs: nvs_get sta.authmode 1[0m
+D (3472) nvs: nvs_get_str_or_blob sta.pswd[0m
+D (3476) nvs: nvs_get_str_or_blob sta.pmk[0m
+D (3480) nvs: nvs_get sta.chan 1[0m
+D (3483) nvs: nvs_get auto.conn 1[0m
+D (3487) nvs: nvs_get bssid.set 1[0m
+D (3490) nvs: nvs_get_str_or_blob sta.bssid[0m
+D (3494) nvs: nvs_get sta.lis_intval 2[0m
+D (3498) nvs: nvs_get sta.phym 1[0m
+D (3501) nvs: nvs_get sta.phybw 1[0m
+D (3505) nvs: nvs_get_str_or_blob sta.apsw[0m
+D (3509) nvs: nvs_get_str_or_blob sta.apinfo[0m
+D (3514) nvs: nvs_get sta.scan_method 1[0m
+D (3517) nvs: nvs_get sta.sort_method 1[0m
+D (3521) nvs: nvs_get sta.minrssi 1[0m
+D (3525) nvs: nvs_get sta.minauth 1[0m
+D (3528) nvs: nvs_get sta.pmf_e 1[0m
+D (3532) nvs: nvs_get sta.pmf_r 1[0m
+D (3535) nvs: nvs_get sta.btm_e 1[0m
+D (3538) nvs: nvs_get sta.rrm_e 1[0m
+D (3542) nvs: nvs_get sta.mbo_e 1[0m
+D (3545) nvs: nvs_get_str_or_blob ap.ssid[0m
+D (3549) nvs: nvs_get_str_or_blob ap.passwd[0m
+D (3553) nvs: nvs_get_str_or_blob ap.pmk[0m
+D (3557) nvs: nvs_get ap.chan 1[0m
+D (3561) nvs: nvs_get ap.authmode 1[0m
+D (3564) nvs: nvs_get ap.hidden 1[0m
+D (3568) nvs: nvs_get ap.max.conn 1[0m
+D (3571) nvs: nvs_get bcn.interval 2[0m
+D (3575) nvs: nvs_get ap.phym 1[0m
+D (3578) nvs: nvs_get ap.phybw 1[0m
+D (3581) nvs: nvs_get ap.sndchan 1[0m
+D (3585) nvs: nvs_get ap.pmf_e 1[0m
+D (3588) nvs: nvs_get ap.pmf_r 1[0m
+D (3591) nvs: nvs_get ap.p_cipher 1[0m
+D (3595) nvs: nvs_get lorate 1[0m
+D (3598) nvs: nvs_get_str_or_blob country[0m
+D (3602) nvs: nvs_get ap.ftm_r 1[0m
+D (3605) nvs: nvs_get sta.ft 1[0m
+D (3609) nvs: nvs_get sta.owe 1[0m
+D (3612) nvs: nvs_get sta.trans_d 1[0m
+D (3615) nvs: nvs_get sta.sae_h2e 1[0m
+D (3619) nvs: nvs_get sta.sae_pk_mode 1[0m
+D (3623) nvs: nvs_get sta.bss_retry 1[0m
+D (3627) nvs: nvs_get_str_or_blob sta.owe_data[0m
+D (3631) nvs: nvs_get sta.he_dcm 1[0m
+D (3634) nvs: nvs_get sta.he_dcm_c_tx 1[0m
+D (3638) nvs: nvs_get sta.he_dcm_c_rx 1[0m
+D (3642) nvs: nvs_get sta.he_mcs9_d 1[0m
+D (3646) nvs: nvs_get sta.he_su_b_d 1[0m
+D (3650) nvs: nvs_get sta.he_su_b_f_d 1[0m
+D (3654) nvs: nvs_get sta.he_mu_b_f_d 1[0m
+D (3658) nvs: nvs_get sta.he_cqi_f_d 1[0m
+D (3661) nvs: nvs_get_str_or_blob sta.sae_h2e_id[0m
+D (3666) nvs: nvs_get ap.sae_h2e 1[0m
+D (3670) nvs: nvs_get_str_or_blob ap.pmk_info[0m
+D (3674) nvs: nvs_get nan.phym 1[0m
+D (3677) nvs: nvs_get sta.pwr_reset 1[0m
+D (3681) nvs: nvs_get band_mode 1[0m
+D (3684) nvs: nvs_get sta.phym5g 1[0m
+D (3688) nvs: nvs_get ap.phym5g 1[0m
+D (3691) nvs: nvs_get sta.phybw5g 1[0m
+D (3695) nvs: nvs_get ap.phybw5g 1[0m
+D (3698) nvs: nvs_get ap.sndchan5g 1[0m
+D (3702) nvs: nvs_get ap.chan5g 1[0m
+D (3705) nvs: nvs_get ap.chanisset 1[0m
+D (3709) nvs: nvs_get ap.chan5gisset 1[0m
+D (3713) nvs: nvs_get sta.lowrate 1[0m
+D (3716) nvs: nvs_get ap.lowrate 1[0m
+D (3720) nvs: nvs_get sta.rssi_5g_adj 1[0m
+D (3724) nvs: nvs_get ap.csa_count 1[0m
+D (3727) nvs: nvs_get ap.dtim_period 1[0m
+D (3731) nvs: nvs_get ap.trans_d 1[0m
+D (3735) nvs: nvs_get ap.sae_ext 1[0m
+D (3738) nvs: nvs_get ap.bssmaxidle 2[0m
+D (3742) nvs: nvs_get ap.pro_keep_a 1[0m
+D (3746) nvs: nvs_get ap.gtk_rekey 2[0m
+D (3749) nvs: nvs_get sta.vht_su_b_d 1[0m
+D (3753) nvs: nvs_get sta.vht_mu_b_d 1[0m
+D (3757) nvs: nvs_get sta.vht_mcs8_e 1[0m
+D (3761) nvs: nvs_get sta.ina_time 2[0m
+D (3764) nvs: nvs_get ap.ina_time 2[0m
+D (3768) nvs: nvs_set ap.sndchan 1 1[0m
+I (3772) wifi:wifi firmware version: 4df78f2
+I (3775) wifi:wifi certification version: v7.0
+I (3780) wifi:config NVS flash: enabled
+I (3783) wifi:config nano formatting: disabled
+I (3787) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (3794) wifi:Init data frame dynamic rx buffer num: 16
+I (3799) wifi:Init static rx mgmt buffer num: 5
+I (3803) wifi:Init management short buffer num: 32
+I (3808) wifi:Init static tx buffer num: 16
+I (3812) wifi:Init static tx FG buffer num: 2
+I (3816) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (3822) wifi:Init static rx buffer num: 10
+I (3825) wifi:Init dynamic rx buffer num: 16
+D (3830) wifi:mms: 3->2
+D (3832) wifi:Reset scan defaults in ms : min,max,passive,chan_dwell :(0,120,360,30)
+[0;32mI (3841) wifi_init: rx ba win: 6[0m
+[0;32mI (3843) wifi_init: accept mbox: 6[0m
+[0;32mI (3847) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3851) wifi_init: udp mbox: 6[0m
+[0;32mI (3855) wifi_init: tcp mbox: 6[0m
+[0;32mI (3859) wifi_init: tcp tx win: 5760[0m
+[0;32mI (3863) wifi_init: tcp rx win: 5760[0m
+[0;32mI (3867) wifi_init: tcp mss: 1240[0m
+[0;32mI (3871) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (3876) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (3881) wifi_init: WiFi SLP IRAM OP enabled[0m
+D (3886) nvs: nvs_get opmode 1[0m
+D (3889) wifi:clear blacklist
+W (3892) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (3901) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+D (3907) phy_init: loading PHY init data from application binary[0m
+D (3913) nvs: nvs_open_from_partition phy 0[0m
+D (3917) nvs: nvs_get cal_version 4[0m
+D (3921) nvs: nvs_get_str_or_blob cal_mac[0m
+D (3925) efuse: BLK1 REG1 [8-15], len=8 bits[0m
+D (3929) efuse: BLK1 REG1 [0-7], len=8 bits[0m
+D (3933) efuse: BLK1 REG0 [24-31], len=8 bits[0m
+D (3938) efuse: BLK1 REG0 [16-23], len=8 bits[0m
+D (3942) efuse: BLK1 REG0 [8-15], len=8 bits[0m
+D (3946) efuse: BLK1 REG0 [0-7], len=8 bits[0m
+D (3951) efuse: BLK1 REG1 [24-31], len=8 bits[0m
+D (3955) efuse: BLK1 REG1 [16-23], len=8 bits[0m
+D (3960) nvs: nvs_get_str_or_blob cal_data[0m
+D (3966) nvs: nvs_close 3[0m
+D (3967) efuse: BLK1 REG1 [8-15], len=8 bits[0m
+D (3971) efuse: BLK1 REG1 [0-7], len=8 bits[0m
+D (3975) efuse: BLK1 REG0 [24-31], len=8 bits[0m
+D (3979) efuse: BLK1 REG0 [16-23], len=8 bits[0m
+D (3984) efuse: BLK1 REG0 [8-15], len=8 bits[0m
+D (3988) efuse: BLK1 REG0 [0-7], len=8 bits[0m
+D (3992) efuse: BLK1 REG1 [24-31], len=8 bits[0m
+D (3997) efuse: BLK1 REG1 [16-23], len=8 bits[0m
+D (4006) temperature_sensor: range changed, change to index 2[0m
+W (4063) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (4064) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (4069) wifi:(agc)0x600a7128:0xd2100a8e, min.avgNF:0xce->0xd2(dB), RCalCount:0x100, min.RRssi:0xa8e(-87.12)
+I (4079) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+D (4085) wifi:filter: set rx policy=0
+I (4089) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (4093) wifi:enable tsf
+D (4095) wifi:filter: set rx policy=1
+D (4098) wifi:connect status 0 -> 0
+D (4102) event: running post WIFI_EVENT:43 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (4112) event: running post WIFI_EVENT:2 with handler 0x42097530 and context 0x40865730 on loop 0x408646bc[0m
+D (4121) wifi_init_default: wifi_start esp-netif:0x408655e0 event-id2[0m
+D (4128) wifi_init_default: WIFI mac address: 20 6e f1 16 e0 a4[0m
+D (4134) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42092fdc[0m
+D (4140) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (4146) esp_netif_handlers: esp_netif action has started with netif0x408655e0 from event_id=2[0m
+D (4155) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x420946c4[0m
+D (4161) esp_netif_lwip: esp_netif_start_api 0x408655e0[0m
+D (4166) esp_netif_lwip: esp_netif_get_hostname esp_netif:0x408655e0[0m
+D (4173) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (4178) event: running post WIFI_EVENT:2 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (4189) wifi:Start wifi connect
+D (4191) wifi:connect status 0 -> 0
+D (4194) wifi:connect chan=0
+D (4197) wifi:first chan=11
+D (4199) wifi:connect status 0 -> 1
+D (4203) wifi:filter: set rx policy=3
+D (4206) wifi:clear scan ap list
+D (4209) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=379306, index=0
+D (4219) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+D (4229) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (4231) wifi:profile match: ss_state=0x7
+D (4235) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x7
+D (4240) wifi:find first mathched ssid, scan done
+D (4245) wifi:filter: set rx policy=4
+D (4248) wifi:first chan=1
+D (4250) wifi:handoff_cb: status=0
+D (4253) wifi:ap found, mac=02:55:b1:c6:fa:2e
+D (4258) wifi:going for connection with bssid=02:55:b1:c6:fa:2e
+D (4263) wifi:new_bss=0x40849408, cur_bss=0x0, new_chan=<11,0>, cur_chan=1
+D (4270) wifi:filter: set rx policy=5
+I (4273) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+D (4281) wifi:connect_op: status=0, auth=5, cipher=3 
+I (4285) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+D (4293) wifi:auth mode is not none
+D (4296) wifi:connect_bss: auth=1, reconnect=0
+I (4300) wifi:state: init -> auth (0xb0)
+D (4303) nvs: nvs_get sta.pwr_reset 1[0m
+D (4308) wifi:start 1000ms AUTH timer
+D (4311) wifi:clear scan ap list
+D (4314) event: running post WIFI_EVENT:43 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (4329) spi_master: device0 locked the bus[0m
+D (4329) spi_master: device0 release bus[0m
+D (4332) spi_master: device0 locked the bus[0m
+D (4336) spi_master: device0 release bus[0m
+D (4340) spi_master: device0 locked the bus[0m
+D (4344) spi_master: device0 release bus[0m
+D (4335) wifi:recv auth: seq=2, status=0, algo=0
+I (4353) wifi:state: auth -> assoc (0x0)
+D (4356) nvs: nvs_get sta.pwr_reset 1[0m
+D (4350) spi_master: device0 locked the bus[0m
+D (4364) spi_master: device0 release bus[0m
+D (4368) spi_master: device0 locked the bus[0m
+D (4372) spi_master: device0 release bus[0m
+D (4376) spi_master: device0 locked the bus[0m
+D (4381) spi_master: device0 release bus[0m
+D (4362) wifi:restart connect 1000ms timer for assoc
+D (4391) spi_master: device0 locked the bus[0m
+D (4394) spi_master: device0 release bus[0m
+D (4398) spi_master: device0 locked the bus[0m
+D (4402) spi_master: device0 release bus[0m
+D (4406) spi_master: device0 locked the bus[0m
+D (4410) spi_master: device0 release bus[0m
+D (4393) wifi:recv assoc: type=0x10
+E (4417) wifi:Set status to INIT
+I (4420) wifi:state: assoc -> init (0x110)
+D (4424) nvs: nvs_get sta.pwr_reset 1[0m
+D (4428) nvs: nvs_set sta.pwr_reset 1 0[0m
+D (4433) wifi:stop beacon and connect timers
+D (4436) wifi:connect status 1 -> 4
+D (4439) wifi:add bssid 02:55:b1:c6:fa:2e to blacklist, cnt=0
+D (4444) wifi:stop CSA timer
+D (4447) wifi:remove 02:55:b1:c6:fa:2e from rc list
+D (4452) wifi:connect status 4 -> 0
+I (4455) wifi:new:<11,0>, old:<11,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+D (4463) wifi:filter: set rx policy=8
+D (4466) wifi:reason: assoc fail(status - 1)
+D (4470) wifi:Send disconnect event, reason=203, AP number=0
+D (4476) nvs: nvs_get sta.phym 1[0m
+D (4479) nvs: nvs_get sta.lowrate 1[0m
+D (4482) event: running post WIFI_EVENT:5 with handler 0x42097540 and context 0x408657c0 on loop 0x408646bc[0m
+D (4492) esp_netif_handlers: esp_netif action disconnected with netif0x408655e0 from event_id=5[0m
+D (4501) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42094010[0m
+D (4507) esp_netif_lwip: esp_netif_down_api esp_netif:0x408655e0[0m
+D (4513) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (4520) esp_netif_lwip: if0x408655e0 start ip lost tmr: interval=120[0m
+D (4527) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (4533) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (4540) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (4545) event: running post WIFI_EVENT:5 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+[0;33mW (4555) clare_net: Wi-Fi disconnected reason=203 retry=0[0m
+D (4570) spi_master: device0 locked the bus[0m
+D (4570) spi_master: device0 release bus[0m
+D (4570) spi_master: device0 locked the bus[0m
+D (4574) spi_master: device0 release bus[0m
+D (4578) spi_master: device0 locked the bus[0m
+[0;32mI (4582) clare_net: Wi-Fi protocols limited to 11b/g/n mask=0x07[0m
+D (4584) spi_master: device0 release bus[0m
+I (4593) wifi:Set ps type: 0, coexist: 0
+
+[0;32mI (4597) clare_c6: Clare UI ready; touch the Clare tile[0m
+[0;32mI (4602) main_task: Returned from app_main()[0m
+D (4635) spi_master: device0 locked the bus[0m
+D (4635) spi_master: device0 release bus[0m
+D (4636) spi_master: device0 locked the bus[0m
+D (4637) spi_master: device0 release bus[0m
+D (4641) spi_master: device0 locked the bus[0m
+D (4645) spi_master: device0 release bus[0m
+D (4653) spi_master: device0 locked the bus[0m
+D (4653) spi_master: device0 release bus[0m
+D (4657) spi_master: device0 locked the bus[0m
+D (4661) spi_master: device0 release bus[0m
+D (4665) spi_master: device0 locked the bus[0m
+D (4671) spi_master: device0 release bus[0m
+[0;32mI (12597) clare_c6: Boot network self-test begin[0m
+D (12597) wifi:Start wifi connect
+D (12597) wifi:connect status 0 -> 0
+D (12598) wifi:connect chan=0
+D (12600) wifi:first chan=11
+D (12602) wifi:connect status 0 -> 1
+D (12606) wifi:filter: set rx policy=3
+D (12609) wifi:clear scan ap list
+D (12612) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=8782587, index=0
+D (12622) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+D (12633) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (12634) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (12639) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (12646) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (12651) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:72
+D (12658) wifi:profile match: ss_state=0x7
+D (12662) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x7
+D (12667) wifi:find first mathched ssid, scan done
+D (12672) wifi:filter: set rx policy=4
+D (12675) wifi:first chan=1
+D (12678) wifi:handoff_cb: status=0
+D (12681) wifi:ap found, mac=02:55:b1:c6:fa:72
+D (12685) wifi:going for connection with bssid=02:55:b1:c6:fa:72
+D (12691) wifi:new_bss=0x40849408, cur_bss=0x0, new_chan=<11,0>, cur_chan=11
+D (12697) wifi:filter: set rx policy=5
+I (12701) wifi:new:<11,0>, old:<11,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+D (12709) wifi:connect_op: status=0, auth=5, cipher=3 
+I (12713) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+D (12721) wifi:auth mode is not none
+D (12724) wifi:connect_bss: auth=1, reconnect=0
+I (12728) wifi:state: init -> auth (0xb0)
+D (12732) nvs: nvs_get sta.pwr_reset 1[0m
+D (12736) nvs: nvs_set sta.pwr_reset 1 1[0m
+D (12741) wifi:start 1000ms AUTH timer
+D (12743) wifi:clear scan ap list
+D (12751) spi_master: device0 locked the bus[0m
+D (12752) spi_master: device0 release bus[0m
+D (12755) spi_master: device0 locked the bus[0m
+D (12759) spi_master: device0 release bus[0m
+D (12763) spi_master: device0 locked the bus[0m
+D (12768) spi_master: device0 release bus[0m
+D (13743) wifi:auth timeout
+I (13743) wifi:state: auth -> init (0x200)
+D (13744) nvs: nvs_get sta.pwr_reset 1[0m
+D (13744) nvs: nvs_set sta.pwr_reset 1 0[0m
+D (13748) wifi:stop beacon and connect timers
+D (13751) wifi:connect status 1 -> 4
+D (13754) wifi:reason: auth expire(2)
+D (13757) wifi:add bssid 02:55:b1:c6:fa:72 to blacklist, cnt=1
+D (13763) wifi:stop CSA timer
+D (13765) wifi:remove 02:55:b1:c6:fa:72 from rc list
+D (13770) wifi:connect status 4 -> 0
+I (13774) wifi:new:<11,0>, old:<11,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+D (13781) wifi:filter: set rx policy=8
+D (13785) wifi:Send disconnect event, reason=2, AP number=0
+D (13790) event: running post WIFI_EVENT:5 with handler 0x42097540 and context 0x408657c0 on loop 0x408646bc[0m
+D (13800) esp_netif_handlers: esp_netif action disconnected with netif0x408655e0 from event_id=5[0m
+D (13809) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42094010[0m
+D (13815) esp_netif_lwip: esp_netif_down_api esp_netif:0x408655e0[0m
+D (13821) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (13828) esp_netif_lwip: if0x408655e0 start ip lost tmr: already started[0m
+D (13835) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (13842) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (13848) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (13854) event: running post WIFI_EVENT:5 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (13865) wifi:Start wifi connect
+D (13867) wifi:connect status 0 -> 0
+D (13870) wifi:connect chan=0
+D (13873) wifi:first chan=11
+D (13876) wifi:connect status 0 -> 1
+D (13879) wifi:filter: set rx policy=3
+D (13882) wifi:clear scan ap list
+D (13885) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=10055830, index=0
+D (13895) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+[0;33mW (13902) clare_net: Wi-Fi disconnected reason=2 retry=1[0m
+D (13906) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (13914) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (13927) spi_master: device0 locked the bus[0m
+D (13927) spi_master: device0 release bus[0m
+D (13928) spi_master: device0 locked the bus[0m
+D (13932) spi_master: device0 release bus[0m
+D (13936) spi_master: device0 locked the bus[0m
+D (13942) spi_master: device0 release bus[0m
+D (13968) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (13969) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (13971) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:72
+D (13976) wifi:find the 02:55:b1:c6:fa:72 in blacklist.
+
+D (14022) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (14022) wifi:perform scan: ss_state=0x9, chan<1,0>, dur<0,120>
+D (14038) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:26
+D (14039) wifi:profile match: ss_state=0x7
+D (14039) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x7
+D (14043) wifi:find first mathched ssid, scan done
+D (14048) wifi:filter: set rx policy=4
+D (14051) wifi:first chan=1
+D (14054) wifi:handoff_cb: status=0
+D (14057) wifi:ap found, mac=02:55:b1:c6:fa:26
+D (14061) wifi:going for connection with bssid=02:55:b1:c6:fa:26
+D (14067) wifi:new_bss=0x40849408, cur_bss=0x0, new_chan=<1,0>, cur_chan=11
+D (14074) wifi:filter: set rx policy=5
+I (14077) wifi:new:<1,0>, old:<11,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+D (14085) wifi:connect_op: status=0, auth=5, cipher=3 
+I (14089) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+D (14097) wifi:auth mode is not none
+D (14100) wifi:connect_bss: auth=1, reconnect=0
+I (14104) wifi:state: init -> auth (0xb0)
+D (14108) nvs: nvs_get sta.pwr_reset 1[0m
+D (14112) nvs: nvs_set sta.pwr_reset 1 1[0m
+D (14116) event: running post WIFI_EVENT:43 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (14117) wifi:start 1000ms AUTH timer
+D (14129) wifi:clear scan ap list
+D (14142) wifi:recv auth: seq=2, status=0, algo=0
+I (14143) wifi:state: auth -> assoc (0x0)
+D (14143) nvs: nvs_get sta.pwr_reset 1[0m
+D (14145) wifi:restart connect 1000ms timer for assoc
+D (14160) wifi:recv assoc: type=0x10
+E (14160) wifi:Set status to INIT
+I (14160) wifi:state: assoc -> init (0x110)
+D (14160) nvs: nvs_get sta.pwr_reset 1[0m
+D (14163) nvs: nvs_set sta.pwr_reset 1 0[0m
+D (14168) wifi:stop beacon and connect timers
+D (14171) wifi:connect status 1 -> 4
+D (14174) wifi:add bssid 02:55:b1:c6:fa:26 to blacklist, cnt=2
+D (14180) wifi:stop CSA timer
+D (14183) wifi:remove 02:55:b1:c6:fa:26 from rc list
+D (14187) wifi:connect status 4 -> 0
+I (14191) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+D (14198) wifi:filter: set rx policy=8
+D (14202) wifi:reason: assoc fail(status - 1)
+D (14206) wifi:Send disconnect event, reason=203, AP number=0
+D (14211) event: running post WIFI_EVENT:5 with handler 0x42097540 and context 0x408657c0 on loop 0x408646bc[0m
+D (14221) esp_netif_handlers: esp_netif action disconnected with netif0x408655e0 from event_id=5[0m
+D (14230) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42094010[0m
+D (14236) esp_netif_lwip: esp_netif_down_api esp_netif:0x408655e0[0m
+D (14243) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (14250) esp_netif_lwip: if0x408655e0 start ip lost tmr: already started[0m
+D (14256) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (14263) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (14270) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (14275) event: running post WIFI_EVENT:5 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (14286) wifi:Start wifi connect
+D (14288) wifi:connect status 0 -> 0
+D (14292) wifi:connect chan=0
+D (14294) wifi:first chan=11
+D (14297) wifi:connect status 0 -> 1
+D (14300) wifi:filter: set rx policy=3
+D (14304) wifi:clear scan ap list
+D (14307) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=10476979, index=0
+D (14317) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+[0;33mW (14323) clare_net: Wi-Fi disconnected reason=203 retry=2[0m
+D (14327) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (14335) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (14344) spi_master: device0 locked the bus[0m
+D (14344) spi_master: device0 release bus[0m
+D (14348) spi_master: device0 locked the bus[0m
+D (14353) spi_master: device0 release bus[0m
+D (14357) spi_master: device0 locked the bus[0m
+D (14361) spi_master: device0 release bus[0m
+D (14378) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (14378) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (14380) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:72
+D (14385) wifi:find the 02:55:b1:c6:fa:72 in blacklist.
+
+D (14443) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (14443) wifi:perform scan: ss_state=0x9, chan<1,0>, dur<0,120>
+D (14448) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:26
+D (14450) wifi:find the 02:55:b1:c6:fa:26 in blacklist.
+
+D (14530) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:f5:5a
+D (14531) wifi:profile match: ss_state=0x7
+D (14531) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x7
+D (14535) wifi:find first mathched ssid, scan done
+D (14540) wifi:filter: set rx policy=4
+D (14543) wifi:first chan=1
+D (14546) wifi:handoff_cb: status=0
+D (14549) wifi:ap found, mac=02:55:b1:c6:f5:5a
+D (14553) wifi:going for connection with bssid=02:55:b1:c6:f5:5a
+D (14559) wifi:new_bss=0x40849408, cur_bss=0x0, new_chan=<1,0>, cur_chan=1
+D (14565) wifi:filter: set rx policy=5
+I (14569) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+D (14576) wifi:connect_op: status=0, auth=5, cipher=3 
+I (14581) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+D (14588) wifi:auth mode is not none
+D (14592) wifi:connect_bss: auth=1, reconnect=0
+I (14596) wifi:state: init -> auth (0xb0)
+D (14600) nvs: nvs_get sta.pwr_reset 1[0m
+D (14604) nvs: nvs_set sta.pwr_reset 1 1[0m
+D (14609) wifi:start 1000ms AUTH timer
+D (14611) wifi:clear scan ap list
+D (14624) wifi:recv auth: seq=2, status=0, algo=0
+I (14624) wifi:state: auth -> assoc (0x0)
+D (14624) nvs: nvs_get sta.pwr_reset 1[0m
+D (14626) wifi:restart connect 1000ms timer for assoc
+D (14631) wifi:not auth state, ignore
+D (14645) wifi:recv assoc: type=0x10
+E (14645) wifi:Set status to INIT
+I (14645) wifi:state: assoc -> init (0x110)
+D (14646) nvs: nvs_get sta.pwr_reset 1[0m
+D (14648) nvs: nvs_set sta.pwr_reset 1 0[0m
+D (14653) wifi:stop beacon and connect timers
+D (14656) wifi:connect status 1 -> 4
+D (14659) wifi:add bssid 02:55:b1:c6:f5:5a to blacklist, cnt=3
+D (14665) wifi:stop CSA timer
+D (14668) wifi:remove 02:55:b1:c6:f5:5a from rc list
+D (14672) wifi:connect status 4 -> 0
+I (14676) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+D (14683) wifi:filter: set rx policy=8
+D (14687) wifi:reason: assoc fail(status - 1)
+D (14691) wifi:Send disconnect event, reason=203, AP number=0
+D (14696) event: running post WIFI_EVENT:5 with handler 0x42097540 and context 0x408657c0 on loop 0x408646bc[0m
+D (14706) esp_netif_handlers: esp_netif action disconnected with netif0x408655e0 from event_id=5[0m
+D (14715) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42094010[0m
+D (14722) esp_netif_lwip: esp_netif_down_api esp_netif:0x408655e0[0m
+D (14728) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (14735) esp_netif_lwip: if0x408655e0 start ip lost tmr: already started[0m
+D (14742) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (14748) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (14755) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (14761) event: running post WIFI_EVENT:5 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (14771) wifi:Start wifi connect
+D (14773) wifi:connect status 0 -> 0
+D (14777) wifi:connect chan=0
+D (14779) wifi:first chan=11
+D (14782) wifi:connect status 0 -> 1
+D (14785) wifi:filter: set rx policy=3
+D (14789) wifi:clear scan ap list
+D (14792) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=10962126, index=0
+D (14802) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+[0;33mW (14808) clare_net: Wi-Fi disconnected reason=203 retry=3[0m
+D (14813) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (14820) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (14829) spi_master: device0 locked the bus[0m
+D (14830) spi_master: device0 release bus[0m
+D (14834) spi_master: device0 locked the bus[0m
+D (14838) spi_master: device0 release bus[0m
+D (14842) spi_master: device0 locked the bus[0m
+D (14846) spi_master: device0 release bus[0m
+D (14890) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (14890) wifi:find the 02:55:b1:c6:fa:2e in blacklist.
+
+D (14892) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:72
+D (14897) wifi:find the 02:55:b1:c6:fa:72 in blacklist.
+
+D (14928) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (14929) wifi:perform scan: ss_state=0x9, chan<1,0>, dur<0,120>
+D (14940) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:f5:5a
+D (14940) wifi:find the 02:55:b1:c6:f5:5a in blacklist.
+
+D (15042) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:f5:5a
+D (15042) wifi:find the 02:55:b1:c6:f5:5a in blacklist.
+
+D (15050) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15050) wifi:perform scan: ss_state=0x9, chan<2,0>, dur<0,120>
+D (15175) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15175) wifi:perform scan: ss_state=0x9, chan<3,0>, dur<0,120>
+D (15296) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15296) wifi:perform scan: ss_state=0x9, chan<4,0>, dur<0,120>
+D (15417) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15417) wifi:perform scan: ss_state=0x9, chan<5,0>, dur<0,120>
+D (15538) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15538) wifi:perform scan: ss_state=0x9, chan<6,0>, dur<0,120>
+D (15658) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15659) wifi:perform scan: ss_state=0x9, chan<7,0>, dur<0,120>
+D (15779) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15780) wifi:perform scan: ss_state=0x9, chan<8,0>, dur<0,120>
+D (15900) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (15901) wifi:perform scan: ss_state=0x9, chan<9,0>, dur<0,120>
+D (16021) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (16022) wifi:perform scan: ss_state=0x9, chan<10,0>, dur<0,120>
+D (16142) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (16143) wifi:perform scan: ss_state=0x9, chan<12,0>, dur<360,360>
+D (16503) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (16504) wifi:perform scan: ss_state=0x9, chan<13,0>, dur<360,360>
+D (16865) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (16865) wifi:perform scan: ss_state=0x9, chan<14,0>, dur<360,360>
+D (17226) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x3
+D (17226) wifi:filter: set rx policy=4
+D (17226) wifi:first chan=1
+D (17227) wifi:handoff_cb: status=0
+D (17229) wifi:clear rc list
+D (17232) wifi:clear blacklist
+D (17235) wifi:connect status 1 -> 3
+D (17238) wifi:Send disconnect event, reason=205
+D (17242) wifi:disable connect timer
+D (17246) wifi:clear scan ap list
+D (17249) event: running post WIFI_EVENT:5 with handler 0x42097540 and context 0x408657c0 on loop 0x408646bc[0m
+D (17259) esp_netif_handlers: esp_netif action disconnected with netif0x408655e0 from event_id=5[0m
+D (17268) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x42094010[0m
+D (17274) esp_netif_lwip: esp_netif_down_api esp_netif:0x408655e0[0m
+D (17280) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (17287) esp_netif_lwip: if0x408655e0 start ip lost tmr: already started[0m
+D (17294) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (17301) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (17307) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (17313) event: running post WIFI_EVENT:5 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (17323) wifi:Start wifi connect
+D (17326) wifi:connect status 3 -> 0
+D (17329) wifi:connect chan=0
+D (17332) wifi:first chan=11
+D (17335) wifi:connect status 0 -> 1
+D (17338) wifi:filter: set rx policy=3
+D (17341) wifi:clear scan ap list
+D (17344) wifi:start scan: type=0x50f, priority=2, cb=0x420ee95e, arg=0x0, ss_state=0x1, time=13514698, index=0
+D (17354) wifi:perform scan: ss_state=0x9, chan<11,0>, dur<0,120>
+[0;33mW (17361) clare_net: Wi-Fi disconnected reason=205 retry=4[0m
+D (17365) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:fa:2e
+D (17373) wifi:profile match: ss_state=0x7
+D (17377) wifi:rsn valid: gcipher=1 ucipher=3 akm=5 mac=02:55:b1:c6:f8:9e
+D (17383) wifi:profile match: ss_state=0x7
+D (17387) wifi:scan end: arg=0x4084b2b0, status=0, ss_state=0x7
+D (17393) wifi:find first mathched ssid, scan done
+D (17397) wifi:filter: set rx policy=4
+D (17400) wifi:first chan=1
+D (17403) wifi:handoff_cb: status=0
+D (17406) wifi:ap found, mac=02:55:b1:c6:fa:2e
+D (17411) wifi:going for connection with bssid=02:55:b1:c6:fa:2e
+D (17416) wifi:new_bss=0x40849408, cur_bss=0x0, new_chan=<11,0>, cur_chan=1
+D (17423) wifi:filter: set rx policy=5
+I (17426) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+D (17435) wifi:connect_op: status=0, auth=5, cipher=3 
+I (17439) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+D (17446) wifi:auth mode is not none
+D (17449) wifi:connect_bss: auth=1, reconnect=0
+I (17453) wifi:state: init -> auth (0xb0)
+D (17457) nvs: nvs_get sta.pwr_reset 1[0m
+D (17461) nvs: nvs_set sta.pwr_reset 1 1[0m
+D (17465) event: running post WIFI_EVENT:43 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+D (17466) wifi:start 1000ms AUTH timer
+D (17478) wifi:clear scan ap list
+D (17487) spi_master: device0 locked the bus[0m
+D (17487) spi_master: device0 release bus[0m
+D (17490) spi_master: device0 locked the bus[0m
+D (17494) spi_master: device0 release bus[0m
+D (17498) spi_master: device0 locked the bus[0m
+D (17503) spi_master: device0 release bus[0m
+D (17488) wifi:recv auth: seq=2, status=0, algo=0
+I (17511) wifi:state: auth -> assoc (0x0)
+D (17515) nvs: nvs_get sta.pwr_reset 1[0m
+D (17519) wifi:restart connect 1000ms timer for assoc
+D (17529) wifi:recv assoc: type=0x10
+I (17529) wifi:(assoc)RESP, Extended Capabilities length:8, operating_mode_notification:0
+I (17535) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (17546) wifi:Extended Capabilities length:8, operating_mode_notification:1
+D (17553) wifi:filter: set rx policy=6
+I (17556) wifi:state: assoc -> run (0x10)
+D (17560) nvs: nvs_get sta.pwr_reset 1[0m
+I (17564) wifi:(trc)phytype:CBW20-SGI, snr:20, maxRate:144, highestRateIdx:0
+W (17570) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (17579) wifi:(trc)band:2G, rate(L-MCS3, rateIdx:5), ampdu(rate:L-MCS3, schedIdx(5, stop:8)), snr:20, ampduState:wait operational
+I (17590) wifi:ifidx:0, rssi:-67, nf:-87, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (17601) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:6(8 us)
+D (17607) wifi:start 10s connect timer for 4 way handshake
+I (17638) wifi:connected with ZKY-GYLWLAP, aid = 3, channel 11, BW20, bssid = 02:55:b1:c6:fa:2e
+I (17638) wifi:security: WPA2-PSK, phy:bgn, rssi:-67, cipher(pairwise:0x3, group:0x1), pmf:0, 
+D (17644) wifi:remove all except 02:55:b1:c6:fa:2e from rc list
+D (17650) wifi:clear blacklist
+D (17652) nvs: nvs_set sta.chan 1 11[0m
+D (17656) nvs: nvs_set_blob sta.apinfo 700[0m
+D (17661) wifi:filter: set rx policy=7
+I (17664) wifi:pm start, type: 0, twt_start:0
+
+I (17668) wifi:pm start, type:0, aid:0x3, trans-BSSID:02:55:b1:c6:fa:2e, BSSID[5]:0x2e, mbssid(max-indicator:0, index:0), he:0
+I (17679) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (17687) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+D (17696) wifi:Send sta connected event
+D (17699) wifi:connect status 1 -> 5
+I (17702) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:1, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (17713) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:2, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (17724) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:3, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+D (17735) wifi:obss scan is disabled
+D (17738) wifi:start obss scan: obss scan is stopped
+D (17743) wifi:bcnd: 0 -> 2104
+I (17746) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (17754) wifi:AP's beacon interval = 102400 us, DTIM period = 2
+I (17761) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (17770) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (17778) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+D (17787) event: running post WIFI_EVENT:4 with handler 0x42097550 and context 0x40865790 on loop 0x408646bc[0m
+D (17797) esp_netif_handlers: esp_netif action connected with netif0x408655e0 from event_id=4[0m
+D (17806) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x420942a8[0m
+D (17812) esp_netif_lwip: esp_netif_up_api esp_netif:0x408655e0[0m
+D (17818) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (17824) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x420935c0[0m
+D (17830) esp_netif_lwip: esp_netif_dhcpc_start_api esp_netif:0x408655e0[0m
+D (17837) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x408655e0[0m
+D (17844) esp_netif_lwip: if0x408655e0 start ip lost tmr: already started[0m
+D (17851) esp_netif_lwip: starting dhcp client[0m
+D (17856) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (17861) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (17866) event: running post WIFI_EVENT:4 with handler 0x4200e3d8 and context 0x40875ba4 on loop 0x408646bc[0m
+W (17873) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x1002efa, TALO:0xc6b15502, (ssn:0, win:64, cur_ssn:0), CONF:0xc0000005
+D (18361) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (18866) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (19877) esp_netif_lwip: esp_netif_internal_dhcpc_cb lwip-netif:0x40865660[0m
+D (19877) esp_netif_lwip: check: local, if=0x408655e0 fn=0x42092dcc[0m
+D (19879) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x408655e0[0m
+D (19886) esp_netif_lwip: if0x408655e0 ip changed=1[0m
+D (19891) event: running post IP_EVENT:0 with handler 0x42097648 and context 0x40865864 on loop 0x408646bc[0m
+D (19901) wifi_init_default: Got IP wifi default handler entered[0m
+D (19907) esp_netif_handlers: esp_netif action got_ip with netif0x408655e0 from event_id=0[0m
+[0;32mI (19915) esp_netif_handlers: sta ip: 192.168.238.118, mask: 255.255.240.0, gw: 192.168.235.1[0m
+D (19924) event: running post IP_EVENT:0 with handler 0x4200e3d8 and context 0x40875bc4 on loop 0x408646bc[0m
+D (19934) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x420933ea[0m
+D (19940) esp_netif_lwip: esp_netif_get_dns_info: esp_netif=0x408655e0 type=0[0m
+D (19947) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+[0;32mI (19953) clare_net: DHCP DNS main=223.5.5.5[0m
+D (19958) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x4209331a[0m
+D (19965) esp_netif_lwip: esp_netif_set_dns_info: if=0x408655e0 type=1 dns=50505df[0m
+D (19972) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (19978) esp_netif_lwip: check: remote, if=0x408655e0 fn=0x4209331a[0m
+D (19985) esp_netif_lwip: esp_netif_set_dns_info: if=0x408655e0 type=2 dns=1010101[0m
+D (19992) esp_netif_lwip: call api in lwip: ret=0x0, give sem[0m
+D (20003) spi_master: device0 locked the bus[0m
+D (20003) spi_master: device0 release bus[0m
+D (20006) spi_master: device0 locked the bus[0m
+D (20011) spi_master: device0 release bus[0m
+D (20015) spi_master: device0 locked the bus[0m
+D (20019) spi_master: device0 release bus[0m
+D (20027) wifi:eb is dhcp or dns sport = 44585, dport = 53
+W (20034) wifi:<ba-add>idx:1, ifx:0, tid:6, TAHI:0x1002efa, TALO:0xc6b15502, (ssn:2, win:64, cur_ssn:2), CONF:0xc0006005
+[0;32mI (20040) clare_c6: probe dns ip=104.21.35.182[0m
+[0;32mI (20044) clare_c6: probe dns rc=0[0m
+[0;32mI (20048) clare_c6: probe socket fd=54 errno=0[0m
+[0;32mI (21329) clare_c6: probe connect rc=0 errno=0[0m
+D (21330) esp-tls: host:clare.vinex.top: strlen 15[0m
+D (21331) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182[0m
+D (21335) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top/voice-api/health, Port: 443[0m
+[0;31mE (22601) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[0;31mE (22602) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[0;31mE (22613) esp-tls: create_ssl_handle failed[0m
+[0;31mE (22617) esp-tls: Failed to open new connection[0m
+[0;32mI (22623) clare_c6: probe esp-tls rc=-1 last=0x0 flags=0x0[0m
+[0;32mI (22630) clare_net: Create session URL ready=1[0m
+[0;32mI (22634) clare_net: HTTP before init free8=41676 largest8=24064 free_internal=41676 largest_internal=24064[0m
+D (22645) HTTP_CLIENT: set post file length = 19[0m
+D (22649) HTTP_CLIENT: Begin connect to: https://clare.vinex.top:443[0m
+D (22656) esp-tls: host:clare.vinex.top: strlen 15[0m
+D (22661) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182[0m
+D (22667) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443[0m
+D (22906) esp-tls: handshake in progress...[0m
+[0;32mI (22906) mbedtls: ssl_tls.c:4673 => handshake
+[0m
+[0;32mI (22906) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (22910) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (22915) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_HELLO_REQUEST
+[0m
+[0;32mI (22923) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (22929) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (22934) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_HELLO
+[0m
+[0;32mI (22942) mbedtls: ssl_client.c:921 => write client hello
+[0m
+[0;32mI (22950) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (22954) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (22960) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (22966) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (22972) mbedtls: ssl_client.c:1014 <= write client hello
+[0m
+[0;32mI (22978) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (22984) mbedtls: ssl_msg.c:2368 message length: 248, out_left: 248
+[0m
+[0;32mI (22992) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 248 (-0xffffff08)
+[0m
+[0;32mI (22999) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (23004) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_HELLO
+[0m
+[0;32mI (23012) mbedtls: ssl_tls12_client.c:1195 => parse server hello
+[0m
+[0;32mI (23019) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (23024) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23030) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23204) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23205) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (23207) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23213) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23218) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 72
+[0m
+[0;32mI (23225) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 72
+[0m
+[0;32mI (23231) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 67 (-0xffffffbd)
+[0m
+[0;32mI (23239) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23246) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (23251) mbedtls: ssl_tls12_client.c:1447 server hello, total extension length: 23
+[0m
+[0;32mI (23259) mbedtls: ssl_tls12_client.c:1661 <= parse server hello
+[0m
+[0;32mI (23266) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (23271) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (23277) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_CERTIFICATE
+[0m
+[0;32mI (23285) mbedtls: ssl_tls.c:8027 => parse certificate
+[0m
+[0;32mI (23291) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (23296) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23302) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23308) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23314) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (23323) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23328) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23334) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 3414
+[0m
+[0;32mI (23340) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 3414
+[0m
+[0;32mI (23346) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 3409 (-0xfffff2af)
+[0m
+[0;32mI (23355) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23363) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (23760) mbedtls: ssl_tls.c:8141 <= parse certificate
+[0m
+[0;32mI (23760) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (23761) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (23766) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_KEY_EXCHANGE
+[0m
+[0;32mI (23774) mbedtls: ssl_tls12_client.c:2089 => parse server key exchange
+[0m
+[0;32mI (23782) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (23787) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23793) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23799) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23805) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (23813) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23819) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23824) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 120
+[0m
+[0;32mI (23831) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 120
+[0m
+[0;32mI (23837) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 115 (-0xffffff8d)
+[0m
+[0;32mI (23846) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23851) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (23857) mbedtls: ssl_tls12_client.c:1805 ECDH curve: x25519
+[0m
+[0;32mI (23903) mbedtls: ssl_tls12_client.c:2459 <= parse server key exchange
+[0m
+[0;32mI (23903) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (23905) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (23910) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CERTIFICATE_REQUEST
+[0m
+[0;32mI (23919) mbedtls: ssl_tls12_client.c:2498 => parse certificate request
+[0m
+[0;32mI (23926) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (23931) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23937) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23943) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (23949) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (23958) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23963) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (23969) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 9
+[0m
+[0;32mI (23975) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 9
+[0m
+[0;32mI (23981) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 4 (-0xfffffffc)
+[0m
+[0;32mI (23989) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (23995) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (24000) mbedtls: ssl_tls12_client.c:2660 <= parse certificate request
+[0m
+[0;32mI (24008) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24013) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24019) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_HELLO_DONE
+[0m
+[0;32mI (24027) mbedtls: ssl_tls12_client.c:2671 => parse server hello done
+[0m
+[0;32mI (24034) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (24040) mbedtls: ssl_msg.c:4367 reuse previously read message
+[0m
+[0;32mI (24046) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (24052) mbedtls: ssl_tls12_client.c:2699 <= parse server hello done
+[0m
+[0;32mI (24059) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24065) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24070) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_CERTIFICATE
+[0m
+[0;32mI (24078) mbedtls: ssl_tls.c:7622 => write certificate
+[0m
+[0;32mI (24084) mbedtls: ssl_tls.c:7633 <= skip write certificate
+[0m
+[0;32mI (24091) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24096) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24102) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_KEY_EXCHANGE
+[0m
+[0;32mI (24110) mbedtls: ssl_tls12_client.c:2714 => write client key exchange
+[0m
+[0;32mI (24357) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (24357) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (24358) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24363) mbedtls: ssl_msg.c:2368 message length: 42, out_left: 42
+[0m
+[0;32mI (24371) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 42 (-0xffffffd6)
+[0m
+[0;32mI (24378) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (24384) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (24389) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (24396) mbedtls: ssl_tls12_client.c:3209 <= write client key exchange
+[0m
+[0;32mI (24403) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24409) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24414) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CERTIFICATE_VERIFY
+[0m
+[0;32mI (24422) mbedtls: ssl_tls12_client.c:3257 => write certificate verify
+[0m
+[0;32mI (24430) mbedtls: ssl_tls.c:7236 => derive keys
+[0m
+[0;32mI (24435) mbedtls: ssl_tls.c:7360 => calc verify
+[0m
+[0;32mI (24441) mbedtls: ssl_tls.c:7379 <= calc verify
+[0m
+[0;32mI (24450) mbedtls: ssl_tls.c:7287 <= derive keys
+[0m
+[0;32mI (24452) mbedtls: ssl_tls12_client.c:3279 <= skip write certificate verify
+[0m
+[0;32mI (24459) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24465) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24470) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_CHANGE_CIPHER_SPEC
+[0m
+[0;32mI (24479) mbedtls: ssl_msg.c:5316 => write change cipher spec
+[0m
+[0;32mI (24486) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (24492) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (24498) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24503) mbedtls: ssl_msg.c:2368 message length: 6, out_left: 6
+[0m
+[0;32mI (24510) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 6 (-0xfffffffa)
+[0m
+[0;32mI (24518) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (24523) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (24529) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (24535) mbedtls: ssl_msg.c:5329 <= write change cipher spec
+[0m
+[0;32mI (24542) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24548) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24553) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_FINISHED
+[0m
+[0;32mI (24561) mbedtls: ssl_tls.c:8372 => write finished
+[0m
+[0;32mI (24567) mbedtls: ssl_tls.c:8206 => calc finished tls
+[0m
+[0;32mI (24573) mbedtls: ssl_tls.c:8237 <= calc finished
+[0m
+[0;32mI (24578) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (24585) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (24590) mbedtls: ssl_msg.c:936 => encrypt buf
+[0m
+[0;32mI (24596) mbedtls: ssl_msg.c:1475 <= encrypt buf
+[0m
+[0;32mI (24601) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24607) mbedtls: ssl_msg.c:2368 message length: 45, out_left: 45
+[0m
+[0;32mI (24614) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 45 (-0xffffffd3)
+[0m
+[0;32mI (24621) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (24627) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (24632) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (24639) mbedtls: ssl_tls.c:8475 <= write finished
+[0m
+[0;32mI (24645) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24650) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24656) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_CHANGE_CIPHER_SPEC
+[0m
+[0;32mI (24665) mbedtls: ssl_tls12_client.c:3385 => parse new session ticket
+[0m
+[0;32mI (24672) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (24677) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (24683) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (24832) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (24832) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (24835) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (24841) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (24846) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 207
+[0m
+[0;32mI (24853) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 207
+[0m
+[0;32mI (24859) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 202 (-0xffffff36)
+[0m
+[0;32mI (24868) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (24873) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (24879) mbedtls: ssl_tls12_client.c:3479 <= parse new session ticket
+[0m
+[0;32mI (24886) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24891) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (24897) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_CHANGE_CIPHER_SPEC
+[0m
+[0;32mI (24906) mbedtls: ssl_msg.c:5338 => parse change cipher spec
+[0m
+[0;32mI (24912) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (24918) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (24923) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (24929) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (24936) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (24944) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (24949) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (24955) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 6
+[0m
+[0;32mI (24961) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 6
+[0m
+[0;32mI (24967) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 1 (-0xffffffff)
+[0m
+[0;32mI (24976) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (24981) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (24987) mbedtls: ssl_msg.c:5386 <= parse change cipher spec
+[0m
+[0;32mI (24993) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (24999) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (25004) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_FINISHED
+[0m
+[0;32mI (25012) mbedtls: ssl_tls.c:8488 => parse finished
+[0m
+[0;32mI (25018) mbedtls: ssl_tls.c:8206 => calc finished tls
+[0m
+[0;32mI (25025) mbedtls: ssl_tls.c:8237 <= calc finished
+[0m
+[0;32mI (25029) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (25035) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (25040) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (25047) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (25053) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (25061) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (25067) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (25072) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 45
+[0m
+[0;32mI (25078) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 45
+[0m
+[0;32mI (25085) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 40 (-0xffffffd8)
+[0m
+[0;32mI (25093) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (25098) mbedtls: ssl_msg.c:1511 => decrypt buf
+[0m
+[0;32mI (25105) mbedtls: ssl_msg.c:2122 <= decrypt buf
+[0m
+[0;32mI (25110) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (25115) mbedtls: ssl_tls.c:8559 <= parse finished
+[0m
+[0;32mI (25121) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (25126) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (25132) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_FLUSH_BUFFERS
+[0m
+[0;32mI (25139) mbedtls: ssl_tls12_client.c:3587 handshake: done
+[0m
+[0;32mI (25146) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (25151) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (25157) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_HANDSHAKE_WRAPUP
+[0m
+[0;32mI (25165) mbedtls: ssl_tls.c:4684 <= handshake
+[0m
+D (25170) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:1 posted to loop 0x408646bc[0m
+D (25181) HTTP_CLIENT: Write header[4]: POST /voice-api/api/session HTTP/1.1
+User-Agent: ESP32 HTTP Client/1.0
+Host: clare.vinex.top
+Content-Type: application/json
+Content-Length: 19
+
+[0m
+[0;32mI (25198) mbedtls: ssl_msg.c:6191 => write
+[0m
+[0;32mI (25203) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (25208) mbedtls: ssl_msg.c:936 => encrypt buf
+[0m
+[0;32mI (25214) mbedtls: ssl_msg.c:1475 <= encrypt buf
+[0m
+[0;32mI (25219) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (25224) mbedtls: ssl_msg.c:2368 message length: 179, out_left: 179
+[0m
+[0;32mI (25232) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 179 (-0xffffff4d)
+[0m
+[0;32mI (25239) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (25245) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (25250) mbedtls: ssl_msg.c:6213 <= write
+[0m
+D (25255) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:2 posted to loop 0x408646bc[0m
+[0;32mI (25266) mbedtls: ssl_msg.c:6191 => write
+[0m
+[0;32mI (25270) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (25276) mbedtls: ssl_msg.c:936 => encrypt buf
+[0m
+[0;32mI (25282) mbedtls: ssl_msg.c:1475 <= encrypt buf
+[0m
+[0;32mI (25287) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (25292) mbedtls: ssl_msg.c:2368 message length: 48, out_left: 48
+[0m
+[0;32mI (25300) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 48 (-0xffffffd0)
+[0m
+[0;32mI (25307) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (25313) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (25318) mbedtls: ssl_msg.c:6213 <= write
+[0m
+[0;32mI (26858) mbedtls: ssl_msg.c:5929 => read
+[0m
+[0;32mI (26858) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (26859) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (26863) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+[0;32mI (26869) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (26875) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 5 (-0xfffffffb)
+[0m
+[0;32mI (26884) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (26889) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (26894) mbedtls: ssl_msg.c:2296 in_left: 5, nb_want: 798
+[0m
+[0;32mI (26901) mbedtls: ssl_msg.c:2316 in_left: 5, nb_want: 798
+[0m
+[0;32mI (26907) mbedtls: ssl_msg.c:2319 ssl->f_recv(_timeout)() returned 793 (-0xfffffce7)
+[0m
+[0;32mI (26916) mbedtls: ssl_msg.c:2341 <= fetch input
+[0m
+[0;32mI (26921) mbedtls: ssl_msg.c:1511 => decrypt buf
+[0m
+[0;32mI (26930) mbedtls: ssl_msg.c:2122 <= decrypt buf
+[0m
+[0;32mI (26932) mbedtls: ssl_msg.c:4371 <= read record
+[0m
+[0;32mI (26938) mbedtls: ssl_msg.c:6089 <= read
+[0m
+D (26942) HTTP_CLIENT: on_message_begin[0m
+D (26947) HTTP_CLIENT: HEADER=Date:Fri, 28 Aug 2026 13:50:19 GMT[0m
+D (26953) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (26963) HTTP_CLIENT: HEADER=Content-Type:application/json[0m
+D (26968) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (26979) HTTP_CLIENT: HEADER=Content-Length:82[0m
+D (26983) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (26993) HTTP_CLIENT: HEADER=Connection:keep-alive[0m
+D (26998) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27008) HTTP_CLIENT: HEADER=Server:cloudflare[0m
+D (27012) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27022) HTTP_CLIENT: HEADER=x-content-type-options:nosniff[0m
+D (27028) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27038) HTTP_CLIENT: HEADER=x-frame-options:SAMEORIGIN[0m
+D (27043) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27054) HTTP_CLIENT: HEADER=strict-transport-security:max-age=31536000; includeSubDomains[0m
+D (27062) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27072) HTTP_CLIENT: HEADER=cf-cache-status:DYNAMIC[0m
+D (27077) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27087) HTTP_CLIENT: HEADER=Report-To:{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=HIg6u6oFrHGTqKBcmNxsafq4glsRbivQxOXGizl9ztLqdkKS35wg9ZFSownOATSDR1AbBGK02XZDhJm3%2FH9HgcpdMG%2F4wXQTj3RCT%2FWfc9Ls6Wndrc3NCjxrbSz6pwwP1lM%3D"}]}[0m
+D (27112) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27122) HTTP_CLIENT: HEADER=Nel:{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}[0m
+D (27131) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27141) HTTP_CLIENT: HEADER=CF-RAY:a323c8c48839cf2a-SJC[0m
+D (27146) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27156) HTTP_CLIENT: HEADER=alt-svc:h3=":443"; ma=86400[0m
+D (27161) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:3 posted to loop 0x408646bc[0m
+D (27172) HTTP_CLIENT: http_on_headers_complete, status=200, offset=687, nread=687[0m
+D (27179) HTTP_CLIENT: http_on_body 82[0m
+D (27183) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:4 posted to loop 0x408646bc[0m
+D (27193) HTTP_CLIENT: http_on_message_complete, parser=0x40850058[0m
+D (27199) HTTP_CLIENT: content_length = 82[0m
+D (27203) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:5 posted to loop 0x408646bc[0m
+[0;32mI (27213) clare_net: HTTP response status=200 bytes=82 truncated=0[0m
+D (27220) event: no handlers have been registered for event ESP_HTTP_CLIENT_EVENT:6 posted to loop 0x408646bc[0m
+[0;32mI (27232) clare_net: HTTP after cleanup free8=41216 largest8=14592[0m
+[0;32mI (27237) clare_c6: Boot network self-test session err=0 (attempt 1/4)[0m
+D (27244) event: created event loop 0x40850058[0m
+[0;32mI (27249) clare_net: WS pre-start heap free8=38056 largest8=14592[0m
+D (27256) event: running post WEBSOCKET_EVENTS:6 with handler 0x4200ef1a and context 0x4085000c on loop 0x40850058[0m
+D (27266) event: running post WEBSOCKET_EVENTS:5 with handler 0x4200ef1a and context 0x4085000c on loop 0x40850058[0m
+D (27277) esp-tls: host:clare.vinex.top: strlen 15[0m
+D (27281) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182[0m
+D (27288) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443[0m
+[0;32mI (27296) websocket_client: Started[0m
+D (27519) esp-tls: handshake in progress...[0m
+[0;32mI (27519) mbedtls: ssl_tls.c:4673 => handshake
+[0m
+[0;32mI (27519) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (27523) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (27529) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_HELLO_REQUEST
+[0m
+[0;32mI (27536) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (27542) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (27547) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_HELLO
+[0m
+[0;32mI (27555) mbedtls: ssl_client.c:921 => write client hello
+[0m
+[0;32mI (27563) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (27568) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (27573) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (27579) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (27585) mbedtls: ssl_client.c:1014 <= write client hello
+[0m
+[0;32mI (27592) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (27597) mbedtls: ssl_msg.c:2368 message length: 248, out_left: 248
+[0m
+[0;32mI (27605) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 248 (-0xffffff08)
+[0m
+[0;32mI (27612) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (27618) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_HELLO
+[0m
+[0;32mI (27625) mbedtls: ssl_tls12_client.c:1195 => parse server hello
+[0m
+[0;32mI (27632) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (27637) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (27643) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m
+W (47804) wifi:m f null
+
+W (59804) wifi:m f null
+
+W (83804) wifi:m f null
+
+[0;33mW (87299) clare_net: WebSocket connect timeout kind=0 bits=0x0[0m
+[0;32mI (87649) mbedtls: ssl_msg.c:2316 in_left: 0, nb_want: 5
+[0m
+[0;32mI (87649) mbedtls: ssl_tls.c:4684 <= handshake
+[0m
+[0;33mW (87649) esp-tls: Failed to open new connection in specified timeout[0m
+[0;31mE (87656) transport_base: Failed to open a new connection[0m
+[0;31mE (87664) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (87670) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_ESP_TLS_CONNECTION_TIMEOUT, tls_error_code=0, tls_flags=0, esp_ws_handshake_status_code=0, errno=11[0m
+D (87687) event: running post WEBSOCKET_EVENTS:0 with handler 0x4200ef1a and context 0x4085000c on loop 0x40850058[0m
+[0;33mW (87698) clare_net: WS ERR heap free8=24104 largest8=13056[0m
+[0;33mW (87704) clare_net: WS ERR detail kind=0 stack_err=0xa3 flags=0x42066844 type=0 errno=1108664344[0m
+[0;33mW (87713) clare_net: WebSocket error kind=0 err=1082457640 status=0[0m
+[0;32mI (87721) clare_c6: Network error - check Wi-Fi/API[0m
+D (87726) event: running post WEBSOCKET_EVENTS:2 with handler 0x4200ef1a and context 0x4085000c on loop 0x40850058[0m
+[0;32mI (87736) clare_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0[0m
+D (87744) websocket_client: Freeing error buffer (164 bytes) - Free heap before: 24164 bytes[0m
+D (87753) event: running post WEBSOCKET_EVENTS:7 with handler 0x4200ef1a and context 0x4085000c on loop 0x40850058[0m
+D (87766) event: deleting loop 0x40850058[0m
+[0;32mI (87867) clare_c6: Boot network self-test transcribe err=263[0m
+D (87867) event: created event loop 0x4084fd5c[0m
+[0;32mI (87868) clare_net: WS pre-start heap free8=34652 largest8=13568[0m
+D (87874) event: running post WEBSOCKET_EVENTS:6 with handler 0x4200ef1a and context 0x4084f240 on loop 0x4084fd5c[0m
+D (87884) event: running post WEBSOCKET_EVENTS:5 with handler 0x4200ef1a and context 0x4084f240 on loop 0x4084fd5c[0m
+D (87894) esp-tls: host:clare.vinex.top: strlen 15[0m
+D (87899) esp-tls: [sock=54] Resolved IPv4 address: 104.21.35.182[0m
+D (87905) esp-tls: [sock=54] Connecting to server. HOST: clare.vinex.top, Port: 443[0m
+[0;32mI (87914) websocket_client: Started[0m
+D (88167) esp-tls: handshake in progress...[0m
+[0;32mI (88167) mbedtls: ssl_tls.c:4673 => handshake
+[0m
+[0;32mI (88167) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (88171) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (88176) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_HELLO_REQUEST
+[0m
+[0;32mI (88184) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (88190) mbedtls: ssl_msg.c:2363 <= flush output
+[0m
+[0;32mI (88195) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_CLIENT_HELLO
+[0m
+[0;32mI (88203) mbedtls: ssl_client.c:921 => write client hello
+[0m
+[0;32mI (88211) mbedtls: ssl_msg.c:2784 => write handshake message
+[0m
+[0;32mI (88215) mbedtls: ssl_msg.c:2944 => write record
+[0m
+[0;32mI (88221) mbedtls: ssl_msg.c:3081 <= write record
+[0m
+[0;32mI (88227) mbedtls: ssl_msg.c:2905 <= write handshake message
+[0m
+[0;32mI (88233) mbedtls: ssl_client.c:1014 <= write client hello
+[0m
+[0;32mI (88239) mbedtls: ssl_msg.c:2354 => flush output
+[0m
+[0;32mI (88245) mbedtls: ssl_msg.c:2368 message length: 248, out_left: 248
+[0m
+[0;32mI (88253) mbedtls: ssl_msg.c:2375 ssl->f_send() returned 248 (-0xffffff08)
+[0m
+[0;32mI (88260) mbedtls: ssl_msg.c:2402 <= flush output
+[0m
+[0;32mI (88265) mbedtls: ssl_tls.c:4592 client state: MBEDTLS_SSL_SERVER_HELLO
+[0m
+[0;32mI (88273) mbedtls: ssl_tls12_client.c:1195 => parse server hello
+[0m
+[0;32mI (88280) mbedtls: ssl_msg.c:4299 => read record
+[0m
+[0;32mI (88285) mbedtls: ssl_msg.c:2156 => fetch input
+[0m
+[0;32mI (88291) mbedtls: ssl_msg.c:2296 in_left: 0, nb_want: 5
+[0m

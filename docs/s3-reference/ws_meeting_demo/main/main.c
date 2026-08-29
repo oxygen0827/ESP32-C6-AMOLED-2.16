@@ -1,0 +1,160 @@
+// SPDX-FileCopyrightText: 2025 Mayfair Inc.
+// SPDX-License-Identifier: Apache-2.0
+
+#include "esp_log.h"
+#include "nvs_flash.h"
+#include "bsp/esp_vocat.h"
+#include "wifi_init.h"
+#include "ui_meeting.h"
+#include "pipeline_ws.h"
+#include "ws_session.h"
+#include "lvgl.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+// bsp_display_backlight_on() exists in esp_vocat.c but is missing from the header
+esp_err_t bsp_display_backlight_on(void);
+
+static const char *TAG = "main";
+
+// WiFi status callback — updates WiFi settings screen via lv_async_call
+typedef struct { char text[64]; } wifi_status_msg_t;
+
+static void do_wifi_status_update(void *param)
+{
+    wifi_status_msg_t *m = (wifi_status_msg_t *)param;
+    ui_meeting_set_wifi_result(m->text);
+    free(m);
+}
+
+static void on_wifi_status(wifi_status_t status)
+{
+    wifi_status_msg_t *m = malloc(sizeof(wifi_status_msg_t));
+    if (!m) return;
+    if (status == WIFI_STATUS_CONNECTED) {
+        strlcpy(m->text, "Connected!", sizeof(m->text));
+        ESP_LOGI(TAG, "WiFi reconnected");
+    } else {
+        strlcpy(m->text, "Failed - check credentials", sizeof(m->text));
+        ESP_LOGE(TAG, "WiFi reconnect failed");
+    }
+    lv_async_call(do_wifi_status_update, m);
+}
+
+// Called when user saves WiFi credentials from the settings screen
+static void on_wifi_saved(const char *ssid, const char *password)
+{
+    ESP_LOGI(TAG, "WiFi credentials saved, reconnecting...");
+    wifi_reconnect(ssid, password);
+}
+
+#if CONFIG_MEETING_SELF_TEST_AUTOSTART
+static bool wait_for_session_state(ws_session_state_t state, uint32_t timeout_ms)
+{
+    while (timeout_ms > 0) {
+        if (ws_session_get_state() == state) return true;
+        vTaskDelay(pdMS_TO_TICKS(250));
+        timeout_ms = timeout_ms > 250 ? timeout_ms - 250 : 0;
+    }
+    return false;
+}
+
+static void meeting_self_test_task(void *arg)
+{
+    (void)arg;
+    ESP_LOGI(TAG, "[SELFTEST] starting meeting integration sequence");
+    ws_session_start_meeting();
+    if (!wait_for_session_state(WS_SESSION_MEETING, 60000)) {
+        ESP_LOGE(TAG, "[SELFTEST] meeting start failed, state=%d", ws_session_get_state());
+        vTaskDelete(NULL);
+        return;
+    }
+    ESP_LOGI(TAG, "[SELFTEST] Listen connected; waiting for understanding polls");
+    vTaskDelay(pdMS_TO_TICKS(12000));
+
+    ws_session_enter_host();
+    if (!wait_for_session_state(WS_SESSION_HOST, 30000)) {
+        ESP_LOGE(TAG, "[SELFTEST] Host transition failed, state=%d", ws_session_get_state());
+        ws_session_stop_meeting();
+        vTaskDelete(NULL);
+        return;
+    }
+    ESP_LOGI(TAG, "[SELFTEST] Host connected");
+    vTaskDelay(pdMS_TO_TICKS(5000));
+
+    ws_session_exit_host();
+    if (!wait_for_session_state(WS_SESSION_MEETING, 30000)) {
+        ESP_LOGE(TAG, "[SELFTEST] Listen restore failed, state=%d", ws_session_get_state());
+        ws_session_stop_meeting();
+        vTaskDelete(NULL);
+        return;
+    }
+    ESP_LOGI(TAG, "[SELFTEST] Listen restored");
+    vTaskDelay(pdMS_TO_TICKS(7000));
+    ws_session_stop_meeting();
+    ESP_LOGI(TAG, "[SELFTEST] sequence complete");
+    vTaskDelete(NULL);
+}
+#endif
+
+void app_main(void)
+{
+    ESP_LOGI(TAG, "ws_meeting_demo starting");
+
+    // ESP-VoCat's single power key only starts the board momentarily.  Take
+    // over the power-hold GPIO immediately so the device stays on after the
+    // user releases the key, matching the production Speaker startup path.
+    ESP_ERROR_CHECK(bsp_power_init(true));
+
+    // ---- NVS ----
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    // ---- Display ----
+    lv_disp_t *disp = bsp_display_start();
+    if (!disp) {
+        ESP_LOGE(TAG, "Display init failed — halting");
+        return;
+    }
+    bsp_display_lock(0);
+    ui_meeting_create();
+
+    // Pre-fill current SSID in WiFi settings form
+    char cur_ssid[33] = {0};
+    char cur_pass[65] = {0};
+    if (wifi_load_credentials(cur_ssid, sizeof(cur_ssid), cur_pass, sizeof(cur_pass)) == ESP_OK) {
+        ui_meeting_set_current_wifi(cur_ssid);
+    } else {
+        ui_meeting_set_current_wifi(CONFIG_MEETING_WIFI_SSID);
+    }
+    ui_meeting_register_wifi_save_cb(on_wifi_saved);
+
+    bsp_display_unlock();
+    bsp_display_backlight_on();
+
+    ESP_LOGI(TAG, "Display ready, free heap: %lu", esp_get_free_heap_size());
+
+    // Register WiFi status callback for reconnect feedback
+    wifi_register_status_cb(on_wifi_status);
+
+    // ---- Audio hardware ----
+    ESP_ERROR_CHECK(pipeline_ws_hw_init());
+    ui_meeting_refresh_volume();
+
+    // ---- WiFi ----
+    ret = wifi_init_sta();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "WiFi failed — tap gear icon to set network");
+    } else {
+        ESP_LOGI(TAG, "WiFi connected, ready");
+#if CONFIG_MEETING_SELF_TEST_AUTOSTART
+        xTaskCreate(meeting_self_test_task, "meeting_self_test", 4096, NULL, 3, NULL);
+#endif
+    }
+
+    // LVGL runs its own task; app_main can return.
+}

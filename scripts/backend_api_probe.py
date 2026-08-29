@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Local probe for the Clara backend API.
+# Local probe for the Clare backend API.
 #
 # Mimics the same calls the ESP32-C6 firmware makes, but runs on this
 # machine.  This lets us separate backend / internet path problems from
@@ -13,7 +13,7 @@
 # 4. Print every WebSocket event received for a few seconds
 # 5. Optionally end the session via HTTP
 #
-# The default base URL is read from 03_Clara_C6/sdkconfig.local so it
+# The default base URL is read from 03_Clare_C6/sdkconfig.local so it
 # always matches the firmware build config.
 
 import argparse
@@ -31,7 +31,7 @@ import websocket
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
-SDKCONFIG_LOCAL = os.path.join(PROJECT_ROOT, "03_Clara_C6", "sdkconfig.local")
+SDKCONFIG_LOCAL = os.path.join(PROJECT_ROOT, "03_Clare_C6", "sdkconfig.local")
 
 
 def read_sdkconfig_base_url(path=SDKCONFIG_LOCAL):
@@ -40,7 +40,7 @@ def read_sdkconfig_base_url(path=SDKCONFIG_LOCAL):
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            if line.startswith("CONFIG_CLARA_API_BASE_URL="):
+            if line.startswith("CONFIG_CLARE_API_BASE_URL="):
                 val = line.split("=", 1)[1].strip()
                 if len(val) >= 2 and val[0] == val[-1] == '"':
                     val = val[1:-1]
@@ -197,7 +197,7 @@ class Probe:
 def extract_ca_pem(header_path):
     if not os.path.isfile(header_path):
         return None
-    pem_path = os.path.join(SCRIPT_DIR, "clara_ca_chain.pem")
+    pem_path = os.path.join(SCRIPT_DIR, "clare_ca_chain.pem")
     with open(header_path, "r", encoding="utf-8") as f:
         text = f.read()
     start = text.find('R"PEM(')
@@ -213,7 +213,7 @@ def extract_ca_pem(header_path):
 def main():
     default_base = read_sdkconfig_base_url() or ""
 
-    parser = argparse.ArgumentParser(description="Probe the Clara backend API from this machine")
+    parser = argparse.ArgumentParser(description="Probe the Clare backend API from this machine")
     parser.add_argument("--base-url", default=default_base,
                         help=f"API base URL (default from sdkconfig.local: {default_base})")
     parser.add_argument("--topic", default="meeting", help="session topic")
@@ -222,18 +222,18 @@ def main():
     parser.add_argument("--insecure", action="store_true",
                         help="skip TLS certificate verification")
     parser.add_argument("--use-board-ca", action="store_true",
-                        help="use the pinned CA chain from clara_ca_chain.h")
+                        help="use the pinned CA chain from clare_ca_chain.h")
     parser.add_argument("--end-session", action="store_true", default=True,
                         help="call /api/session/{id}/end after the WebSocket test")
     args = parser.parse_args()
 
     if not args.base_url:
-        print("No base URL supplied and none found in 03_Clara_C6/sdkconfig.local")
+        print("No base URL supplied and none found in 03_Clare_C6/sdkconfig.local")
         sys.exit(1)
 
     ca_file = None
     if args.use_board_ca:
-        ca_file = extract_ca_pem(os.path.join(PROJECT_ROOT, "03_Clara_C6", "main", "clara_ca_chain.h"))
+        ca_file = extract_ca_pem(os.path.join(PROJECT_ROOT, "03_Clare_C6", "main", "clare_ca_chain.h"))
         if ca_file:
             print(f"[CFG]  using pinned CA chain: {ca_file}")
 

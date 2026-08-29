@@ -28,8 +28,8 @@ __pycache__/
 # Local API probe virtual environment
 .venv_api_test/
 
-# Generated CA PEM extracted from clara_ca_chain.h by backend_api_probe.py
-scripts/clara_ca_chain.pem
+# Generated CA PEM extracted from clare_ca_chain.h by backend_api_probe.py
+scripts/clare_ca_chain.pem
 
 # Local skill profile (contains absolute paths + serial port; keep private)
 .em_skill.json

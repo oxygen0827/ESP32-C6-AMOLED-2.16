@@ -1,0 +1,2573 @@
+
+I (77) boot: End of partition table
+I (81) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (190) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (201) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (432) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (473) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (490) boot: Loaded app from partition at offset 0x10000
+I (490) boot: Disabling RNG early entropy source...
+[0;32mI (500) cpu_start: Unicore app[0m
+[0;32mI (509) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (509) cpu_start: Pro cpu start user code[0m
+[0;32mI (509) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (514) app_init: Application information:[0m
+[0;32mI (519) app_init: Project name:     Clare_C6[0m
+[0;32mI (523) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (529) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (535) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (541) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (546) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (550) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (555) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (560) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (567) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (573) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (580) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (587) spi_flash: detected chip: generic[0m
+[0;32mI (591) spi_flash: flash io: dio[0m
+[0;32mI (595) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (602) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (620) main_task: Started on CPU0[0m
+[0;32mI (623) main_task: Calling app_main()[0m
+[0;32mI (628) clare_c6: Clare C6 starting[0m
+[0;32mI (643) axp2101: Init PMU SUCCESS![0m
+[0;32mI (649) DisplayPort: SPI BUS init[0m
+[0;32mI (649) DisplayPort: Install panel IO[0m
+[0;32mI (650) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1553) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1553) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (1737) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (1739) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (1741) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (1741) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (1751) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (1759) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (1781) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (1785) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (1792) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (1798) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (1803) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (1812) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (1817) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (1826) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (1830) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (1834) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (1839) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (1844) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (1849) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (1859) ES8311: Work in Slave mode[0m
+[0;32mI (1865) ES7210: Work in Slave mode[0m
+[0;32mI (1871) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (1874) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (1877) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (1880) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (1884) ES7210: Enable TDM mode[0m
+[0;32mI (1892) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (1893) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (1913) Adev_Codec: Open codec device OK[0m
+[0;32mI (1914) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (1914) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (1922) ES7210: Bits 8[0m
+[0;32mI (1931) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (1933) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (1936) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (1941) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (1946) ES7210: Enable TDM mode[0m
+[0;32mI (1952) ES7210: Unmuted[0m
+[0;32mI (1952) Adev_Codec: Open codec device OK[0m
+[0;32mI (1954) Adev_Codec: Input already open[0m
+[0;32mI (1959) Adev_Codec: Input already open[0m
+[0;32mI (1979) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2162) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2163) net80211: net80211 rom version: 5b8dcfa[0m
+I (2164) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2173) wifi:wifi firmware version: 4df78f2
+I (2174) wifi:wifi certification version: v7.0
+I (2175) wifi:config NVS flash: enabled
+I (2179) wifi:config nano formatting: disabled
+I (2183) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2190) wifi:Init data frame dynamic rx buffer num: 16
+I (2194) wifi:Init static rx mgmt buffer num: 5
+I (2199) wifi:Init management short buffer num: 32
+I (2203) wifi:Init static tx buffer num: 16
+I (2207) wifi:Init static tx FG buffer num: 2
+I (2211) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2217) wifi:Init static rx buffer num: 10
+I (2221) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2226) wifi_init: rx ba win: 6[0m
+[0;32mI (2229) wifi_init: accept mbox: 6[0m
+[0;32mI (2233) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2237) wifi_init: udp mbox: 6[0m
+[0;32mI (2241) wifi_init: tcp mbox: 6[0m
+[0;32mI (2245) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2249) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2253) wifi_init: tcp mss: 1240[0m
+[0;32mI (2257) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2262) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2267) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2272) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2281) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2348) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2349) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2354) wifi:(agc)0x600a7128:0xd20bcab8, min.avgNF:0xce->0xd2(dB), RCalCount:0xbc, min.RRssi:0xab8(-84.50)
+I (2364) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2370) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2374) wifi:enable tsf
+W (2392) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dd0  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00000506  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000958 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (23) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2737) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2737) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2742) wifi:(agc)0x600a7128:0xd219eabc, min.avgNF:0xce->0xd2(dB), RCalCount:0x19e, min.RRssi:0xabc(-84.25)
+I (2752) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2759) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2763) wifi:enable tsf
+W (2780) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dcc  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000000  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00153513  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000add 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (900) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (941) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (946) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (958) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2584) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2738) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2738) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2743) wifi:(agc)0x600a7128:0xd2131abe, min.avgNF:0xce->0xd2(dB), RCalCount:0x131, min.RRssi:0xabe(-84.12)
+I (2753) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2760) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2764) wifi:enable tsf
+W (2781) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dcc  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000000  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00153513  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000ade 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (765) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (941) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2737) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2738) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2743) wifi:(agc)0x600a7128:0xd2099800, min.avgNF:0xce->0xd2(dB), RCalCount:0x99, min.RRssi:0x800(-128.00)
+I (2753) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2760) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2763) wifi:enable tsf
+W (2781) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dc8  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x2cc7a503  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000ade 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (765) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (900) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (941) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (946) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (958) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2737) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2737) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2742) wifi:(agc)0x600a7128:0xd21c6ac2, min.avgNF:0xce->0xd2(dB), RCalCount:0x1c6, min.RRssi:0xac2(-83.88)
+I (2752) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2759) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2763) wifi:enable tsf
+W (2781) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x408001da
+Stack pointer: 0x4083d750
+Stack bounds: 0x4083d150 - 0x4083d750
+
+
+Core  0 register dump:
+MEPC    : 0x4080025e  RA      : 0x40800224  SP      : 0x4083d750  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x00000008  T1      : 0x20001030  T2      : 0x00000002  
+S0/FP   : 0x4084d084  S1      : 0x80000008  A0      : 0x600c2000  A1      : 0x00000300  
+A2      : 0x600c2000  A3      : 0x0000003d  A4      : 0x4084ea61  A5      : 0x00000031  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x4084ed70  S6      : 0x4084ee1b  S7      : 0x00000001  
+S8      : 0x0000001d  S9      : 0x00000000  S10     : 0x4084ed8c  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x0000850a  
+MHARTID : 0x00000000  
+
+Stack memory:
+4083d750: 0x6000a000 0x40824190 0x4082419c 0x00000000 0x4083d75c 0x00000000 0x00000000 0x00000000
+4083d770: 0x4083d774 0xffffffff 0x4083d774 0x4083d774 0x00000000 0x4083d788 0xffffffff 0x4083d788
+4083d790: 0x4083d788 0x00000001 0x00000001 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000000
+4083d7b0: 0x00000000 0x4083d7b0 0x00000000 0x00000000 0x00000000 0x4083d7c8 0xffffffff 0x4083d7c8
+4083d7d0: 0x4083d7c8 0x00000000 0x4083d7dc 0xffffffff 0x4083d7dc 0x4083d7dc 0x00000001 0x00000001
+4083d7f0: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000000 0x6000a000 0x40824190 0x4082419c
+4083d810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4084ce70
+4083d830: 0x4084ce94 0x4084cebc 0x4084cee0 0x40863268 0x00000000 0x00000000 0x00000000 0x00000000
+4083d850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d870: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d890: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d910: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d930: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d950: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d970: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d990: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da10: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da30: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da50: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da70: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da90: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083dab0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083dad0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083daf0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083db10: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083db30: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2737) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2737) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2743) wifi:(agc)0x600a7128:0xd21b5abe, min.avgNF:0xce->0xd2(dB), RCalCount:0x1b5, min.RRssi:0xabe(-84.12)
+I (2752) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2759) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2763) wifi:enable tsf
+W (2780) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dc8  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x2cc7a503  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000add 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (765) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2584) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2740) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2740) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2746) wifi:(agc)0x600a7128:0xd214eab6, min.avgNF:0xce->0xd2(dB), RCalCount:0x14e, min.RRssi:0xab6(-84.62)
+I (2756) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2762) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2766) wifi:enable tsf
+W (2784) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dcc  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000000  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00153513  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000ae0 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (963) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2564) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2594) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2740) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2740) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2746) wifi:(agc)0x600a7128:0xd2176ab8, min.avgNF:0xce->0xd2(dB), RCalCount:0x176, min.RRssi:0xab8(-84.50)
+I (2755) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2762) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2766) wifi:enable tsf
+W (2783) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x408001da
+Stack pointer: 0x4083d750
+Stack bounds: 0x4083d150 - 0x4083d750
+
+
+Core  0 register dump:
+MEPC    : 0x4080025e  RA      : 0x40800224  SP      : 0x4083d750  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x00000008  T1      : 0x20001048  T2      : 0x00000002  
+S0/FP   : 0x4084d084  S1      : 0x8000000e  A0      : 0x600c2000  A1      : 0x00000300  
+A2      : 0x600c2000  A3      : 0x00000031  A4      : 0x4084ea62  A5      : 0x00000000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x4084ed70  S6      : 0x4084ee1b  S7      : 0x00000006  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed8c  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x0000850a  
+MHARTID : 0x00000000  
+
+Stack memory:
+4083d750: 0x6000a000 0x40824190 0x4082419c 0x00000000 0x4083d75c 0x00000000 0x00000000 0x00000000
+4083d770: 0x4083d774 0xffffffff 0x4083d774 0x4083d774 0x00000000 0x4083d788 0xffffffff 0x4083d788
+4083d790: 0x4083d788 0x00000001 0x00000001 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000000
+4083d7b0: 0x00000000 0x4083d7b0 0x00000000 0x00000000 0x00000000 0x4083d7c8 0xffffffff 0x4083d7c8
+4083d7d0: 0x4083d7c8 0x00000000 0x4083d7dc 0xffffffff 0x4083d7dc 0x4083d7dc 0x00000001 0x00000001
+4083d7f0: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000000 0x6000a000 0x40824190 0x4082419c
+4083d810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4084ce70
+4083d830: 0x4084ce94 0x4084cebc 0x4084cee0 0x40863268 0x00000000 0x00000000 0x00000000 0x00000000
+4083d850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d870: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d890: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d8f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d910: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d930: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d950: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d970: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d990: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083d9f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da10: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da30: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da50: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da70: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083da90: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083dab0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083dad0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083daf0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083db10: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4083db30: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (900) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (941) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (946) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (958) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2584) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2740) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2740) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2746) wifi:(agc)0x600a7128:0xd218baba, min.avgNF:0xce->0xd2(dB), RCalCount:0x18b, min.RRssi:0xaba(-84.38)
+I (2756) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2762) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2766) wifi:enable tsf
+W (2784) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dc8  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x2cc7a503  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000ae0 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (310) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (765) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (900) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (941) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (946) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (958) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2345) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2564) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2594) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2739) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2740) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2745) wifi:(agc)0x600a7128:0xd20cdabe, min.avgNF:0xce->0xd2(dB), RCalCount:0xcc, min.RRssi:0xabe(-84.12)
+I (2755) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2761) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2765) wifi:enable tsf
+W (2783) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dd0  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00000506  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x4003d8ec 0x4003d8dc 0x4084ecb0 0x40839704
+4084ec40: 0x4084fbe0 0x00000005 0x4084d084 0x4003f482 0x00000010 0x00000001 0x00000032 0x00000000
+4084ec60: 0x0000a000 0x00000000 0x00002000 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x00000000 0x00000000 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000adf 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (963) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2739) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2739) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2745) wifi:(agc)0x600a7128:0xd21a7aba, min.avgNF:0xce->0xd2(dB), RCalCount:0x1a7, min.RRssi:0xaba(-84.38)
+I (2755) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2761) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2765) wifi:enable tsf
+W (2783) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dd0  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x00000506  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000adf 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (963) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2345) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2564) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2594) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2657) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2662) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2671) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2740) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2740) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2746) wifi:(agc)0x600a7128:0xd20e3ab0, min.avgNF:0xce->0xd2(dB), RCalCount:0xe2, min.RRssi:0xab0(-85.00)
+I (2756) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2762) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2766) wifi:enable tsf
+W (2784) wifi:sta_scan: STA is connecting, scan are not allowed!
+Guru Meditation Error: Core  0 panic'ed (Stack protection fault). 
+
+Detected in task "main" at 0x4080171a
+Stack pointer: 0x4084ebc0
+Stack bounds: 0x4084ebe4 - 0x4084fbe0
+
+
+Core  0 register dump:
+MEPC    : 0x40827dc8  RA      : 0x4080172e  SP      : 0x4084ebc0  GP      : 0x40839704  
+TP      : 0x4084fbe0  T0      : 0x40028140  T1      : 0x10000000  T2      : 0xffffffff  
+S0/FP   : 0x4084d084  S1      : 0x4084d218  A0      : 0x00000001  A1      : 0xffffffff  
+A2      : 0x00000004  A3      : 0x0000000a  A4      : 0x00000000  A5      : 0x4084c000  
+A6      : 0xa0000000  A7      : 0x0000000a  S2      : 0x00000004  S3      : 0xffffffff  
+S4      : 0x4084ed84  S5      : 0x4084ed70  S6      : 0x42134544  S7      : 0x00000000  
+S8      : 0x00000005  S9      : 0x00000000  S10     : 0x4084ed84  S11     : 0x00000005  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001881  MTVEC   : 0x40800001  MCAUSE  : 0x0000001b  MTVAL   : 0x2cc7a503  
+MHARTID : 0x00000000  
+
+Stack memory:
+4084ebc0: 0x408632f0 0x4084c6e4 0x4084ebb8 0x00000010 0x0012010a 0x00000016 0x00000000 0x40850494
+4084ebe0: 0x00001000 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084fc40 0x4084fc40 0xa5a5a5a5 0x40801a8e
+4084ec00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084d218 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4002814c
+4084ec20: 0x4084fc40 0x4084fc40 0x4084d084 0x40030794 0x00000004 0x4084d218 0x42134514 0x408017d4
+4084ec40: 0xa5a5a5a5 0x00000005 0x4084d084 0x4003f482 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ec60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x00000005 0x4084ed84 0x00000000 0x42134549 0x00000003
+4084ec80: 0x00000000 0x00000022 0x4084fc40 0x4084d084 0x42134544 0x00000003 0x4084ed70 0x4003a49c
+4084eca0: 0x42134514 0x4084f10c 0x00000005 0x4003e118 0xa5a5a5a5 0x00000064 0x00000005 0x42134544
+4084ecc0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000040 0x00000001 0x00000005
+4084ece0: 0x00000000 0x4004e20c 0x00000000 0x00000000 0x00000000 0x00000000 0xffffffff 0x7fefffff
+4084ed00: 0x00000000 0x3fe00000 0xa5a5a5a5 0xa5a5a5a5 0x00000000 0x3fc00000 0x00000000 0x40300000
+4084ed20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084f118
+4084ed40: 0xa5a5a5a5 0x00a5a5a5 0xa5a5a5a5 0x00000003 0x00000000 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ed60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x4084ed7c 0x00000001 0x00000005 0x42134544
+4084ed80: 0x00000005 0x4084ee1b 0x00000005 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eda0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084edc0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ede0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x31a5a5a5 0x34393232
+4084ee20: 0xffffffff 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ee80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eea0: 0x00000ae0 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0x42134270 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eec0: 0x00003006 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084eee0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef00: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef20: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef40: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef60: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084ef80: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+4084efa0: 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5 0xa5a5a5a5
+
+
+
+ELF file SHA256: 26b8edad4823c98a
+
+Rebooting...
+ESP-ROM:esp32c6-20220919
+Build:Sep 19 2022
+rst:0xc (SW_CPU),boot:0x3f (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4001975a
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x40875730,len:0x16f4
+load:0x4086b910,len:0xed0
+load:0x4086e610,len:0x3198
+entry 0x4086b91a
+I (22) boot: ESP-IDF v5.5.3 2nd stage bootloader
+I (22) boot: compile time Aug 28 2026 10:15:16
+I (24) boot: chip revision: v0.2
+I (24) boot: efuse block revision: v0.3
+I (25) boot.esp32c6: SPI Speed      : 80MHz
+I (29) boot.esp32c6: SPI Mode       : DIO
+I (33) boot.esp32c6: SPI Flash Size : 16MB
+I (37) boot: Enabling RNG early entropy source...
+I (42) boot: Partition Table:
+I (44) boot: ## Label            Usage          Type ST Offset   Length
+I (50) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (57) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (63) boot:  2 factory          factory app      00 00 00010000 00600000
+I (70) boot:  3 storage          Unknown data     01 82 00610000 00300000
+I (77) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=84590h (542096) map
+I (288) esp_image: segment 1: paddr=000945b8 vaddr=40800000 size=0ba60h ( 47712) load
+I (309) esp_image: segment 2: paddr=000a0020 vaddr=42000020 size=12bdd0h (1228240) map
+I (764) esp_image: segment 3: paddr=001cbdf8 vaddr=4080ba60 size=2d49ch (185500) load
+I (845) esp_image: segment 4: paddr=001f929c vaddr=40838f00 size=03e30h ( 15920) load
+I (879) boot: Loaded app from partition at offset 0x10000
+I (880) boot: Disabling RNG early entropy source...
+[0;32mI (890) cpu_start: Unicore app[0m
+[0;32mI (899) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (899) cpu_start: Pro cpu start user code[0m
+[0;32mI (899) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (904) app_init: Application information:[0m
+[0;32mI (909) app_init: Project name:     Clare_C6[0m
+[0;32mI (914) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (919) app_init: Compile time:     Aug 28 2026 10:14:54[0m
+[0;32mI (925) app_init: ELF file SHA256:  26b8edad4823c98a...[0m
+[0;32mI (931) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (936) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (940) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (945) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (950) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (957) heap_init: At 4084C6D0 len 0002FF40 (191 KiB): RAM[0m
+[0;32mI (964) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (970) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (977) spi_flash: detected chip: generic[0m
+[0;32mI (981) spi_flash: flash io: dio[0m
+[0;32mI (985) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (992) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1010) main_task: Started on CPU0[0m
+[0;32mI (1014) main_task: Calling app_main()[0m
+[0;32mI (1018) clare_c6: Clare C6 starting[0m
+[0;32mI (1033) axp2101: Init PMU SUCCESS![0m
+[0;32mI (1039) DisplayPort: SPI BUS init[0m
+[0;32mI (1039) DisplayPort: Install panel IO[0m
+[0;32mI (1040) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1943) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1943) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (2127) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (2129) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (2131) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (2131) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (2141) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (2149) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (2171) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (2175) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2182) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (2188) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (2193) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2202) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (2207) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (2216) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (2220) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (2224) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2229) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (2234) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (2239) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (2249) ES8311: Work in Slave mode[0m
+[0;32mI (2255) ES7210: Work in Slave mode[0m
+[0;32mI (2261) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2264) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2267) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2270) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2274) ES7210: Enable TDM mode[0m
+[0;32mI (2282) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2283) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2303) Adev_Codec: Open codec device OK[0m
+[0;32mI (2304) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (2304) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (2312) ES7210: Bits 8[0m
+[0;32mI (2321) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (2323) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (2326) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (2331) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (2336) ES7210: Enable TDM mode[0m
+[0;32mI (2342) ES7210: Unmuted[0m
+[0;32mI (2342) Adev_Codec: Open codec device OK[0m
+[0;32mI (2344) Adev_Codec: Input already open[0m
+[0;32mI (2349) Adev_Codec: Input already open[0m
+[0;32mI (2369) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2552) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2553) net80211: net80211 rom version: 5b8dcfa[0m
+I (2554) wifi:wifi driver task: 40867d48, prio:23, stack:6656, core=0
+I (2563) wifi:wifi firmware version: 4df78f2
+I (2564) wifi:wifi certification version: v7.0
+I (2565) wifi:config NVS flash: enabled
+I (2569) wifi:config nano formatting: disabled
+I (2573) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2580) wifi:Init data frame dynamic rx buffer num: 16
+I (2585) wifi:Init static rx mgmt buffer num: 5
+I (2589) wifi:Init management short buffer num: 32
+I (2593) wifi:Init static tx buffer num: 16
+I (2597) wifi:Init static tx FG buffer num: 2
+I (2601) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2607) wifi:Init static rx buffer num: 10
+I (2611) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2616) wifi_init: rx ba win: 6[0m
+[0;32mI (2619) wifi_init: accept mbox: 6[0m
+[0;32mI (2623) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2627) wifi_init: udp mbox: 6[0m
+[0;32mI (2631) wifi_init: tcp mbox: 6[0m
+[0;32mI (2635) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2639) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2643) wifi_init: tcp mss: 1240[0m
+[0;32mI (2647) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2652) wifi_init: WiFi RX IRAM OP enabled[0m

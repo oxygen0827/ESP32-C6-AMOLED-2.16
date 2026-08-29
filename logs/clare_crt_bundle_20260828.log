@@ -1,0 +1,214 @@
+
+I (78) boot: End of partition table
+I (81) esp_image: segment 0: paddr=00010020 vaddr=42130020 size=95f70h (614256) map
+I (203) esp_image: segment 1: paddr=000a5f98 vaddr=40800000 size=0a080h ( 41088) load
+I (213) esp_image: segment 2: paddr=000b0020 vaddr=42000020 size=12c154h (1229140) map
+I (444) esp_image: segment 3: paddr=001dc17c vaddr=4080a080 size=32c00h (207872) load
+I (503) boot: Loaded app from partition at offset 0x10000
+I (503) boot: Disabling RNG early entropy source...
+[0;32mI (513) cpu_start: Unicore app[0m
+[0;32mI (521) cpu_start: GPIO 17 and 16 are used as console UART I/O pins[0m
+[0;32mI (522) cpu_start: Pro cpu start user code[0m
+[0;32mI (522) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (527) app_init: Application information:[0m
+[0;32mI (531) app_init: Project name:     Clare_C6[0m
+[0;32mI (536) app_init: App version:      3e09a44-dirty[0m
+[0;32mI (542) app_init: Compile time:     Aug 28 2026 21:17:23[0m
+[0;32mI (548) app_init: ELF file SHA256:  e62734c552a04543...[0m
+[0;32mI (554) app_init: ESP-IDF:          v5.5.3[0m
+[0;32mI (558) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (563) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (568) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (573) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (580) heap_init: At 4084C560 len 000300B0 (192 KiB): RAM[0m
+[0;32mI (586) heap_init: At 4087C610 len 00002F54 (11 KiB): RAM[0m
+[0;32mI (592) heap_init: At 50000000 len 00003FE8 (15 KiB): RTCRAM[0m
+[0;32mI (599) spi_flash: detected chip: generic[0m
+[0;32mI (603) spi_flash: flash io: dio[0m
+[0;32mI (608) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (614) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (632) main_task: Started on CPU0[0m
+[0;32mI (635) main_task: Calling app_main()[0m
+[0;32mI (640) clare_c6: Clare C6 starting[0m
+[0;32mI (655) axp2101: Init PMU SUCCESS![0m
+[0;32mI (661) DisplayPort: SPI BUS init[0m
+[0;32mI (661) DisplayPort: Install panel IO[0m
+[0;32mI (662) sh8601: LCD panel create success, version: 1.0.0[0m
+[0;33mW (1565) sh8601: The 3Ah command has been used and will be overwritten by external initialization sequence[0m
+[0;33mW (1565) sh8601: The 36h command has been used and will be overwritten by external initialization sequence[0m
+[0;32mI (1749) CST9217: Checkcode: 0x204ECACA[0m
+[0;32mI (1751) CST9217: Resolution X: 480, Y: 480[0m
+[0;32mI (1753) CST9217: Chip Type: 0x9220, ProjectID: 0x542F[0m
+[0;32mI (1753) esp_lvgl:adapter: LVGL adapter initialized successfully[0m
+[0;32mI (1763) esp_lvgl:touch: Touch input device registered successfully (IRQ mode: enabled)[0m
+[0;32mI (1771) esp_lvgl:adapter: LVGL task started successfully[0m
+i2c: {sda: 8, scl: 7}
+i2s: {mclk: 19, bclk: 20, ws: 22, din: 21, dout: 23}
+out: {codec: ES8311, pa: -1, pa_gain: 6, use_mclk: 1, pa_gain: 6}
+Codec 0 dir 2 type:1
+in: {codec: ES7210}
+Codec 1 dir 1 type:2
+[0;32mI (1793) CODEC_INIT: in:1 out:1 port: 1[0m
+[0;32mI (1797) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (1804) CODEC_INIT: Init i2s 0 type: 3 mclk:19 bclk:20 ws:22 din:21 dout:23[0m
+[0;32mI (1810) CODEC_INIT: tx:0x4087e708 rx:0x4087e8c4[0m
+[0;33mW (1815) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (1824) CODEC_INIT: output init tdm ret 0[0m
+[0;33mW (1829) i2s_tdm: the current mclk multiple is too small, adjust the mclk multiple to 384[0m
+[0;32mI (1838) CODEC_INIT: Input init tdm ret 0[0m
+[0;32mI (1842) CODEC_INIT: Init i2s 0 ok[0m
+[0;32mI (1846) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (1851) CODEC_INIT: Success to int i2c: 0[0m
+[0;32mI (1856) CODEC_INIT: Success to init i2s: 0[0m
+[0;32mI (1861) CODEC_INIT: Get out handle 0x4087e708 port 0[0m
+[0;32mI (1871) ES8311: Work in Slave mode[0m
+[0;32mI (1877) ES7210: Work in Slave mode[0m
+[0;32mI (1883) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (1886) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (1889) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (1892) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (1896) ES7210: Enable TDM mode[0m
+[0;32mI (1904) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (1905) I2S_IF: TDM Mode 1 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (1925) Adev_Codec: Open codec device OK[0m
+[0;32mI (1926) I2S_IF: channel mode 2 bits:16/16 channel:2 mask:3[0m
+[0;32mI (1926) I2S_IF: TDM Mode 0 bits:16/16 channel:2 sample_rate:16000 mask:3[0m
+[0;32mI (1934) ES7210: Bits 8[0m
+[0;32mI (1943) ES7210: Enable ES7210_INPUT_MIC1[0m
+[0;32mI (1945) ES7210: Enable ES7210_INPUT_MIC2[0m
+[0;32mI (1948) ES7210: Enable ES7210_INPUT_MIC3[0m
+[0;32mI (1952) ES7210: Enable ES7210_INPUT_MIC4[0m
+[0;32mI (1958) ES7210: Enable TDM mode[0m
+[0;32mI (1964) ES7210: Unmuted[0m
+[0;32mI (1964) Adev_Codec: Open codec device OK[0m
+[0;32mI (1966) Adev_Codec: Input already open[0m
+[0;32mI (1971) Adev_Codec: Input already open[0m
+[0;32mI (1991) clare_audio: ALC ready: 16000 Hz mono PCM16, gain 6 dB[0m
+[0;32mI (2176) pp: pp rom version: 5b8dcfa[0m
+[0;32mI (2177) net80211: net80211 rom version: 5b8dcfa[0m
+I (2178) wifi:wifi driver task: 40867bd0, prio:23, stack:6656, core=0
+I (2187) wifi:wifi firmware version: 4df78f2
+I (2187) wifi:wifi certification version: v7.0
+I (2189) wifi:config NVS flash: enabled
+I (2193) wifi:config nano formatting: disabled
+I (2197) wifi:mac_version:HAL_MAC_ESP32AX_761,ut_version:N, band mode:0x1
+I (2204) wifi:Init data frame dynamic rx buffer num: 16
+I (2208) wifi:Init static rx mgmt buffer num: 5
+I (2213) wifi:Init management short buffer num: 32
+I (2217) wifi:Init static tx buffer num: 16
+I (2221) wifi:Init static tx FG buffer num: 2
+I (2225) wifi:Init static rx buffer size: 1700 (rxctrl:92, csi:512)
+I (2231) wifi:Init static rx buffer num: 10
+I (2235) wifi:Init dynamic rx buffer num: 16
+[0;32mI (2240) wifi_init: rx ba win: 6[0m
+[0;32mI (2243) wifi_init: accept mbox: 6[0m
+[0;32mI (2247) wifi_init: tcpip mbox: 32[0m
+[0;32mI (2251) wifi_init: udp mbox: 6[0m
+[0;32mI (2255) wifi_init: tcp mbox: 6[0m
+[0;32mI (2259) wifi_init: tcp tx win: 5760[0m
+[0;32mI (2263) wifi_init: tcp rx win: 5760[0m
+[0;32mI (2267) wifi_init: tcp mss: 1240[0m
+[0;32mI (2271) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (2276) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (2281) wifi_init: WiFi SLP IRAM OP enabled[0m
+W (2286) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+[0;32mI (2295) phy_init: phy_version 343,b513b46,Nov 14 2025,16:34:12[0m
+W (2367) wifi:ACK_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2368) wifi:CTS_TAB0   :0x   90a0b, QAM16:0x9 (24Mbps), QPSK:0xa (12Mbps), BPSK:0xb (6Mbps)
+W (2373) wifi:(agc)0x600a7128:0xd20caa80, min.avgNF:0xce->0xd2(dB), RCalCount:0xca, min.RRssi:0xa80(-88.00)
+I (2383) wifi:11ax coex: WDEVAX_PTI0(0x55777555), WDEVAX_PTI1(0x00003377).
+
+I (2390) wifi:mode : sta (20:6e:f1:16:e0:a4)
+I (2393) wifi:enable tsf
+I (2405) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1, snd_ch_cfg:0x0
+I (2406) wifi:(connect)dot11_authmode:0x3, pairwise_cipher:0x3, group_cipher:0x1
+I (2410) wifi:state: init -> auth (0xb0)
+I (2424) wifi:state: auth -> assoc (0x0)
+[0;32mI (2427) clare_net: Wi-Fi protocols limited to 11b/g/n mask=0x07[0m
+I (2428) wifi:Set ps type: 0, coexist: 0
+
+[0;32mI (2429) clare_c6: Clare UI ready; touch the Clare tile[0m
+I (2432) wifi:(assoc)RESP, Extended Capabilities length:8, operating_mode_notification:0
+I (2442) wifi:(assoc)RESP, Extended Capabilities, MBSSID:0, TWT Responder:0, OBSS Narrow Bandwidth RU In OFDMA Tolerance:0
+I (2453) wifi:Extended Capabilities length:8, operating_mode_notification:1
+I (2460) wifi:state: assoc -> run (0x10)
+I (2463) wifi:(trc)phytype:CBW20-SGI, snr:25, maxRate:144, highestRateIdx:0
+W (2470) wifi:(trc)band:2G, phymode:3, highestRateIdx:0, lowestRateIdx:11, dataSchedTableSize:14
+I (2478) wifi:(trc)band:2G, rate(L-MCS4, rateIdx:4), ampdu(rate:L-MCS4, schedIdx(4, stop:8)), snr:25, ampduState:wait operational
+I (2489) wifi:ifidx:0, rssi:-65, nf:-90, phytype(0x3, CBW20-SGI), phymode(0x3, 11bgn), max_rate:144, he:0, vht:0, ht:1
+I (2500) wifi:(ht)max.RxAMPDULenExponent:3(65535 bytes), MMSS:6(8 us)
+[0;32mI (2513) main_task: Returned from app_main()[0m
+I (2539) wifi:connected with ZKY-GYLWLAP, aid = 3, channel 11, BW20, bssid = 02:55:b1:c6:fa:2e
+I (2540) wifi:security: WPA2-PSK, phy:bgn, rssi:-65, cipher(pairwise:0x3, group:0x1), pmf:0, 
+I (2547) wifi:pm start, type: 0, twt_start:0
+
+I (2549) wifi:pm start, type:0, aid:0x3, trans-BSSID:02:55:b1:c6:fa:2e, BSSID[5]:0x2e, mbssid(max-indicator:0, index:0), he:0
+I (2561) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (2568) wifi:set rx beacon pti, rx_bcn_pti: 10, bcn_timeout: 25000, mt_pti: 10, mt_time: 10000
+I (2577) wifi:[ADDBA]TX addba request, tid:0, dialogtoken:1, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (2588) wifi:[ADDBA]TX addba request, tid:7, dialogtoken:2, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x20)
+I (2599) wifi:[ADDBA]TX addba request, tid:5, dialogtoken:3, bufsize:64, A-MSDU:0(not supported), policy:1(IMR), ssn:0(0x0)
+I (2612) wifi:[ADDBA]RX addba response, status:0, tid:0/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2619) wifi:[ADDBA]RX addba response, status:0, tid:7/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2627) wifi:[ADDBA]RX addba response, status:0, tid:5/tb:1(0xa1), bufsize:64, batimeout:0, txa_wnd:8
+I (2637) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (2644) wifi:AP's beacon interval = 102400 us, DTIM period = 2
+W (3627) wifi:<ba-add>idx:0, ifx:0, tid:0, TAHI:0x1002efa, TALO:0xc6b15502, (ssn:0, win:64, cur_ssn:0), CONF:0xc0000005
+[0;32mI (4634) esp_netif_handlers: sta ip: 192.168.238.118, mask: 255.255.240.0, gw: 192.168.235.1[0m
+[0;32mI (4634) clare_net: DHCP DNS main=223.5.5.5[0m
+[0;32mI (10429) clare_c6: Boot network self-test begin[0m
+W (10502) wifi:<ba-add>idx:1, ifx:0, tid:6, TAHI:0x1002efa, TALO:0xc6b15502, (ssn:2, win:64, cur_ssn:2), CONF:0xc0006005
+[0;32mI (10504) clare_c6: probe dns ip=172.67.178.147[0m
+[0;32mI (10507) clare_c6: probe dns rc=0[0m
+[0;32mI (10511) clare_c6: probe socket fd=54 errno=0[0m
+[0;32mI (10728) clare_c6: probe connect rc=0 errno=0[0m
+[0;31mE (10943) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[0;31mE (10943) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[0;31mE (10955) esp-tls: create_ssl_handle failed[0m
+[0;31mE (10959) esp-tls: Failed to open new connection[0m
+[0;32mI (10964) clare_c6: probe esp-tls rc=-1 last=0x0 flags=0x0[0m
+[0;32mI (10972) clare_net: Create session URL ready=1[0m
+[0;32mI (10976) clare_net: HTTP before init free8=43056 largest8=25088 free_internal=43056 largest_internal=25088[0m
+[0;32mI (12637) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (14863) clare_net: HTTP response status=200 bytes=82 truncated=0[0m
+[0;32mI (14865) clare_net: HTTP after cleanup free8=42632 largest8=14592[0m
+[0;32mI (14867) clare_c6: Boot network self-test session err=0 (attempt 1/4)[0m
+[0;32mI (14874) clare_net: WS pre-start heap free8=39460 largest8=14592[0m
+[0;32mI (14882) websocket_client: Started[0m
+[0;31mE (16417) esp-x509-crt-bundle: PK verify failed with error 0x4290[0m
+[0;31mE (16417) esp-x509-crt-bundle: Certificate matched but signature verification failed[0m
+[0;31mE (16421) esp-x509-crt-bundle: Failed to verify certificate[0m
+[0;31mE (16428) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000[0m
+[0;31mE (16434) esp-tls: Failed to open new connection[0m
+[0;31mE (16439) transport_base: Failed to open a new connection[0m
+[0;31mE (16446) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (16453) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_MBEDTLS_SSL_HANDSHAKE_FAILED, tls_error_code=12288, tls_flags=0, esp_ws_handshake_status_code=0, errno=119[0m
+[0;33mW (16471) clare_net: WS ERR heap free8=27092 largest8=14592[0m
+[0;33mW (16477) clare_net: WebSocket error kind=0 err=1082453752 status=0[0m
+[0;32mI (16484) clare_c6: Network error - check Wi-Fi/API[0m
+[0;32mI (16489) clare_net: WebSocket disconnected kind=0 event=2 close=0 type=1 errno=0[0m
+[0;33mW (16501) clare_net: WebSocket connect timeout kind=0 bits=0x2[0m
+[0;33mW (16504) websocket_client: Client was not started[0m
+[0;32mI (16610) clare_c6: Boot network self-test transcribe err=-1[0m
+[0;32mI (16610) clare_net: WS pre-start heap free8=39516 largest8=14592[0m
+[0;32mI (16614) websocket_client: Started[0m
+[0;31mE (18115) esp-x509-crt-bundle: PK verify failed with error 0x4290[0m
+[0;31mE (18115) esp-x509-crt-bundle: Certificate matched but signature verification failed[0m
+[0;31mE (18119) esp-x509-crt-bundle: Failed to verify certificate[0m
+[0;31mE (18126) esp-tls-mbedtls: mbedtls_ssl_handshake returned -0x3000[0m
+[0;31mE (18132) esp-tls: Failed to open new connection[0m
+[0;31mE (18137) transport_base: Failed to open a new connection[0m
+[0;31mE (18144) transport_ws: Error connecting to host clare.vinex.top:443[0m
+[0;31mE (18151) websocket_client: esp_transport_connect() failed with -1, transport_error=ESP_ERR_MBEDTLS_SSL_HANDSHAKE_FAILED, tls_error_code=12288, tls_flags=0, esp_ws_handshake_status_code=0, errno=119[0m
+[0;33mW (18169) clare_net: WS ERR heap free8=27088 largest8=14592[0m
+[0;33mW (18175) clare_net: WebSocket error kind=1 err=1082453752 status=0[0m
+[0;32mI (18183) clare_c6: Network error - check Wi-Fi/API[0m
+[0;32mI (18188) clare_net: WebSocket disconnected kind=1 event=2 close=0 type=1 errno=0[0m
+[0;33mW (18197) clare_net: WebSocket connect timeout kind=1 bits=0x2[0m
+[0;33mW (18202) websocket_client: Client was not started[0m
+[0;32mI (18308) clare_c6: Boot network self-test host err=-1[0m
+[0;32mI (18308) clare_net: HTTP before init free8=42652 largest8=14592 free_internal=42652 largest_internal=14592[0m
+[0;32mI (19910) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (21360) clare_net: HTTP response status=200 bytes=255 truncated=1[0m
+[0;32mI (21362) clare_net: HTTP after cleanup free8=42388 largest8=14592[0m
+[0;32mI (21364) clare_c6: Boot network self-test complete[0m

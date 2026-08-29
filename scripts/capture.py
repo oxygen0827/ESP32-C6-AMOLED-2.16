@@ -19,6 +19,6 @@ while time.time() - start < 75:
         data.extend(chunk)
 ser.close()
 text = data.decode("utf-8", "replace")
-open("/tmp/clara-net-8192-reset.log", "w", encoding="utf-8").write(text)
+open("/tmp/clare-net-8192-reset.log", "w", encoding="utf-8").write(text)
 print(text)
 print("\n--- bytes", len(data), "---")

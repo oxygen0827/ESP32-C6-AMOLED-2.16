@@ -1,0 +1,35 @@
+idf_component_register(
+    SRCS
+        "api_client.c"
+        "host_ws.c"
+        "lv_font_noto_sans_sc_14.c"
+        "main.c"
+        "mp3_player.c"
+        "pipeline_ws.c"
+        "transcribe_ws.c"
+        "ui_meeting.c"
+        "vad.c"
+        "wifi_init.c"
+        "ws_session.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        nvs_flash
+        esp_wifi
+        esp_netif
+        esp_event
+        driver
+        esp_driver_i2s
+        esp_driver_i2c
+        espressif__esp_codec_dev
+        esp_vocat
+        espressif__esp_lvgl_port
+        lvgl__lvgl
+        esp_websocket_client
+        esp_http_client
+        json
+        esp-tls
+        mbedtls
+        esp_timer
+    EMBED_FILES
+        "assets/clare_avatar.rgb565a8"
+)
