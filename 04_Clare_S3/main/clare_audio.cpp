@@ -733,11 +733,16 @@ static void tts_play_task(void *)
     bool stream_open = true;
     size_t pending = 0;          // unconsumed tail carried to the next feed
     int consecutive_errors = 0;  // decode resets without a successful frame
+    // DIAG (first-sentence-missing hunt): byte/frame accounting per stream.
+    uint32_t stat_ring_bytes = 0;
+    uint32_t stat_pcm_bytes = 0;
+    uint32_t stat_t0 = 0;
     while (stream_open) {
         lock(s_tts.lock);
         const bool eos = s_tts.eos;
         size_t got = tts_ring_read(feed + pending, 1024 - pending);
         unlock(s_tts.lock);
+        stat_ring_bytes += got;
 
         if (pending + got == 0) {
             if (eos) {
@@ -797,6 +802,12 @@ static void tts_play_task(void *)
             }
             if (frame.decoded_size > 0) {
                 consecutive_errors = 0;
+                stat_pcm_bytes += frame.decoded_size;
+                if (stat_t0 == 0) {
+                    stat_t0 = 1;
+                    ESP_LOGI(TAG, "tts first audio out (ring consumed %u bytes so far)",
+                             static_cast<unsigned>(stat_ring_bytes));
+                }
                 esp_audio_simple_dec_info_t info = {};
                 if (esp_audio_simple_dec_get_info(s_audio.mp3_decoder, &info) == ESP_AUDIO_ERR_OK) {
                     lock(s_audio.playback_lock);
@@ -826,7 +837,8 @@ static void tts_play_task(void *)
         s_audio.mp3_decoder = nullptr;
     }
     s_audio.mp3_active = false;
-    ESP_LOGI(TAG, "tts playback task done");
+    ESP_LOGI(TAG, "tts playback task done: ring=%u B pcm=%u B",
+             static_cast<unsigned>(stat_ring_bytes), static_cast<unsigned>(stat_pcm_bytes));
     s_tts.task = nullptr;
     vTaskDelete(nullptr);
 }

@@ -8,6 +8,7 @@
 #include "esp_log.h"
 #include "esp_err.h"
 #include "esp_heap_caps.h"
+#include "esp_timer.h"
 #include "nvs_flash.h"
 #include <arpa/inet.h>
 #include "esp_codec_dev.h"
@@ -45,6 +46,8 @@ static volatile bool s_meeting_active = false;
 static volatile bool s_transcribe_connected = false;
 static volatile bool s_host_connected = false;
 static volatile bool s_host_recording = false;
+static volatile TickType_t s_host_answer_since = 0;  // !=0 while waiting for an answer
+static esp_timer_handle_t s_host_answer_timer = nullptr;
 static volatile bool s_audio_task_run = false;
 static TaskHandle_t s_audio_task = nullptr;
 enum class Action : uint8_t {
@@ -70,6 +73,16 @@ static int16_t s_audio_stereo[kAudioFrameSamples * 2] = {};
 static int16_t s_audio_mono[kAudioFrameSamples] = {};
 
 static void enqueue_action(Action action);
+
+// If the server never answers (e.g. Send tapped with no speech recorded),
+// finish the Q&A automatically after 60 s so the Ask button can never wedge.
+static void host_answer_timeout(void *)
+{
+    if (s_host_answer_since != 0) {
+        ESP_LOGW(TAG, "Answer watchdog: no done in 60 s, auto-finishing Q&A");
+        enqueue_action(Action::FinishHost);
+    }
+}
 
 static char s_host_answer_text[2048] = {};
 
@@ -119,6 +132,7 @@ static void net_event(const clare_net_event_t *event, void *)
     case CLARE_NET_EVENT_HOST_CONNECTED: s_host_connected = true; ui_status("Ask Clare a question"); break;
     case CLARE_NET_EVENT_HOST_DISCONNECTED:
         s_host_connected = false; s_host_recording = false; clare_ui_set_host_active(false);
+        s_host_answer_since = 0;
         // The failed/closed client must be torn down (in the main task, not
         // here in the ws task): a stale ctx->client makes every later
         // clare_net_host_connect() fail with INVALID_STATE, which surfaced
@@ -151,7 +165,11 @@ static void net_event(const clare_net_event_t *event, void *)
         ui_status("Session expired - recreating");
         enqueue_action(Action::HandleHostRejected);
         break;
-    case CLARE_NET_EVENT_HOST_DONE: enqueue_action(Action::FinishHost); break;
+    case CLARE_NET_EVENT_HOST_DONE:
+        s_host_answer_since = 0;
+        if (s_host_answer_timer) esp_timer_stop(s_host_answer_timer);
+        enqueue_action(Action::FinishHost);
+        break;
     case CLARE_NET_EVENT_ERROR: ui_status("Network error - check Wi-Fi/API"); break;
     default: break;
     }
@@ -384,11 +402,31 @@ static void toggle_host_impl(void *)
         (void)clare_net_host_send_end_of_speech();
         s_host_recording = false;
         if (!s_meeting_active) stop_audio_task();
-        clare_ui_set_host_active(false); ui_status("Clare is answering..."); return;
+        clare_ui_set_host_active(false); ui_status("Clare is answering...");
+        s_host_answer_since = xTaskGetTickCount();
+        if (s_host_answer_timer) {
+            esp_timer_stop(s_host_answer_timer);
+            esp_timer_start_once(s_host_answer_timer, 60 * 1000 * 1000);
+        }
+        return;
     }
-    if (s_host_connected) { ui_status("Clare is still answering..."); return; }
+    if (s_host_connected) {
+        // The previous question never finished (e.g. user tapped Send without
+        // speaking, so the server had no speech to answer and never sent
+        // done).  A tap after 30 s of waiting is an explicit abandon: tear
+        // the stale Q&A down and fall through to start a fresh one.
+        if (xTaskGetTickCount() - s_host_answer_since < pdMS_TO_TICKS(30000)) {
+            ui_status("Clare is still answering...");
+            return;
+        }
+        ESP_LOGW(TAG, "Abandoning stale Q&A (no answer for 30 s)");
+        (void)clare_net_host_disconnect();
+        s_host_connected = false;
+        clare_ui_set_host_active(false);
+    }
     clare_ui_reset_answer();
     s_host_answer_text[0] = '\0';
+    ui_status("Connecting Clare...");  // instant tap feedback; the WS handshake below takes seconds
     // Pause the meeting feed BEFORE the host WS handshake, not after: the
     // backend rejects a second concurrent audio stream with a 403, and the
     // handshake takes seconds during which the audio task is still running.
@@ -637,6 +675,13 @@ extern "C" void app_main(void)
         ESP_LOGW(TAG, "ALC unavailable; capture continues without digital gain");
     }
 
+    const esp_timer_create_args_t answer_timer_args = {
+        .callback = host_answer_timeout, .arg = nullptr,
+        .dispatch_method = ESP_TIMER_TASK, .name = "host_answer",
+    };
+    if (esp_timer_create(&answer_timer_args, &s_host_answer_timer) != ESP_OK) {
+        ESP_LOGW(TAG, "answer watchdog timer unavailable");
+    }
     s_action_queue = xQueueCreate(4, sizeof(Action));
     ESP_ERROR_CHECK(s_action_queue ? ESP_OK : ESP_ERR_NO_MEM);
     BaseType_t action_task_result = xTaskCreate(action_task, "clare_action", 8192,
